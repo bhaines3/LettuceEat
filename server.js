@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const flash=require("connect-flash");
+
 // const routes = require("./routes/articles");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -24,15 +25,14 @@ if (process.env.NODE_ENV === "production") {
 app.use(passport.initialize());
 
 //project init:jasons group
-// requirements for express app to use passport
+//requirements for express app to use passport
 app.use(require('cookie-parser')());
 app.use(require('express-session')({ secret: 'LettuceEat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-const router=express.Router();
-app.use(router);
+require("./routes/apiRoutes")(app);
 
 //app.use('/api', apiRoutes);
 // Send every request to the React app

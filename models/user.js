@@ -30,7 +30,8 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		isDonor: {
 			type: DataTypes.BOOLEAN,
-			allowNull: false
+			allowNull: false,
+			defaultValue: false
 		}
 	});
 	User.associate = function(models) {
