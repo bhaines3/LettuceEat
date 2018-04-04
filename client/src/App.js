@@ -67,7 +67,7 @@ class App extends Component {
         </div>
         {/* <!-- Here we capture the End Year Parameter --> */}
         <div className="form-group">
-          <label>password:</label>
+          <label>password(6+):</label>
           <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
         </div>
         <div className="form-group">

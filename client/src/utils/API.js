@@ -7,8 +7,8 @@ export default {
     findUser:(queryEmail)=>{
         return axios.get(("/api/user/"+queryEmail),{params:queryEmail});
     },
-    createUser: (query)=> {
-      return axios.post("/api/users/", { params: query });
+    createUser: (userInfo)=> {
+      return axios.post("/api/users/", userInfo);
     }
     // // Gets all articles
     // getSavedarticles: function() {

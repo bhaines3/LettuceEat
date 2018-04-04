@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(passport.initialize());
 
 //project init:jasons group
-// requirements for express app to use passport
+//requirements for express app to use passport
 app.use(require('cookie-parser')());
 app.use(require('express-session')({ secret: 'LettuceEat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());

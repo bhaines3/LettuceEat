@@ -19,24 +19,27 @@ module.exports = {
       })
     },
     createUser: (req, res)=> {
-      const password=req.query.password;
+      const password=req.body.password;
       //encrypt password
-      //const salt= bcrypt.genSaltSync(10);
-      //let hashedPassword = bcrypt.hashSync(password, salt);
+      const salt= bcrypt.genSaltSync(10);
+      let hashedPassword = bcrypt.hashSync(password, salt);
       
       const newUserinfo={
-          email:req.query.email,
-          name:req.query.name,
-          isDonor:req.query.isDonor,
-          phonenumber:req.query.phonenumber,
-          password:password
+          email:req.body.email,
+          name:req.body.name,
+          isDonor:req.body.isDonor,
+          phonenumber:req.body.phonenumber,
+          password:hashedPassword
       }
-      console.log("about to create user");
+      
+      console.log(newUserinfo);
+      console.log("right before going into database o create");
       //creating new user
       db.User.create(newUserinfo)
       .then((dbUser)=> {
         res.json(dbUser);
       }).catch(function(err) {
+        console.log("Erro: "+err);
       });
     }
 }
