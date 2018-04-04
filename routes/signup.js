@@ -1,35 +1,15 @@
 const router = require("express").Router();
+const signupController=require("./controller/signup.js");
 const bcrypt = require("bcrypt");
-// Requiring our models for syncing
-const db = require("./models");
+const axios = require("axios");
 
-router.post("api/users",(req,res)=>{
-    const unhashedPassword=req.body.password;
-    //encrypt password
-    const rounds= bcrypt.genSaltSync();
-    let hashedPassword = bcrypt.hashSync(password, rounds);
-    
-    const newUserinfo={
-        email:req.body.email,
-        name:req.body.name,
-        password:hashedPassword
-    }
-    //creating new user
-    //should check if user doesnt exist already
-    db.User.findOne({
-        where:{
-            email:newUserinfo.email
-        }
-    }).then((userfound)=>{
-        //if user doesnot exist create new user
-        if(!userInfo){
-            db.User.create(newUserinfo)
-            .then(function(dbUser) {
-                res.json(dbUser);
-            });
-        }
-    })
-    
+
+router.get("/api/user/:email",(req,res)=>{
+    router.route("/api/user/:email").get(signupController.findUser);
+})
+router.post("/api/users/",(req,res)=>{
+    router.route("/api/users/").post(signupController.createUser);
 });
+
 
 module.exports=router;
