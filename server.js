@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const flash=require("connect-flash");
+
 // const routes = require("./routes/articles");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -31,8 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-const router=express.Router();
-app.use(router);
+require("./routes/apiRoutes")(app);
 
 //app.use('/api', apiRoutes);
 // Send every request to the React app

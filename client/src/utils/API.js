@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export default {
+    findAllusers:(query)=>{
+      return axios.get(("/api/users/"),{params:query});
+    },
     findUser:(queryEmail)=>{
         return axios.get(("/api/user/"+queryEmail),{params:queryEmail});
     },

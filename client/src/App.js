@@ -5,7 +5,7 @@ class App extends Component {
   state = {
     name:"",
     email:"",
-    isDonor:"im",
+    isDonor:false,
     phonenumber:"",
     password:"" 
   };
@@ -18,27 +18,29 @@ class App extends Component {
       [name]: value
     });
   };
-  createUser=()=>{
+  createUser=(event)=>{
+    event.preventDefault();
     const newUser={
       name:this.state.name,
       email:this.state.email,
-      isDonor:false,
+      isDonor:this.state.isDonor,
       phonenumber:this.state.phonenumber,
       password:this.state.password
     }
-    //check first if user exists
-    API.findUser(newUser.email).then((res)=>{
-      //if user exists
-      if(res.data.email){
-        console.log("user exists choose another email")
-      }
-      //if user doesn not exist make new account
-      else{
+    console.log(newUser.name);
+    // //check first if user exists
+    // API.findUser(newUser.email).then((res)=>{
+    //   //if user exists
+    //   if(res.data.email){
+    //     console.log("user exists choose another email")
+    //   }
+    //   //if user doesn not exist make new account
+    //   else{
         API.createUser(newUser).then(()=>{
           console.log("user has been created");
         })
-      }
-    })
+      //}
+    //})
   }
   render() {
     return (
@@ -46,10 +48,17 @@ class App extends Component {
       {this.state.name}<br/>
       {this.state.email}<br/>
       {this.state.password}<br/>
+      {this.state.phonenumber}<br/>
+      {this.state.isDonor}
+
       <form id="sign-up">
         <div className="form-group">
           <label>volunteer name or business name:</label>
           <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control" placeholder="Jane Doe"/>
+        </div>
+        <div className="form-group">
+          <label>Phone:</label>
+          <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
         </div>
         {/* <!-- Here we capture the Start Year Parameter--> */}
         <div className="form-group">
@@ -60,10 +69,6 @@ class App extends Component {
         <div className="form-group">
           <label>password:</label>
           <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
-        </div>
-        <div className="form-group">
-          <label>Phone:</label>
-          <input type="text" className="form-control"  name= "phonenumber" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
         </div>
         <div className="form-group">
           <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
