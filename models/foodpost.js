@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 				allowNull: false
 			}
 		});
-		FoodPost.belongsToMany(models.Volunteer, {through: "VolunteerRoster"});
+		FoodPost.belongsToMany(models.NonProfit, {through: "InterestedRoster"});
   	};
 	return FoodPost;
 }

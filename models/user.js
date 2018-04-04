@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 	});
 	User.associate = function(models) {
 		User.hasOne(models.Donor);
-		User.hasOne(models.Volunteer);
+		User.hasOne(models.NonProfit);
   	};
 
 	return User;

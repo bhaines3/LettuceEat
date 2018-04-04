@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Donor = sequelize.define("Donor", {
+	var NonProfit = sequelize.define("NonProfit", {
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -23,13 +23,13 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		}
     });
-    Donor.associate = function(models) {
-		Donor.belongsTo(models.User, {
+    NonProfit.associate = function(models) {
+		NonProfit.belongsTo(models.User, {
 		  foreignKey: {
 		    allowNull: false
 		  }
 		});
-		Donor.hasMany(models.FoodPost);
+		NonProfit.belongsToMany(models.FoodPost, {through: "InterestedRoster"});
 	};
-	return Donor;
+	return NonProfit;
 }
