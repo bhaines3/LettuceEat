@@ -22,7 +22,7 @@ class App extends Component {
     const newUser={
       name:this.state.name,
       email:this.state.email,
-      isDonor:this.state.isDonor,
+      isDonor:false,
       phonenumber:this.state.phonenumber,
       password:this.state.password
     }
@@ -60,6 +60,10 @@ class App extends Component {
         <div className="form-group">
           <label>password:</label>
           <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
+        </div>
+        <div className="form-group">
+          <label>Phone:</label>
+          <input type="text" className="form-control"  name= "phonenumber" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
         </div>
         <div className="form-group">
           <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
