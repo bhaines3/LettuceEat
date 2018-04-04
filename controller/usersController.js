@@ -4,19 +4,23 @@ const bcrypt = require("bcrypt");
 module.exports = {
     findAllusers:(req,res)=>{
       db.User.findAll().then((dbUser)=>{
-        console.log(dbUser)
+        //console.log(dbUser)
         res.json(dbUser);
       })
     },
-    findUser: (req, res) =>{
+    findOneuser: (req, res) =>{
       //find user if already exists
+      const email=req.body.email
+      console.log(email);
       db.User.findOne({
         where:{
-            email:req.queryEmail
+            email:email
         }
-      }).then((user)=>{
-        res.json(user);
-      })
+      }).then((dbuser)=>{
+        res.json(dbuser);
+      }).catch(function(err) {
+        console.log("Error from findOne: "+err);
+      });
     },
     createUser: (req, res)=> {
       const password=req.body.password;
@@ -32,14 +36,14 @@ module.exports = {
           password:hashedPassword
       }
       
-      console.log(newUserinfo);
-      console.log("right before going into database o create");
+      //console.log(newUserinfo);
+      //console.log("right before going into database o create");
       //creating new user
       db.User.create(newUserinfo)
       .then((dbUser)=> {
         res.json(dbUser);
       }).catch(function(err) {
-        console.log("Erro: "+err);
+        console.log("Error from create: "+err);
       });
     }
 }

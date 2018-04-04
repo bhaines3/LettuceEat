@@ -27,20 +27,23 @@ class App extends Component {
       phonenumber:this.state.phonenumber,
       password:this.state.password
     }
-    console.log(newUser.name);
-    // //check first if user exists
-    // API.findUser(newUser.email).then((res)=>{
+    //console.log(newUser.email);
+    //check first if user exists before creating a new account
+    // API.findOneuser(newUser).then((res)=>{
     //   //if user exists
-    //   if(res.data.email){
-    //     console.log("user exists choose another email")
-    //   }
-    //   //if user doesn not exist make new account
-    //   else{
+    //   console.log(res);
+    //   console.log(res.email)
+    // if(!res.data){
+    //     console.log("user doent exist");
         API.createUser(newUser).then(()=>{
           console.log("user has been created");
         })
       //}
-    //})
+    //   //if user doesnt not exist make new account
+    //   else{
+    //     console.log("user exists choose another email")
+    //   }
+    // })
   }
   render() {
     return (

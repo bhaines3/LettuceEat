@@ -2,13 +2,14 @@ import axios from "axios";
 
 export default {
     findAllusers:(query)=>{
-      return axios.get(("/api/users/"),{params:query});
-    },
-    findUser:(queryEmail)=>{
-        return axios.get(("/api/user/"+queryEmail),{params:queryEmail});
+      return axios.get(("/api/users/"));
     },
     createUser: (userInfo)=> {
-      return axios.post("/api/users/", userInfo);
+      return axios.post("/api/users/",userInfo);
+    },
+    findOneuser:(userInfo)=>{
+      console.log("userUseremail "+ userInfo.email);
+      return axios.get("/api/user/",userInfo);
     }
     // // Gets all articles
     // getSavedarticles: function() {
