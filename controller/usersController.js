@@ -2,7 +2,7 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 
 module.exports = {
-    findAllusers:(req,res)=>{
+    findAllUsers:(req,res)=>{
       db.User.findAll().then((dbUser)=>{
         console.log(dbUser)
         res.json(dbUser);
@@ -19,6 +19,7 @@ module.exports = {
       })
     },
     createUser: (req, res)=> {
+      console.log("createUser is running");
       const password=req.body.password;
       //encrypt password
       const salt= bcrypt.genSaltSync(10);
