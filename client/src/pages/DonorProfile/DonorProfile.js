@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
+import ProfileJumbotron from '../../components/ProfileJumbotron';
 
 class DonorProfile extends Component {
     state = {
@@ -33,6 +34,13 @@ class DonorProfile extends Component {
                 { this.state.donor.FoodPosts && this.state.donor.FoodPosts.length }
                 <br />
                 {JSON.stringify(this.state.donor)}
+                <ProfileJumbotron
+                address={this.state.donor.location || "No set location"}
+                phonenumber={this.state.donor.phonenumber}
+                email={this.state.donor.email}
+                >
+                {this.state.donor.name}
+                </ProfileJumbotron>
             </div>
         )
     }
