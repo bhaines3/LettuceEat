@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const passport = require('passport');
+const apiRoutes = require("./routes/apiRoutes");
 const flash=require("connect-flash");
 
 // const routes = require("./routes/articles");
@@ -32,9 +33,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require("./routes/apiRoutes")(app);
+// require("./routes/apiRoutes")(app);
 
-//app.use('/api', apiRoutes);
+app.use('/api/', apiRoutes);
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
