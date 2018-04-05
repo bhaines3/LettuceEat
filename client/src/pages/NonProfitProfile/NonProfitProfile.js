@@ -2,38 +2,38 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 
-class DonorProfile extends Component {
+class NonProfitProfile extends Component {
     state = {
-        donor: {}
+        nonprofit: {}
     };
     componentDidMount() {
-        API.findOneDonor(this.props.match.params.id)
-            .then(res => {this.setState({ donor: res.data })})
+        API.findOneNonProfit(this.props.match.params.id)
+            .then(res => {this.setState({ nonprofit: res.data })})
             .catch(err => console.log(err));
     }
     render() {
         return(
             <div>
-                Id: {this.state.donor.id}
+                Id: {this.state.nonprofit.id}
                 <br />
-                Name: {this.state.donor.name}
+                Name: {this.state.nonprofit.name}
                 <br />
-                Email: {this.state.donor.email}
+                Email: {this.state.nonprofit.email}
                 <br />
-                Phone Number: {this.state.donor.phonenumber}
+                Phone Number: {this.state.nonprofit.phonenumber}
                 <br />
-                Food Posts: 
+                Food Posts Interested In: 
                 {/* I am doing this odd statement down here because if you do FoodPosts.length alone,
                 render() happens before the componentDidMount(), and therefore will throw a fat error
                 as FoodPosts will be undefined. This makes sure that FoodPosts is defined before
                 finding length. Here's where I found it:
                 https://hashnode.com/post/reactjs-how-to-render-components-only-after-successful-asynchronous-call-ciwvnkjr400sq7t533lvrpdtw */}
-                { this.state.donor.FoodPosts && this.state.donor.FoodPosts.length }
+                { this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length }
                 <br />
-                {JSON.stringify(this.state.donor)}
+                {JSON.stringify(this.state.nonprofit)}
             </div>
         )
     }
 }
 
-export default DonorProfile;
+export default NonProfitProfile;

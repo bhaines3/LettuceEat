@@ -1,6 +1,6 @@
 const db = require("../models");
 module.exports = {
-    findAllNonProfit:(req,res)=>{
+    findAllNonProfits:(req,res)=>{
       db.NonProfit.findAll({
         include: [db.FoodPost]
       }).then((dbNonProfit)=>{
@@ -11,7 +11,7 @@ module.exports = {
     findNonProfit: (req, res) =>{
       db.NonProfit.findOne({
         where:{
-            email:req.queryEmail
+            id: req.params.id
         },
         include: [db.FoodPost]
       }).then((nonprofit)=>{

@@ -19,6 +19,13 @@ export default {
   },
   findOneDonor: (id) => {
     return axios.get("/api/donor/"+id);
+  },
+  //=========DONORS==============
+  findAllNonProfits: () => {
+    return axios.get("/api/nonprofit/");
+  },
+  findOneNonProfit: (id) => {
+    return axios.get("/api/nonprofit/"+id);
   }
 
     // // Gets all articles
