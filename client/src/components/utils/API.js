@@ -8,8 +8,8 @@ export default {
       return axios.post("/api/users/",userInfo);
     },
     findOneuser:(userInfo)=>{
-      console.log("userUseremail "+ userInfo.email);
-      return axios.get("/api/user/",userInfo);
+      console.log("im in API email find one user "+ userInfo.email);
+      return axios.get("/api/user/",{params:userInfo});
     }
     // // Gets all articles
     // getSavedarticles: function() {

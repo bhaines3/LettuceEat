@@ -10,14 +10,15 @@ module.exports = {
     },
     findOneuser: (req, res) =>{
       //find user if already exists
-      const email=req.body.email
-      console.log(email);
+    
+      const email=req.query.email
+      console.log("Im the controller "+email);
       db.User.findOne({
         where:{
             email:email
         }
-      }).then((dbuser)=>{
-        res.json(dbuser);
+      }).then((dbUser)=>{
+        res.json(dbUser);
       }).catch(function(err) {
         console.log("Error from findOne: "+err);
       });
