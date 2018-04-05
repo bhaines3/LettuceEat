@@ -36,6 +36,12 @@ class App extends Component {
       )
     }
 }
+
+//===CODE BELOW HERE SHOULD ONLY BE ADJUSTED BY BRANDON OR MICHELLE.
+//===THIS SHOULD SOMEWHAT REFLECT FUTURE PURPOSE OF APP.JS. PERLA,
+//===YOU SHOULD MOVE YOUR CODE TO HOME.JS WHEN BRANDON IS DONE WITH IT.
+
+
 // import React from "react";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import DonorProfile from "./pages/DonorProfile";
