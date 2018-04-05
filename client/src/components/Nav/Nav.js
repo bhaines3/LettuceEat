@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Link, NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 // const Nav = () => {
 //   return (
@@ -43,7 +43,7 @@ import React from 'react';
 const Nav = () => {
     return (   
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a className="navbar-brand" href="#">LettuceEat</a>
+            <div className="navbar-brand" href="/">LettuceEat</div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style={{}}>
                 <span className="navbar-toggler-icon" />
             </button>
