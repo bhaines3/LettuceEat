@@ -5,7 +5,9 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
     findAllUsers:(req,res)=>{
-      db.User.findAll().then((dbUser)=>{
+      db.User.findAll({
+        include: [db.Donor, db.NonProfit]
+      }).then((dbUser)=>{
         console.log(dbUser)
         res.json(dbUser);
       })
@@ -15,7 +17,8 @@ module.exports = {
       db.User.findOne({
         where:{
             email:req.queryEmail
-        }
+        },
+        include: [db.Donor, db.NonProfit]
       }).then((user)=>{
         res.json(user);
       })

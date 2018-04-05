@@ -1,7 +1,9 @@
 const db = require("../models");
 module.exports = {
     findAllDonor:(req,res)=>{
-      db.Donor.findAll().then((dbDonor)=>{
+      db.Donor.findAll({
+        include: [db.FoodPost]
+      }).then((dbDonor)=>{
         console.log(dbDonor)
         res.json(dbDonor);
       })
@@ -10,7 +12,8 @@ module.exports = {
       db.Donor.findOne({
         where:{
             email:req.queryEmail
-        }
+        },
+        include: [db.FoodPost]
       }).then((donor)=>{
         res.json(donor);
       })
