@@ -25,11 +25,12 @@ module.exports = function(sequelize, DataTypes) {
 		pickupwindow: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		allowsVolunteers: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: false
 		}
+		// ,
+		// allowsVolunteers: {
+		// 	type: DataTypes.BOOLEAN,
+		// 	defaultValue: false
+		// }
 	});
 	FoodPost.associate = function(models) {
 		FoodPost.belongsTo(models.Donor, {

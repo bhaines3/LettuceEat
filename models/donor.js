@@ -14,15 +14,16 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				len: [1]
 			}
-        },
-        location: {
+		},
+    location: {
 			type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-				len: [1]
-			}
+			allowNull: true
+			// ,
+      // validate: {
+			// 	len: [1]
+			// }
 		}
-    });
+  });
     Donor.associate = function(models) {
 		Donor.belongsTo(models.User, {
 		  foreignKey: {
