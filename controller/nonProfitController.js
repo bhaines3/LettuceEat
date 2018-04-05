@@ -33,6 +33,7 @@ module.exports = {
         console.log("Erro: "+err);
       });
     },
+    //IMPLEMENT THIS LATER
     // addInterest: (req, res) => {
     //   db.NonProfit.findOne({
     //     where: {
