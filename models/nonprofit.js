@@ -1,5 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-	var NonProfit = sequelize.define("NonProfit", {
+	var NonProfit = sequelize.define("NonProfit",
+	{
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -14,15 +15,16 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				len: [1]
 			}
-        },
-        location: {
+		},
+		location: {
 			type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-				len: [1]
-			}
+			allowNull: true
+			// ,
+			// validate: {
+			// 	len: [1]
+			// }
 		}
-    });
+  });
     NonProfit.associate = function(models) {
 		NonProfit.belongsTo(models.User, {
 		  foreignKey: {
