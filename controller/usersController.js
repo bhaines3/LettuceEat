@@ -8,6 +8,8 @@ module.exports = {
       db.User.findAll().then((dbUser)=>{
         //console.log(dbUser)
         res.json(dbUser);
+      }).catch((err)=>{
+        console.log("Error for displaying all Users: "+err);
       })
     },
     findOneuser: (req, res) =>{
@@ -20,7 +22,7 @@ module.exports = {
             email:email
         }
       }).then((dbUser)=>{
-        //res.json(dbUser);
+        res.json(dbUser);
       }).catch(function(err) {
         console.log("Error from findOne: "+err);
       });
@@ -38,11 +40,10 @@ module.exports = {
           phonenumber:req.body.phonenumber,
           password:hashedPassword
       }
-      
-      console.log(newUserInfo);
+      //console.log(newUserInfo);
       db.User.create(newUserInfo)
       .then((dbUser)=> {
-        console.log("newUser is created");
+        //console.log("newUser is created");
         if (!newUserInfo.isDonor)
         {
           var nonProfitInfo = {

@@ -28,9 +28,12 @@ class SignUp extends Component {
       }
       //console.log(newUser.email);
       //CHECK if user exists before creating a new account
+      //console.log("im in ouside find one");
+      //console.log("before finone" + newUser.name);
       API.findOneuser(newUser).then((res)=>{
         //if user exists
-        console.log(res.data);
+        //console.log("im in find one");
+        console.log("data:" + JSON.stringify(res.data));
         if(!res.data){
           API.createUser(newUser).then(()=>{
             console.log("user has been created");
