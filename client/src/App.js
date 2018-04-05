@@ -36,6 +36,7 @@ class App extends Component {
     //   }
     //   //if user doesn not exist make new account
     //   else{
+      console.log("This log happens right before createUser is called");
         API.createUser(newUser).then(()=>{
           console.log("user has been created");
         })

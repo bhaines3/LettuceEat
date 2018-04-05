@@ -7,5 +7,8 @@ const db = require("../models");
 //router.route("/user/:email/").get(usersController.findUser);
 
 module.exports=(router)=>{
-    router.route("/api/users/").get(usersController.findAllusers).post(usersController.createUser);
+    router
+    .route("/api/users/")
+    .get(usersController.findAllUsers)
+    .post(usersController.createUser);
 }

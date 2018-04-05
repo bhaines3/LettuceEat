@@ -8,6 +8,7 @@ export default {
         return axios.get(("/api/user/"+queryEmail),{params:queryEmail});
     },
     createUser: (userInfo)=> {
+      console.log("This is trying to post to api/users")
       return axios.post("/api/users/", userInfo);
     }
     // // Gets all articles
