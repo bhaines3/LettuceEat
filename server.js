@@ -33,9 +33,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require("./routes/apiRoutes")(app);
-
-// app.use('/api/', apiRoutes);
+// require("./routes/apiRoutes.js")(app);
+app.use("/api/",apiRoutes);
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
