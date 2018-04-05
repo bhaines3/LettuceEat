@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
+import Card from '../../components/Card';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 
 class DonorProfile extends Component {
@@ -14,7 +15,7 @@ class DonorProfile extends Component {
     }
     render() {
         return(
-            <div>
+            <div className = "container text-center">
                 Id: {this.state.donor.id}
                 <br />
                 Name: {this.state.donor.name}
@@ -35,12 +36,22 @@ class DonorProfile extends Component {
                 <br />
                 {JSON.stringify(this.state.donor)}
                 <ProfileJumbotron
+                name={this.state.donor.name}
                 address={this.state.donor.location || "No set location"}
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
-                >
-                {this.state.donor.name}
-                </ProfileJumbotron>
+                 />
+                 <a href="#" className="btn btn-primary">Add New Post</a>
+                 {this.state.donor.FoodPosts && this.state.donor.FoodPosts.length  ? (
+                    this.state.donor.FoodPosts.map(FoodPost => (
+                        <Card>
+                            Test
+                            Here, we will need Food Post name, 
+                        </Card>
+                    ))
+                 ) : (
+                     <h3>No Food Posts</h3>
+                 )}
             </div>
         )
     }
