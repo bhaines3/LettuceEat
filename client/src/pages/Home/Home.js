@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import "./Home.css";
+import { Link } from "react-router-dom";
 import Card from '../../components/Card';
-import API from '../../utils/API';
+// import API from '../../components/utils/API';
 
 class Home extends Component {
-    state = {
-      home: []
-    };
+    // state = {
+    //   home: []
+    // };
   
     // componentDidMount() {
     //   this.getArticles();
@@ -32,14 +33,7 @@ render() {
     return (
       <div className="container">
         <Card title="Food Posts">
-          {/* <div>
-          {this.state.saved.map(article => (
-            <div key={article._id}>
-              <a href={article.url}>{article.title}</a>
-              <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
-            </div>
-          ))}
-          </div> */}
+
         </Card>
       </div>
     );
