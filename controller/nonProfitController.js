@@ -1,7 +1,9 @@
 const db = require("../models");
 module.exports = {
     findAllNonProfit:(req,res)=>{
-      db.NonProfit.findAll().then((dbNonProfit)=>{
+      db.NonProfit.findAll({
+        include: [db.FoodPost]
+      }).then((dbNonProfit)=>{
         console.log(dbNonProfit)
         res.json(dbNonProfit);
       })
@@ -10,7 +12,8 @@ module.exports = {
       db.NonProfit.findOne({
         where:{
             email:req.queryEmail
-        }
+        },
+        include: [db.FoodPost]
       }).then((nonprofit)=>{
         res.json(nonprofit);
       })
@@ -26,8 +29,38 @@ module.exports = {
       .then((dbNonProfit)=> {
           console.log("NonProfit created");
           res.json(end);
-      }).catch(function(err) {
+      }).catch((err) => {
         console.log("Erro: "+err);
       });
-    }
+    },
+    // addInterest: (req, res) => {
+    //   db.NonProfit.findOne({
+    //     where: {
+    //       id: req.nonProfitId (pass the nonprofit id)
+    //     }
+    //   }).then((thisNonProfit) => {
+    //     db.FoodPost.findOne({
+    //       where: {
+    //         id: req.foodPostId (pass the foodpost id)
+    //       }
+    //     }).then((thisFoodPost) => {
+    //       thisNonProfit.addFoodPost(thisFoodPost);
+    //     })
+    //   })
+    // },
+    // removeInterest: (req, res) => {
+    //   db.NonProfit.findOne({
+    //     where: {
+    //       id: req.nonProfitId (pass the nonprofit id)
+    //     }
+    //   }).then((thisNonProfit) => {
+    //     db.FoodPost.findOne({
+    //       where: {
+    //         id: req.foodPostId (pass the foodpost id)
+    //       }
+    //     }).then((thisFoodPost) => {
+    //       thisNonProfit.removeFoodPost(thisFoodPost);
+    //     })
+    //   })
+    // }
 }

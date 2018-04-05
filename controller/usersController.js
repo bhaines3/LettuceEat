@@ -5,8 +5,11 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
     findAllUsers:(req,res)=>{
-      db.User.findAll().then((dbUser)=>{
-        //console.log(dbUser)
+      db.User.findAll({
+        include: [db.Donor, db.NonProfit]
+      }).then((dbUser)=>{
+        console.log(dbUser)
+
         res.json(dbUser);
       }).catch((err)=>{
         console.log("Error for displaying all Users: "+err);
@@ -20,7 +23,8 @@ module.exports = {
       db.User.findOne({
         where:{
             email:email
-        }
+        },
+        include: [db.Donor, db.NonProfit]
       }).then((dbUser)=>{
         res.json(dbUser);
       }).catch(function(err) {
