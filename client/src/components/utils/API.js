@@ -1,17 +1,26 @@
 import axios from "axios";
 
 export default {
-    findAllusers:(query)=>{
-      return axios.get(("/api/users/"));
-    },
-    createUser: (userInfo)=> {
-      return axios.post("/api/users/",userInfo);
-    },
-    findOneuser:(userInfo)=>{
-      //console.log("in API"+userInfo);
-      //console.log("im in API email find one user "+ userInfo.email);
-      return axios.get("/api/user/",{params:userInfo});
-    }
+  //=========USERS==============
+  findAllusers:() => {
+    return axios.get("/api/users/");
+  },
+  createUser: (userInfo) => {
+    return axios.post("/api/users/",userInfo);
+  },
+  findOneuser:(userInfo) => {
+    //console.log("in API"+userInfo);
+    //console.log("im in API email find one user "+ userInfo.email);
+    return axios.get("/api/user/",{params:userInfo});
+  },
+  //=========DONORS==============
+  findAllDonors: () => {
+    return axios.get("/api/donors/");
+  },
+  findOneDonor: (id) => {
+    return axios.get("/api/donor/"+id);
+  }
+
     // // Gets all articles
     // getSavedarticles: function() {
     //   return axios.get("/api/savedarticles");
