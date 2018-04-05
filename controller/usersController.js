@@ -9,19 +9,27 @@ module.exports = {
         include: [db.Donor, db.NonProfit]
       }).then((dbUser)=>{
         console.log(dbUser)
+
         res.json(dbUser);
+      }).catch((err)=>{
+        console.log("Error for displaying all Users: "+err);
       })
     },
-    findUser: (req, res) =>{
+    findOneuser: (req, res) =>{
       //find user if already exists
+    
+      const email=req.query.email
+      console.log("Im the controller "+email);
       db.User.findOne({
         where:{
-            email:req.queryEmail
+            email:email
         },
         include: [db.Donor, db.NonProfit]
-      }).then((user)=>{
-        res.json(user);
-      })
+      }).then((dbUser)=>{
+        res.json(dbUser);
+      }).catch(function(err) {
+        console.log("Error from findOne: "+err);
+      });
     },
     createUser: (req, res)=> {
       const password=req.body.password;
@@ -36,11 +44,10 @@ module.exports = {
           phonenumber:req.body.phonenumber,
           password:hashedPassword
       }
-      
-      console.log(newUserInfo);
+      //console.log(newUserInfo);
       db.User.create(newUserInfo)
       .then((dbUser)=> {
-        console.log("newUser is created");
+        //console.log("newUser is created");
         if (!newUserInfo.isDonor)
         {
           var nonProfitInfo = {
@@ -63,7 +70,7 @@ module.exports = {
         }
         res.json(dbUser);
       }).catch(function(err) {
-        console.log("Erro: "+err);
+        console.log("Error from create: "+err);
       });
     }
 }
