@@ -18,7 +18,7 @@ module.exports = {
             email:email
         }
       }).then((dbUser)=>{
-        res.json(dbUser);
+        //res.json(dbUser);
       }).catch(function(err) {
         console.log("Error from findOne: "+err);
       });
