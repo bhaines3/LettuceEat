@@ -20,6 +20,8 @@ class NonProfitProfile extends Component {
                 <br />
                 Email: {this.state.nonprofit.email}
                 <br />
+                Location: {this.state.nonprofit.location || "No location set"}
+                <br />
                 Phone Number: {this.state.nonprofit.phonenumber}
                 <br />
                 Food Posts Interested In: 

@@ -20,6 +20,8 @@ class DonorProfile extends Component {
                 <br />
                 Email: {this.state.donor.email}
                 <br />
+                Location: {this.state.donor.location || "No location set"}
+                <br />
                 Phone Number: {this.state.donor.phonenumber}
                 <br />
                 Food Posts: 

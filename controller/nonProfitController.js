@@ -28,7 +28,7 @@ module.exports = {
       db.NonProfit.create(newNonProfitInfo)
       .then((dbNonProfit)=> {
           console.log("NonProfit created");
-          res.json(end);
+          res.json(dbNonProfit);
       }).catch((err) => {
         console.log("Erro: "+err);
       });

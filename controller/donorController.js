@@ -28,7 +28,7 @@ module.exports = {
       db.Donor.create(newDonorInfo)
       .then((dbDonor)=> {
           console.log("Donor created");
-          res.json(end);
+          res.json(dbDonor);
       }).catch(function(err) {
         console.log("Erro: "+err);
       });
