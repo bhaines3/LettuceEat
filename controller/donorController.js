@@ -1,6 +1,6 @@
 const db = require("../models");
 module.exports = {
-    findAllDonor:(req,res)=>{
+    findAllDonors:(req,res)=>{
       db.Donor.findAll({
         include: [db.FoodPost]
       }).then((dbDonor)=>{
@@ -11,7 +11,7 @@ module.exports = {
     findDonor: (req, res) =>{
       db.Donor.findOne({
         where:{
-            email:req.queryEmail
+            id: req.params.id
         },
         include: [db.FoodPost]
       }).then((donor)=>{
@@ -28,7 +28,7 @@ module.exports = {
       db.Donor.create(newDonorInfo)
       .then((dbDonor)=> {
           console.log("Donor created");
-          res.json(end);
+          res.json(dbDonor);
       }).catch(function(err) {
         console.log("Erro: "+err);
       });

@@ -9,7 +9,6 @@ module.exports = {
         include: [db.Donor, db.NonProfit]
       }).then((dbUser)=>{
         console.log(dbUser)
-
         res.json(dbUser);
       }).catch((err)=>{
         console.log("Error for displaying all Users: "+err);

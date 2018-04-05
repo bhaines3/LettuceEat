@@ -32,6 +32,7 @@ module.exports = {
         console.log("Erro: "+err);
       });
     },
+    //IMPLEMENT THIS LATER
     // updateFoodPost: (req, res) => {
     //   db.FoodPost.findOne({
     //     where: {
