@@ -31,12 +31,11 @@ class Home extends Component {
 
 render() {
     return (
-      <div className="container">
-      <Nav />
-        <Card title="Food Posts">
 
-        </Card>
-      </div>
+        <div className="container">
+            <Card title="Food Posts" />
+        </div>
+    
     );
   }
 
