@@ -20,14 +20,17 @@ export default {
   findOneDonor: (id) => {
     return axios.get("/api/donor/"+id);
   },
-  //=========DONORS==============
+  //=========NONPROFIT==============
   findAllNonProfits: () => {
     return axios.get("/api/nonprofit/");
   },
   findOneNonProfit: (id) => {
     return axios.get("/api/nonprofit/"+id);
+  },
+  //=========FOODPOST==============
+  filterFoodPostsByDonor: (id) => {
+    return axios.get("/api/foodposts/donor/"+id);
   }
-
     // // Gets all articles
     // getSavedarticles: function() {
     //   return axios.get("/api/savedarticles");

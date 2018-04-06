@@ -6,7 +6,6 @@ import NonProfitProfile from "./pages/NonProfitProfile";
 import Nav from "./components/Nav";
 import Card from "./components/Card";
 
-//for testing
 import Users from "./components/Login/users";
 import Login from "./components/Login/login";
 import SignUp from "./components/SignUp/signup";
