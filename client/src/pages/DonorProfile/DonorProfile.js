@@ -6,11 +6,12 @@ import ProfileJumbotron from '../../components/ProfileJumbotron';
 
 class DonorProfile extends Component {
     state = {
-        donor: {}
+        donor: {},
+        foodposts: []
     };
     componentDidMount() {
         API.findOneDonor(this.props.match.params.id)
-            .then(res => {this.setState({ donor: res.data })})
+            .then(res => {this.setState({ donor: res.data, foodposts: res.data.FoodPosts })})
             .catch(err => console.log(err));
     }
     render() {
@@ -32,7 +33,7 @@ class DonorProfile extends Component {
                 as FoodPosts will be undefined. This makes sure that FoodPosts is defined before
                 finding length. Here's where I found it:
                 https://hashnode.com/post/reactjs-how-to-render-components-only-after-successful-asynchronous-call-ciwvnkjr400sq7t533lvrpdtw */}
-                { this.state.donor.FoodPosts && this.state.donor.FoodPosts.length }
+                {this.state.foodposts.length }
                 <br />
                 {JSON.stringify(this.state.donor)}
                 <ProfileJumbotron
@@ -44,14 +45,25 @@ class DonorProfile extends Component {
                  <a href="#" className="btn btn-primary">Add New Post</a>
                  {this.state.donor.FoodPosts && this.state.donor.FoodPosts.length  ? (
                     this.state.donor.FoodPosts.map(FoodPost => (
-                        <Card>
-                            Test
-                            Here, we will need Food Post name, 
+                        <Card
+                        key={FoodPost.id}
+                        title={FoodPost.title}
+                        donor={this.state.donor.name}
+                        >
+                        Description: {FoodPost.desc}
+                        <br />
+                        Pick-Up Date: {FoodPost.pickupdate}
+                        <br />
+                        End Date: {FoodPost.enddate}
+                        <br />
+                        Pick-Up Window: {FoodPost.pickupwindow}
                         </Card>
                     ))
                  ) : (
                      <h3>No Food Posts</h3>
                  )}
+                 <br />
+                 <br />
             </div>
         )
     }

@@ -43,7 +43,7 @@ class NonProfitProfile extends Component {
                 <br />
                 Hours for Food Pick-Up:
                 </ProfileJumbotron>
-                 <a href="#" className="btn btn-primary">Add New Post</a>
+                Food Posts Interested In
                  {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length  ? (
                     this.state.nonprofit.FoodPosts.map(FoodPost => (
                         <Card>
