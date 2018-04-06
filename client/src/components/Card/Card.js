@@ -13,11 +13,12 @@ const Card = (props) => {
     //   </div>
     // </div>
     <div className="card">
-    <h5 className="card-header">{props.donor}</h5>
-    <div className="card-body">
-      <h5 className="card-title">{props.title}</h5>
-      <p className="card-text">{props.children}</p>
-      <a href="#" className="btn btn-primary">View Organizations Interested</a>
+        <h5 className="card-header">{props.donor}</h5>
+        <div className="card-body">
+        <h5 className="card-title">{props.title}</h5>
+        <p className="card-text">{props.children}</p>
+        <a href="#" className="btn btn-primary">View Organizations Interested</a>
+    </div>
     </div>
 
   );
