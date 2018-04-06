@@ -9,8 +9,6 @@ export default {
     return axios.post("/api/users/",userInfo);
   },
   findOneuser:(userInfo) => {
-    //console.log("in API"+userInfo);
-    //console.log("im in API email find one user "+ userInfo.email);
     return axios.get("/api/user/",{params:userInfo});
   },
   //=========DONORS==============
@@ -34,6 +32,7 @@ export default {
   filterFoodPostsByDonor: (id) => {
     return axios.get("/api/donor/foodpost/"+id);
   }
+  
     // // Gets all articles
     // getSavedarticles: function() {
     //   return axios.get("/api/savedarticles");

@@ -4,7 +4,6 @@ module.exports = {
       db.FoodPost.findAll({
         include: [db.Donor, db.NonProfit]
       }).then((dbFoodPost)=>{
-        console.log(dbFoodPost);
         res.json(dbFoodPost);
       })
     },

@@ -13,7 +13,12 @@ class Home extends Component {
   
     componentDidMount() {
         API.findAllFoodPosts()
-            .then(res => {this.setState({ foodposts: res.data })})
+            .then(res => {
+                // res.data.map((foodpost) =>{
+                //     foodpost["DonorName"] = this.getDonorNameForFoodPost(foodpost.DonorId);
+                // })
+                this.setState({ foodposts: res.data })
+            })
             .catch(err => console.log(err));
         API.findAllDonors()
             .then(res => {this.setState({ donors: res.data })})
@@ -23,12 +28,6 @@ class Home extends Component {
             .catch(err => console.log(err));
     }
 
-    getDonorNameForFoodPost(id) {
-        API.filterFoodPostsByDonor(id)
-            .then(res => {return res.data.name})
-            .catch(err => console.log(err));
-    }
-  
     // getArticles = () => {
     //   API.getSavedArticles()
     //     .then(res => this.setState({ saved: res.data }))
@@ -49,7 +48,6 @@ render() {
     return (
 
         <div className="container">
-
             <div className="jumbotron my-3 text-center rounded">
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
@@ -61,7 +59,7 @@ render() {
                         <Card
                         key={FoodPost.id}
                         title={FoodPost.title}
-                        // donor={this.getDonorNameForFoodPost(FoodPost.id)}
+                        donor={FoodPost && FoodPost.Donor.name}
                         >
                         Description: {FoodPost.desc}
                         <br />
@@ -75,7 +73,7 @@ render() {
                     </div>
                 ))
                 ) : (
-                    <h3>No Food Posts</h3>
+                    <h3>No food posts! Check back later. </h3>
             )}
         </div>
     );
