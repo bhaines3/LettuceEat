@@ -31,7 +31,10 @@ export default {
   },
   filterFoodPostsByDonor: (id) => {
     return axios.get("/api/foodposts/donor/"+id);
-  }
+  },
+  createNewPost: (foodInfo) => {
+    return axios.post("/api/foodpost/",foodInfo);
+  },
     // // Gets all articles
     // getSavedarticles: function() {
     //   return axios.get("/api/savedarticles");
