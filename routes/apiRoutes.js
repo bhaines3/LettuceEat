@@ -2,6 +2,7 @@ const router = require("express").Router();
 const usersController=require("../controller/usersController.js");
 const donorController=require("../controller/donorController.js");
 const nonProfitController=require("../controller/nonProfitController.js");
+const foodPostController=require("../controller/foodPostController.js");
 const axios = require("axios");
 const db = require("../models");
 
@@ -34,4 +35,12 @@ router
 .route("/nonprofit/:id")
 .get(nonProfitController.findNonProfit)
 
+//=========FOODPOSTS==============
+router
+.route("/foodposts/")
+.get(foodPostController.findAllPosts)
+
+router
+.route("/foodpost/:id")
+.get(foodPostController.findOneFoodPost)
 module.exports = router
