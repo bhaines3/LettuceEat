@@ -1,5 +1,7 @@
 import React,{ Component }  from "react";
-import API from "../utils/API";
+import axios from 'axios';
+//import API from "../utils/API";
+import { Link } from 'react-router-dom';
 class SignUp extends Component {
     state = {
       name:"",
@@ -7,8 +9,8 @@ class SignUp extends Component {
       isDonor:false,
       phonenumber:"",
       password:"" 
-    };
-    
+    }
+
     updateUserSignup = event => {
       // Destructure the name and value properties off of event.target
       // Update the appropriate state
@@ -26,20 +28,25 @@ class SignUp extends Component {
         phonenumber:this.state.phonenumber,
         password:this.state.password
       }
-      //CHECK if user exists before creating a new account
-      API.findOneuser(newUser).then((res)=>{
-        //if user exists send a msg for them to create choose other emaill
-        //console.log("data:" + JSON.stringify(res.data));
-        if(!res.data){
-          API.createUser(newUser).then(()=>{
-            console.log("User has been created.");
-          })
-        }
-        //if user doesnt not exist make new account
-        else{
-          console.log("An account for this email account already exists.")
-        }
-      })
+      axios.post("/api/auth/signup", newUser).then(result=>{
+          //reroutes to login page
+          this.props.history.push("/login")
+      });
+      //passport will take care of this 
+      // //CHECK if user exists before creating a new account
+      // API.findOneuser(newUser).then((res)=>{
+      //   //if user exists send a msg for them to create choose other emaill
+      //   //console.log("data:" + JSON.stringify(res.data));
+      //   if(!res.data){
+      //     API.createUser(newUser).then(()=>{
+      //       console.log("User has been created.");
+      //     })
+      //   }
+      //   //if user doesnt not exist make new account
+      //   else{
+      //     console.log("An account for this email account already exists.")
+      //   }
+      // })
     }
     render() {
       return (
