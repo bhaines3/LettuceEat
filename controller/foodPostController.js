@@ -13,7 +13,7 @@ module.exports = {
         where:{
             id: req.id
         },
-        include: [db.Donor])
+        include: [db.FoodPost]
       }).then((foodPost)=>{
         res.json(foodPost);
       })
