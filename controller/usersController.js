@@ -4,21 +4,20 @@ const donorController=require("../controller/donorController.js");
 const bcrypt = require("bcrypt");
 
 module.exports = {
+    //displaying all users in api/users
     findAllUsers:(req,res)=>{
       db.User.findAll({
         include: [db.Donor, db.NonProfit]
       }).then((dbUser)=>{
-        console.log(dbUser)
+        //console.log(dbUser)
         res.json(dbUser);
       }).catch((err)=>{
-        console.log("Error for displaying all Users: "+err);
+        console.log("Error from findAllUsers: "+err);
       })
     },
     findOneuser: (req, res) =>{
-      //find user if already exists
-    
+      //find user if already exists  in order to be able to create new account   
       const email=req.query.email
-      console.log("Im the controller "+email);
       db.User.findOne({
         where:{
             email:email
@@ -35,7 +34,6 @@ module.exports = {
       //encrypt password
       const salt= bcrypt.genSaltSync(10);
       let hashedPassword = bcrypt.hashSync(password, salt);
-      
       const newUserInfo={
           email:req.body.email,
           name:req.body.name,
@@ -43,10 +41,9 @@ module.exports = {
           phonenumber:req.body.phonenumber,
           password:hashedPassword
       }
-      //console.log(newUserInfo);
+     //create new user with encrypted password
       db.User.create(newUserInfo)
       .then((dbUser)=> {
-        //console.log("newUser is created");
         if (!newUserInfo.isDonor)
         {
           var nonProfitInfo = {
@@ -69,7 +66,7 @@ module.exports = {
         }
         res.json(dbUser);
       }).catch(function(err) {
-        console.log("Error from create: "+err);
+        console.log("Error from createUser: "+err);
       });
     }
 }

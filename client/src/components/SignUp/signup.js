@@ -26,22 +26,18 @@ class SignUp extends Component {
         phonenumber:this.state.phonenumber,
         password:this.state.password
       }
-      //console.log(newUser.email);
       //CHECK if user exists before creating a new account
-      //console.log("im in ouside find one");
-      //console.log("before finone" + newUser.name);
       API.findOneuser(newUser).then((res)=>{
-        //if user exists
-        //console.log("im in find one");
-        console.log("data:" + JSON.stringify(res.data));
+        //if user exists send a msg for them to create choose other emaill
+        //console.log("data:" + JSON.stringify(res.data));
         if(!res.data){
           API.createUser(newUser).then(()=>{
-            console.log("user has been created");
+            console.log("User has been created.");
           })
         }
         //if user doesnt not exist make new account
         else{
-          console.log("user exists choose another email")
+          console.log("An account for this email account already exists.")
         }
       })
     }
