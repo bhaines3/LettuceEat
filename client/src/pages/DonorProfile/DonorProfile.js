@@ -11,16 +11,16 @@ class DonorProfile extends Component {
     };
     componentDidMount() {
         API.findOneDonor(this.props.match.params.id)
-            .then(res => {this.setState({ donor: res.data, foodposts: res.data.FoodPosts })})
+            .then(res => {this.setState({ donor: res.data })})
             .catch(err => console.log(err));
 
         API.filterFoodPostsByDonor(this.props.match.params.id)
-            .then(res=> {this.setState({ foodposts: res.data })})
+            .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
             .catch(err => console.log(err));
     }
     render() {
         return(
-            <div className = "container text-center">
+            <div className = "container">
                 Id: {this.state.donor.id}
                 <br />
                 Name: {this.state.donor.name}
@@ -37,7 +37,7 @@ class DonorProfile extends Component {
                 as FoodPosts will be undefined. This makes sure that FoodPosts is defined before
                 finding length. Here's where I found it:
                 https://hashnode.com/post/reactjs-how-to-render-components-only-after-successful-asynchronous-call-ciwvnkjr400sq7t533lvrpdtw */}
-                {this.state.foodposts.length }
+                {this.state.foodposts && this.state.foodposts.length}
                 <br />
                 {JSON.stringify(this.state.donor)}
                 <ProfileJumbotron

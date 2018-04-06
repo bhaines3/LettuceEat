@@ -13,12 +13,7 @@ class Home extends Component {
   
     componentDidMount() {
         API.findAllFoodPosts()
-            .then(res => {
-                // res.data.map((foodpost) =>{
-                //     foodpost["DonorName"] = this.getDonorNameForFoodPost(foodpost.DonorId);
-                // })
-                this.setState({ foodposts: res.data })
-            })
+            .then(res => {this.setState({ foodposts: res.data })})
             .catch(err => console.log(err));
         API.findAllDonors()
             .then(res => {this.setState({ donors: res.data })})

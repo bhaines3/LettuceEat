@@ -4,7 +4,7 @@ import "./ProfileJumbotron.css";
 const ProfileJumbotron = (props) => {
 
   return (
-    <div className="jumbotron jumbotron-fluid">
+    <div className="jumbotron jumbotron-fluid text-center">
       <h1 className="display-4">{props.name}</h1>
       {/* Make address a link to view location */}
       {props.address}
