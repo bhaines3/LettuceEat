@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.css";
 
-const Card = () => {
+const Card = (props) => {
 
   return (
     // <div className="panel panel-primary">
@@ -12,12 +12,12 @@ const Card = () => {
     //     {props.children}
     //   </div>
     // </div>
-    <div className="card border-primary mb-3" style={{maxWidth: '20rem'}}>
-        <div className="card-header">Header</div>
-            <div className="card-body">
-                <h4 className="card-title">Primary card title</h4>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+    <div className="card">
+    <h5 className="card-header">{props.donor}</h5>
+    <div className="card-body">
+      <h5 className="card-title">{props.title}</h5>
+      <p className="card-text">{props.children}</p>
+      <a href="#" className="btn btn-primary">View Organizations Interested</a>
     </div>
 
   );

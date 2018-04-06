@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import "./Home.css";
-import { Link } from "react-router-dom";
+import Nav from '../../components/Nav';
 import Card from '../../components/Card';
-// import API from '../../components/utils/API';
+// import API from '../../utils/API';
 
 class Home extends Component {
     state = {
@@ -32,6 +32,7 @@ class Home extends Component {
 render() {
     return (
       <div className="container">
+      <Nav />
         <Card title="Food Posts">
 
         </Card>

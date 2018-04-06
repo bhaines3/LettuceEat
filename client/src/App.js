@@ -7,6 +7,7 @@ import Nav from "./components/Nav";
 import Card from "./components/Card";
 const App = () => (
   <Router>
+
       <div>
         <Nav />
         <Switch>

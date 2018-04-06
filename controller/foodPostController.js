@@ -1,7 +1,9 @@
 const db = require("../models");
 module.exports = {
     findAllPosts:(req,res)=>{
-      db.FoodPost.findAll().then((dbFoodPost)=>{
+      db.FoodPost.findAll({
+        include: [db.Donor]
+      }).then((dbFoodPost)=>{
         console.log(dbFoodPost);
         res.json(dbFoodPost);
       })
@@ -10,7 +12,8 @@ module.exports = {
       db.FoodPost.findOne({
         where:{
             id: req.id
-        }
+        },
+        include: [db.Donor])
       }).then((foodPost)=>{
         res.json(foodPost);
       })
