@@ -2,8 +2,8 @@ import React from "react";
 import "./ModalSignUp.css";
 const ModalSignUp = (props)=> {
     return (
-      {/* Modal for creating an account*/}
-      <div className="modal fade" id="exampleModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      
+      <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -24,7 +24,7 @@ const ModalSignUp = (props)=> {
                     <input className="col-sm-12 mb-2" type="password" id="new_password" name="new-password" maxLength={15} />
                     <br />
                     <div id="alert-message" />
-                    <button className="btn btn-outline-success badge-pill" type="submit" id="create-new-user">Create<i className="far fa-check-circle" /></button>
+                    <button className="btn btn-outline-success" type="submit" id="create-new-user">Create<i className="far fa-check-circle" /></button>
                     <br />
                     <span id="cannot-create-error" />
                 </div>

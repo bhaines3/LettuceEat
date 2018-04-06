@@ -31,6 +31,10 @@ router
 .route("/donor/:id")
 .get(donorController.findDonor)
 
+router
+.route("/donor/foodpost/:id")
+.get(donorController.findDonorByFoodPostId)
+
 //=========NONPROFITS==============
 router
 .route("/nonprofits/")
