@@ -5,37 +5,53 @@ var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var settings = require('../passport/config/settings');
 //passportconfig
-require('../passport/config/passport')(passport);
+//require('../passport/config/passport')(passport);
+//function to get an extract jwt token
+getToken = function (headers) {
+  console.log("what is going into the authorization headers"+headers.authorization);
+  if (headers && headers.authorization) {
+    var parted = headers.authorization.split(' ');
+    if (parted.length === 2) {
+      return parted[1];
+    } else {
+      return null;
+    }
+  } else {
+    return null;
+  }
+};
 //encrypted in when creating user
-module.exports = {
+const controller = {
     //displaying all users in api/users
     findAllUsers:(req,res)=>{
       // //with auth for testing
-      //   const token=getToken(req.headers);
-      //   if(token){
-      //     db.User.findAll({
-      //       include: [db.Donor, db.NonProfit]
-      //     }).then((dbUser)=>{
-      //       //console.log(dbUser)
-      //       res.json(dbUser);
-      //     }).catch((err)=>{
-      //       console.log("Error from findAllUsers: "+err);
-      //     })
-      //   }
-      //   else{
-      //     return res.status(403).send({success: false, msg: 'Unauthorized.'});
-      //   }
-      // },
-      //without auth for testing
-      db.User.findAll({
-        include: [db.Donor, db.NonProfit]
-      }).then((dbUser)=>{
-        //console.log(dbUser)
-        res.json(dbUser);
-      }).catch((err)=>{
-        console.log("Error from findAllUsers: "+err);
-      })
-    },
+      console.log("headers"+req.headers);
+        const token=getToken(req.headers);
+        console.log("TOKEN FROM HEADER"+token);
+        if(token){
+          db.User.findAll({
+            include: [db.Donor, db.NonProfit]
+          }).then((dbUser)=>{
+            //console.log(dbUser)
+            res.json(dbUser);
+          }).catch((err)=>{
+            console.log("Error from findAllUsers: "+err);
+          })
+        }
+        else{
+          return res.status(403).send({success: false, msg: 'Unauthorized.'});
+        }
+      },
+     // without auth for testing
+    //   db.User.findAll({
+    //     include: [db.Donor, db.NonProfit]
+    //   }).then((dbUser)=>{
+    //     //console.log(dbUser)
+    //     res.json(dbUser);
+    //   }).catch((err)=>{
+    //     console.log("Error from findAllUsers: "+err);
+    //   })
+    // },
     createNewuser: (req, res) =>{
       if (!req.body.email || !req.body.password) {
         res.json({success: false, msg: 'Please pass email and password.'});
@@ -82,7 +98,7 @@ module.exports = {
               }
               res.json({success: true, msg: 'Successful created new user.'});
             }).catch(function(err) {
-              console.log("Error from createUser: "+err);
+              //console.log("Error from createUser: "+err);
             });
           }
           else{
@@ -95,9 +111,9 @@ module.exports = {
     },
     findOneuser: (req, res) =>{
       //find user if already exists  in order to be able to login
-      console.log("on my way to find one user in controller");
-      console.log("pass= "+req.body.password);
-      console.log("email= "+ req.body.email);
+      // console.log("on my way to find one user in controller");
+      // console.log("pass= "+req.body.password);
+      // console.log("email= "+ req.body.email);
     
       db.User.findOne({
         where:{
@@ -107,23 +123,26 @@ module.exports = {
       }).then((dbUser)=>{
         console.log("what is dbUser "+ dbUser)
         if(!dbUser){
-          console.log("I did not find one user");//*last msg it prints
+          // console.log("I did not find one user");//*last msg it prints
           res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
         }
         else{
           console.log("I found one user, now check password");
           // check if password matches
           const validpass=dbUser.validPassword(req.body.password);
-          console.log(validpass);
+          // console.log(validpass);
           if (validpass) {
             console.log("passwords matched and there was no error");
             console.log("now i get jwt token");
             // if user is found and password is right create a token with the resulting jason as claim and the secret
             var token = jwt.sign(dbUser.toJSON(), settings.secret);
-            console.log("whats my token token= "+token)
+            console.log("whats my token token= "+ token)
           
             // return the information including token as JSON
-            res.json({success: true, token: 'JWT ' + token});
+            res.json({
+              success: true, 
+              jwtToken:"JWT "+token
+            });
           } else {
             console.log("no match and there is error")
             res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
@@ -133,4 +152,8 @@ module.exports = {
         console.log("Error from findOne existing user: "+ err);
       });
     }
-}
+  }
+
+
+  
+module.exports=controller;

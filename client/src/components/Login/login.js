@@ -1,12 +1,16 @@
 import React,{ Component }  from "react";
 import axios from 'axios';
-//import { Link } from 'react-router-dom';
+//ISSUES:
+//how to grant access to certain pages in React.js
 
 class Login extends Component {
     state = {
         emailLogin:"",
         passwordLogin:"",
         message:""
+    }
+    componentDidMount = () => {
+        console.log("what is local storage" + localStorage.getItem('jwtToken'));
     }
     updateUserlogin = event => {
       // Destructure the name and value properties off of event.target
@@ -29,9 +33,12 @@ class Login extends Component {
         
         axios.post('/api/auth/login', userInfo)
         .then((result) => {
-            localStorage.setItem('jwtToken', result.data.token);
-
+            //adding token to our local storage
+            localStorage.setItem('jwtToken', result.data.jwtToken);
+            //setting the value of  headers to token
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
             //this.setState({mesage:""});
+
             this.props.history.push("/users");
         }).catch(error=>{
                 this.setState({ message: 'Login failed. Username or password not match' });

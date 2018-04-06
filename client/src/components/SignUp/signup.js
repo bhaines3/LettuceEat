@@ -10,7 +10,9 @@ class SignUp extends Component {
       phonenumber:"",
       password:"" 
     }
-
+    componentDidMount = () => {
+      console.log("what is local storage" + localStorage.getItem('jwtToken'));
+    }
     updateUserSignup = event => {
       // Destructure the name and value properties off of event.target
       // Update the appropriate state

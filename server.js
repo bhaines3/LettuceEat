@@ -25,14 +25,6 @@ if (process.env.NODE_ENV === "production") {
 // pass the passport middleware
 app.use(passport.initialize());
 
-//project init:jasons group
-//requirements for express app to use passport
-// app.use(require('cookie-parser')());
-// app.use(require('express-session')({ secret: 'LettuceEat', resave: true, saveUninitialized: true }));
-//app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(flash());
-
 //Routes
 app.use("/api/",apiRoutes);
 app.use("/api/auth",authRoutes);

@@ -8,24 +8,28 @@ class Users extends Component {
        users:[]
     }
     componentDidMount = () => {
+        //returns the users jwt token.
         console.log("what is local storage" + localStorage.getItem('jwtToken'));
-        //axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        //what is the purpose of this below? this is where im sending my to ken to the header
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
        
-        API.findAllusers()
-          .then(res => {
-            this.setState({ users: res.data });
-            console.log(this.state.users);
-          })
-          .catch((error) => {
-            if(error.response.status === 401) {
-              this.props.history.push("/login");
-            }
-          });
+        // API.findAllusers()
+        //   .then(res => {
+        //     this.setState({ users: res.data });
+            
+        //   })
+        //   .catch((error) => {
+        //       console.log("users error front end" + error);
+        //     if(error.response.status === 401) {
+        //       this.props.history.push("/login");
+        //     }
+        //   });
       
     }; 
     Logout=event=>{
         localStorage.removeItem('jwtToken');
-        this.props.history.push("/login");
+        //console.log("what is my token after signout"+localStorage.getItem('jwtToken'))
+        this.props.history.push("/");
        
     }
     render() {
