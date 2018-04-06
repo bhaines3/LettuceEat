@@ -8,7 +8,8 @@ class Users extends Component {
        users:[]
     }
     componentDidMount = () => {
-        console.log(axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken'));
+        console.log("what is local storage" + localStorage.getItem('jwtToken'));
+        //axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
        
         API.findAllusers()
           .then(res => {

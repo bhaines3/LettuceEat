@@ -4,6 +4,7 @@ const donorController=require("../controller/donorController.js");
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var settings = require('../passport/config/settings');
+//passportconfig
 require('../passport/config/passport')(passport);
 //encrypted in when creating user
 module.exports = {
@@ -117,7 +118,7 @@ module.exports = {
           if (validpass) {
             console.log("passwords matched and there was no error");
             console.log("now i get jwt token");
-            // if user is found and password is right create a token
+            // if user is found and password is right create a token with the resulting jason as claim and the secret
             var token = jwt.sign(dbUser.toJSON(), settings.secret);
             console.log("whats my token token= "+token)
           

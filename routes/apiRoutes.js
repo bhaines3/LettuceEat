@@ -4,10 +4,10 @@ const donorController=require("../controller/donorController.js");
 const nonProfitController=require("../controller/nonProfitController.js");
 const foodPostController=require("../controller/foodPostController.js");
 const axios = require("axios");
-const db = require("../models");
 //will be used for authentication
+//var jwt = require('jsonwebtoken');
 var passport = require('passport');
-require('../passport/config/passport')(passport);
+//require('../passport/config/passport')(passport);
 
 //=========USERS==============
 router
