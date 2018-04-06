@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.css";
 
-const Card = () => {
+const Card = (props) => {
 
   return (
     // <div className="panel panel-primary">
@@ -13,10 +13,10 @@ const Card = () => {
     //   </div>
     // </div>
     <div className="card">
-    <h5 className="card-header"></h5>
+    <h5 className="card-header">{props.donor}</h5>
     <div className="card-body">
-      <h5 className="card-title"></h5>
-      <p className="card-text"></p>
+      <h5 className="card-title">{props.title}</h5>
+      <p className="card-text">{props.children}</p>
       <a href="#" className="btn btn-primary">View Organizations Interested</a>
     </div>
   </div>
