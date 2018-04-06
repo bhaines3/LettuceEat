@@ -41,6 +41,11 @@ router
 .get(foodPostController.findAllPosts)
 
 router
+.route("/foodposts/donor/:id")
+.get(foodPostController.filterFoodPostsByDonor)
+
+router
 .route("/foodpost/:id")
 .get(foodPostController.findOneFoodPost)
+
 module.exports = router
