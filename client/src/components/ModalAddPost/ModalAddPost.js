@@ -56,11 +56,11 @@ class ModalAddPost extends Component {
   };
     render() { return (
       
-      <div className="modal fade" id="modal-addpost" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="modal-addpost" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Add New Food Post</h5>
+              <h5 className="modal-title" id="exampleModalLabel1">Add New Food Post</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -83,7 +83,7 @@ class ModalAddPost extends Component {
                     <input className="col-sm-12 mb-2" type="text" id="new_pickupwindow" name="postPickUpWindow" maxLength={15} onChange={this.handleChange}/>
                     <br />
                     <div id="alert-message" />
-                    <button className="btn btn-outline-success" type="submit" id="create-new-user" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button>
+                    {/* <button className="btn btn-outline-success" type="submit" id="create-new-user" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button> */}
                     <br />
                     <span id="cannot-create-error" />
                 </div>
