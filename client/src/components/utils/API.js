@@ -28,6 +28,9 @@ export default {
     return axios.get("/api/nonprofit/"+id);
   },
   //=========FOODPOST==============
+  findAllFoodPosts: () => {
+    return axios.get("/api/foodposts/");
+  },
   filterFoodPostsByDonor: (id) => {
     return axios.get("/api/foodposts/donor/"+id);
   }
