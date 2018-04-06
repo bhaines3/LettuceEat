@@ -58,10 +58,11 @@ const Nav = () => {
                 <li className="nav-item">
                     <a className="nav-link" href="#">Statistics</a>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Sign In</a>
-                </li>
                 </ul>
+                <form className="form-inline my-2 my-lg-0">
+                    <button className="btn btn-link text-white btn-sm my-2 my-sm-0" type="submit">Sign-Up</button>
+                    <button className="btn btn-link text-white btn-sm my-2 my-sm-0" type="submit">Sign-In</button>
+                </form>
             </div>
         </nav>
     );

@@ -34,14 +34,7 @@ render() {
       <div className="container">
       <Nav />
         <Card title="Food Posts">
-          {/* <div>
-          {this.state.saved.map(article => (
-            <div key={article._id}>
-              <a href={article.url}>{article.title}</a>
-              <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
-            </div>
-          ))}
-          </div> */}
+
         </Card>
       </div>
     );
