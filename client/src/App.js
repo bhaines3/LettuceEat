@@ -53,8 +53,8 @@ import Nav from "./components/Nav";
 import Card from "./components/Card";
 const App = () => (
   <Router>
-    <Nav />
       <div>
+        <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/donor/:id" component={DonorProfile} />
