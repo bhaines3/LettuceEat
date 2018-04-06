@@ -35,7 +35,6 @@ render() {
         <div className="container">
             <Card title="Food Posts" />
         </div>
-    
     );
   }
 
