@@ -22,6 +22,12 @@ class Home extends Component {
             .then(res => {this.setState({ nonprofits: res.data})})
             .catch(err => console.log(err));
     }
+
+    getDonorNameForFoodPost(id) {
+        API.filterFoodPostsByDonor(id)
+            .then(res => {return res.data.name})
+            .catch(err => console.log(err));
+    }
   
     // getArticles = () => {
     //   API.getSavedArticles()
@@ -50,7 +56,7 @@ render() {
                         <Card
                         key={FoodPost.id}
                         title={FoodPost.title}
-                        donor="Not working for now"
+                        // donor={this.getDonorNameForFoodPost(FoodPost.id)}
                         >
                         Description: {FoodPost.desc}
                         <br />

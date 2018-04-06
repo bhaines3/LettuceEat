@@ -1,10 +1,10 @@
 const db = require("../models");
+const foodPostController=require("../controller/foodPostController.js");
 module.exports = {
     findAllDonors:(req,res)=>{
       db.Donor.findAll({
         include: [db.FoodPost]
       }).then((dbDonor)=>{
-        console.log(dbDonor)
         res.json(dbDonor);
       })
     },
@@ -16,6 +16,21 @@ module.exports = {
         include: [db.FoodPost]
       }).then((donor)=>{
         res.json(donor);
+      })
+    },
+    findDonorByFoodPostId: (req, res) => {
+      db.FoodPost.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then((foodpost)=>{
+        db.Donor.findOne({
+          where: {
+            id: foodpost.DonorId
+          }
+        }).then((donorFoodPost)=>{
+          res.json(donorFoodPost);
+        })
       })
     },
     createDonor: (req, res)=> {
