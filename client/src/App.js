@@ -57,8 +57,7 @@ import Nav from "./components/Nav";
 import Card from "./components/Card";
 const App = () => (
   <Router>
-<<<<<<< HEAD
-    <Nav>
+    <Nav />
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -66,15 +65,7 @@ const App = () => (
           <Route exact path="/nonprofit/:id" component={NonProfitProfile} />
         </Switch> 
       </div>
-    </Nav>
-=======
-    <div>
-      <Switch>
-        <Route exact path="/donor/:id" component={DonorProfile} />
-        <Route exact path="/nonprofit/:id" component={NonProfitProfile} />
-      </Switch>
-    </div>
->>>>>>> da1961647a9b9b43935b474f74402e9e52209e32
+    
   </Router>
 );
 
