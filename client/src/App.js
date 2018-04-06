@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> da1961647a9b9b43935b474f74402e9e52209e32
 // import React,{ Component }  from "react";
 // import API from "./components/utils/API";
 // import SignUp from "./components/SignUp/signup.js";
@@ -53,6 +57,7 @@ import Nav from "./components/Nav";
 import Card from "./components/Card";
 const App = () => (
   <Router>
+<<<<<<< HEAD
     <Nav>
       <div>
         <Switch>
@@ -62,6 +67,14 @@ const App = () => (
         </Switch> 
       </div>
     </Nav>
+=======
+    <div>
+      <Switch>
+        <Route exact path="/donor/:id" component={DonorProfile} />
+        <Route exact path="/nonprofit/:id" component={NonProfitProfile} />
+      </Switch>
+    </div>
+>>>>>>> da1961647a9b9b43935b474f74402e9e52209e32
   </Router>
 );
 
