@@ -3,7 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const apiRoutes = require("./routes/apiRoutes");
-const flash=require("connect-flash");
+const authRoutes=require("./passport/authRoutes/authRoutes");
 
 // const routes = require("./routes/articles");
 const PORT = process.env.PORT || 3001;
@@ -27,14 +27,15 @@ app.use(passport.initialize());
 
 //project init:jasons group
 //requirements for express app to use passport
-app.use(require('cookie-parser')());
-app.use(require('express-session')({ secret: 'LettuceEat', resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+// app.use(require('cookie-parser')());
+// app.use(require('express-session')({ secret: 'LettuceEat', resave: true, saveUninitialized: true }));
+//app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
 
-// require("./routes/apiRoutes.js")(app);
+//Routes
 app.use("/api/",apiRoutes);
+app.use("/api/auth",authRoutes);
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {

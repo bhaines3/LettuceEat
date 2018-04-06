@@ -13,6 +13,10 @@ class DonorProfile extends Component {
         API.findOneDonor(this.props.match.params.id)
             .then(res => {this.setState({ donor: res.data, foodposts: res.data.FoodPosts })})
             .catch(err => console.log(err));
+
+        API.filterFoodPostsByDonor(this.props.match.params.id)
+            .then(res=> {this.setState({ foodposts: res.data })})
+            .catch(err => console.log(err));
     }
     render() {
         return(
@@ -43,21 +47,25 @@ class DonorProfile extends Component {
                 email={this.state.donor.email}
                  />
                  <a href="#" className="btn btn-primary">Add New Post</a>
-                 {this.state.donor.FoodPosts && this.state.donor.FoodPosts.length  ? (
-                    this.state.donor.FoodPosts.map(FoodPost => (
-                        <Card
-                        key={FoodPost.id}
-                        title={FoodPost.title}
-                        donor={this.state.donor.name}
-                        >
-                        Description: {FoodPost.desc}
-                        <br />
-                        Pick-Up Date: {FoodPost.pickupdate}
-                        <br />
-                        End Date: {FoodPost.enddate}
-                        <br />
-                        Pick-Up Window: {FoodPost.pickupwindow}
-                        </Card>
+                 {this.state.foodposts && this.state.foodposts.length  ? (
+                    this.state.foodposts.map(FoodPost => (
+                        <div>
+                            <br />
+                            <Card
+                            key={FoodPost.id}
+                            title={FoodPost.title}
+                            donor={this.state.donor.name}
+                            >
+                            Description: {FoodPost.desc}
+                            <br />
+                            Pick-Up Date: {FoodPost.pickupdate}
+                            <br />
+                            End Date: {FoodPost.enddate}
+                            <br />
+                            Pick-Up Window: {FoodPost.pickupwindow}
+                            </Card>
+                            <br />
+                        </div>
                     ))
                  ) : (
                      <h3>No Food Posts</h3>
