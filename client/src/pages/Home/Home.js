@@ -49,6 +49,11 @@ render() {
     return (
 
         <div className="container">
+
+            <div className="jumbotron my-3 text-center rounded">
+                <h1 className="display-3">LettuceEAT</h1>
+                <h3 className="lead">Reducing food waste one bite at a time!</h3>
+            </div>
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
                     <div>
