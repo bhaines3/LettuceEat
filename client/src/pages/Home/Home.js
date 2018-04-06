@@ -5,9 +5,9 @@ import Card from '../../components/Card';
 // import API from '../../components/utils/API';
 
 class Home extends Component {
-    // state = {
-    //   home: []
-    // };
+    state = {
+      home: []
+    };
   
     // componentDidMount() {
     //   this.getArticles();
