@@ -6,7 +6,8 @@ import ProfileJumbotron from '../../components/ProfileJumbotron';
 
 class NonProfitProfile extends Component {
     state = {
-        nonprofit: {}
+        nonprofit: {},
+        foodpost: []
     };
     componentDidMount() {
         API.findOneNonProfit(this.props.match.params.id)
