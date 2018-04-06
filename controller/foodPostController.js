@@ -39,7 +39,7 @@ module.exports = {
       db.FoodPost.create(newFoodPostInfo)
       .then((dbFoodPost)=> {
           console.log("FoodPost created");
-          res.json(end);
+          res.json(dbFoodPost);
       }).catch(function(err) {
         console.log("Erro: "+err);
       });

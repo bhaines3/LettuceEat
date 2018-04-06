@@ -3,7 +3,7 @@ import "./Home.css";
 import API from "../../components/utils/API";
 import Nav from '../../components/Nav';
 import Card from '../../components/Card';
-import ModalAddPost from '../../components/ModalAddPost';
+
 
 class Home extends Component {
     state = {
@@ -29,21 +29,21 @@ class Home extends Component {
             .then(res => {this.setState({ nonprofits: res.data})})
             .catch(err => console.log(err));
     }
-
-    addNewPost(event) {
-        event.preventDefault();
-        const newPost={
-            DonorId: this.state.donorId,
-            title: this.state.postTitle,
-            desc: this.state.postDesc,
-            pickupdate: this.state.postPickUpDate,
-            enddate: this.state.postEndDate,
-            pickupwindow: this.state.postPickUpWindow
-        }
-        API.createNewPost(newPost)
-            .then(res => {console.log("new post added")})
-            .catch(err => console.log(err))
-    }
+    //May add addNewPost to ModalAddPost instead
+    // addNewPost(event) {
+    //     event.preventDefault();
+    //     const newPost={
+    //         DonorId: this.state.donorId,
+    //         title: this.state.postTitle,
+    //         desc: this.state.postDesc,
+    //         pickupdate: this.state.postPickUpDate,
+    //         enddate: this.state.postEndDate,
+    //         pickupwindow: this.state.postPickUpWindow
+    //     }
+    //     API.createNewPost(newPost)
+    //         .then(res => {console.log("new post added")})
+    //         .catch(err => console.log(err))
+    // }
 
     // getArticles = () => {
     //   API.getSavedArticles()
@@ -69,7 +69,6 @@ render() {
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
-            <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
             {/* <a href="#" className="btn btn-primary">Add New Post</a> */}
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
@@ -94,7 +93,6 @@ render() {
                 ) : (
                     <h3>No food posts! Check back later. </h3>
             )}
-            <ModalAddPost />
         </div>
     );
   }

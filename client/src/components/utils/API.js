@@ -33,7 +33,7 @@ export default {
     return axios.get("/api/foodposts/donor/"+id);
   },
   createNewPost: (foodInfo) => {
-    return axios.post("/api/foodpost/",foodInfo);
+    return axios.post("/api/foodposts/",foodInfo);
   },
     // // Gets all articles
     // getSavedarticles: function() {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
+import ModalAddPost from '../../components/ModalAddPost';
 
 class DonorProfile extends Component {
     state = {
@@ -46,7 +47,7 @@ class DonorProfile extends Component {
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
                  />
-                 <a href="#" className="btn btn-primary">Add New Post</a>
+                 <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                  {this.state.foodposts && this.state.foodposts.length  ? (
                     this.state.foodposts.map(FoodPost => (
                         <div>
@@ -72,6 +73,7 @@ class DonorProfile extends Component {
                  )}
                  <br />
                  <br />
+                 <ModalAddPost />
             </div>
         )
     }
