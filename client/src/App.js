@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> da1961647a9b9b43935b474f74402e9e52209e32
 // import React,{ Component }  from "react";
 // import API from "./components/utils/API";
 // import SignUp from "./components/SignUp/signup.js";
