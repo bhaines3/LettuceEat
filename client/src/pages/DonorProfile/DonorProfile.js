@@ -21,7 +21,7 @@ class DonorProfile extends Component {
     render() {
         return(
             <div className = "container">
-                Id: {this.state.donor.id}
+                {/* Id: {this.state.donor.id}
                 <br />
                 Name: {this.state.donor.name}
                 <br />
@@ -31,15 +31,15 @@ class DonorProfile extends Component {
                 <br />
                 Phone Number: {this.state.donor.phonenumber}
                 <br />
-                Food Posts: 
+                Food Posts:  */}
                 {/* I am doing this odd statement down here because if you do FoodPosts.length alone,
                 render() happens before the componentDidMount(), and therefore will throw a fat error
                 as FoodPosts will be undefined. This makes sure that FoodPosts is defined before
                 finding length. Here's where I found it:
                 https://hashnode.com/post/reactjs-how-to-render-components-only-after-successful-asynchronous-call-ciwvnkjr400sq7t533lvrpdtw */}
-                {this.state.foodposts && this.state.foodposts.length}
+                {/* {this.state.foodposts && this.state.foodposts.length}
                 <br />
-                {JSON.stringify(this.state.donor)}
+                {JSON.stringify(this.state.donor)} */}
                 <ProfileJumbotron
                 name={this.state.donor.name}
                 address={this.state.donor.location || "No set location"}
