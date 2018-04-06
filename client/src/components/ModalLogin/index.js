@@ -1,1 +1,1 @@
-export { default } from "./ModalLogin";
+export { default } from "./ModalLogin.js";
