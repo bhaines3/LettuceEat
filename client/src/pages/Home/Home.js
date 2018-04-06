@@ -4,11 +4,18 @@ import API from "../../components/utils/API";
 import Nav from '../../components/Nav';
 import Card from '../../components/Card';
 
+
 class Home extends Component {
     state = {
       foodposts: [],
       donors: [],
-      nonprofits: []
+      nonprofits: [],
+      donorId: "",
+      postTitle: "", 
+      postDesc: "", 
+      postPickUpDate: "", 
+      postEndDate: "",
+      postPickUpWindow: ""
     };
   
     componentDidMount() {
@@ -22,13 +29,22 @@ class Home extends Component {
             .then(res => {this.setState({ nonprofits: res.data})})
             .catch(err => console.log(err));
     }
+    //May add addNewPost to ModalAddPost instead
+    // addNewPost(event) {
+    //     event.preventDefault();
+    //     const newPost={
+    //         DonorId: this.state.donorId,
+    //         title: this.state.postTitle,
+    //         desc: this.state.postDesc,
+    //         pickupdate: this.state.postPickUpDate,
+    //         enddate: this.state.postEndDate,
+    //         pickupwindow: this.state.postPickUpWindow
+    //     }
+    //     API.createNewPost(newPost)
+    //         .then(res => {console.log("new post added")})
+    //         .catch(err => console.log(err))
+    // }
 
-    getDonorNameForFoodPost(id) {
-        API.filterFoodPostsByDonor(id)
-            .then(res => {return res.data.name})
-            .catch(err => console.log(err));
-    }
-  
     // getArticles = () => {
     //   API.getSavedArticles()
     //     .then(res => this.setState({ saved: res.data }))
@@ -49,11 +65,11 @@ render() {
     return (
 
         <div className="container">
-
             <div className="jumbotron my-3 text-center rounded">
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
+            {/* <a href="#" className="btn btn-primary">Add New Post</a> */}
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
                     <div>
@@ -61,7 +77,7 @@ render() {
                         <Card
                         key={FoodPost.id}
                         title={FoodPost.title}
-                        // donor={this.getDonorNameForFoodPost(FoodPost.id)}
+                        donor={FoodPost && FoodPost.Donor.name}
                         >
                         Description: {FoodPost.desc}
                         <br />
@@ -75,7 +91,7 @@ render() {
                     </div>
                 ))
                 ) : (
-                    <h3>No Food Posts</h3>
+                    <h3>No food posts! Check back later. </h3>
             )}
         </div>
     );

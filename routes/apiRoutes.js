@@ -48,6 +48,7 @@ router
 router
 .route("/foodposts/")
 .get(foodPostController.findAllPosts)
+.post(foodPostController.createFoodPost)
 
 router
 .route("/foodposts/donor/:id")

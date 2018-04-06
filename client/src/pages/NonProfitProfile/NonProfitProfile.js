@@ -47,9 +47,17 @@ class NonProfitProfile extends Component {
                 Food Posts Interested In
                  {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length  ? (
                     this.state.nonprofit.FoodPosts.map(FoodPost => (
-                        <Card>
-                            Test
-                            Here, we will need Food Post name, 
+                        <Card
+                        key={FoodPost.id}
+                        title={FoodPost.title}
+                        donor={FoodPost.Donor.name}>
+                            Description: {FoodPost.desc}
+                            <br />
+                            Pick-Up Date: {FoodPost.pickupdate}
+                            <br />
+                            End Date: {FoodPost.enddate}
+                            <br />
+                            Pick-Up Window: {FoodPost.pickupwindow}
                         </Card>
                     ))
                  ) : (

@@ -4,7 +4,6 @@ module.exports = {
       db.FoodPost.findAll({
         include: [db.Donor, db.NonProfit]
       }).then((dbFoodPost)=>{
-        console.log(dbFoodPost);
         res.json(dbFoodPost);
       })
     },
@@ -30,17 +29,17 @@ module.exports = {
     },
     createFoodPost: (req, res)=> {
       var newFoodPostInfo={
-          DonorId: req.DonorId,
-          title:req.title,
-          desc:req.desc,
-          pickupdate:req.pickupdate,
-          enddate: req.enddate,
-          pickupwindow: req.pickupwindow
+          DonorId: req.body.DonorId,
+          title:req.body.title,
+          desc:req.body.desc,
+          pickupdate:req.body.pickupdate,
+          enddate: req.body.enddate,
+          pickupwindow: req.body.pickupwindow
       }
       db.FoodPost.create(newFoodPostInfo)
       .then((dbFoodPost)=> {
           console.log("FoodPost created");
-          res.json(end);
+          res.json(dbFoodPost);
       }).catch(function(err) {
         console.log("Erro: "+err);
       });

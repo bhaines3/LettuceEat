@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
+import ModalAddPost from '../../components/ModalAddPost';
 
 class DonorProfile extends Component {
     state = {
@@ -11,17 +12,17 @@ class DonorProfile extends Component {
     };
     componentDidMount() {
         API.findOneDonor(this.props.match.params.id)
-            .then(res => {this.setState({ donor: res.data, foodposts: res.data.FoodPosts })})
+            .then(res => {this.setState({ donor: res.data })})
             .catch(err => console.log(err));
 
         API.filterFoodPostsByDonor(this.props.match.params.id)
-            .then(res=> {this.setState({ foodposts: res.data })})
+            .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
             .catch(err => console.log(err));
     }
     render() {
         return(
-            <div className = "container text-center">
-                Id: {this.state.donor.id}
+            <div className = "container">
+                {/* Id: {this.state.donor.id}
                 <br />
                 Name: {this.state.donor.name}
                 <br />
@@ -31,22 +32,22 @@ class DonorProfile extends Component {
                 <br />
                 Phone Number: {this.state.donor.phonenumber}
                 <br />
-                Food Posts: 
+                Food Posts:  */}
                 {/* I am doing this odd statement down here because if you do FoodPosts.length alone,
                 render() happens before the componentDidMount(), and therefore will throw a fat error
                 as FoodPosts will be undefined. This makes sure that FoodPosts is defined before
                 finding length. Here's where I found it:
                 https://hashnode.com/post/reactjs-how-to-render-components-only-after-successful-asynchronous-call-ciwvnkjr400sq7t533lvrpdtw */}
-                {this.state.foodposts.length }
+                {/* {this.state.foodposts && this.state.foodposts.length}
                 <br />
-                {JSON.stringify(this.state.donor)}
+                {JSON.stringify(this.state.donor)} */}
                 <ProfileJumbotron
                 name={this.state.donor.name}
                 address={this.state.donor.location || "No set location"}
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
                  />
-                 <a href="#" className="btn btn-primary">Add New Post</a>
+                 <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                  {this.state.foodposts && this.state.foodposts.length  ? (
                     this.state.foodposts.map(FoodPost => (
                         <div>
@@ -72,6 +73,7 @@ class DonorProfile extends Component {
                  )}
                  <br />
                  <br />
+                 <ModalAddPost />
             </div>
         )
     }
