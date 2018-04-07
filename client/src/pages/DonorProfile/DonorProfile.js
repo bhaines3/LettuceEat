@@ -12,7 +12,7 @@ class DonorProfile extends Component {
         foodposts: []
     };
     componentDidMount() {
-        API.findOneDonor(this.props.match.params.id)
+        API.findOneDonor({id: this.props.match.params.id})
             .then(res => {this.setState({ donor: res.data })})
             .catch(err => console.log(err));
 
@@ -48,7 +48,7 @@ class DonorProfile extends Component {
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
                  />
-                 <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+                 <a href="." className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                  {this.state.foodposts && this.state.foodposts.length  ? (
                     this.state.foodposts.map(FoodPost => (
                         <div>
@@ -57,14 +57,22 @@ class DonorProfile extends Component {
                             key={FoodPost.id}
                             title={FoodPost.title}
                             donor={this.state.donor.name}
+                            donorId={this.state.donor.id}
                             >
-                            Description: {FoodPost.desc}
+                            <strong>Description:</strong> {FoodPost.desc}
                             <br />
-                            Pick-Up Date: {FoodPost.pickupdate}
                             <br />
-                            End Date: {FoodPost.enddate}
-                            <br />
-                            Pick-Up Window: {FoodPost.pickupwindow}
+                            <div className ="row">
+                            <div className ="col-md-4">
+                            <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
+                            </div>
+                            <div className ="col-md-4">
+                            <strong>End Date:</strong> {FoodPost.enddate}
+                            </div>
+                            <div className ="col-md-4">
+                            <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
+                            </div>
+                            </div>
                             </Card>
                             <br />
                         </div>
@@ -74,7 +82,7 @@ class DonorProfile extends Component {
                  )}
                  <br />
                  <br />
-                 <ModalAddPost />
+                 <ModalAddPost donorId={this.state.donor.id} />
             </div>
         )
     }
