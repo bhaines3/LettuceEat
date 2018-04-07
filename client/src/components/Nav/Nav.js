@@ -61,7 +61,7 @@ const Nav = () => {
                 </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
-                <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
+                    <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
                     <button className="btn btn-link text-white btn-sm my-2 my-sm-0" type="submit">Sign-In</button>
                     
                     <ModalSignUp/>
