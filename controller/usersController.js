@@ -9,23 +9,6 @@ require('../passport/config/passport')(passport);
 module.exports = {
     //displaying all users in api/users
     findAllUsers:(req,res)=>{
-      // //with auth for testing
-      //   const token=getToken(req.headers);
-      //   if(token){
-      //     db.User.findAll({
-      //       include: [db.Donor, db.NonProfit]
-      //     }).then((dbUser)=>{
-      //       //console.log(dbUser)
-      //       res.json(dbUser);
-      //     }).catch((err)=>{
-      //       console.log("Error from findAllUsers: "+err);
-      //     })
-      //   }
-      //   else{
-      //     return res.status(403).send({success: false, msg: 'Unauthorized.'});
-      //   }
-      // },
-      //without auth for testing
       db.User.findAll({
         include: [db.Donor, db.NonProfit]
       }).then((dbUser)=>{

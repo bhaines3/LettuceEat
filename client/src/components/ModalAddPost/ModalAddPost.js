@@ -3,24 +3,20 @@ import "./ModalAddPost.css";
 import API from "./../utils/API";
 
 
-
 class ModalAddPost extends Component {
-
   state = {
-    donorId: "",
     postTitle: "", 
     postDesc: "", 
     postPickUpDate: "", 
     postEndDate: "",
-    postPickUpWindow: ""
+    postPickUpWindow: "",
   };
 
   componentDidMount() {
-    var parent = this._reactInternalFiber._debugOwner.stateNode;
     API.findAllFoodPosts()
         .then(res => {this.setState({ foodposts: res.data })})
         .catch(err => console.log(err));
-    API.findOneDonor(parent.props.match.params.id)
+    API.findOneDonor(this.props.donorId)
         .then(res => {this.setState({ donorId: res.data.id })})
         .catch(err => console.log(err));
     API.findAllDonors()
@@ -33,14 +29,13 @@ class ModalAddPost extends Component {
   addNewPost = (event) => {
     event.preventDefault();
     const newPost={
-        DonorId: this.state.donorId,
+        DonorId: this.props.donorId,
         title: this.state.postTitle,
         desc: this.state.postDesc,
         pickupdate: this.state.postPickUpDate,
         enddate: this.state.postEndDate,
         pickupwindow: this.state.postPickUpWindow
     }
-    console.log(newPost);
     API.createNewPost(newPost)
         .then(res => {console.log("new post added")})
         .catch(err => console.log(err))
@@ -53,6 +48,7 @@ class ModalAddPost extends Component {
     this.setState({
       [name]: value
     });
+    console.log(this.state)
   };
     render() { return (
       
@@ -83,7 +79,7 @@ class ModalAddPost extends Component {
                     <input className="col-sm-12 mb-2" type="text" id="new_pickupwindow" name="postPickUpWindow" maxLength={15} onChange={this.handleChange}/>
                     <br />
                     <div id="alert-message" />
-                    {/* <button className="btn btn-outline-success" type="submit" id="create-new-user" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button> */}
+                    <button className="btn btn-outline-success" type="submit" id="create-new-user" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button>
                     <br />
                     <span id="cannot-create-error" />
                 </div>
