@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
+import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 
 class NonProfitProfile extends Component {

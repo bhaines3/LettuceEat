@@ -1,6 +1,6 @@
-html {
+/* #bootstrapoverrides, body {
     font-family: 'Jua', sans-serif;
- }
+ } */
 
 .jumbotron {
     position: relative;
@@ -25,3 +25,6 @@ html {
  h3 {
      font-weight: boldest;
  }
+ /* #bootstrapoverrides, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jua', sans-serif;
+ } */
