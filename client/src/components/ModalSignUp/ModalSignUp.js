@@ -17,14 +17,18 @@ const ModalSignUp = (props)=> {
                     <label htmlFor="new-name">Name:</label>
                     <input className="col-sm-12 mb-2" type="text" id="new_name" name="new-name" maxLength={30} />
                     <br />
-                    <label htmlFor="new-username">Username:</label>
-                    <input className="col-sm-12 mb-2" type="text" id="new_username" name="new-username" maxLength={500} />
+                    <label htmlFor="new-email">Email:</label>
+                    <input className="col-sm-12 mb-2" type="email" id="new_email" name="new-email" maxLength={500} />
                     <br />
                     <label htmlFor="new-password">Password:</label>
                     <input className="col-sm-12 mb-2" type="password" id="new_password" name="new-password" maxLength={15} />
                     <br />
+                    <label htmlFor="new-phone-number">Phone:</label>
+                    <input className="col-sm-12 mb-2" type="number" id="new_phone_number" name="new-new_phone_number" maxLength={13} />
+                    <br />
+
                     <div id="alert-message" />
-                    {/* <button className="btn btn-outline-success" type="submit" id="create-new-user">Create<i className="far fa-check-circle" /></button> */}
+                     <button className="btn btn-outline-primary" type="submit" id="create-new-user">Create <i class="fas fa-plus-circle"></i></button> 
                     <br />
                     <span id="cannot-create-error" />
                 </div>
