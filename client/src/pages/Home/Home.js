@@ -3,10 +3,12 @@ import "./Home.css";
 import API from "../../components/utils/API";
 import Nav from '../../components/Nav';
 import Card from '../../components/Card';
+import ModalAddPost from '../../components/ModalAddPost';
 
 
 class Home extends Component {
     state = {
+      userDonorId: "",
       foodposts: [],
       donors: [],
       nonprofits: [],
@@ -28,6 +30,18 @@ class Home extends Component {
         API.findAllNonProfits()
             .then(res => {this.setState({ nonprofits: res.data})})
             .catch(err => console.log(err));
+        this.checkIfDonorExists();
+    }
+
+    checkIfDonorExists() {
+        API.findOneDonor({name: this.props.match.params.name})
+        .then(res => {
+            if(res.data)
+            {
+                this.setState({userDonorId: res.data.id})
+            }
+        })
+        .catch(err => console.log(err));
     }
     //May add addNewPost to ModalAddPost instead
     // addNewPost(event) {
@@ -64,12 +78,14 @@ class Home extends Component {
 render() {
     return (
 
-        <div className="container">
+        <div className="container text-black">
             <div className="jumbotron my-3 text-center rounded">
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
-            {/* <a href="#" className="btn btn-primary">Add New Post</a> */}
+            {this.state.userDonorId ? (
+                <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+            ) : ("")}
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
                     <div>
@@ -78,21 +94,29 @@ render() {
                         key={FoodPost.id}
                         title={FoodPost.title}
                         donor={FoodPost && FoodPost.Donor.name}
+                        donorId={FoodPost.DonorId}
                         >
-                        Description: {FoodPost.desc}
+                        <strong>Description:</strong> {FoodPost.desc}
                         <br />
-                        Pick-Up Date: {FoodPost.pickupdate}
                         <br />
-                        End Date: {FoodPost.enddate}
-                        <br />
-                        Pick-Up Window: {FoodPost.pickupwindow}
+                        <div className ="row">
+                        <div className ="col-md-4">
+                        <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
+                        </div>
+                        <div className ="col-md-4">
+                        <strong>End Date:</strong> {FoodPost.enddate}
+                        </div>
+                        <div className ="col-md-4">
+                        <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
+                        </div>
+                        </div>
                         </Card>
-                        <br />
                     </div>
                 ))
                 ) : (
                     <h3>No food posts! Check back later. </h3>
             )}
+            <ModalAddPost donorId={this.state.userDonorId} />
         </div>
     );
   }
