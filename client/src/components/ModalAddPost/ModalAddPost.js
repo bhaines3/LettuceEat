@@ -37,7 +37,7 @@ class ModalAddPost extends Component {
         pickupwindow: this.state.postPickUpWindow
     }
     API.createNewPost(newPost)
-        .then(res => {console.log("new post added")})
+        .then(res => {console.log("new post added"); window.location.reload();})
         .catch(err => console.log(err))
   }
 
@@ -48,7 +48,6 @@ class ModalAddPost extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state)
   };
     render() { return (
       
@@ -63,19 +62,19 @@ class ModalAddPost extends Component {
             </div>
             <div className="modal-body">
               <div className="form-group">
-                    <label htmlFor="postTitle">Title:</label>
+                    <label htmlFor="postTitle"><strong>Title:</strong></label>
                     <input className="col-sm-12 mb-2" type="text" id="new_title" name="postTitle" maxLength={30} onChange={this.handleChange}/>
                     <br />
-                    <label htmlFor="postDesc">Description:</label>
+                    <label htmlFor="postDesc"><strong>Description:</strong></label>
                     <input className="col-sm-12 mb-2" type="text" id="new_desc" name="postDesc" maxLength={500} onChange={this.handleChange}/>
                     <br />
-                    <label htmlFor="postPickUpDate">Pick-Up Date:</label>
-                    <input className="col-sm-12 mb-2" type="text" id="new_pickupdate" name="postPickUpDate" maxLength={15} onChange={this.handleChange}/>
+                    <label htmlFor="postPickUpDate"><strong>Pick-Up Date:</strong></label>
+                    <input className="col-sm-12 mb-2" type="text" id="new_pickupdate" name="postPickUpDate" maxLength={15} onChange={this.handleChange} placeholder="Required Format: YYYY-MM-DD"/>
                     <br />
-                    <label htmlFor="postEndDate">End Pick-Up Date:</label>
-                    <input className="col-sm-12 mb-2" type="text" id="new_enddate" name="postEndDate" maxLength={15} onChange={this.handleChange}/>
+                    <label htmlFor="postEndDate"><strong>End Pick-Up Date:</strong></label>
+                    <input className="col-sm-12 mb-2" type="text" id="new_enddate" name="postEndDate" maxLength={15} onChange={this.handleChange} placeholder="Required Format: YYYY-MM-DD"/>
                     <br />
-                    <label htmlFor="postPickUpWindow">Pick-Up Time Window:</label>
+                    <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window:</strong></label>
                     <input className="col-sm-12 mb-2" type="text" id="new_pickupwindow" name="postPickUpWindow" maxLength={15} onChange={this.handleChange}/>
                     <br />
                     <div id="alert-message" />
@@ -86,7 +85,7 @@ class ModalAddPost extends Component {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Save changes</button>
+              {/* <button type="button" className="btn btn-primary">Save changes</button> */}
             </div>
           </div>
         </div>

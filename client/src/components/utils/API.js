@@ -15,8 +15,8 @@ export default {
   findAllDonors: () => {
     return axios.get("/api/donors/");
   },
-  findOneDonor: (id) => {
-    return axios.get("/api/donor/"+id);
+  findOneDonor: (info) => {
+    return axios.get("/api/donor/",{params:info});
   },
   //=========NONPROFIT==============
   findAllNonProfits: () => {
