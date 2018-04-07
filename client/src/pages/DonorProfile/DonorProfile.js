@@ -73,7 +73,7 @@ class DonorProfile extends Component {
                  )}
                  <br />
                  <br />
-                 <ModalAddPost />
+                 <ModalAddPost donorId={this.state.donor.id} />
             </div>
         )
     }
