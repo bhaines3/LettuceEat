@@ -31,7 +31,7 @@ class ModalSignUp extends Component {
     axios.post("/api/auth/signup", newUser).then(result=>{
         //reroutes to login page
         // this.props.history.push("/login")
-        window.location="/"+this.state.name;
+        window.location="/"+(this.state.name.split(' ').join('+'));
     });
     //passport will take care of this 
     // //CHECK if user exists before creating a new account
