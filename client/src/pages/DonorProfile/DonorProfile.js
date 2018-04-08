@@ -8,7 +8,7 @@ import {Redirect} from "react-router-dom";
 
 class DonorProfile extends Component {
     state = {
-        donor: {},
+        donor: [],
         foodposts: [],
         redirect:false
     };
@@ -23,19 +23,22 @@ class DonorProfile extends Component {
         }
     }
     componentDidMount() {
-        const userId=localStorage.getItem("userId");
-        API.findOneDonor(userId)
-            .then(res => {this.setState({ donor: res.data })})
-            .catch(err => console.log(err));
-
-        API.filterFoodPostsByDonor(userId)
-            .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
-            .catch(err => console.log(err));
+        const donorId=localStorage.getItem("donorId");
+        API.findOneDonor({id: donorId})
+        .then(res => {this.setState({ donor: res.data })})
+        .catch(err => console.log(err));
+       
+        API.filterFoodPostsByDonor(donorId)
+        .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
+        .catch(err => console.log(err));
     }
     Logout=event=>{
         localStorage.removeItem('jwtToken');
         localStorage.removeItem("isDonor");
         localStorage.removeItem("userId");
+        localStorage.removeItem("donorId");
+        localStorage.removeItem("nonProfitId");
+        return (<Redirect to={"/"}/>)
     }
     render() {
         console.log("redirect "+this.state.redirect)
@@ -44,10 +47,9 @@ class DonorProfile extends Component {
         }
         return(
             <div className = "container">
-                {}
-                {/* Id: {this.state.donor.id}
+                 {/* Id: {this.state.donor.id}
                 <br />
-                Name: {this.state.donor.name}
+               Name: {this.state.donor.name}
                 <br />
                 Email: {this.state.donor.email}
                 <br />

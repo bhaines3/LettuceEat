@@ -39,24 +39,40 @@ class ModalLogin extends Component {
     // console.log("im sending email "+ userInfo.email);
     // console.log("im sending password " + userInfo.password);
     axios.post('/api/auth/login', userInfo)
-    .then((result) => {
+    .then((res) => {
       //setting the jwt token when loginin result comes in"
-      var token=result.data.token;
-      localStorage.setItem('jwtToken',token);
-      var decoded = jwt_decode(token);
-      var donor=decoded.isDonor;
-      var id=decoded.id;      
-      localStorage.setItem("isDonor",donor);
+      const token=res.data.token;
+      //saving data to local storage
+      this.donorNonDonorSave(token)
+      
+    }).catch(error=>{
+      this.setState({ message: 'Login failed. Username or password not match' });
+    })
+  }
+  donorNonDonorSave(token){
+    localStorage.setItem('jwtToken',token);
+      console.log(token);
+      const decoded = jwt_decode(token);
+      console.log(JSON.stringify(decoded))
+      const donor=decoded.isDonor;
+      const id=decoded.id;
       localStorage.setItem("userId",id);
+      localStorage.setItem("isDonor",donor); 
+      if(donor===null||donor===false){
+        const nonProfitId=decoded.NonProfit.id;
+        localStorage.setItem("nonProfitId",nonProfitId);
+      }
+      else{
+        const donorId=decoded.Donor.id;
+        localStorage.setItem("donorId",donorId);
+      }     
       //setting state to redirect user
       this.setState({
         isDonor:donor,
         loggedIn:token
       })
-    }).catch(error=>{
-      this.setState({ message: 'Login failed. Username or password not match' });
-    })
   }
+  
   render() {
     if(this.state.loggedIn){
       if (this.state.isDonor){

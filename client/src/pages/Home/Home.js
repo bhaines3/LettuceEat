@@ -4,7 +4,7 @@ import API from "../../components/utils/API";
 //import Nav from '../../components/Nav';
 import Card from '../../components/Card';
 import ModalAddPost from '../../components/ModalAddPost';
-
+import {Redirect} from "react-router-dom";
 
 class Home extends Component {
     state = {
@@ -47,6 +47,8 @@ class Home extends Component {
         localStorage.removeItem('jwtToken');
         localStorage.removeItem("isDonor");
         localStorage.removeItem("userId");
+        localStorage.removeItem("donorId");
+        localStorage.removeItem("nonProfitId");
     }
     //May add addNewPost to ModalAddPost instead
     // addNewPost(event) {
@@ -82,7 +84,6 @@ class Home extends Component {
 
 render() {
     return (
-
         <div className="container text-black">
             <div className="jumbotron my-3 text-center rounded">
                 <h1 className="display-3">LettuceEAT</h1>

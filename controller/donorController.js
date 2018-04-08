@@ -9,7 +9,7 @@ module.exports = {
       })
     },
     findDonor: (req, res) =>{
-      // console.log("yo"+JSON.stringify(req.query));
+      // console.log("yo"+JSON.stringify(req.query));   
       db.Donor.findOne({
         where:req.query,
         include: [db.FoodPost]
