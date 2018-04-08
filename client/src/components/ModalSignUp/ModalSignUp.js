@@ -1,7 +1,7 @@
 import React,{ Component }  from "react";
 import axios from 'axios';
-import API from "../utils/API";
-import { Link } from 'react-router-dom';
+//import API from "../utils/API";
+//import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import {Redirect} from "react-router-dom";
 import "./ModalSignUp.css";
@@ -81,7 +81,6 @@ class ModalSignUp extends Component {
               </button>
             </div>
             <div className="modal-body">
-              <form id="sign-upform">
                 <div className="form-group">
                   <label>Organization name:</label>
                   <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control col-sm-12 mb-2" placeholder="Jane Doe"/>
@@ -106,7 +105,6 @@ class ModalSignUp extends Component {
                 </div>
                 {/* <!-- Here we have our final submit button --> */}
                 <button onClick={this.createUser} type="submit" className="btn btn-primary"><i className="fa fa-plus-circle"></i> Create Account</button>
-              </form>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./Home.css";
 import API from "../../components/utils/API";
-import Nav from '../../components/Nav';
+//import Nav from '../../components/Nav';
 import Card from '../../components/Card';
 import ModalAddPost from '../../components/ModalAddPost';
 
@@ -89,7 +89,7 @@ render() {
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
             {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
-                <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
             ) : ("")}
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (

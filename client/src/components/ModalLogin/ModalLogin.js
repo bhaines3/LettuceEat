@@ -35,12 +35,11 @@ class ModalLogin extends Component {
         password:this.state.passwordLogin
     }
     //making sure info is goin gto request
-    console.log("im making the post request for login");
-    console.log("im sending email "+ userInfo.email);
-    console.log("im sending password " + userInfo.password);
+    // console.log("im making the post request for login");
+    // console.log("im sending email "+ userInfo.email);
+    // console.log("im sending password " + userInfo.password);
     axios.post('/api/auth/login', userInfo)
     .then((result) => {
-      console.log("i was working all along"+result.data.test);
       //setting the jwt token when loginin result comes in"
       var token=result.data.token;
       localStorage.setItem('jwtToken',token);
@@ -49,7 +48,7 @@ class ModalLogin extends Component {
       var id=decoded.id;      
       localStorage.setItem("isDonor",donor);
       localStorage.setItem("userId",id);
-      //redirecting user if 
+      //setting state to redirect user
       this.setState({
         isDonor:donor,
         loggedIn:token
@@ -81,8 +80,6 @@ class ModalLogin extends Component {
             </div>
             <div className="modal-body">
               <div className="form-group">
-              {this.state.isDonor}
-              {this.state.LoggedIn}
                     <label htmlFor="name-login">Email:</label>
                     <input className="col-sm-12 mb-2" type="email" id="name-login" name="emailLogin" value={this.state.email} onChange={this.updateUserlogin} placeholder="janedoe@email.com" maxLength={30} />
                     <br />

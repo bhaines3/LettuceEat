@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 import ModalSignUp from '../ModalSignUp';
 import ModalLogin from '../ModalLogin';
 import './Nav.css';
@@ -57,16 +57,16 @@ const Nav = () => {
                     <a className="nav-link" href={"/"}>Home <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">About Us</a>
+                    <a className="nav-link" href="">About Us</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Statistics</a>
+                    <a className="nav-link" href="">Statistics</a>
                 </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
-                <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
 
-                <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
 
                     {/*<button className="btn btn-link text-white btn-sm my-2 my-sm-0" type="submit">Sign-In</button>*/}
 

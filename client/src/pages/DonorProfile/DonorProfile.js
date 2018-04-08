@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
@@ -13,8 +13,11 @@ class DonorProfile extends Component {
         redirect:false
     };
     componentWillMount(){
-        if(!localStorage.getItem("isDonor") || localStorage.getItem("isDonor")===false ){
-            this.setState({
+        const donor=localStorage.getItem("isDonor");
+        console.log("donor b4 donrspg " +donor);
+        if(donor==="false" || donor==null ){
+            console.log("donor in check donrspg " +donor)
+           return this.setState({
                 redirect:true
             })
         }
@@ -35,6 +38,7 @@ class DonorProfile extends Component {
         localStorage.removeItem("userId");
     }
     render() {
+        console.log("redirect "+this.state.redirect)
         if(this.state.redirect){ 
            return (<Redirect to={"/"}/>)
         }
