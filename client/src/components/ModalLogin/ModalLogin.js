@@ -29,7 +29,7 @@ return (
                     <br />
 
                     <div id="alert-message" />
-                     <button className="btn btn-outline-primary" type="submit" id="login-user">Login <i className="fa fa-check-circle" /></button> 
+                     <button className="btn btn-primary" type="submit" id="login-user">Login <i className="fa fa-check-circle" /></button> 
                     <br />
                     <span id="cannot-create-error" />
                 </div>

@@ -69,16 +69,24 @@ class ModalAddPost extends Component {
                     <input className="col-sm-12 mb-2" type="text" id="new_desc" name="postDesc" maxLength={500} onChange={this.handleChange}/>
                     <br />
                     <label htmlFor="postPickUpDate"><strong>Pick-Up Date:</strong></label>
-                    <input className="col-sm-12 mb-2" type="text" id="new_pickupdate" name="postPickUpDate" maxLength={15} onChange={this.handleChange} placeholder="Required Format: YYYY-MM-DD"/>
+                    
+                    <input className="form-control col-sm-12 mb-2" type="date" id="new_pickupdate" name="postPickUpDate" defaultValue="" onChange={this.handleChange} />
+
+                    {/*<input className="col-sm-12 mb-2" type="text" id="new_pickupdate" name="postPickUpDate" maxLength={15} onChange={this.handleChange} placeholder="Required Format: YYYY-MM-DD"/>*/}
                     <br />
+
                     <label htmlFor="postEndDate"><strong>End Pick-Up Date:</strong></label>
-                    <input className="col-sm-12 mb-2" type="text" id="new_enddate" name="postEndDate" maxLength={15} onChange={this.handleChange} placeholder="Required Format: YYYY-MM-DD"/>
+
+                    <input className="form-control col-sm-12 mb-2" type="date" id="new_enddate" name="postEndDate" defaultValue="" onChange={this.handleChange} />
+
+
+                    {/*<input className="col-sm-12 mb-2" type="text" id="new_enddate" name="postEndDate" maxLength={15} onChange={this.handleChange} placeholder="Required Format: YYYY-MM-DD"/>*/}
                     <br />
                     <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window:</strong></label>
                     <input className="col-sm-12 mb-2" type="text" id="new_pickupwindow" name="postPickUpWindow" maxLength={15} onChange={this.handleChange}/>
                     <br />
                     <div id="alert-message" />
-                    <button className="btn btn-outline-success" type="submit" id="create-new-user" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button>
+                    <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.addNewPost}>Create <i className="far fa-check-circle" /></button>
                     <br />
                     <span id="cannot-create-error" />
                 </div>

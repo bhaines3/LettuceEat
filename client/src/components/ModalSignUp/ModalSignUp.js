@@ -83,27 +83,28 @@ class ModalSignUp extends Component {
                 <form id="sign-upform">
           <div className="form-group">
             <label>Organization name:</label>
-            <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control" placeholder="Jane Doe"/>
+            <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control col-sm-12 mb-2" placeholder="Jane Doe"/>
           </div>
           <div className="form-group">
             <label>Phone:</label>
-            <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+            <input type="text" className="form-control col-sm-12 mb-2"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
           </div>
           {/* <!-- Here we capture the Start Year Parameter--> */}
           <div className="form-group">
             <label>Email:</label>
-            <input type="text" className="form-control"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
+            <input type="text" className="form-control col-sm-12 mb-2"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
           </div>
           {/* <!-- Here we capture the End Year Parameter --> */}
           <div className="form-group">
             <label>Password(6+):</label>
-            <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
+            <input type="password" className="form-control col-sm-12 mb-2"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
           </div>
+          
           {/* <div className="form-group">
             <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
           </div> */}
           {/* <!-- Here we have our final submit button --> */}
-          <button onClick={this.createUser} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Create Account</button>
+          <button onClick={this.createUser} type="submit" className="btn btn-primary"><i className="fa fa-plus-circle"></i> Create Account</button>
         </form>
             </div>
             <div className="modal-footer">
