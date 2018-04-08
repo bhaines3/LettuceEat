@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import ModalSignUp from '../ModalSignUp';
 import ModalLogin from '../ModalLogin';
+import './Nav.css';
 
 // const Nav = () => {
 //   return (
@@ -45,7 +46,8 @@ import ModalLogin from '../ModalLogin';
 const Nav = () => {
     return (   
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div className="navbar-brand" href="/"><i className="fas fa-leaf"></i> LettuceEat</div>
+            <img id="logo" className="navbar-brand img-responsive" src="logo.png" alt="logo" /> 
+            <div className="navbar-brand" href="/">LettuceEat</div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style={{}}>
                 <span className="navbar-toggler-icon" />
             </button>

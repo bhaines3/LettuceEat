@@ -18,11 +18,13 @@ const App = () => (
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-           <Route exact path="/signup" component={SignUp} /> 
-          <Route exact path="/donor/" component={DonorProfile} />
+          {/* <Route exact path="/login" component={Login} /> */}
+          {/* <Route exact path="/signup" component={SignUp} />  */}
+          <Route exact path="/donor" component={DonorProfile} />
+          <Route exact path="/NonProfitProfile" component={NonProfitProfile} />
+
           {/* for testing the routing */}
-          {/* <Route exact path="/signup" component={SignUp} /> */}
+          {/*<Route exact path="/signup" component={SignUp} />*/}
           {/* <Route exact path="/users" component={Users} /> */}
           {/* //<Route exact path="/donor/:id" component={DonorProfile} />
           //<Route exact path="/nonprofit/:id" component={NonProfitProfile} /> */}

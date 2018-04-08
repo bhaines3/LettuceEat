@@ -4,8 +4,6 @@ const donorController=require("../controller/donorController.js");
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var settings = require('../passport/config/settings');
-//passportconfig
-require('../passport/config/passport')(passport);
 const controller = {
     //displaying all users in api/users
     findAllUsers:(req,res)=>{

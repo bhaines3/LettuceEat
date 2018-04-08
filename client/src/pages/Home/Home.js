@@ -43,6 +43,11 @@ class Home extends Component {
         })
         .catch(err => console.log(err));
     }
+    Logout=event=>{
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem("isDonor");
+        localStorage.removeItem("userId");
+    }
     //May add addNewPost to ModalAddPost instead
     // addNewPost(event) {
     //     event.preventDefault();
@@ -117,6 +122,10 @@ render() {
                     <h3>No food posts! Check back later. </h3>
             )}
             <ModalAddPost donorId={this.state.userDonorId} />
+            <div className="container" id="logoutbtn">
+                <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
+            </div>
+    
         </div>
     );
   }
