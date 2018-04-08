@@ -12,11 +12,11 @@ require('../passport/config/passport')(passport);
 //=========USERS==============
 router
 .route("/users/")
-.get(usersController.findAllUsers)
+.get(usersController.findAllUsers);
 //with auth:
 // .route("/users/")
 // .get(passport.authenticate('jwt', { session: false}),usersController.findAllUsers)
-// .post(usersController.createUser);
+//.post(usersController.createUser);
 //     //CHECK TO SEE IF USER ALREADY EXISTS
 // router
 // .route("/user/")

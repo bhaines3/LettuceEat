@@ -28,7 +28,7 @@ const ModalSignUp = (props)=> {
                     <br />
 
                     <div id="alert-message" />
-                     <button className="btn btn-outline-primary" type="submit" id="create-new-user">Create <i class="fas fa-plus-circle"></i></button> 
+                     <button className="btn btn-outline-primary" type="submit" id="create-new-user">Create <i className="fas fa-plus-circle"></i></button> 
                     <br />
                     <span id="cannot-create-error" />
                 </div>

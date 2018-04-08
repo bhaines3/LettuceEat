@@ -7,25 +7,14 @@ class Users extends Component {
     state = {
        users:[]
     }
-    componentDidMount = () => {
-        console.log(axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken'));
-       
-        API.findAllusers()
-          .then(res => {
-            this.setState({ users: res.data });
-            console.log(this.state.users);
-          })
-          .catch((error) => {
-            if(error.response.status === 401) {
-              this.props.history.push("/login");
-            }
-          });
-      
-    }; 
+    
     Logout=event=>{
         localStorage.removeItem('jwtToken');
+        localStorage.removeItem("isDonor");
+        localStorage.removeItem("userId");
+
+        console.log("token after login" +localStorage.getItem('jwtToken'))
         this.props.history.push("/login");
-       
     }
     render() {
         return (

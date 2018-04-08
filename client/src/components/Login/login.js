@@ -1,13 +1,14 @@
 import React,{ Component }  from "react";
 import axios from 'axios';
 //import { Link } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 
 class Login extends Component {
     state = {
         emailLogin:"",
-        passwordLogin:"",
-        message:""
+        passwordLogin:""
     }
+    
     updateUserlogin = event => {
       // Destructure the name and value properties off of event.target
       // Update the appropriate state
@@ -18,18 +19,25 @@ class Login extends Component {
     }; 
     Login=event=>{
         event.preventDefault();
-        
         const userInfo={
             email:this.state.emailLogin,
             password:this.state.passwordLogin
         }
+        //making sure info is goin gto request
         console.log("im making the post request for login");
         console.log("im sending email "+ userInfo.email);
         console.log("im sending password " + userInfo.password);
-        
+    
         axios.post('/api/auth/login', userInfo)
         .then((result) => {
-            localStorage.setItem('jwtToken', result.data.token);
+            //setting the jwt token when loginin result comes in"
+            var token=result.data.token;
+            localStorage.setItem('jwtToken',token);
+            var decoded = jwt_decode(token);
+            
+            localStorage.setItem("isDonor",decoded.isDonor);
+            localStorage.setItem("userId",decoded.id);
+            console.log("token is sent to front end when user is found"+ result.data.jwtToken);
 
             //this.setState({mesage:""});
             this.props.history.push("/users");

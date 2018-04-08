@@ -4,6 +4,7 @@ import API from "../../components/utils/API";
 import Card from '../../components/Card';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 import ModalAddPost from '../../components/ModalAddPost';
+import {Redirect} from "react-router-dom";
 
 class DonorProfile extends Component {
     state = {
@@ -11,15 +12,37 @@ class DonorProfile extends Component {
         foodposts: []
     };
     componentDidMount() {
-        API.findOneDonor(this.props.match.params.id)
+        const userId=localStorage.getItem("userId");
+        API.findOneDonor(userId)
             .then(res => {this.setState({ donor: res.data })})
             .catch(err => console.log(err));
 
-        API.filterFoodPostsByDonor(this.props.match.params.id)
+        API.filterFoodPostsByDonor(userId)
             .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
             .catch(err => console.log(err));
     }
+    Logout=event=>{
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem("isDonor");
+        localStorage.removeItem("userId");
+
+        console.log("token after login" +localStorage.getItem('jwtToken'))
+        this.props.history.push("/login");
+        <div className="container" id="logoutbtn">
+            {this.state.users.map(user=>(
+                <div>{user.email}</div>
+            ))}
+                <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
+            </div>
+    }
     render() {
+        const tokenPresent=localStorage.getItem("jwtToken");
+        const isDonor=localStorage.getItem("isDonor");
+        
+        if(!tokenPresent) {
+            return (<Redirect to={"/"}/>)
+        }
+            
         return(
             <div className = "container">
                 {/* Id: {this.state.donor.id}
@@ -41,7 +64,7 @@ class DonorProfile extends Component {
                 {/* {this.state.foodposts && this.state.foodposts.length}
                 <br />
                 {JSON.stringify(this.state.donor)} */}
-                <ProfileJumbotron
+                {/* <ProfileJumbotron
                 name={this.state.donor.name}
                 address={this.state.donor.location || "No set location"}
                 phonenumber={this.state.donor.phonenumber}
@@ -70,10 +93,10 @@ class DonorProfile extends Component {
                     ))
                  ) : (
                      <h3>No Food Posts</h3>
-                 )}
+                 )} */}
+                 {/* <br />
                  <br />
-                 <br />
-                 <ModalAddPost />
+                 <ModalAddPost /> */}
             </div>
         )
     }
