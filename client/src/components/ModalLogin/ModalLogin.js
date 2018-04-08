@@ -3,15 +3,23 @@ import "./ModalLogin.css";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import {Redirect} from "react-router-dom";
-
 class ModalLogin extends Component {
   state = {
       nameLogin:"",
       passwordLogin:"",
       isDonor:false,
-      LoggedIn:false
+      isLoggedIn:false
   }
-  
+  componentWillMount(){
+    if(localStorage.getItem("jwtToken")){
+      if(localStorage.getItem("isDonor")){
+        return <Redirect to={"/donor"}/>
+      }
+      else{
+        return <Redirect to={"/NonProfitProfile"}/>
+      }
+    }
+  }
   updateUserlogin = event => {
     // Destructure the name and value properties off of event.target
     // Update the appropriate state
@@ -30,24 +38,21 @@ class ModalLogin extends Component {
     console.log("im making the post request for login");
     console.log("im sending email "+ userInfo.email);
     console.log("im sending password " + userInfo.password);
-
     axios.post('/api/auth/login', userInfo)
     .then((result) => {
+      console.log("i was working all along"+result.data.test);
       //setting the jwt token when loginin result comes in"
       var token=result.data.token;
       localStorage.setItem('jwtToken',token);
       var decoded = jwt_decode(token);
       var donor=decoded.isDonor;
       var id=decoded.id;      
-      localStorage.setItem("isDonor",isDonor);
+      localStorage.setItem("isDonor",donor);
       localStorage.setItem("userId",id);
       //redirecting user if 
-      const tokenPresent=localStorage.getItem("jwtToken");
-      
-      const isDonor=localStorage.getItem("isDonor");
       this.setState({
         isDonor:donor,
-        loggedIn:tokenPresent
+        loggedIn:token
       })
     }).catch(error=>{
       this.setState({ message: 'Login failed. Username or password not match' });
@@ -76,6 +81,8 @@ class ModalLogin extends Component {
             </div>
             <div className="modal-body">
               <div className="form-group">
+              {this.state.isDonor}
+              {this.state.LoggedIn}
                     <label htmlFor="name-login">Email:</label>
                     <input className="col-sm-12 mb-2" type="email" id="name-login" name="emailLogin" value={this.state.email} onChange={this.updateUserlogin} placeholder="janedoe@email.com" maxLength={30} />
                     <br />

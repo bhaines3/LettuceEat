@@ -6,8 +6,8 @@ import NonProfitProfile from "./pages/NonProfitProfile";
 import Nav from "./components/Nav";
 import Card from "./components/Card";
 
-import Users from "./components/Login/users";
-import Login from "./components/Login/login";
+// import Users from "./components/Login/users";
+// import Login from "./components/Login/login";
 import SignUp from "./components/SignUp/signup";
 
 
@@ -21,7 +21,7 @@ const App = () => (
           {/* <Route exact path="/login" component={Login} /> */}
           {/* <Route exact path="/signup" component={SignUp} />  */}
           <Route exact path="/donor" component={DonorProfile} />
-          <Route exact path="/NonProfitProfile" component={NonProfitProfile} />
+          {/* <Route exact path="/NonProfitProfile" component={NonProfitProfile} /> */}
 
           {/* for testing the routing */}
           {/*<Route exact path="/signup" component={SignUp} />*/}

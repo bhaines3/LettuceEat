@@ -9,8 +9,16 @@ import {Redirect} from "react-router-dom";
 class DonorProfile extends Component {
     state = {
         donor: {},
-        foodposts: []
+        foodposts: [],
+        redirect:false
     };
+    componentWillMount(){
+        if(!localStorage.getItem("isDonor") || localStorage.getItem("isDonor")===false ){
+            this.setState({
+                redirect:true
+            })
+        }
+    }
     componentDidMount() {
         const userId=localStorage.getItem("userId");
         API.findOneDonor(userId)
@@ -25,18 +33,11 @@ class DonorProfile extends Component {
         localStorage.removeItem('jwtToken');
         localStorage.removeItem("isDonor");
         localStorage.removeItem("userId");
-
-        console.log("token after login" +localStorage.getItem('jwtToken'))
-        this.props.history.push("/login");
     }
     render() {
-        const tokenPresent=localStorage.getItem("jwtToken");
-        const isDonor=localStorage.getItem("isDonor");
-        
-        if(!tokenPresent) {
-            return (<Redirect to={"/"}/>)
+        if(this.state.redirect){ 
+           return (<Redirect to={"/"}/>)
         }
-            
         return(
             <div className = "container">
                 {/* Id: {this.state.donor.id}

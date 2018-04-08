@@ -12,7 +12,8 @@ class SignUp extends Component {
         email:"",
         phonenumber:"",
         password:"" ,
-      
+        isDonor:false,
+        LoggedIn:false
       }
   }
     updateUserSignup = event => {
@@ -33,25 +34,27 @@ class SignUp extends Component {
         password:this.state.password
       }
       axios.post("/api/auth/signup", newUser).then(result=>{
-          //reroutes to login page
-          const loginUserInfo={
-            email:this.state.email,
-            password:this.state.password
-          }
-          axios.post('/api/auth/login', loginUserInfo)
-          .then((res) => {
-            var token=res.data.token;
-            localStorage.setItem('jwtToken',token);
-            var decoded = jwt_decode(token);
+        //reroutes to login page
+        const loginUserInfo={
+          email:this.state.email,
+          password:this.state.password
+        }
+        axios.post('/api/auth/login', loginUserInfo)
+        .then((res) => {
+          var token=res.data.token;
+          localStorage.setItem('jwtToken',token);
+          var decoded = jwt_decode(token);
+          var donor=decoded.isDonor;
+          var id=decoded.id;  
+        
+          localStorage.setItem("isDonor",decoded.isDonor);
+          localStorage.setItem("userId",decoded.id);
+            console.log("token is sent to front end when user is found"+ res.data.token);
+            console.log("isDonor"+ res.data.isDonor);
             
-            localStorage.setItem("isDonor",decoded.isDonor);
-            localStorage.setItem("userId",decoded.id);
-              console.log("token is sent to front end when user is found"+ res.data.token);
-              console.log("isDonor"+ res.data.isDonor);
-              
-          }).catch(error=>{
-                  this.setState({ message: 'Login failed. Username or password not match' });
-          }) 
+        }).catch(error=>{
+                this.setState({ message: 'Login failed. Username or password not match' });
+        }) 
       });
     }
     render() {

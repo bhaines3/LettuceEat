@@ -1,9 +1,8 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const passport = require('passport');
 const apiRoutes = require("./routes/apiRoutes");
-const authRoutes=require("./passport/authRoutes/authRoutes");
+const authRoutes=require("./routes/authRoutes/authRoutes");
 
 // const routes = require("./routes/articles");
 const PORT = process.env.PORT || 3001;
@@ -21,17 +20,6 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
-// pass the passport middleware
-app.use(passport.initialize());
-
-//project init:jasons group
-//requirements for express app to use passport
-// app.use(require('cookie-parser')());
-// app.use(require('express-session')({ secret: 'LettuceEat', resave: true, saveUninitialized: true }));
-//app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(flash());
 
 //Routes
 app.use("/api/",apiRoutes);
