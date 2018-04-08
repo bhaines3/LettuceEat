@@ -23,6 +23,7 @@ const App = () => (
           <Route exact path="/donor" component={DonorProfile} />
           <Route exact path="/NonProfitProfile" component={NonProfitProfile} /> 
 
+
           {/* for testing the routing */}
           {/*<Route exact path="/signup" component={SignUp} />*/}
           {/* <Route exact path="/users" component={Users} /> */}

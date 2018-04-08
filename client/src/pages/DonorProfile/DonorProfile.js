@@ -44,6 +44,7 @@ class DonorProfile extends Component {
         }
         return(
             <div className = "container">
+                {}
                 {/* Id: {this.state.donor.id}
                 <br />
                 Name: {this.state.donor.name}

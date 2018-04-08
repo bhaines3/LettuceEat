@@ -101,7 +101,6 @@ class ModalSignUp extends Component {
                 </div>
                 <div className="form-group">
                   <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor
-                  <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="false" onChange={this.updateUserSignup} /> NonProfit<br/>
                 </div>
                 {/* <!-- Here we have our final submit button --> */}
                 <button onClick={this.createUser} type="submit" className="btn btn-primary"><i className="fa fa-plus-circle"></i> Create Account</button>
