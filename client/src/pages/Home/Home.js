@@ -17,9 +17,14 @@ class Home extends Component {
       postDesc: "", 
       postPickUpDate: "", 
       postEndDate: "",
-      postPickUpWindow: ""
+      postPickUpWindow: "",
     };
-  
+    componentWillMount(){
+        const donorLoggedIn=localStorage.getItem("isDonor");
+        if(donorLoggedIn){
+            this.setState({donor:true});
+        }
+    }
     componentDidMount() {
         API.findAllFoodPosts()
             .then(res => {this.setState({ foodposts: res.data })})
@@ -49,6 +54,7 @@ class Home extends Component {
         localStorage.removeItem("userId");
         localStorage.removeItem("donorId");
         localStorage.removeItem("nonProfitId");
+        return (<Redirect to={"/"}/>)
     }
     //May add addNewPost to ModalAddPost instead
     // addNewPost(event) {
@@ -82,6 +88,7 @@ class Home extends Component {
     //     .catch(err => console.log(err));
     // };
 
+
 render() {
     return (
         <div className="container text-black">
@@ -111,25 +118,20 @@ render() {
                         </div>
                         <div className ="col-md-4">
                         <strong>End Date:</strong> {FoodPost.enddate}
+
                         </div>
-                        <div className ="col-md-4">
-                        <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
-                        </div>
-                        </div>
-                        </Card>
-                    </div>
-                ))
-                ) : (
-                    <h3>No food posts! Check back later. </h3>
-            )}
-            <ModalAddPost donorId={this.state.userDonorId} />
-            <div className="container" id="logoutbtn">
-                <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
+                    ))
+                    ) : (
+                        <h3>No food posts! Check back later. </h3>
+                )}
+                <ModalAddPost donorId={this.state.userDonorId} />
+                <div className="container" id="logoutbtn">
+                    <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
+                </div>
+        
             </div>
-    
-        </div>
-    );
-  }
+        );
+    }
 
 }  
 
