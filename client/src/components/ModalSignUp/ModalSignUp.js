@@ -7,20 +7,6 @@ import {Redirect} from "react-router-dom";
 import "./ModalSignUp.css";
 class ModalSignUp extends Component {
   state = {
-<<<<<<< HEAD
-    // name:"",
-    // email:"",
-    // isDonor:false,
-    // phonenumber:"",
-    // password:"",
-
-
-    userName:"",
-    userEmail:"",
-    userIsDonor:false,
-    userPhoneNumber:"",
-    userPassword:"" 
-=======
     name:"",
     email:"",
     isDonor:false,
@@ -28,7 +14,6 @@ class ModalSignUp extends Component {
     password:"",
     donorLocal:false,
     loggedIn: false
->>>>>>> 4469e8c221780de20e43758b5cc6434718221a34
   }
   updateUserSignup = event => {
     // Destructure the name and value properties off of event.target
@@ -49,11 +34,6 @@ class ModalSignUp extends Component {
     }
     axios.post("/api/auth/signup", newUser).then(result=>{
         //reroutes to login page
-<<<<<<< HEAD
-        // this.props.history.push("/login")
-        // window.location="/"+this.state.userNname;
-        window.location.reload();
-=======
         const loginUserInfo={
           email:this.state.email,
           password:this.state.password
@@ -68,7 +48,6 @@ class ModalSignUp extends Component {
         }).catch(error=>{
           return "Error creating User"+error;
         }) 
->>>>>>> 4469e8c221780de20e43758b5cc6434718221a34
     });
   }
   donorNonDonorSave(token){
@@ -116,35 +95,6 @@ class ModalSignUp extends Component {
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-<<<<<<< HEAD
-
-            <div className="modal-body">
-                <form id="sign-upform">
-                  <div className="form-group">
-                    <label>Organization name:</label>
-                    <input name= "name" onChange={this.updateUserSignup} value={this.state.userName} type="text" className="form-control" placeholder="Jane Doe"/>
-                  </div>
-                  <div className="form-group">
-                    <label>Phone:</label>
-                    <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
-                  </div>
-                  {/* <!-- Here we capture the Start Year Parameter--> */}
-                  <div className="form-group">
-                    <label>Email:</label>
-                    <input type="text" className="form-control"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
-                  </div>
-                  {/* <!-- Here we capture the End Year Parameter --> */}
-                  <div className="form-group">
-                    <label>Password(6+):</label>
-                    <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
-                  </div>
-                  <div className="form-group">
-                    <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
-                  </div>
-                  {/* <!-- Here we have our final submit button --> */}
-                  <button onClick={this.createUser} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Create Account</button>
-                </form>
-=======
             <div className="modal-body">
                 <div className="form-group">
                   <label>Organization name:</label>
@@ -169,7 +119,6 @@ class ModalSignUp extends Component {
                 </div>
                 {/* <!-- Here we have our final submit button --> */}
                 <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
->>>>>>> 4469e8c221780de20e43758b5cc6434718221a34
             </div>
             
             <div className="modal-footer">
