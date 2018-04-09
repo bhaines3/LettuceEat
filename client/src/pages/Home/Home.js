@@ -83,7 +83,7 @@ render() {
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
-            {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
+            {this.state.userDonorId.length ? (
                 <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
             ) : ("")}
             {this.state.foodposts && this.state.foodposts.length  ? (

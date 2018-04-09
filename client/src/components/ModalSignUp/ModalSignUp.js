@@ -5,11 +5,18 @@ import { Link } from 'react-router-dom';
 import "./ModalSignUp.css";
 class ModalSignUp extends Component {
   state = {
-    name:"",
-    email:"",
-    isDonor:false,
-    phonenumber:"",
-    password:"" 
+    // name:"",
+    // email:"",
+    // isDonor:false,
+    // phonenumber:"",
+    // password:"",
+
+
+    userName:"",
+    userEmail:"",
+    userIsDonor:false,
+    userPhoneNumber:"",
+    userPassword:"" 
   }
   updateUserSignup = event => {
     // Destructure the name and value properties off of event.target
@@ -22,7 +29,7 @@ class ModalSignUp extends Component {
   createUser=(event)=>{
     event.preventDefault();
     const newUser={
-      name:this.state.name,
+      name:this.state.userName,
       email:this.state.email,
       // isDonor:this.state.isDonor,
       phonenumber:this.state.phonenumber,
@@ -31,7 +38,8 @@ class ModalSignUp extends Component {
     axios.post("/api/auth/signup", newUser).then(result=>{
         //reroutes to login page
         // this.props.history.push("/login")
-        window.location="/"+this.state.name;
+        // window.location="/"+this.state.userNname;
+        window.location.reload();
     });
     //passport will take care of this 
     // //CHECK if user exists before creating a new account
@@ -54,62 +62,47 @@ class ModalSignUp extends Component {
       <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel111" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
+
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel111">Create an Account</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <div className="modal-body">
-              {/* <div className="form-group">
-                    <label htmlFor="new-name">Name:</label>
-                    <input className="col-sm-12 mb-2" type="text" id="new_name" name="new-name" maxLength={30} />
-                    <br />
-                    <label htmlFor="new-email">Email:</label>
-                    <input className="col-sm-12 mb-2" type="email" id="new_email" name="new-email" maxLength={500} />
-                    <br />
-                    <label htmlFor="new-password">Password:</label>
-                    <input className="col-sm-12 mb-2" type="password" id="new_password" name="new-password" maxLength={15} />
-                    <br />
-                    <label htmlFor="new-phone-number">Phone:</label>
-                    <input className="col-sm-12 mb-2" type="number" id="new_phone_number" name="new-new_phone_number" maxLength={13} />
-                    <br />
 
-                    <div id="alert-message" />
-                     <button className="btn btn-outline-primary" type="submit" id="create-new-user">Create <i className="fas fa-plus-circle"></i></button> 
-                    <br />
-                    <span id="cannot-create-error" />
-                </div> */}
+            <div className="modal-body">
                 <form id="sign-upform">
-          <div className="form-group">
-            <label>Organization name:</label>
-            <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control" placeholder="Jane Doe"/>
-          </div>
-          <div className="form-group">
-            <label>Phone:</label>
-            <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
-          </div>
-          {/* <!-- Here we capture the Start Year Parameter--> */}
-          <div className="form-group">
-            <label>Email:</label>
-            <input type="text" className="form-control"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
-          </div>
-          {/* <!-- Here we capture the End Year Parameter --> */}
-          <div className="form-group">
-            <label>Password(6+):</label>
-            <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
-          </div>
-          {/* <div className="form-group">
-            <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
-          </div> */}
-          {/* <!-- Here we have our final submit button --> */}
-          <button onClick={this.createUser} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Create Account</button>
-        </form>
+                  <div className="form-group">
+                    <label>Organization name:</label>
+                    <input name= "name" onChange={this.updateUserSignup} value={this.state.userName} type="text" className="form-control" placeholder="Jane Doe"/>
+                  </div>
+                  <div className="form-group">
+                    <label>Phone:</label>
+                    <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+                  </div>
+                  {/* <!-- Here we capture the Start Year Parameter--> */}
+                  <div className="form-group">
+                    <label>Email:</label>
+                    <input type="text" className="form-control"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
+                  </div>
+                  {/* <!-- Here we capture the End Year Parameter --> */}
+                  <div className="form-group">
+                    <label>Password(6+):</label>
+                    <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
+                  </div>
+                  <div className="form-group">
+                    <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
+                  </div>
+                  {/* <!-- Here we have our final submit button --> */}
+                  <button onClick={this.createUser} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Create Account</button>
+                </form>
             </div>
+            
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
               {/* <button type="button" className="btn btn-primary">Save changes</button> */}
             </div>
+
           </div>
         </div>
       </div>
