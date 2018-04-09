@@ -1,10 +1,13 @@
 import React,{ Component }  from "react";
 import axios from 'axios';
-import API from "../utils/API";
-import { Link } from 'react-router-dom';
+//import API from "../utils/API";
+//import { Link } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
+import {Redirect} from "react-router-dom";
 import "./ModalSignUp.css";
 class ModalSignUp extends Component {
   state = {
+<<<<<<< HEAD
     // name:"",
     // email:"",
     // isDonor:false,
@@ -17,6 +20,15 @@ class ModalSignUp extends Component {
     userIsDonor:false,
     userPhoneNumber:"",
     userPassword:"" 
+=======
+    name:"",
+    email:"",
+    isDonor:false,
+    phonenumber:"",
+    password:"",
+    donorLocal:false,
+    loggedIn: false
+>>>>>>> 4469e8c221780de20e43758b5cc6434718221a34
   }
   updateUserSignup = event => {
     // Destructure the name and value properties off of event.target
@@ -31,33 +43,68 @@ class ModalSignUp extends Component {
     const newUser={
       name:this.state.userName,
       email:this.state.email,
-      // isDonor:this.state.isDonor,
+      isDonor:this.state.isDonor,
       phonenumber:this.state.phonenumber,
       password:this.state.password
     }
     axios.post("/api/auth/signup", newUser).then(result=>{
         //reroutes to login page
+<<<<<<< HEAD
         // this.props.history.push("/login")
         // window.location="/"+this.state.userNname;
         window.location.reload();
+=======
+        const loginUserInfo={
+          email:this.state.email,
+          password:this.state.password
+        }
+        axios.post('/api/auth/login', loginUserInfo)
+        .then((res) => {
+          //setting the jwt token when loginin result comes in"
+          const token=res.data.token;
+          //saving data to local storage
+          this.donorNonDonorSave(token)
+            
+        }).catch(error=>{
+          return "Error creating User"+error;
+        }) 
+>>>>>>> 4469e8c221780de20e43758b5cc6434718221a34
     });
-    //passport will take care of this 
-    // //CHECK if user exists before creating a new account
-    // API.findOneuser(newUser).then((res)=>{
-    //   //if user exists send a msg for them to create choose other emaill
-    //   //console.log("data:" + JSON.stringify(res.data));
-    //   if(!res.data){
-    //     API.createUser(newUser).then(()=>{
-    //       console.log("User has been created.");
-    //     })
-    //   }
-    //   //if user doesnt not exist make new account
-    //   else{
-    //     console.log("An account for this email account already exists.")
-    //   }
-    // })
+  }
+  donorNonDonorSave(token){
+    localStorage.setItem('jwtToken',token);
+      console.log(token);
+      const decoded = jwt_decode(token);
+      console.log(JSON.stringify(decoded))
+      const donor=decoded.isDonor;
+      const id=decoded.id;
+      localStorage.setItem("userId",id);
+      localStorage.setItem("isDonor",donor); 
+      if(donor===null||donor===false){
+        const nonProfitId=decoded.NonProfit.id;
+        localStorage.setItem("nonProfitId",nonProfitId);
+      }
+      else{
+        const donorId=decoded.Donor.id;
+        localStorage.setItem("donorId",donorId);
+      }     
+      //setting state to redirect user
+      this.setState({
+        isDonor:donor,
+        loggedIn:token
+      })
   }
   render() {
+    if(this.state.loggedIn){
+      if (this.state.donorLocal){
+        console.log("there is donor and token")
+        return <Redirect to={"/donor"}/>
+      }
+      else{
+        console.log("token but no donor")
+        return <Redirect to={"/NonProfitProfile"}/>
+      }
+    }
     return (
       <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel111" aria-hidden="true">
         <div className="modal-dialog" role="document">
@@ -69,6 +116,7 @@ class ModalSignUp extends Component {
                 <span aria-hidden="true">×</span>
               </button>
             </div>
+<<<<<<< HEAD
 
             <div className="modal-body">
                 <form id="sign-upform">
@@ -96,6 +144,32 @@ class ModalSignUp extends Component {
                   {/* <!-- Here we have our final submit button --> */}
                   <button onClick={this.createUser} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Create Account</button>
                 </form>
+=======
+            <div className="modal-body">
+                <div className="form-group">
+                  <label>Organization name:</label>
+                  <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control col-sm-12 mb-2" placeholder="Jane Doe"/>
+                </div>
+                <div className="form-group">
+                  <label>Phone:</label>
+                  <input type="text" className="form-control col-sm-12 mb-2"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+                </div>
+                {/* <!-- Here we capture the Start Year Parameter--> */}
+                <div className="form-group">
+                  <label>Email:</label>
+                  <input type="text" className="form-control col-sm-12 mb-2"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
+                </div>
+                {/* <!-- Here we capture the End Year Parameter --> */}
+                <div className="form-group">
+                  <label>Password(6+):</label>
+                  <input type="password" className="form-control col-sm-12 mb-2"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
+                </div>
+                <div className="form-group">
+                  <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor
+                </div>
+                {/* <!-- Here we have our final submit button --> */}
+                <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
+>>>>>>> 4469e8c221780de20e43758b5cc6434718221a34
             </div>
             
             <div className="modal-footer">

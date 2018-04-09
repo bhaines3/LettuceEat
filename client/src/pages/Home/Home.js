@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import "./Home.css";
 import API from "../../components/utils/API";
-import Nav from '../../components/Nav';
+//import Nav from '../../components/Nav';
 import Card from '../../components/Card';
 import ModalAddPost from '../../components/ModalAddPost';
-
+import {Redirect} from "react-router-dom";
 
 class Home extends Component {
     state = {
@@ -43,6 +43,13 @@ class Home extends Component {
         })
         .catch(err => console.log(err));
     }
+    Logout=event=>{
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem("isDonor");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("donorId");
+        localStorage.removeItem("nonProfitId");
+    }
     //May add addNewPost to ModalAddPost instead
     // addNewPost(event) {
     //     event.preventDefault();
@@ -77,14 +84,18 @@ class Home extends Component {
 
 render() {
     return (
-
         <div className="container text-black">
             <div className="jumbotron my-3 text-center rounded">
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
+<<<<<<< HEAD
             {this.state.userDonorId.length ? (
                 <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+=======
+            {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+>>>>>>> 4469e8c221780de20e43758b5cc6434718221a34
             ) : ("")}
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
@@ -117,6 +128,10 @@ render() {
                     <h3>No food posts! Check back later. </h3>
             )}
             <ModalAddPost donorId={this.state.userDonorId} />
+            <div className="container" id="logoutbtn">
+                <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
+            </div>
+    
         </div>
     );
   }
