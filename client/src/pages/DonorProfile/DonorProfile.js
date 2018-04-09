@@ -1,31 +1,56 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
 import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 import ModalAddPost from '../../components/ModalAddPost';
+import {Redirect} from "react-router-dom";
 
 class DonorProfile extends Component {
     state = {
-        donor: {},
-        foodposts: []
+        donor: [],
+        foodposts: [],
+        redirect:false
     };
+    componentWillMount(){
+        const donor=localStorage.getItem("isDonor");
+        console.log("donor b4 donrspg " +donor);
+        if(donor==="false" || donor==null ){
+            console.log("donor in check donrspg " +donor)
+           return this.setState({
+                redirect:true
+            })
+        }
+    }
     componentDidMount() {
-        API.findOneDonor({id: this.props.match.params.id})
-            .then(res => {this.setState({ donor: res.data })})
-            .catch(err => console.log(err));
-
-        API.filterFoodPostsByDonor(this.props.match.params.id)
-            .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
-            .catch(err => console.log(err));
+        const donorId=localStorage.getItem("donorId");
+        API.findOneDonor({id: donorId})
+        .then(res => {this.setState({ donor: res.data })})
+        .catch(err => console.log(err));
+       
+        API.filterFoodPostsByDonor(donorId)
+        .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
+        .catch(err => console.log(err));
+    }
+    Logout=event=>{
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem("isDonor");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("donorId");
+        localStorage.removeItem("nonProfitId");
+        return (<Redirect to={"/"}/>)
     }
     render() {
+        console.log("redirect "+this.state.redirect)
+        if(this.state.redirect){ 
+           return (<Redirect to={"/"}/>)
+        }
         return(
             <div className = "container">
-                {/* Id: {this.state.donor.id}
+                 {/* Id: {this.state.donor.id}
                 <br />
-                Name: {this.state.donor.name}
+               Name: {this.state.donor.name}
                 <br />
                 Email: {this.state.donor.email}
                 <br />
@@ -48,6 +73,9 @@ class DonorProfile extends Component {
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
                  />
+                 <div className="container" id="logoutbtn">
+                    <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
+                </div>
                  <a href="." className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                  {this.state.foodposts && this.state.foodposts.length  ? (
                     this.state.foodposts.map(FoodPost => (

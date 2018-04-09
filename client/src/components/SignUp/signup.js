@@ -1,16 +1,21 @@
 import React,{ Component }  from "react";
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
 //import API from "../utils/API";
 import { Link } from 'react-router-dom';
+import {Redirect} from "react-router-dom";
 class SignUp extends Component {
-    state = {
-      name:"",
-      email:"",
-      isDonor:false,
-      phonenumber:"",
-      password:"" 
-    }
-
+  constructor(props){
+    super(props);
+      this.state = {
+        name:"",
+        email:"",
+        phonenumber:"",
+        password:"" ,
+        isDonor:false,
+        LoggedIn:false
+      }
+  }
     updateUserSignup = event => {
       // Destructure the name and value properties off of event.target
       // Update the appropriate state
@@ -29,26 +34,43 @@ class SignUp extends Component {
         password:this.state.password
       }
       axios.post("/api/auth/signup", newUser).then(result=>{
-          //reroutes to login page
-          this.props.history.push("/login")
+        //reroutes to login page
+        const loginUserInfo={
+          email:this.state.email,
+          password:this.state.password
+        }
+        axios.post('/api/auth/login', loginUserInfo)
+        .then((res) => {
+          var token=res.data.token;
+          localStorage.setItem('jwtToken',token);
+          var decoded = jwt_decode(token);
+          var donor=decoded.isDonor;
+          var id=decoded.id;  
+        
+          localStorage.setItem("isDonor",decoded.isDonor);
+          localStorage.setItem("userId",decoded.id);
+            console.log("token is sent to front end when user is found"+ res.data.token);
+            console.log("isDonor"+ res.data.isDonor);
+            
+        }).catch(error=>{
+                this.setState({ message: 'Login failed. Username or password not match' });
+        }) 
       });
-      //passport will take care of this 
-      // //CHECK if user exists before creating a new account
-      // API.findOneuser(newUser).then((res)=>{
-      //   //if user exists send a msg for them to create choose other emaill
-      //   //console.log("data:" + JSON.stringify(res.data));
-      //   if(!res.data){
-      //     API.createUser(newUser).then(()=>{
-      //       console.log("User has been created.");
-      //     })
-      //   }
-      //   //if user doesnt not exist make new account
-      //   else{
-      //     console.log("An account for this email account already exists.")
-      //   }
-      // })
     }
     render() {
+      //redirecting user if 
+      const tokenPresent=localStorage.getItem("jwtToken");
+      const isDonor=localStorage.getItem("isDonor");
+      if(tokenPresent){
+        if (isDonor){
+          return (<Redirect to={"/donor"}/>)
+        }
+        else{
+          return (<Redirect to={"/"}/>)
+        }
+        
+      }
+      
       return (
         <div className="container" id="signUpcontainer">
         {this.state.name}<br/>

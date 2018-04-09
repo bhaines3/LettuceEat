@@ -1,7 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 import ModalSignUp from '../ModalSignUp';
 import ModalLogin from '../ModalLogin';
+import './Nav.css';
 
 // const Nav = () => {
 //   return (
@@ -45,27 +46,24 @@ import ModalLogin from '../ModalLogin';
 const Nav = () => {
     return (   
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div className="navbar-brand" href="/"><i class="fas fa-leaf"></i> LettuceEat</div>
+            <img id="logo" className="navbar-brand img-responsive" src="logo.png" alt="logo" /> 
+            <div className="navbar-brand" href="/">LettuceEat</div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style={{}}>
                 <span className="navbar-toggler-icon" />
             </button>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-<<<<<<< HEAD
-                    <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-=======
                     <a className="nav-link" href={"/"}>Home <span className="sr-only">(current)</span></a>
->>>>>>> dfc859299be0498976f8f419fc9afecb0b83e247
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/aboutus">About Us</a>
+                    <a className="nav-link" href="">About Us</a>
                 </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
-                <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
 
-                <a href="#" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
 
                     {/*<button className="btn btn-link text-white btn-sm my-2 my-sm-0" type="submit">Sign-In</button>*/}
 
