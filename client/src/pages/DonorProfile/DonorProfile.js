@@ -31,6 +31,7 @@ class DonorProfile extends Component {
         API.filterFoodPostsByDonor(donorId)
         .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
         .catch(err => console.log(err));
+       
     }
     Logout=event=>{
         localStorage.removeItem('jwtToken');
@@ -38,7 +39,8 @@ class DonorProfile extends Component {
         localStorage.removeItem("userId");
         localStorage.removeItem("donorId");
         localStorage.removeItem("nonProfitId");
-        return (<Redirect to={"/"}/>)
+        window.location.reload();
+       
     }
     render() {
         console.log("redirect "+this.state.redirect)
