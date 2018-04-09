@@ -9,7 +9,7 @@ const Card = (props) => {
         <div className="card-body">
           <h5 className="card-title">Food Post by <a href={"/donor/"+props.donorId}>{props.donor}</a></h5>
           <p className="card-text">{props.children}</p>
-          {/* <a href="#" className="btn btn-primary">View Organizations Interested</a> */}
+          <a href="#" className="btn btn-primary">View Organizations Interested</a>
         </div>
     </div>
 

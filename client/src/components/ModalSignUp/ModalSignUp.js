@@ -26,7 +26,7 @@ class ModalSignUp extends Component {
   createUser=(event)=>{
     event.preventDefault();
     const newUser={
-      name:this.state.name,
+      name:this.state.userName,
       email:this.state.email,
       isDonor:this.state.isDonor,
       phonenumber:this.state.phonenumber,
@@ -88,6 +88,7 @@ class ModalSignUp extends Component {
       <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel111" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
+
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel111">Create an Account</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -119,10 +120,12 @@ class ModalSignUp extends Component {
                 {/* <!-- Here we have our final submit button --> */}
                 <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
             </div>
+            
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
               {/* <button type="button" className="btn btn-primary">Save changes</button> */}
             </div>
+
           </div>
         </div>
       </div>

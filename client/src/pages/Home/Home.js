@@ -96,9 +96,9 @@ render() {
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
-            {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
+            {/* {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
-            ) : ("")}
+            ) : ("")} */}
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
                     <div>
@@ -113,13 +113,15 @@ render() {
                         <br />
                         <br />
                         <div className ="row">
-                        <div className ="col-md-4">
-                        <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
+                            <div className ="col-md-4">
+                                <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
+                            </div>
+                            <div className ="col-md-4">
+                                <strong>End Date:</strong> {FoodPost.enddate}
+                            </div>
                         </div>
-                        <div className ="col-md-4">
-                        <strong>End Date:</strong> {FoodPost.enddate}
-
-                        </div>
+                        </Card>
+                    </div>
                     ))
                     ) : (
                         <h3>No food posts! Check back later. </h3>
