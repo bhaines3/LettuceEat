@@ -9,7 +9,7 @@ class ModalSignUp extends Component {
   state = {
     name:"",
     email:"",
-    isDonor:false,
+    isDonor: "",
     phonenumber:"",
     password:"",
     donorLocal:false,
@@ -26,7 +26,7 @@ class ModalSignUp extends Component {
   createUser=(event)=>{
     event.preventDefault();
     const newUser={
-      name:this.state.userName,
+      name:this.state.name,
       email:this.state.email,
       isDonor:this.state.isDonor,
       phonenumber:this.state.phonenumber,
@@ -98,7 +98,7 @@ class ModalSignUp extends Component {
             <div className="modal-body">
                 <div className="form-group">
                   <label>Organization name:</label>
-                  <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control col-sm-12 mb-2" placeholder="Jane Doe"/>
+                  <input name= "name" onChange={this.updateUserSignup} value={this.state.name} type="text" className="form-control col-sm-12 mb-2" placeholder="Jane Doe"/>
                 </div>
                 <div className="form-group">
                   <label>Phone:</label>
@@ -115,7 +115,7 @@ class ModalSignUp extends Component {
                   <input type="password" className="form-control col-sm-12 mb-2"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
                 </div>
                 <div className="form-group">
-                  <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor
+                  <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value={this.state.isDonor} onChange={this.updateUserSignup} /> Donor
                 </div>
                 {/* <!-- Here we have our final submit button --> */}
                 <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
