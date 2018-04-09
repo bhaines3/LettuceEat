@@ -87,43 +87,41 @@ class Home extends Component {
     //     })
     //     .catch(err => console.log(err));
     // };
-    render() {
-        return (
-            <div className="container text-black">
-                <div className="jumbotron my-3 text-center rounded">
-                    <h1 className="display-3">LettuceEAT</h1>
-                    <h3 className="lead">Reducing food waste one bite at a time!</h3>
-                </div>
-                {/* {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
-                    <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
-                ) : ("")} */}
-                {this.state.foodposts && this.state.foodposts.length  ? (
-                    this.state.foodposts.map(FoodPost => (
-                        <div>
-                            <br />
-                            <Card
-                            key={FoodPost.id}
-                            title={FoodPost.title}
-                            donor={FoodPost && FoodPost.Donor.name}
-                            donorId={FoodPost.DonorId}
-                            >
-                            <strong>Description:</strong> {FoodPost.desc}
-                            <br />
-                            <br />
-                            <div className ="row">
+
+
+render() {
+    return (
+        <div className="container text-black">
+            <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded">
+                <h1 className="display-3">LettuceEAT</h1>
+                <h3 className="lead">Reducing food waste one bite at a time!</h3>
+            </div>
+            {/* {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+            ) : ("")} */}
+            {this.state.foodposts && this.state.foodposts.length  ? (
+                this.state.foodposts.map(FoodPost => (
+                    <div>
+                        <br />
+                        <Card
+                        key={FoodPost.id}
+                        title={FoodPost.title}
+                        donor={FoodPost && FoodPost.Donor.name}
+                        donorId={FoodPost.DonorId}
+                        >
+                        <strong>Description:</strong> {FoodPost.desc}
+                        <br />
+                        <br />
+                        <div className ="row">
                             <div className ="col-md-4">
-                            <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
+                                <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
                             </div>
                             <div className ="col-md-4">
-                            <strong>End Date:</strong> {FoodPost.enddate}
+                                <strong>End Date:</strong> {FoodPost.enddate}
                             </div>
-                            <div className ="col-md-4">
-                            <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
-                            </div>
-                            </div>
-                            {}
-                            </Card>
                         </div>
+                        </Card>
+                    </div>
                     ))
                     ) : (
                         <h3>No food posts! Check back later. </h3>
