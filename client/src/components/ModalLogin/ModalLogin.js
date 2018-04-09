@@ -103,7 +103,7 @@ class ModalLogin extends Component {
                     <input className="col-sm-12 mb-2" type="password" id="password-login" name="passwordLogin" value={this.state.password} onChange={this.updateUserlogin} maxLength={10} />
                     <br />
                     <div id="alert-message" />
-                     <button onClick={this.Login} className="btn btn-primary" type="submit" id="login-user">Login <i className="fa fa-check-circle" /></button> 
+                     <button onClick={this.Login} className="btn btn-primary" type="submit" id="login-user" data-dismiss="modal">Login <i className="fa fa-check-circle" /></button> 
                     <br />
                     <span id="cannot-create-error" />
                 </div>
