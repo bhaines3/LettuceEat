@@ -9,6 +9,7 @@ class ModalSignUp extends Component {
   state = {
     name:"",
     email:"",
+    location:"",
     isDonor:false,
     phonenumber:"",
     password:"",
@@ -27,10 +28,11 @@ class ModalSignUp extends Component {
     event.preventDefault();
     const newUser={
       name:this.state.name,
-      email:this.state.email,
-      isDonor:this.state.isDonor,
-      phonenumber:this.state.phonenumber,
-      password:this.state.password
+        email:this.state.email,
+        location:this.state.location,
+        isDonor:this.state.isDonor,
+        phonenumber:this.state.phonenumber,
+        password:this.state.password
     }
     console.log("creating" +newUser.name);
     axios.post("/api/auth/signup", newUser).then(result=>{
@@ -99,13 +101,27 @@ class ModalSignUp extends Component {
                 <div className="form-group">
                   <label>Organization name:</label>
                   <input name= "name" onChange={this.updateUserSignup} value={this.state.name} type="text" className="form-control col-sm-12 mb-2" placeholder="Jane Doe"/>
+                </div>
+                <div className="form-group">
                   <label>Phone:</label>
                   <input type="text" className="form-control col-sm-12 mb-2"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+                </div>
+                <div className="form-group">
                   <label>Email:</label>
                   <input type="text" className="form-control col-sm-12 mb-2"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
+                </div>
+                <div className="form-group">
+                  <label>Address:</label><br/>
+                  <input type="text" className="form-control"  name= "location" value={this.state.location} onChange={this.updateUserSignup} placeholder="4897 N Warner Terrace, Tucson Arizona"/>
+                  </div>
+                <div className="form-group">
                   <label>Password(6+):</label>
                   <input type="password" className="form-control col-sm-12 mb-2"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
+                </div>
+                <div className="form-group">
                   <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="true" onChange={this.updateUserSignup} /><div>Donor</div>
+                </div>
+                <div className="form-group"> 
                   <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
                 </div>
               </div>

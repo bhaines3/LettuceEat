@@ -21,6 +21,7 @@ module.exports = {
     createNonProfit: (req, res)=> {
       var newNonProfitInfo={
           UserId: req.UserId,
+          location:req.location,
           email:req.email,
           name:req.name,
           phonenumber:req.phonenumber

@@ -56,7 +56,7 @@ module.exports = {
               var donorInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
-                location:newUserInfo.location,
+                location: newUserInfo.location,
                 name: newUserInfo.name,
                 phonenumber: newUserInfo.phonenumber,
               }
