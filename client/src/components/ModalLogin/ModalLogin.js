@@ -78,11 +78,11 @@ class ModalLogin extends Component {
     if(this.state.loggedIn){
       if (this.state.isDonor){
         console.log("there is donor and token")
-        return <Redirect to={"/donor"}/>
+        return <Redirect to={"/DonorProfile/"+localStorage.getItem("donorId")}/>
       }
       else{
         console.log("token but no donor")
-        return <Redirect to={"/NonProfitProfile"}/>
+        return <Redirect to={"/NonProfitProfile/"+localStorage.getItem("nonProfitId")}/>
       }
     }
     return (
