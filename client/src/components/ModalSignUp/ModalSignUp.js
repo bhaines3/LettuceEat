@@ -12,6 +12,8 @@ class ModalSignUp extends Component {
     name:"",
     email:"",
     location:"",
+    // lat:"",
+    // lng:"",
     latlng:[],
     isDonor:false,
     phonenumber:"",
@@ -30,19 +32,25 @@ class ModalSignUp extends Component {
   onChange = (location) => this.setState({ location })
   createUser=(event)=>{
     event.preventDefault();
-    const latlngArray=[];
+    //const latlngArray=[];
     geocodeByAddress(this.state.location)
     .then(results => getLatLng(results[0]))
     .then(latLng => {
       console.log('Success', latLng);
       //latlngArray.push(latLng);
       //console.log(latlngArray);  
-      this.setState({latlong:latLng});
-      console.log(JSON.stringify(this.state.latlng));
+      // this.setState({
+      //   lat:latLng.lat,
+      //   lng:latLng.lng
+      // });
+      console.log(this.state.lat);
+      console.log(this.state.lng);
       const newUser={
         name:this.state.name,
           email:this.state.email,
           location:this.state.location,
+          // lat:this.state.lat,
+          // lng:this.state.lng,
           isDonor:this.state.isDonor,
           phonenumber:this.state.phonenumber,
           password:this.state.password
@@ -87,10 +95,7 @@ class ModalSignUp extends Component {
       donorLocal:donor,
       loggedIn:token
     })
-  }
- 
-    
-  
+  } 
   render() {
     const inputProps = {
       value: this.state.location,

@@ -5,8 +5,8 @@ const DonorsCard = (props) => {
   return (
     <div className="card text-black border-primary my-3">
         <div className="card-header bg-primary"><h5>{props.donorName}</h5></div>
-        <div className="card-body">
-            <h5 className="card-title">Address: {props.donorAddress}</h5>
+        <div  className="card-body">
+            <h5 onClick={()=>props.cardClicked(props.donorAddress)} className="card-title">Address: {props.donorAddress}</h5>
             <div className ="row">
                 <div className ="col-md-6">
                 <strong>phone:</strong> {props.donorPhone}
