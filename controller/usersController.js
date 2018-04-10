@@ -23,6 +23,9 @@ module.exports = {
       const newUserInfo={
         email:req.body.email,
         name:req.body.name,
+        location:req.body.location,
+        // lat:req.body.lat,
+        // lng:req.body.lng,
         isDonor:req.body.isDonor,
         phonenumber:req.body.phonenumber,
         password:req.body.password
@@ -44,6 +47,9 @@ module.exports = {
               var nonProfitInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
+                location:newUserInfo.location,
+                // lat:req.body.lat,
+                // lng:req.body.lng,
                 name: newUserInfo.name,
                 phonenumber: newUserInfo.phonenumber,
               }
@@ -54,6 +60,9 @@ module.exports = {
               var donorInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
+                location: newUserInfo.location,
+                // lat:req.body.lat,
+                // lng:req.body.lng,
                 name: newUserInfo.name,
                 phonenumber: newUserInfo.phonenumber,
               }
