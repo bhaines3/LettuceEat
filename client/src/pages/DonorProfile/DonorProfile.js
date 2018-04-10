@@ -25,9 +25,10 @@ class DonorProfile extends Component {
     }
     componentDidMount() {
         const donorId=localStorage.getItem("donorId");
-        if(!donorId){
-            //
-            //this.getDonorInfo();
+        const idAllDonorsPg=this.props.match.params.id;
+        if(donorId!=idAllDonorsPg){
+            
+            this.getDonorInfo(idAllDonorsPg);
         }
         else{
             this.getDonorInfo(donorId);
@@ -40,7 +41,7 @@ class DonorProfile extends Component {
         localStorage.removeItem("userId");
         localStorage.removeItem("donorId");
         localStorage.removeItem("nonProfitId");
-        window.location.reload();
+        
        
     }
     getDonorInfo=(donorId)=>{

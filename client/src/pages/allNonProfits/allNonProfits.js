@@ -42,7 +42,7 @@ class AllNonProfits extends Component {
                         {this.state.nonProfits && this.state.nonProfits.length  ? (this.state.nonProfits.map(nonProfit => (
                         <NonProfitsCard
                         key={nonProfit.id}
-                        nonProfitNameId={nonProfit.id}
+                        nonProfitId={nonProfit.id}
                         nonProfitName={nonProfit.name}
                         nonProfitAddress={nonProfit.location}
                         nonProfitPhone={nonProfit.phonenumber}

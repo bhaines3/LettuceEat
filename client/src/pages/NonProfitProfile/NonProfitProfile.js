@@ -23,10 +23,18 @@ class NonProfitProfile extends Component {
     }
     componentDidMount() {
         const nonProfitId=localStorage.getItem("nonProfitId");
+        const idAllNonProfitsPg=this.props.match.params.id;
         console.log(nonProfitId);
-        API.findOneNonProfit(nonProfitId)
+        if(nonProfitId!=idAllNonProfitsPg){
+            API.findOneNonProfit(idAllNonProfitsPg)
             .then(res => {this.setState({ nonprofit: res.data })})
             .catch(err => console.log(err));
+        }
+        else{
+            API.findOneNonProfit(nonProfitId)
+            .then(res => {this.setState({ nonprofit: res.data })})
+            .catch(err => console.log(err));
+        }
     }
     render() {
         // console.log("redirect " +this.state.redirect)
