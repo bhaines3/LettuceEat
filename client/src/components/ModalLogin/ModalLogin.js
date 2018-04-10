@@ -11,14 +11,14 @@ class ModalLogin extends Component {
       isLoggedIn:false
   }
   componentWillMount(){
-    if(localStorage.getItem("jwtToken")){
-      if(localStorage.getItem("isDonor")){
-        return <Redirect to={"/donor"}/>
-      }
-      else{
-        return <Redirect to={"/NonProfitProfile"}/>
-      }
-    }
+  //   if(localStorage.getItem("jwtToken")){
+  //     if(localStorage.getItem("isDonor")){
+  //       return <Redirect to={"/donor"}/>
+  //     }
+  //     else{
+  //       return <Redirect to={"/NonProfitProfile"}/>
+  //     }
+  //   }
   }
   updateUserlogin = event => {
     // Destructure the name and value properties off of event.target
