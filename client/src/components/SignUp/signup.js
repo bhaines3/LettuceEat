@@ -83,33 +83,29 @@ class SignUp extends Component {
         {this.state.phonenumber}<br/>
         {this.state.isDonor}
   
-        <form id="sign-upform">
-          <div className="form-group">
-            <label>volunteer name or business name:</label>
-            <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control" placeholder="Jane Doe"/>
-          </div>
-          <div className="form-group">
-            <label>Phone:</label>
-            <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
-          </div>
-          <div className="form-group">
-            <label>Address:</label>
-            <input type="text" className="form-control"  name= "location" value={this.state.location} onChange={this.updateUserSignup} placeholder="4897 N Warner Terrace, Tucson Arizona"/>
-          </div>
-          <div className="form-group">
-            <label>Email:</label>
-            <input type="text" className="form-control"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
-          </div>
-          <div className="form-group">
-            <label>Password (6+):</label>
-            <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
-          </div>
-          <div className="form-group">
-            <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
-          </div>
+        <div className="form-group" id="sign-upform">
+          <label>volunteer name or business name:</label>
+          <input name= "name" onChange={this.updateUserSignup} value={this.state.articleSearch} type="text" className="form-control" placeholder="Jane Doe"/>
+        
+        
+          <label>Phone:</label>
+          <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+        
+
+          <label>Address:</label>
+          <input type="text" className="form-control"  name= "location" value={this.state.location} onChange={this.updateUserSignup} placeholder="4897 N Warner Terrace, Tucson Arizona"/>
+        
+          <label>Email:</label>
+          <input type="text" className="form-control"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
+        
+          <label>Password (6+):</label>
+          <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
+        
+          <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
+          
           <button onClick={this.createUser} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Create Account</button>
-        </form>
         </div>
+      </div>
       );
     }
   }
