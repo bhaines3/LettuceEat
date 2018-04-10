@@ -13,14 +13,15 @@ class DonorProfile extends Component {
         redirect:false
     };
     componentWillMount(){
-        const donor=localStorage.getItem("isDonor");
-        console.log("donor b4 donrspg " +donor);
-        if(donor==="false" || donor==null ){
-            console.log("donor in check donrspg " +donor)
-           return this.setState({
-                redirect:true
-            })
-        }
+        //ANYBODY CAN SEE DONOR PROFILE NO NEED FOR BELOW
+        // const donor=localStorage.getItem("isDonor");
+        // console.log("donor b4 donrspg " +donor);
+        // if(donor==="false" || donor==null ){
+        //     console.log("donor in check donrspg " +donor)
+        //    return this.setState({
+        //         redirect:true
+        //     })
+        // }
     }
     componentDidMount() {
         const donorId=localStorage.getItem("donorId");

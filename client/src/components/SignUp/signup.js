@@ -10,6 +10,7 @@ class SignUp extends Component {
       this.state = {
         name:"",
         email:"",
+        location:"4771 N Warner Terrace, Tucson AZ 85349",
         phonenumber:"",
         password:"" ,
         isDonor:false,
@@ -26,13 +27,16 @@ class SignUp extends Component {
     };
     createUser=(event)=>{
       event.preventDefault();
+      console.log(this.state.location);
       const newUser={
         name:this.state.name,
         email:this.state.email,
+        location:this.state.location,
         isDonor:this.state.isDonor,
         phonenumber:this.state.phonenumber,
         password:this.state.password
       }
+      console.log("sending location"+newUser.location);
       axios.post("/api/auth/signup", newUser).then(result=>{
         //reroutes to login page
         const loginUserInfo={
@@ -88,20 +92,21 @@ class SignUp extends Component {
             <label>Phone:</label>
             <input type="text" className="form-control"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
           </div>
-          {/* <!-- Here we capture the Start Year Parameter--> */}
           <div className="form-group">
-            <label>email:</label>
+            <label>Address:</label>
+            <input type="text" className="form-control"  name= "location" value={this.state.location} onChange={this.updateUserSignup} placeholder="4897 N Warner Terrace, Tucson Arizona"/>
+          </div>
+          <div className="form-group">
+            <label>Email:</label>
             <input type="text" className="form-control"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
           </div>
-          {/* <!-- Here we capture the End Year Parameter --> */}
           <div className="form-group">
-            <label>password(6+):</label>
+            <label>Password (6+):</label>
             <input type="password" className="form-control"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
           </div>
           <div className="form-group">
             <input type="radio" name="isDonor" value="true" onChange={this.updateUserSignup} /> Donor<br/>
           </div>
-          {/* <!-- Here we have our final submit button --> */}
           <button onClick={this.createUser} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Create Account</button>
         </form>
         </div>

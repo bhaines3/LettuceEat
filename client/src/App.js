@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import DonorProfile from "./pages/DonorProfile";
 import NonProfitProfile from "./pages/NonProfitProfile";
 import Nav from "./components/Nav";
+import AllDonors from "./pages/allDonors/allDonors"
 //import Card from "./components/Card";
 
 // import Users from "./components/Login/users";
@@ -15,11 +16,10 @@ const App = () => (
   <Router>
 
       <div>
-        <Nav />
+        <Nav/>
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/login" component={Login} /> */}
-          {/* <Route exact path="/signup" component={SignUp} />  */}
+          <Route exact path="/allDonors" component={AllDonors} />
           <Route exact path="/donor" component={DonorProfile} />
           <Route exact path="/NonProfitProfile" component={NonProfitProfile} /> 
 

@@ -23,6 +23,7 @@ module.exports = {
       const newUserInfo={
         email:req.body.email,
         name:req.body.name,
+        location:req.body.location,
         isDonor:req.body.isDonor,
         phonenumber:req.body.phonenumber,
         password:req.body.password
@@ -44,6 +45,7 @@ module.exports = {
               var nonProfitInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
+                location:newUserInfo.location,
                 name: newUserInfo.name,
                 phonenumber: newUserInfo.phonenumber,
               }
@@ -54,6 +56,7 @@ module.exports = {
               var donorInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
+                location:newUserInfo.location,
                 name: newUserInfo.name,
                 phonenumber: newUserInfo.phonenumber,
               }
