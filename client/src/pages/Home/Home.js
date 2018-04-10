@@ -19,12 +19,6 @@ class Home extends Component {
       postEndDate: "",
       postPickUpWindow: "",
     };
-    componentWillMount(){
-        const donorLoggedIn=localStorage.getItem("isDonor");
-        if(donorLoggedIn){
-            this.setState({donor:true});
-        }
-    }
     componentDidMount() {
         API.findAllFoodPosts()
             .then(res => {this.setState({ foodposts: res.data })})
@@ -37,7 +31,6 @@ class Home extends Component {
             .catch(err => console.log(err));
         this.checkIfDonorExists();
     }
-
     checkIfDonorExists() {
         API.findOneDonor({name: this.props.match.params.name})
         .then(res => {
@@ -87,8 +80,6 @@ class Home extends Component {
     //     })
     //     .catch(err => console.log(err));
     // };
-
-
 render() {
     return (
         <div className="container text-black">
