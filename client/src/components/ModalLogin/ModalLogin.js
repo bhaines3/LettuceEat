@@ -35,13 +35,14 @@ class ModalLogin extends Component {
         password:this.state.passwordLogin
     }
     //making sure info is goin gto request
-    // console.log("im making the post request for login");
-    // console.log("im sending email "+ userInfo.email);
-    // console.log("im sending password " + userInfo.password);
+    console.log("im making the post request for login");
+    console.log("im sending email "+ userInfo.email);
+    console.log("im sending password " + userInfo.password);
     axios.post('/api/auth/login', userInfo)
     .then((res) => {
       //setting the jwt token when loginin result comes in"
       const token=res.data.token;
+      console.log(token)
       //saving data to local storage
       this.donorNonDonorSave(token)
       

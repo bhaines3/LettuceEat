@@ -4,7 +4,7 @@ import API from "../../components/utils/API";
 //import Nav from '../../components/Nav';
 import Card from '../../components/Card';
 import ModalAddPost from '../../components/ModalAddPost';
-import {Redirect} from "react-router-dom";
+//import {Redirect} from "react-router-dom";
 
 class Home extends Component {
     state = {
@@ -54,7 +54,7 @@ class Home extends Component {
         localStorage.removeItem("userId");
         localStorage.removeItem("donorId");
         localStorage.removeItem("nonProfitId");
-        return (<Redirect to={"/"}/>)
+        window.location.reload();
     }
 
     // getArticles = () => {
