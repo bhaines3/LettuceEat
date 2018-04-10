@@ -5,11 +5,14 @@ import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import {Redirect} from "react-router-dom";
 import "./ModalSignUp.css";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+
 class ModalSignUp extends Component {
   state = {
     name:"",
     email:"",
     location:"",
+    latlng:[],
     isDonor:false,
     phonenumber:"",
     password:"",
@@ -24,33 +27,43 @@ class ModalSignUp extends Component {
       [name]: value
     });
   };
+  onChange = (location) => this.setState({ location })
   createUser=(event)=>{
     event.preventDefault();
-    const newUser={
-      name:this.state.name,
-        email:this.state.email,
-        location:this.state.location,
-        isDonor:this.state.isDonor,
-        phonenumber:this.state.phonenumber,
-        password:this.state.password
-    }
-    console.log("creating" +newUser.name);
-    axios.post("/api/auth/signup", newUser).then(result=>{
-      //reroutes to login page
-      const loginUserInfo={
-        email:this.state.email,
-        password:this.state.password
+    const latlngArray=[];
+    geocodeByAddress(this.state.location)
+    .then(results => getLatLng(results[0]))
+    .then(latLng => {
+      console.log('Success', latLng);
+      //latlngArray.push(latLng);
+      //console.log(latlngArray);  
+      this.setState({latlong:latLng});
+      console.log(JSON.stringify(this.state.latlng));
+      const newUser={
+        name:this.state.name,
+          email:this.state.email,
+          location:this.state.location,
+          isDonor:this.state.isDonor,
+          phonenumber:this.state.phonenumber,
+          password:this.state.password
       }
-      axios.post('/api/auth/login', loginUserInfo)
-      .then((res) => {
-        //setting the jwt token when loginin result comes in"
-        const token=res.data.token;
-        //saving data to local storage
-        this.donorNonDonorSave(token)  
-      }).catch(error=>{
-        return "Error creating User"+error;
-      }) 
-    });
+      console.log("creating" +newUser.name);
+      axios.post("/api/auth/signup", newUser).then(result=>{
+        //reroutes to login page
+        const loginUserInfo={
+          email:this.state.email,
+          password:this.state.password
+        }
+        axios.post('/api/auth/login', loginUserInfo)
+        .then((res) => {
+          //setting the jwt token when loginin result comes in"
+          const token=res.data.token;
+          //saving data to local storage
+          this.donorNonDonorSave(token)
+        }).catch(error => console.error('Error', error))
+        
+      });
+  })
   }
   donorNonDonorSave(token){
     localStorage.setItem('jwtToken',token);
@@ -75,7 +88,15 @@ class ModalSignUp extends Component {
       loggedIn:token
     })
   }
+ 
+    
+  
   render() {
+    const inputProps = {
+      value: this.state.location,
+      onChange: this.onChange,
+    }
+    
     if(this.state.loggedIn){
       if (this.state.donorLocal){
         console.log("there is donor and token")
@@ -111,12 +132,13 @@ class ModalSignUp extends Component {
                   <input type="text" className="form-control col-sm-12 mb-2"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
                 </div>
                 <div className="form-group">
-                  <label>Address:</label><br/>
-                  <input type="text" className="form-control"  name= "location" value={this.state.location} onChange={this.updateUserSignup} placeholder="4897 N Warner Terrace, Tucson Arizona"/>
-                  </div>
-                <div className="form-group">
                   <label>Password(6+):</label>
                   <input type="password" className="form-control col-sm-12 mb-2"  name= "password" value={this.state.password} onChange={this.updateUserSignup} placeholder="******"/>
+                </div>
+                <div className="form-group">
+                  <label>Address:</label><br/>
+                  <PlacesAutocomplete inputProps={inputProps}/>
+                  {/* <input type="text" className="form-control"  name= "location" value={this.state.location} onChange={this.updateUserSignup} placeholder="4897 N Warner Terrace, Tucson Arizona"/> */}
                 </div>
                 <div className="form-group">
                   <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="true" onChange={this.updateUserSignup} /><div>Donor</div>
