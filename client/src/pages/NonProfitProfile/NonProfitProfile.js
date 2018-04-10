@@ -12,14 +12,14 @@ class NonProfitProfile extends Component {
         redirect:false,
     };
     componentWillMount(){
-        const donor=localStorage.getItem("isDonor");
-        console.log("donor non profit "+donor)
-        if(donor==="true" || donor===null ){
-            console.log("donor after check " + donor);
-           return this.setState({
-                redirect:true
-            })
-        }
+        // const donor=localStorage.getItem("isDonor");
+        // console.log("donor non profit "+donor)
+        // if(donor==="true" || donor===null ){
+        //     console.log("donor after check " + donor);
+        //    return this.setState({
+        //         redirect:true
+        //     })
+        // }
     }
     componentDidMount() {
         const nonProfitId=localStorage.getItem("nonProfitId");
@@ -29,10 +29,10 @@ class NonProfitProfile extends Component {
             .catch(err => console.log(err));
     }
     render() {
-        console.log("redirect " +this.state.redirect)
-        if(this.state.redirect){ 
-            return (<Redirect to={"/"}/>)
-         }
+        // console.log("redirect " +this.state.redirect)
+        // if(this.state.redirect){ 
+        //     return (<Redirect to={"/"}/>)
+        //  }
         return(
             <div className ="container text-center">
                 {/* Id: {this.state.nonprofit.id}

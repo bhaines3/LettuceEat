@@ -22,8 +22,8 @@ const App = () => (
           <Route exact path="/" component={Home} />
           <Route exact path="/allDonors" component={AllDonors} />
           <Route exact path="/allNonProfits" component={AllNonProfits} />
-          <Route exact path="/donor" component={DonorProfile} />
-          <Route exact path="/NonProfitProfile" component={NonProfitProfile} /> 
+          <Route exact path="/DonorProfile/:id" component={DonorProfile} />
+          <Route exact path="/NonProfitProfile/:id" component={NonProfitProfile} /> 
 
 
           {/* for testing the routing */}

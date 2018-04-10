@@ -11,15 +11,10 @@ import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 class AllDonors extends Component {
     state = {
         donors:[],
-        Address:{
-            position:{
-                lat:32.2226,
-                long:110.9747
-            }
-        }
-           
+        Address:{}
     };
     componentDidMount() {
+        
         API.findAllDonors()
             .then(res => {this.setState({ donors: res.data })})
             .catch(err => console.log(err));
@@ -53,6 +48,7 @@ class AllDonors extends Component {
                         {this.state.donors && this.state.donors.length  ? (this.state.donors.map(donor => (
                         <DonorsCard
                         key={donor.id}
+                        donorId={donor.id}
                         donorName={donor.name}
                         donorAddress={donor.location}
                         donorPhone={donor.phonenumber}
@@ -79,7 +75,7 @@ class AllDonors extends Component {
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
-                        position={this.state.address}
+                        latLng={this.state.address}
                         />
                        
                     </div>
