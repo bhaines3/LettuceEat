@@ -49,21 +49,6 @@ class Home extends Component {
         localStorage.removeItem("nonProfitId");
         window.location.reload();
     }
-    //May add addNewPost to ModalAddPost instead
-    // addNewPost(event) {
-    //     event.preventDefault();
-    //     const newPost={
-    //         DonorId: this.state.donorId,
-    //         title: this.state.postTitle,
-    //         desc: this.state.postDesc,
-    //         pickupdate: this.state.postPickUpDate,
-    //         enddate: this.state.postEndDate,
-    //         pickupwindow: this.state.postPickUpWindow
-    //     }
-    //     API.createNewPost(newPost)
-    //         .then(res => {console.log("new post added")})
-    //         .catch(err => console.log(err))
-    // }
 
     // getArticles = () => {
     //   API.getSavedArticles()
