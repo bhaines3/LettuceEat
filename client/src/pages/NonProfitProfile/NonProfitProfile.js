@@ -87,21 +87,11 @@ class NonProfitProfile extends Component {
                         key={FoodPost.id}
                         foodId={FoodPost.id}
                         title={FoodPost.title}
-                        // donor={() => this.findDonorName(FoodPost.DonorId)}
+                        desc={FoodPost.desc}
+                        pickupdate={FoodPost.pickupdate}
+                        pickupwindow={FoodPost.pickupwindow}
                         donorId={FoodPost.DonorId}
-                        >
-                        <strong>Description:</strong> {FoodPost.desc}
-                        <br />
-                        <br />
-                        <div className ="row">
-                            <div className ="col-md-4">
-                                <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
-                            </div>
-                            <div className ="col-md-4">
-                            <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
-                            </div>
-                        </div>
-                        </Card>
+                        />
                     ))
                  ) : (
                      <h3>No Food Posts</h3>

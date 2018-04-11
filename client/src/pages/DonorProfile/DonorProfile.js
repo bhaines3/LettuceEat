@@ -89,30 +89,22 @@ class DonorProfile extends Component {
                  <div className="container" id="logoutbtn">
                     <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
                 </div>
-                 <a href="." className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+                {(localStorage.getItem("isDonor") === "true") ? (
+                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+            ) : ("")}
                  {this.state.foodposts && this.state.foodposts.length  ? (
                     this.state.foodposts.map(FoodPost => (
                         <div>
                             <br />
                             <Card
-                            key={FoodPost.id}
-                            foodId={FoodPost.id}
-                            title={FoodPost.title}
-                            // donor={this.state.donor.name}
-                            donorId={this.state.donor.id}
-                            >
-                            <strong>Description:</strong> {FoodPost.desc}
-                            <br />
-                            <br />
-                            <div className ="row">
-                            <div className ="col-md-4">
-                            <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
-                            </div>
-                            <div className ="col-md-4">
-                            <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
-                            </div>
-                            </div>
-                            </Card>
+                        key={FoodPost.id}
+                        foodId={FoodPost.id}
+                        title={FoodPost.title}
+                        desc={FoodPost.desc}
+                        pickupdate={FoodPost.pickupdate}
+                        pickupwindow={FoodPost.pickupwindow}
+                        donorId={FoodPost.DonorId}
+                        />
                             <br />
                         </div>
                     ))

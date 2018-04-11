@@ -73,7 +73,6 @@ render() {
                         desc={FoodPost.desc}
                         pickupdate={FoodPost.pickupdate}
                         pickupwindow={FoodPost.pickupwindow}
-                        donor={FoodPost && FoodPost.Donor.name}
                         donorId={FoodPost.DonorId}
                         />
                         <br />
