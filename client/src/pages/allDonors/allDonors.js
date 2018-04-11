@@ -64,27 +64,14 @@ class AllDonors extends Component {
                         </div>
                     </div>
                     <div id="map" className="col-lg-4">
-                        {/* <div style={{width:"100%",height:"100%",background:"red"}}>
-                            <Map marker={this.state.Address}/>
-                        </div>  */}
-                        {/*} <SimpleMap marker={this.state.address} /> */}
-                        {/* <StyledMapWithAnInfoBox /> */}
-
-                        {/* <MyMapComponent
+                        <MyMapComponent
                         isMarkerShown
                         googleMapURL="https://maps.googleapis.com/maps/api/jskey=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4?v=3.exp&libraries=geometry,drawing,places"
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         latLng={this.state.address}
-                        /> */}
-
-                        {/* <div>
-                            <h1> Google Maps API + React </h1> // title */}
-                            {/* MOST IMPORTANT: Here we are passing the Google Maps props down to the MapContainer component as 'google'. */}
-                            {/* <MapContainer google={this.props.google} />
-                        </div> */}
-                       
+                        />
                     </div>
                 </div>
             </div>

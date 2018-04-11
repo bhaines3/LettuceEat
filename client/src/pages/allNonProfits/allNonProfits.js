@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import API from "../../components/utils/API";
 import NonProfitsCard from '../../components/nonProfitsCard/nonProfitsCard';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-// import MyMapComponent from "../../components/Map/map";
+import MyMapComponent from "../../components/Map/map";
 
 class AllNonProfits extends Component {
     state = {
@@ -54,13 +54,13 @@ class AllNonProfits extends Component {
                         )}
                     </div>
                     <div className="col-lg-4">
-                        {/* <MyMapComponent
+                        <MyMapComponent
                             isMarkerShown
                             googleMapURL="https://maps.googleapis.com/maps/api/jskey=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4?v=3.exp&libraries=geometry,drawing,places"
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div style={{ height: `400px` }} />}
                             mapElement={<div style={{ height: `100%` }} />}
-                            latLng={this.state.address}/> */}
+                            latLng={this.state.address}/>
                     </div>
                 </div>
                 <div className="container" id="logoutbtn">

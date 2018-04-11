@@ -42,14 +42,14 @@ module.exports = {
           console.log("User has been created.");
           db.User.create(newUserInfo)
           .then((dbUser)=> {
-            if (!newUserInfo.isDonor)
+            if (newUserInfo.isDonor=="false")
             {
+              console.log("im a nonprofit");
+              console.log(newUserInfo.isDonor);
               var nonProfitInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
                 location:newUserInfo.location,
-                // lat:req.body.lat,
-                // lng:req.body.lng,
                 name: newUserInfo.name,
                 phonenumber: newUserInfo.phonenumber,
               }
@@ -57,6 +57,8 @@ module.exports = {
             }
             else if (newUserInfo.isDonor)
             {
+              console.log("im a donor");
+              console.log(newUserInfo.isDonor)
               var donorInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
