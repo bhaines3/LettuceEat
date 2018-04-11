@@ -4,6 +4,15 @@ import ModalSignUp from '../ModalSignUp';
 import ModalLogin from '../ModalLogin';
 import './Nav.css';
 
+const Logout=event=>{
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem("isDonor");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("donorId");
+        localStorage.removeItem("nonProfitId");
+        // window.location.reload();
+    }
+
 // const Nav = () => {
 //   return (
 //     <nav className="navbar navbar-inverse">
@@ -43,6 +52,7 @@ import './Nav.css';
 //     </nav>
 //   );
 // };
+
 const Nav = () => {
     return (   
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -66,6 +76,10 @@ const Nav = () => {
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
 
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
+
+               
+                    <button href={"/"} onClick={Logout} id="logoutbtn" type="submit" className="btn btn-primary nav-link">Logout</button>
+            
 
                     {/*<button className="btn btn-link text-white btn-sm my-2 my-sm-0" type="submit">Sign-In</button>*/}
 
