@@ -76,17 +76,11 @@ const Nav = () => {
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
 
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
-
-               
-                    <button href={"/"} onClick={Logout} id="logoutbtn" type="submit" className="btn btn-primary nav-link">Logout</button>
-            
-
-                    {/*<button className="btn btn-link text-white btn-sm my-2 my-sm-0" type="submit">Sign-In</button>*/}
-
-                    <ModalLogin/>
-                    <ModalSignUp/>
-                    
+                <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
+    
                 </form>
+                <ModalLogin/>
+                    <ModalSignUp/>
             </div>
         </nav>
     );
