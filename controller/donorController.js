@@ -11,7 +11,9 @@ module.exports = {
     findDonor: (req, res) =>{
       // console.log("yo"+JSON.stringify(req.query));   
       db.Donor.findOne({
-        where:req.query,
+        where:{
+          id: req.params.id
+        },
         include: [db.FoodPost]
       }).then((donor)=>{
         res.json(donor);

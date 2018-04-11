@@ -15,8 +15,8 @@ export default {
   findAllDonors: () => {
     return axios.get("/api/donors/");
   },
-  findOneDonor: (info) => {
-    return axios.get("/api/donor/",{params:info});
+  findOneDonor: (id) => {
+    return axios.get("/api/donor/"+id);
   },
   //=========NONPROFIT==============
   findAllNonProfits: () => {
@@ -30,12 +30,27 @@ export default {
   findAllFoodPosts: () => {
     return axios.get("/api/foodposts/");
   },
+  findOneFoodPost: (id) => {
+    return axios.get("/api/foodpost/" +id);
+  },
   filterFoodPostsByDonor: (id) => {
     return axios.get("/api/foodposts/donor/"+id);
   },
   createNewPost: (foodInfo) => {
     return axios.post("/api/foodposts/",foodInfo);
   },
+  deletePost: function(id) {
+    return axios.delete("/api/foodpost/" + id);
+  },
+  //=========ADD/DELETE INTEREST==============
+  addPostInterest: (info) => {
+    return axios.post("/api/interests/",info)
+  },
+  removePostInterest: (info) => {
+    return axios.post("/api/interests/remove",info)
+  }
+
+
     // // Gets all articles
     // getSavedarticles: function() {
     //   return axios.get("/api/savedarticles");

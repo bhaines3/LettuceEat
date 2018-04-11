@@ -44,6 +44,18 @@ module.exports = {
         console.log("Erro: "+err);
       });
     },
+    deleteFoodPost: (req, res) => {
+      db.FoodPost.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbFoodPost) {
+        res.json(dbFoodPost);
+      }).catch(function(e) {
+        console.warn(e);
+      });
+    }
     //IMPLEMENT THIS LATER
     // updateFoodPost: (req, res) => {
     //   db.FoodPost.findOne({

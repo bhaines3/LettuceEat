@@ -83,11 +83,11 @@ class ModalSignUp extends Component {
     localStorage.setItem("userId",id);
     localStorage.setItem("isDonor",donor);
     if(donor===null||donor===false){
-      const nonProfitId=decoded.NonProfit.id;
+      let nonProfitId=decoded.NonProfit.id;
       localStorage.setItem("nonProfitId",nonProfitId);
     }
     else{
-      const donorId=decoded.Donor.id;
+      let donorId=decoded.Donor.id;
       localStorage.setItem("donorId",donorId);
     }     
     //setting state to redirect user

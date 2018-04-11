@@ -46,7 +46,7 @@ class DonorProfile extends Component {
        
     }
     getDonorInfo=(donorId)=>{
-        API.findOneDonor({id: donorId})
+        API.findOneDonor(donorId)
         .then(res => {this.setState({ donor: res.data })})
         .catch(err => console.log(err));
        
@@ -96,8 +96,9 @@ class DonorProfile extends Component {
                             <br />
                             <Card
                             key={FoodPost.id}
+                            foodId={FoodPost.id}
                             title={FoodPost.title}
-                            donor={this.state.donor.name}
+                            // donor={this.state.donor.name}
                             donorId={this.state.donor.id}
                             >
                             <strong>Description:</strong> {FoodPost.desc}
