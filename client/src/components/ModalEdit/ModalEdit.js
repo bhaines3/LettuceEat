@@ -1,5 +1,4 @@
 import React from "react";
-import "./ModalEdit.css";
 const ModalEdit = (props)=> {
     return (
       
