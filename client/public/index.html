@@ -9,7 +9,9 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-
+    <!--google maps link for displaying map-->
+	  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4&ibraries=visualization&libraries=places"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
     <!--favicon-->
@@ -38,11 +40,13 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     
+
+    
+    <!-- giving me an error wasnt loading  -->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.0.0/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-8HThyWW6Qwbs+q89KCgd0BjyEBdNWp0WwPtSOC1R44+d7CjcyLy0Z/2FPvlCahFG" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -56,7 +60,7 @@
     <title>LettuceEat</title>
 </head>
 
-<body>
+<body id="bootstrap-overrides">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>

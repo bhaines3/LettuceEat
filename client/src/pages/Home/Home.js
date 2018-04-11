@@ -19,12 +19,6 @@ class Home extends Component {
       postEndDate: "",
       postPickUpWindow: "",
     };
-    componentWillMount(){
-        const donorLoggedIn=localStorage.getItem("isDonor");
-        if(donorLoggedIn){
-            this.setState({donor:true});
-        }
-    }
     componentDidMount() {
         API.findAllFoodPosts()
             .then(res => {this.setState({ foodposts: res.data })})
@@ -37,7 +31,6 @@ class Home extends Component {
             .catch(err => console.log(err));
         this.checkIfDonorExists();
     }
-
     checkIfDonorExists() {
         API.findOneDonor({name: this.props.match.params.name})
         .then(res => {
@@ -56,21 +49,6 @@ class Home extends Component {
         localStorage.removeItem("nonProfitId");
         window.location.reload();
     }
-    //May add addNewPost to ModalAddPost instead
-    // addNewPost(event) {
-    //     event.preventDefault();
-    //     const newPost={
-    //         DonorId: this.state.donorId,
-    //         title: this.state.postTitle,
-    //         desc: this.state.postDesc,
-    //         pickupdate: this.state.postPickUpDate,
-    //         enddate: this.state.postEndDate,
-    //         pickupwindow: this.state.postPickUpWindow
-    //     }
-    //     API.createNewPost(newPost)
-    //         .then(res => {console.log("new post added")})
-    //         .catch(err => console.log(err))
-    // }
 
     // getArticles = () => {
     //   API.getSavedArticles()
@@ -87,8 +65,6 @@ class Home extends Component {
     //     })
     //     .catch(err => console.log(err));
     // };
-
-
 render() {
     return (
         <div className="container text-black">

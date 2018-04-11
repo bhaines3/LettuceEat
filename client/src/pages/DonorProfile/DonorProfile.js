@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
+import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 import ModalAddPost from '../../components/ModalAddPost';
 import {Redirect} from "react-router-dom";
@@ -13,25 +14,27 @@ class DonorProfile extends Component {
         redirect:false
     };
     componentWillMount(){
-        const donor=localStorage.getItem("isDonor");
-        console.log("donor b4 donrspg " +donor);
-        if(donor==="false" || donor==null ){
-            console.log("donor in check donrspg " +donor)
-           return this.setState({
-                redirect:true
-            })
-        }
+        //ANYBODY CAN SEE DONOR PROFILE NO NEED FOR BELOW
+        // const donor=localStorage.getItem("isDonor");
+        // console.log("donor b4 donrspg " +donor);
+        // if(donor==="false" || donor==null ){
+        //     console.log("donor in check donrspg " +donor)
+        //    return this.setState({
+        //         redirect:true
+        //     })
+        // }
     }
     componentDidMount() {
         const donorId=localStorage.getItem("donorId");
-        API.findOneDonor({id: donorId})
-        .then(res => {this.setState({ donor: res.data })})
-        .catch(err => console.log(err));
-       
-        API.filterFoodPostsByDonor(donorId)
-        .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
-        .catch(err => console.log(err));
-       
+        const idAllDonorsPg=this.props.match.params.id;
+        if(donorId!=idAllDonorsPg){
+            
+            this.getDonorInfo(idAllDonorsPg);
+        }
+        else{
+            this.getDonorInfo(donorId);
+        }
+        
     }
     Logout=event=>{
         localStorage.removeItem('jwtToken');
@@ -39,14 +42,23 @@ class DonorProfile extends Component {
         localStorage.removeItem("userId");
         localStorage.removeItem("donorId");
         localStorage.removeItem("nonProfitId");
-        window.location.reload();
+        
        
     }
+    getDonorInfo=(donorId)=>{
+        API.findOneDonor({id: donorId})
+        .then(res => {this.setState({ donor: res.data })})
+        .catch(err => console.log(err));
+       
+        API.filterFoodPostsByDonor(donorId)
+        .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
+        .catch(err => console.log(err));
+    }
     render() {
-        console.log("redirect "+this.state.redirect)
-        if(this.state.redirect){ 
-           return (<Redirect to={"/"}/>)
-        }
+        // console.log("redirect "+this.state.redirect)
+        // if(this.state.redirect){ 
+        //    return (<Redirect to={"/"}/>)
+        // }
         return(
             <div className = "container">
                  {/* Id: {this.state.donor.id}

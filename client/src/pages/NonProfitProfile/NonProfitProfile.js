@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
+import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 import {Redirect} from "react-router-dom";
 
@@ -12,27 +13,35 @@ class NonProfitProfile extends Component {
         redirect:false,
     };
     componentWillMount(){
-        const donor=localStorage.getItem("isDonor");
-        console.log("donor non profit "+donor)
-        if(donor==="true" || donor===null ){
-            console.log("donor after check " + donor);
-           return this.setState({
-                redirect:true
-            })
-        }
+        // const donor=localStorage.getItem("isDonor");
+        // console.log("donor non profit "+donor)
+        // if(donor==="true" || donor===null ){
+        //     console.log("donor after check " + donor);
+        //    return this.setState({
+        //         redirect:true
+        //     })
+        // }
     }
     componentDidMount() {
         const nonProfitId=localStorage.getItem("nonProfitId");
+        const idAllNonProfitsPg=this.props.match.params.id;
         console.log(nonProfitId);
-        API.findOneNonProfit(nonProfitId)
+        if(nonProfitId!=idAllNonProfitsPg){
+            API.findOneNonProfit(idAllNonProfitsPg)
             .then(res => {this.setState({ nonprofit: res.data })})
             .catch(err => console.log(err));
+        }
+        else{
+            API.findOneNonProfit(nonProfitId)
+            .then(res => {this.setState({ nonprofit: res.data })})
+            .catch(err => console.log(err));
+        }
     }
     render() {
-        console.log("redirect " +this.state.redirect)
-        if(this.state.redirect){ 
-            return (<Redirect to={"/"}/>)
-         }
+        // console.log("redirect " +this.state.redirect)
+        // if(this.state.redirect){ 
+        //     return (<Redirect to={"/"}/>)
+        //  }
         return(
             <div className ="container text-center">
                 {/* Id: {this.state.nonprofit.id}

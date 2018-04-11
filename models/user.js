@@ -15,6 +15,14 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1]
 			}
 		},
+		location: {
+			type: DataTypes.STRING,
+			allowNull: true
+			// ,
+			// validate: {
+			// 	len: [1]
+			// }
+		},
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -24,15 +32,15 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		phonenumber: {
 			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1]
-			}
+			// allowNull: false,
+			// validate: {
+			// 	len: [1]
+			// }
 		},
 		isDonor: {
 			type: DataTypes.BOOLEAN,
 			allowNull: false,
-			defaultValue: true
+			defaultValue: false
 		}
 	});
 	User.associate = function(models) {

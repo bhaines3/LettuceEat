@@ -35,6 +35,7 @@ module.exports = {
     createDonor: (req, res)=> {
       var newDonorInfo={
           UserId: req.UserId,
+          location:req.location,
           email:req.email,
           name:req.name,
           phonenumber:req.phonenumber
