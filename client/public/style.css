@@ -2,10 +2,12 @@
 html {
     position: relative;
     min-height: 100%;
+    font-family: 'Jua', sans-serif;
   }
 
   body {
     margin-bottom: 60px; /* Margin bottom by footer height */
+    font-family: 'Jua', sans-serif;
   }
 
   .footer {
@@ -23,4 +25,17 @@ html {
 
   .statImg img {
       margin: auto;
+  }
+
+  .card-header {
+      color: whitesmoke;
+  }
+
+  h3, h1, .navbar, .btn, .modal-title  {
+    font-family: 'Jua', sans-serif;
+  }
+
+  .jumbotron {
+      color: whitesmoke;
+      text-shadow: -1.25px 0 whitesmoke, 0 1.25px whitesmoke, 1.25px 0 whitesmoke, 0 -1.25px whitesmoke;
   }
