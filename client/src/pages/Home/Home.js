@@ -70,21 +70,12 @@ render() {
                         key={FoodPost.id}
                         foodId={FoodPost.id}
                         title={FoodPost.title}
+                        desc={FoodPost.desc}
+                        pickupdate={FoodPost.pickupdate}
+                        pickupwindow={FoodPost.pickupwindow}
                         donor={FoodPost && FoodPost.Donor.name}
                         donorId={FoodPost.DonorId}
-                        >
-                        <strong>Description:</strong> {FoodPost.desc}
-                        <br />
-                        <br />
-                        <div className ="row">
-                            <div className ="col-md-4">
-                                <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
-                            </div>
-                            <div className ="col-md-4">
-                            <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
-                            </div>
-                        </div>
-                        </Card>
+                        />
                         <br />
                     </div>
                     ))

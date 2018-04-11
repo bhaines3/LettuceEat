@@ -39,6 +39,9 @@ export default {
   createNewPost: (foodInfo) => {
     return axios.post("/api/foodposts/",foodInfo);
   },
+  editPost: (id, foodInfo) => {
+    return axios.put("/api/foodpost/"+id, foodInfo);
+  },
   deletePost: function(id) {
     return axios.delete("/api/foodpost/" + id);
   },
