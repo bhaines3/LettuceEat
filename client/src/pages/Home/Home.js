@@ -66,7 +66,6 @@ render() {
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
                     <div>
-                        <br />
                         <Card
                         key={FoodPost.id}
                         foodId={FoodPost.id}
@@ -86,6 +85,7 @@ render() {
                             </div>
                         </div>
                         </Card>
+                        <br />
                     </div>
                     ))
                     ) : (

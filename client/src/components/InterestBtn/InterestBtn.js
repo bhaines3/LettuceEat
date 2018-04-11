@@ -18,7 +18,6 @@ class InterestBtn extends Component {
     API.findOneNonProfit(this.props.nonProfitId)
       .then(res => {
         let foodIdArray = res.data.FoodPosts.map(foodPost => foodPost.id)
-        console.log(foodIdArray);
         if(foodIdArray.includes(parseInt(this.props.foodId)))
         {
           this.setState({ alreadyInterested: true})

@@ -18,9 +18,9 @@ import API from "./../utils/API";
     }
     render() { return (
     <div className="card text-black border-primary my-3">
-        <h5 className="card-header bg-primary">{this.props.title}</h5>
+        <h5 className="card-header bg-primary">Food Post by <a className="text-white" href={"/donorprofile/"+this.props.donorId}>{this.state.donorName}</a></h5>
         <div className="card-body">
-          <h5 className="card-title">Food Post by <a href={"/donorprofile/"+this.props.donorId}>{this.state.donorName}</a></h5>
+          <h5 className="card-title">{this.props.title}</h5>
           {this.props.children}
           
           {/*<ModalEdit/>*/}
