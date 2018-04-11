@@ -7,6 +7,7 @@ import MyMapComponent from "../../components/Map/map";
 //import StyledMapWithAnInfoBox from "../../components/Map/map"
 //import Map from  "../../components/Map/map";
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+// import GoogleApiWrapper from "../../components/"
 
 class AllDonors extends Component {
     state = {
@@ -69,14 +70,20 @@ class AllDonors extends Component {
                         {/*} <SimpleMap marker={this.state.address} /> */}
                         {/* <StyledMapWithAnInfoBox /> */}
 
-                        <MyMapComponent
+                        {/* <MyMapComponent
                         isMarkerShown
                         googleMapURL="https://maps.googleapis.com/maps/api/jskey=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4?v=3.exp&libraries=geometry,drawing,places"
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         latLng={this.state.address}
-                        />
+                        /> */}
+
+                        {/* <div>
+                            <h1> Google Maps API + React </h1> // title */}
+                            {/* MOST IMPORTANT: Here we are passing the Google Maps props down to the MapContainer component as 'google'. */}
+                            {/* <MapContainer google={this.props.google} />
+                        </div> */}
                        
                     </div>
                 </div>
