@@ -46,6 +46,7 @@ module.exports = {
           }
         }).then((thisFoodPost) => {
           thisNonProfit.addFoodPost(thisFoodPost);
+          res.end();
         })
       })
     },
@@ -61,6 +62,7 @@ module.exports = {
           }
         }).then((thisFoodPost) => {
           thisNonProfit.removeFoodPost(thisFoodPost);
+          res.end();
         })
       })
     }

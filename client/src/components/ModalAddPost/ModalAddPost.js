@@ -16,9 +16,9 @@ class ModalAddPost extends Component {
     API.findAllFoodPosts()
         .then(res => {this.setState({ foodposts: res.data })})
         .catch(err => console.log(err));
-    API.findOneDonor(this.props.donorId)
-        .then(res => {this.setState({ donorId: res.data.id })})
-        .catch(err => console.log(err));
+    // API.findOneDonor(this.props.donorId)
+    //     .then(res => {console.log(res); this.setState({ donorId: res.data.id })})
+    //     .catch(err => console.log(err));
     API.findAllDonors()
         .then(res => {this.setState({ donors: res.data })})
         .catch(err => console.log(err));

@@ -14,7 +14,7 @@ router
 .get(donorController.findAllDonors)
 
 router
-.route("/donor/")
+.route("/donor/:id")
 .get(donorController.findDonor)
 
 router

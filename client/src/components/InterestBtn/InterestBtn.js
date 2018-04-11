@@ -37,7 +37,7 @@ class InterestBtn extends Component {
       nonProfitId: this.state.nonProfitId
     }
     API.addPostInterest(addTogether)
-        .then(res => {console.log("Interest added"); window.location.reload();})
+        .then(res => {window.location.reload();})
         .catch(err => console.log(err))
   }
 
@@ -47,7 +47,7 @@ class InterestBtn extends Component {
       nonProfitId: this.state.nonProfitId
     }
     API.removePostInterest(removeThese)
-        .then(res => {console.log("Interest Removed"); window.location.reload();})
+        .then(res => {window.location.reload();})
         .catch(err => console.log(err))
   }
 
