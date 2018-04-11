@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../components/utils/API";
-//import allCard from '../../components/allCard/allCard';
-//import DonorsCard from '../../components/DonorsCard/DonorsCard';
+import DonorsCard from '../../components/DonorsCard/DonorsCard';
 //maps
 //import SimpleMap from "../../components/Map/map";
 import MyMapComponent from "../../components/Map/map";
@@ -47,20 +46,19 @@ class AllDonors extends Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-8">
-                        {/* {this.state.donors && this.state.donors.length  ? (this.state.donors.map(donor => (
-                        <allCard
+                        {this.state.donors && this.state.donors.length  ? (this.state.donors.map(donor => (
+                        <DonorsCard
                         key={donor.id}
-                        id={donor.id}
-                        href={"/DonorProfile/"+donor.id}
-                        name={donor.name}
-                        address={donor.location}
-                        phone={donor.phonenumber}
-                        email={donor.email}
+                        donorId={donor.id}
+                        donorName={donor.name}
+                        donorAddress={donor.location}
+                        donorPhone={donor.phonenumber}
+                        donorEmail={donor.email}
                         cardClicked={this.cardClicked}/>
                         ))
                         ) : (
                             <h3>No Donors to Show</h3>
-                        )} */}
+                        )}
                         <div className="container" id="logoutbtn">
                             <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
                         </div>

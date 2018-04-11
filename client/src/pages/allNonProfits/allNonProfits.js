@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../components/utils/API";
-import allCard from '../../components/allCard/allCard';
+import NonProfitsCard from '../../components/NonProfitsCard/nonProfitsCard';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import MyMapComponent from "../../components/Map/map";
 
@@ -40,14 +40,13 @@ class AllNonProfits extends Component {
                 <div className="row">
                     <div className="col-lg-8">
                         {this.state.nonProfits && this.state.nonProfits.length  ? (this.state.nonProfits.map(nonProfit => (
-                        <allCard
+                        <NonProfitsCard
                         key={nonProfit.id}
-                        id={nonProfit.id}
-                        href={"/NonProfitProfile/"+nonProfit.id}
-                        name={nonProfit.name}
-                        address={nonProfit.location}
-                        phone={nonProfit.phonenumber}
-                        email={nonProfit.email}
+                        nonProfitId={nonProfit.id}
+                        nonProfitName={nonProfit.name}
+                        nonProfitAddress={nonProfit.location}
+                        nonProfitPhone={nonProfit.phonenumber}
+                        nonProfitEmail={nonProfit.email}
                         cardClicked={this.cardClicked}/>
                         ))
                         ) : (
