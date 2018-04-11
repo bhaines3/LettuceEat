@@ -19,7 +19,7 @@ class ModalSignUp extends Component {
     phonenumber:"",
     password:"",
     loggedIn:"",
-    donorLocal:""
+   // donorLocal:""
   }
   updateUserSignup = event => {
     // Destructure the name and value properties off of event.target
@@ -29,7 +29,9 @@ class ModalSignUp extends Component {
       [name]: value
     });
   };
+  //location
   onChange = (location) => this.setState({ location })
+  
   createUser=(event)=>{
     event.preventDefault();
     //const latlngArray=[];
@@ -43,8 +45,8 @@ class ModalSignUp extends Component {
       //   lat:latLng.lat,
       //   lng:latLng.lng
       // });
-      console.log(this.state.lat);
-      console.log(this.state.lng);
+      // console.log(this.state.lat);
+      // console.log(this.state.lng);
       const newUser={
         name:this.state.name,
           email:this.state.email,
@@ -101,9 +103,9 @@ class ModalSignUp extends Component {
       value: this.state.location,
       onChange: this.onChange,
     }
-    
+    //redirecting
     if(this.state.loggedIn){
-      if (this.state.isDonor){
+      if (this.state.donorLocal){
         console.log("there is donor and token")
         return <Redirect to={"/DonorProfile/"+localStorage.getItem("donorId")}/>
       }
@@ -147,6 +149,7 @@ class ModalSignUp extends Component {
                 </div>
                 <div className="form-group">
                   <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="true" onChange={this.updateUserSignup} /><div>Donor</div>
+                  <input type="radio" className="form-control col-sm-12 mb-2"name="isDonor" value="false" onChange={this.updateUserSignup} /><div>NonProfit</div>
                 </div>
                 <div className="form-group"> 
                   <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
