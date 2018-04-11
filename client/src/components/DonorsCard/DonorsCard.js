@@ -1,6 +1,4 @@
 import React from "react";
-//import "./donorsCard.css";
-
 const DonorsCard = (props) => {
   return (
     <div className="card text-black border-primary my-3">

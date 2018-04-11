@@ -1,5 +1,4 @@
 import React, { Component }from "react";
-import "./ModalLogin.css";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import {Redirect} from "react-router-dom";

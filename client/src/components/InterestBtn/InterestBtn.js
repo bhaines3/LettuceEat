@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import "./InterestBtn.css";
 import API from "./../utils/API";
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
 class InterestBtn extends Component {
   state = {
     foodId: "",
@@ -18,7 +15,6 @@ class InterestBtn extends Component {
     API.findOneNonProfit(this.props.nonProfitId)
       .then(res => {
         let foodIdArray = res.data.FoodPosts.map(foodPost => foodPost.id)
-        console.log(foodIdArray);
         if(foodIdArray.includes(parseInt(this.props.foodId)))
         {
           this.setState({ alreadyInterested: true})
