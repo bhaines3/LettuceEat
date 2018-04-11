@@ -34,34 +34,34 @@ module.exports = {
       });
     },
     //IMPLEMENT THIS LATER
-    // addInterest: (req, res) => {
-    //   db.NonProfit.findOne({
-    //     where: {
-    //       id: req.nonProfitId (pass the nonprofit id)
-    //     }
-    //   }).then((thisNonProfit) => {
-    //     db.FoodPost.findOne({
-    //       where: {
-    //         id: req.foodPostId (pass the foodpost id)
-    //       }
-    //     }).then((thisFoodPost) => {
-    //       thisNonProfit.addFoodPost(thisFoodPost);
-    //     })
-    //   })
-    // },
-    // removeInterest: (req, res) => {
-    //   db.NonProfit.findOne({
-    //     where: {
-    //       id: req.nonProfitId (pass the nonprofit id)
-    //     }
-    //   }).then((thisNonProfit) => {
-    //     db.FoodPost.findOne({
-    //       where: {
-    //         id: req.foodPostId (pass the foodpost id)
-    //       }
-    //     }).then((thisFoodPost) => {
-    //       thisNonProfit.removeFoodPost(thisFoodPost);
-    //     })
-    //   })
-    // }
+    addInterest: (req, res) => {
+      db.NonProfit.findOne({
+        where: {
+          id: req.body.nonProfitId
+        }
+      }).then((thisNonProfit) => {
+        db.FoodPost.findOne({
+          where: {
+            id: req.body.foodId
+          }
+        }).then((thisFoodPost) => {
+          thisNonProfit.addFoodPost(thisFoodPost);
+        })
+      })
+    },
+    removeInterest: (req, res) => {
+      db.NonProfit.findOne({
+        where: {
+          id: req.body.nonProfitId
+        }
+      }).then((thisNonProfit) => {
+        db.FoodPost.findOne({
+          where: {
+            id: req.body.foodId
+          }
+        }).then((thisFoodPost) => {
+          thisNonProfit.removeFoodPost(thisFoodPost);
+        })
+      })
+    }
 }

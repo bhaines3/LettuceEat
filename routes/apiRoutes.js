@@ -45,4 +45,14 @@ router
 .get(foodPostController.findOneFoodPost)
 .delete(foodPostController.deleteFoodPost)
 
+
+//=========INTERESTS==============
+router
+.route("/interests/")
+.post(nonProfitController.addInterest)
+
+router
+.route("/interests/remove")
+.post(nonProfitController.removeInterest)
+
 module.exports = router

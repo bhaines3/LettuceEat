@@ -41,7 +41,16 @@ export default {
   },
   deletePost: function(id) {
     return axios.delete("/api/foodpost/" + id);
+  },
+  //=========ADD/DELETE INTEREST==============
+  addPostInterest: (info) => {
+    return axios.post("/api/interests/",info)
+  },
+  removePostInterest: (info) => {
+    return axios.post("/api/interests/remove",info)
   }
+
+
     // // Gets all articles
     // getSavedarticles: function() {
     //   return axios.get("/api/savedarticles");
