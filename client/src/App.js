@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
 import DonorProfile from "./pages/DonorProfile";
 import NonProfitProfile from "./pages/NonProfitProfile";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 //import Card from "./components/Card";
 
 // import Users from "./components/Login/users";
@@ -18,6 +20,7 @@ const App = () => (
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/aboutus" component={AboutUs} />
           {/* <Route exact path="/login" component={Login} /> */}
           {/* <Route exact path="/signup" component={SignUp} />  */}
           <Route exact path="/donor" component={DonorProfile} />
@@ -30,6 +33,7 @@ const App = () => (
           {/* //<Route exact path="/donor/:id" component={DonorProfile} />
           //<Route exact path="/nonprofit/:id" component={NonProfitProfile} /> */}
         </Switch> 
+        <Footer />
       </div>
     
   </Router>
