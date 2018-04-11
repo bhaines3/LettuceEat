@@ -11,7 +11,7 @@ const NonProfitsCard = (props) => {
                 <strong>phone:</strong> {props.nonProfitPhone}
                 </div>
                 <div className ="col-md-6">
-                <strong>email:</strong> {props.nonProfitEmail}
+                <a href={"mailto:"+props.nonProfitEmail}><strong>email:</strong> {props.nonProfitEmail}</a>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ const DonorsCard = (props) => {
                 <strong>phone:</strong> {props.donorPhone}
                 </div>
                 <div className ="col-md-6">
-                <strong>email:</strong> {props.donorEmail}
+                <a href={"mailto:"+props.donorEmail}><strong>email:</strong> {props.donorEmail}</a>
                 </div>
             </div>
         </div>
