@@ -71,6 +71,12 @@ const Nav = () => {
                 <li className="nav-item">
                     <a className="nav-link" href={"/aboutus"}>About Us</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" href={"/allDonors"}>Donors</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href={"/allNonProfits"}>Non-Profits</a>
+                </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
