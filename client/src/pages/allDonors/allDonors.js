@@ -7,6 +7,7 @@ import MyMapComponent from "../../components/Map/map";
 //import StyledMapWithAnInfoBox from "../../components/Map/map"
 //import Map from  "../../components/Map/map";
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+// import GoogleApiWrapper from "../../components/"
 
 class AllDonors extends Component {
     state = {
@@ -63,12 +64,6 @@ class AllDonors extends Component {
                         </div>
                     </div>
                     <div id="map" className="col-lg-4">
-                        {/* <div style={{width:"100%",height:"100%",background:"red"}}>
-                            <Map marker={this.state.Address}/>
-                        </div>  */}
-                        {/*} <SimpleMap marker={this.state.address} /> */}
-                        {/* <StyledMapWithAnInfoBox /> */}
-
                         <MyMapComponent
                         isMarkerShown
                         googleMapURL="https://maps.googleapis.com/maps/api/jskey=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4?v=3.exp&libraries=geometry,drawing,places"
@@ -77,7 +72,6 @@ class AllDonors extends Component {
                         mapElement={<div style={{ height: `100%` }} />}
                         latLng={this.state.address}
                         />
-                       
                     </div>
                 </div>
             </div>
