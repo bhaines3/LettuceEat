@@ -98,7 +98,7 @@ class NonProfitProfile extends Component {
                                 <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
                             </div>
                             <div className ="col-md-4">
-                                <strong>End Date:</strong> {FoodPost.enddate}
+                            <strong>Pick-Up Window:</strong> {FoodPost.pickupwindow}
                             </div>
                         </div>
                         </Card>
