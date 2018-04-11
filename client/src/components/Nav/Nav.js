@@ -47,20 +47,19 @@ const Nav = () => {
     return (   
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <img id="logo" className="navbar-brand img-responsive" src="logo.png" alt="logo" /> 
-            <div className="navbar-brand" href="/">LettuceEat</div>
+            <div className="navbar-item">
+                <a className="nav-link text-light" href={"/"}><h3>LettuceEAT</h3></a>
+            </div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style={{}}>
                 <span className="navbar-toggler-icon" />
             </button>
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                    <a className="nav-link" href={"/"}>Home <span className="sr-only">(current)</span></a>
+                <li className="nav-item">
+                    <a className="nav-link" href={"/"}>Home</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="">About Us</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="">Statistics</a>
+                    <a className="nav-link" href={"/aboutus"}>About Us</a>
                 </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
