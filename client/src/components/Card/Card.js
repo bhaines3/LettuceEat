@@ -19,7 +19,11 @@ const Card = (props) => {
           <p className="card-text">{props.children}</p>
           
           {/*<ModalEdit/>*/}
-          <DeleteBtn  />
+          {(localStorage.getItem("donorId") == props.donorId) ? (
+            <DeleteBtn 
+            foodId= {props.foodId}
+            />
+            ) : ("")}
           <a href="" className="btn btn-primary">View Organizations Interested</a>
         </div>
     </div>

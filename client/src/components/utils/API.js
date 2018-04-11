@@ -30,12 +30,18 @@ export default {
   findAllFoodPosts: () => {
     return axios.get("/api/foodposts/");
   },
+  findOneFoodPost: (id) => {
+    return axios.get("/api/foodpost/" +id);
+  },
   filterFoodPostsByDonor: (id) => {
     return axios.get("/api/foodposts/donor/"+id);
   },
   createNewPost: (foodInfo) => {
     return axios.post("/api/foodposts/",foodInfo);
   },
+  deletePost: function(id) {
+    return axios.delete("/api/foodpost/" + id);
+  }
     // // Gets all articles
     // getSavedarticles: function() {
     //   return axios.get("/api/savedarticles");

@@ -8,7 +8,6 @@ import ModalAddPost from '../../components/ModalAddPost';
 
 class Home extends Component {
     state = {
-      userDonorId: "",
       foodposts: [],
       donors: [],
       nonprofits: [],
@@ -29,17 +28,6 @@ class Home extends Component {
         API.findAllNonProfits()
             .then(res => {this.setState({ nonprofits: res.data})})
             .catch(err => console.log(err));
-        this.checkIfDonorExists();
-    }
-    checkIfDonorExists() {
-        API.findOneDonor({name: this.props.match.params.name})
-        .then(res => {
-            if(res.data)
-            {
-                this.setState({userDonorId: res.data.id})
-            }
-        })
-        .catch(err => console.log(err));
     }
     Logout=event=>{
         localStorage.removeItem('jwtToken');
@@ -72,15 +60,16 @@ render() {
                 <h1 className="display-3">LettuceEAT</h1>
                 <h3 className="lead">Reducing food waste one bite at a time!</h3>
             </div>
-            {/* {this.state.userDonorId && (this.state.userDonorId.length > 0) ? (
+            {(localStorage.getItem("isDonor") === "true") ? (
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
-            ) : ("")} */}
+            ) : ("")}
             {this.state.foodposts && this.state.foodposts.length  ? (
                 this.state.foodposts.map(FoodPost => (
                     <div>
                         <br />
                         <Card
                         key={FoodPost.id}
+                        foodId={FoodPost.id}
                         title={FoodPost.title}
                         donor={FoodPost && FoodPost.Donor.name}
                         donorId={FoodPost.DonorId}
@@ -102,7 +91,7 @@ render() {
                     ) : (
                         <h3>No food posts! Check back later. </h3>
                 )}
-                <ModalAddPost donorId={this.state.userDonorId} />
+                <ModalAddPost donorId={localStorage.getItem("donorId")} />
                 {/*<div className="container" id="logoutbtn">
                     <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
                 </div>*/}

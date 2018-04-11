@@ -43,5 +43,6 @@ router
 router
 .route("/foodpost/:id")
 .get(foodPostController.findOneFoodPost)
+.delete(foodPostController.deleteFoodPost)
 
 module.exports = router
