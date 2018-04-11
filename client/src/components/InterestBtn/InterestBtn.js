@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import "./InterestBtn.css";
 import API from "./../utils/API";
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
 class InterestBtn extends Component {
   state = {
     foodId: "",

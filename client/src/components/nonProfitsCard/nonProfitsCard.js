@@ -1,6 +1,4 @@
 import React from "react";
-
-
 const NonProfitsCard = (props) => {
   return (
     <div className="card text-black border-primary my-3" >
