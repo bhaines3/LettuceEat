@@ -20,11 +20,8 @@
     left: 0;
     right: 0;
     background: url("http://www.southernexposure.com/images/large/lettuce-romaine-jericho_LRG.jpg");
-    opacity: .6;
+    opacity: .5;
 }
  h3 {
      font-weight: boldest;
  }
- /* #bootstrapoverrides, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Jua', sans-serif;
- } */
