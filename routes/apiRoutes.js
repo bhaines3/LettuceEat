@@ -43,6 +43,7 @@ router
 router
 .route("/foodpost/:id")
 .get(foodPostController.findOneFoodPost)
+.put(foodPostController.updateFoodPost)
 .delete(foodPostController.deleteFoodPost)
 
 
