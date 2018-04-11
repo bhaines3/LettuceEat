@@ -23,6 +23,9 @@ module.exports = {
       const newUserInfo={
         email:req.body.email,
         name:req.body.name,
+        location:req.body.location,
+        // lat:req.body.lat,
+        // lng:req.body.lng,
         isDonor:req.body.isDonor,
         phonenumber:req.body.phonenumber,
         password:req.body.password
@@ -39,26 +42,32 @@ module.exports = {
           console.log("User has been created.");
           db.User.create(newUserInfo)
           .then((dbUser)=> {
-            // if (!newUserInfo.isDonor)
-            // {
-            //   var nonProfitInfo = {
-            //     UserId: dbUser.id,
-            //     email: newUserInfo.email,
-            //     name: newUserInfo.name,
-            //     phonenumber: newUserInfo.phonenumber,
-            //   }
-            //   nonProfitController.createNonProfit(nonProfitInfo);
-            // }
-            // else if (newUserInfo.isDonor)
-            // {
+            if (!newUserInfo.isDonor)
+            {
+              var nonProfitInfo = {
+                UserId: dbUser.id,
+                email: newUserInfo.email,
+                location:newUserInfo.location,
+                // lat:req.body.lat,
+                // lng:req.body.lng,
+                name: newUserInfo.name,
+                phonenumber: newUserInfo.phonenumber,
+              }
+              nonProfitController.createNonProfit(nonProfitInfo);
+            }
+            else if (newUserInfo.isDonor)
+            {
               var donorInfo = {
                 UserId: dbUser.id,
                 email: newUserInfo.email,
+                location: newUserInfo.location,
+                // lat:req.body.lat,
+                // lng:req.body.lng,
                 name: newUserInfo.name,
                 phonenumber: newUserInfo.phonenumber,
               }
               donorController.createDonor(donorInfo);
-            // }
+            }
             res.json({success: true, msg: 'Successful created new user.'});
           }).catch(function(err) {
             console.log("Error from createUser: "+err);

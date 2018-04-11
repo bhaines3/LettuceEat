@@ -14,17 +14,38 @@ class DonorProfile extends Component {
         redirect:false
     };
     componentWillMount(){
-        const donor=localStorage.getItem("isDonor");
-        console.log("donor b4 donrspg " +donor);
-        if(donor==="false" || donor==null ){
-            console.log("donor in check donrspg " +donor)
-           return this.setState({
-                redirect:true
-            })
-        }
+        //ANYBODY CAN SEE DONOR PROFILE NO NEED FOR BELOW
+        // const donor=localStorage.getItem("isDonor");
+        // console.log("donor b4 donrspg " +donor);
+        // if(donor==="false" || donor==null ){
+        //     console.log("donor in check donrspg " +donor)
+        //    return this.setState({
+        //         redirect:true
+        //     })
+        // }
     }
     componentDidMount() {
         const donorId=localStorage.getItem("donorId");
+        const idAllDonorsPg=this.props.match.params.id;
+        if(donorId!=idAllDonorsPg){
+            
+            this.getDonorInfo(idAllDonorsPg);
+        }
+        else{
+            this.getDonorInfo(donorId);
+        }
+        
+    }
+    Logout=event=>{
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem("isDonor");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("donorId");
+        localStorage.removeItem("nonProfitId");
+        
+       
+    }
+    getDonorInfo=(donorId)=>{
         API.findOneDonor({id: donorId})
         .then(res => {this.setState({ donor: res.data })})
         .catch(err => console.log(err));
@@ -33,19 +54,11 @@ class DonorProfile extends Component {
         .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
         .catch(err => console.log(err));
     }
-    Logout=event=>{
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem("isDonor");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("donorId");
-        localStorage.removeItem("nonProfitId");
-        return (<Redirect to={"/"}/>)
-    }
     render() {
-        console.log("redirect "+this.state.redirect)
-        if(this.state.redirect){ 
-           return (<Redirect to={"/"}/>)
-        }
+        // console.log("redirect "+this.state.redirect)
+        // if(this.state.redirect){ 
+        //    return (<Redirect to={"/"}/>)
+        // }
         return(
             <div className = "container">
                  {/* Id: {this.state.donor.id}

@@ -20,7 +20,7 @@ export default {
   },
   //=========NONPROFIT==============
   findAllNonProfits: () => {
-    return axios.get("/api/nonprofit/");
+    return axios.get("/api/nonprofits/");
   },
   //perla changed to this
   findOneNonProfit: (id) => {

@@ -6,6 +6,8 @@ import DonorProfile from "./pages/DonorProfile";
 import NonProfitProfile from "./pages/NonProfitProfile";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import AllDonors from "./pages/allDonors/allDonors";
+import AllNonProfits from "./pages/allNonProfits/allNonProfits";
 //import Card from "./components/Card";
 
 // import Users from "./components/Login/users";
@@ -17,14 +19,14 @@ const App = () => (
   <Router>
 
       <div>
-        <Nav />
+        <Nav/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/aboutus" component={AboutUs} />
-          {/* <Route exact path="/login" component={Login} /> */}
-          {/* <Route exact path="/signup" component={SignUp} />  */}
-          <Route exact path="/donor" component={DonorProfile} />
-          <Route exact path="/NonProfitProfile" component={NonProfitProfile} /> 
+          <Route exact path="/allDonors" component={AllDonors} />
+          <Route exact path="/allNonProfits" component={AllNonProfits} />
+          <Route exact path="/DonorProfile/:id" component={DonorProfile} />
+          <Route exact path="/NonProfitProfile/:id" component={NonProfitProfile} /> 
 
 
           {/* for testing the routing */}
