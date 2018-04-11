@@ -14,7 +14,7 @@ router
 .get(donorController.findAllDonors)
 
 router
-.route("/donor/")
+.route("/donor/:id")
 .get(donorController.findDonor)
 
 router
@@ -44,5 +44,15 @@ router
 .route("/foodpost/:id")
 .get(foodPostController.findOneFoodPost)
 .delete(foodPostController.deleteFoodPost)
+
+
+//=========INTERESTS==============
+router
+.route("/interests/")
+.post(nonProfitController.addInterest)
+
+router
+.route("/interests/remove")
+.post(nonProfitController.removeInterest)
 
 module.exports = router

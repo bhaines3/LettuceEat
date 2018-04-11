@@ -10,6 +10,7 @@ class NonProfitProfile extends Component {
     state = {
         nonprofit: {},
         foodpost: [],
+        donors: [],
         redirect:false,
     };
     componentWillMount(){
@@ -26,6 +27,9 @@ class NonProfitProfile extends Component {
         const nonProfitId=localStorage.getItem("nonProfitId");
         const idAllNonProfitsPg=this.props.match.params.id;
         console.log(nonProfitId);
+        API.findAllDonors()
+            .then(res => {this.setState({ donors: res.data })})
+            .catch(err => console.log(err));
         if(nonProfitId!=idAllNonProfitsPg){
             API.findOneNonProfit(idAllNonProfitsPg)
             .then(res => {this.setState({ nonprofit: res.data })})
@@ -36,6 +40,11 @@ class NonProfitProfile extends Component {
             .then(res => {this.setState({ nonprofit: res.data })})
             .catch(err => console.log(err));
         }
+    }
+    findDonorName(id) {
+        API.findOneDonor(id)
+        .then(res => res.data.name)
+        .catch(err => console.log(err));
     }
     render() {
         // console.log("redirect " +this.state.redirect)
@@ -76,15 +85,22 @@ class NonProfitProfile extends Component {
                     this.state.nonprofit.FoodPosts.map(FoodPost => (
                         <Card
                         key={FoodPost.id}
+                        foodId={FoodPost.id}
                         title={FoodPost.title}
-                        donor={FoodPost.Donor.name}>
-                            Description: {FoodPost.desc}
-                            <br />
-                            Pick-Up Date: {FoodPost.pickupdate}
-                            <br />
-                            End Date: {FoodPost.enddate}
-                            <br />
-                            Pick-Up Window: {FoodPost.pickupwindow}
+                        // donor={() => this.findDonorName(FoodPost.DonorId)}
+                        donorId={FoodPost.DonorId}
+                        >
+                        <strong>Description:</strong> {FoodPost.desc}
+                        <br />
+                        <br />
+                        <div className ="row">
+                            <div className ="col-md-4">
+                                <strong>Pick-Up Date:</strong> {FoodPost.pickupdate}
+                            </div>
+                            <div className ="col-md-4">
+                                <strong>End Date:</strong> {FoodPost.enddate}
+                            </div>
+                        </div>
                         </Card>
                     ))
                  ) : (
