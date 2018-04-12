@@ -86,9 +86,7 @@ class DonorProfile extends Component {
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
                  />
-                 <div className="container" id="logoutbtn">
-                    <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
-                </div>
+                 
                 {(localStorage.getItem("isDonor") === "true") ? (
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
             ) : ("")}

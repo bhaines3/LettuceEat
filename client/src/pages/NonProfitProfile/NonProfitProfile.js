@@ -80,7 +80,7 @@ class NonProfitProfile extends Component {
                 <br />
                 Hours for Food Pick-Up:
                 </ProfileJumbotron>
-                Food Posts Interested In
+                <h3 className="text-primary">Food Posts Interested In</h3>
                  {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length  ? (
                     this.state.nonprofit.FoodPosts.map(FoodPost => (
                         <Card
@@ -94,7 +94,7 @@ class NonProfitProfile extends Component {
                         />
                     ))
                  ) : (
-                     <h3>No Food Posts</h3>
+                     <h3 className="text-warning">No Food Posts</h3>
                  )} 
             </div>
         )
