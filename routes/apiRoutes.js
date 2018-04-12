@@ -16,6 +16,7 @@ router
 router
 .route("/donor/:id")
 .get(donorController.findDonor)
+.put(donorController.updateDonor)
 
 router
 .route("/donor/foodpost/:id")
@@ -29,6 +30,7 @@ router
 router
 .route("/nonprofit/:id")
 .get(nonProfitController.findNonProfit)
+.put(nonProfitController.updateNonProfit)
 
 //=========FOODPOSTS==============
 router

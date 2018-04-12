@@ -33,6 +33,18 @@ module.exports = {
         console.log("Erro: "+err);
       });
     },
+    updateNonProfit: (req, res) => {
+      db.NonProfit.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbNonProfit) {
+        res.json(dbNonProfit);
+      }).catch(function(e) {
+        console.warn(e);
+      })
+    },
     addInterest: (req, res) => {
       db.NonProfit.findOne({
         where: {

@@ -18,6 +18,9 @@ export default {
   findOneDonor: (id) => {
     return axios.get("/api/donor/"+id);
   },
+  editDonor: (id, info) => {
+    return axios.put("/api/donor/"+id, info)
+  },
   //=========NONPROFIT==============
   findAllNonProfits: () => {
     return axios.get("/api/nonprofits/");
@@ -25,6 +28,9 @@ export default {
   //perla changed to this
   findOneNonProfit: (id) => {
     return axios.get("/api/nonprofit/"+id);
+  },
+  editNonProfit: (id, info) => {
+    return axios.put("/api/nonprofit/"+id, info)
   },
   //=========FOODPOST==============
   findAllFoodPosts: () => {

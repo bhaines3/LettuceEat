@@ -8,10 +8,10 @@ const AllCards = (props) => {
             <h5 onClick={()=>props.cardClicked(props.address)} className="card-title">Address: {props.address}</h5>
             <div className ="row">
                 <div className ="col-md-6">
-                <strong>phone:</strong> {props.phone}
+                <strong>Phone: </strong> {props.phone}
                 </div>
                 <div className ="col-md-6">
-                <a href={"mailto:"+props.email}><strong>email:</strong> {props.email}</a>
+                <strong>Email: </strong><a href={"mailto:"+props.email}>{props.email}</a>
                 </div>
             </div>
         </div>

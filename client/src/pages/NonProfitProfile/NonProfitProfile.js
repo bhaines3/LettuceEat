@@ -24,12 +24,15 @@ class NonProfitProfile extends Component {
         // }
     }
     componentDidMount() {
+        //Why does it matter which nonProfit is viewing the nonProfit page? -Michelle
         const nonProfitId=localStorage.getItem("nonProfitId");
         const idAllNonProfitsPg=this.props.match.params.id;
         console.log(nonProfitId);
         API.findAllDonors()
             .then(res => {this.setState({ donors: res.data })})
             .catch(err => console.log(err));
+
+        //What is the purpose of this? -Michelle
         if(nonProfitId!=idAllNonProfitsPg){
             API.findOneNonProfit(idAllNonProfitsPg)
             .then(res => {this.setState({ nonprofit: res.data })})
@@ -41,18 +44,14 @@ class NonProfitProfile extends Component {
             .catch(err => console.log(err));
         }
     }
-    findDonorName(id) {
-        API.findOneDonor(id)
-        .then(res => res.data.name)
-        .catch(err => console.log(err));
-    }
     render() {
         // console.log("redirect " +this.state.redirect)
         // if(this.state.redirect){ 
         //     return (<Redirect to={"/"}/>)
         //  }
         return(
-            <div className ="container text-center">
+            <div>
+            <div className ="container">
                 {/* Id: {this.state.nonprofit.id}
                 <br />
                 Name: {this.state.nonprofit.name}
@@ -74,11 +73,15 @@ class NonProfitProfile extends Component {
                 {/* {JSON.stringify(this.state.nonprofit)} */}
                 <ProfileJumbotron
                 name={this.state.nonprofit.name}
-                address={this.state.nonprofit.location || "No set location"}
+                address={this.state.nonprofit.location}
                 phonenumber={this.state.nonprofit.phonenumber}
-                email={this.state.nonprofit.email}>
+                email={this.state.nonprofit.email}
+                summary={this.state.nonprofit.summary}
+                isDonor={false}
+                hoursForPickUp={this.state.nonprofit.hoursforpickup}
+                paramsId={this.props.match.params.id}
+                >
                 <br />
-                Hours for Food Pick-Up:
                 </ProfileJumbotron>
                 <h3 className="text-primary">Food Posts Interested In</h3>
                  {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length  ? (
@@ -96,6 +99,8 @@ class NonProfitProfile extends Component {
                  ) : (
                      <h3 className="text-warning">No Food Posts</h3>
                  )} 
+            </div>
+            
             </div>
         )
     }

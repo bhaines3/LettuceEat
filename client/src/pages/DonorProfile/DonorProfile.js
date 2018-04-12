@@ -25,6 +25,7 @@ class DonorProfile extends Component {
         // }
     }
     componentDidMount() {
+        //What is the purpose of this? -Michelle
         const donorId=localStorage.getItem("donorId");
         const idAllDonorsPg=this.props.match.params.id;
         if(donorId!=idAllDonorsPg){
@@ -82,9 +83,12 @@ class DonorProfile extends Component {
                 {JSON.stringify(this.state.donor)} */}
                 <ProfileJumbotron
                 name={this.state.donor.name}
-                address={this.state.donor.location || "No set location"}
+                address={this.state.donor.location}
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
+                summary={this.state.donor.summary || null}
+                isDonor={true}
+                paramsId={this.props.match.params.id}
                  />
                  
                 {(localStorage.getItem("isDonor") === "true") ? (
@@ -93,8 +97,7 @@ class DonorProfile extends Component {
                  {this.state.foodposts && this.state.foodposts.length  ? (
                     this.state.foodposts.map(FoodPost => (
                         <div>
-                            <br />
-                            <Card
+                        <Card
                         key={FoodPost.id}
                         foodId={FoodPost.id}
                         title={FoodPost.title}
@@ -102,7 +105,8 @@ class DonorProfile extends Component {
                         pickupdate={FoodPost.pickupdate}
                         pickupwindow={FoodPost.pickupwindow}
                         donorId={FoodPost.DonorId}
-                        />
+                        >
+                        </Card>
                             <br />
                         </div>
                     ))
@@ -111,7 +115,7 @@ class DonorProfile extends Component {
                  )}
                  <br />
                  <br />
-                 <ModalAddPost donorId={this.state.donor.id} />
+                <ModalAddPost donorId={this.state.donor.id} />
             </div>
         )
     }
