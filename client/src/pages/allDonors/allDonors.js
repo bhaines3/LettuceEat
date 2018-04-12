@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../components/utils/API";
-import DonorsCard from '../../components/DonorsCard/DonorsCard';
+//import DonorsCard from '../../components/DonorsCard/DonorsCard';
 //maps
 //import SimpleMap from "../../components/Map/map";
 import MyMapComponent from "../../components/Map/map";
@@ -8,6 +8,7 @@ import MyMapComponent from "../../components/Map/map";
 //import Map from  "../../components/Map/map";
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 // import GoogleApiWrapper from "../../components/"
+import AllCards from '../../components/allCards/allCards';
 
 class AllDonors extends Component {
     state = {
@@ -47,13 +48,14 @@ class AllDonors extends Component {
                 <div className="row">
                     <div className="col-lg-8">
                         {this.state.donors && this.state.donors.length  ? (this.state.donors.map(donor => (
-                        <DonorsCard
+                        <AllCards
                         key={donor.id}
-                        donorId={donor.id}
-                        donorName={donor.name}
-                        donorAddress={donor.location}
-                        donorPhone={donor.phonenumber}
-                        donorEmail={donor.email}
+                        id={donor.id}
+                        link={"/DonorProfile/"+donor.id}
+                        name={donor.name}
+                        address={donor.location}
+                        phone={donor.phonenumber}
+                        email={donor.email}
                         cardClicked={this.cardClicked}/>
                         ))
                         ) : (
