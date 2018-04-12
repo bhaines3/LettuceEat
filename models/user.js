@@ -17,11 +17,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		location: {
 			type: DataTypes.STRING,
-			allowNull: true
-			// ,
-			// validate: {
-			// 	len: [1]
-			// }
+			allowNull: false
 		},
 		password: {
 			type: DataTypes.STRING,
@@ -32,10 +28,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		phonenumber: {
 			type: DataTypes.STRING,
-			// allowNull: false,
-			// validate: {
-			// 	len: [1]
-			// }
+			allowNull: false
 		},
 		isDonor: {
 			type: DataTypes.BOOLEAN,

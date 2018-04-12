@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
 import Nav from '../../components/Nav';
+import EditJumbo from '../../components/EditJumbo';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 import ModalAddPost from '../../components/ModalAddPost';
 import {Redirect} from "react-router-dom";
@@ -25,6 +26,7 @@ class DonorProfile extends Component {
         // }
     }
     componentDidMount() {
+        //What is the purpose of this? -Michelle
         const donorId=localStorage.getItem("donorId");
         const idAllDonorsPg=this.props.match.params.id;
         if(donorId!=idAllDonorsPg){
@@ -85,6 +87,9 @@ class DonorProfile extends Component {
                 address={this.state.donor.location || "No set location"}
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
+                summary={this.state.donor.summary || null}
+                isDonor={true}
+                paramsId={this.props.match.params.id}
                  />
                  <div className="container" id="logoutbtn">
                     <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
@@ -104,7 +109,8 @@ class DonorProfile extends Component {
                         pickupdate={FoodPost.pickupdate}
                         pickupwindow={FoodPost.pickupwindow}
                         donorId={FoodPost.DonorId}
-                        />
+                        >
+                        </Card>
                             <br />
                         </div>
                     ))
@@ -113,7 +119,16 @@ class DonorProfile extends Component {
                  )}
                  <br />
                  <br />
-                 <ModalAddPost donorId={this.state.donor.id} />
+                <ModalAddPost donorId={this.state.donor.id} />
+                {/* <EditJumbo 
+                currentName={this.state.donor.name}
+                currentAddress={this.state.donor.location || "No set location"}
+                currentPhonenumber={this.state.donor.phonenumber}
+                currentEmail={this.state.donor.email}
+                currentSummary={this.state.donor.summary || null}
+                isDonor={true}
+                paramsId={this.props.match.params.id}
+                /> */}
             </div>
         )
     }

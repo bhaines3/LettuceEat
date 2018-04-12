@@ -18,11 +18,11 @@ module.exports = function(sequelize, DataTypes) {
     location: {
 			type: DataTypes.STRING,
 			allowNull: true
-			// ,
-      // validate: {
-			// 	len: [1]
-			// }
-		}
+		},
+		summary: {
+			type: DataTypes.STRING,
+			allowNull: true
+		},
   });
     Donor.associate = function(models) {
 		Donor.belongsTo(models.User, {

@@ -11,18 +11,23 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		phonenumber: {
 			type: DataTypes.STRING,
-			allowNull: true,
+			allowNull: false,
 			validate: {
 				len: [1]
 			}
 		},
 		location: {
 			type: DataTypes.STRING,
+			allowNull: false
+		},
+		summary: {
+			type: DataTypes.STRING,
 			allowNull: true
-			// ,
-			// validate: {
-			// 	len: [1]
-			// }
+		},
+		hoursforpickup: {
+			type: DataTypes.STRING,
+			allowNull: true,
+			defaultValue: "No set time"
 		}
   });
     NonProfit.associate = function(models) {

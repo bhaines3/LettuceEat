@@ -8,8 +8,7 @@ module.exports = {
         res.json(dbDonor);
       })
     },
-    findDonor: (req, res) =>{
-      // console.log("yo"+JSON.stringify(req.query));   
+    findDonor: (req, res) =>{  
       db.Donor.findOne({
         where:{
           id: req.params.id
@@ -49,5 +48,17 @@ module.exports = {
       }).catch(function(err) {
         console.log("Erro: "+err);
       });
-    }
+    },
+    updateDonor: (req, res) => {
+      db.Donor.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbDonor) {
+        res.json(dbDonor);
+      }).catch(function(e) {
+        console.warn(e);
+      })
+    },
 }
