@@ -23,10 +23,7 @@ const ProfileJumbotron = (props) => {
       }
   }
   return (
-<<<<<<< HEAD
     <div>
-=======
->>>>>>> 4fa90150191d661fe8672682adad820308a37cc7
     <div className="jumbotron jumbotron-fluid text-center mt-4 px-4 text-primary">
       <h1 className="display-4">{props.name}</h1>
       {/* Make address a link to view location */}
