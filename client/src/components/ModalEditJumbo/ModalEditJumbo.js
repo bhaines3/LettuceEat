@@ -3,6 +3,7 @@ import API from "./../utils/API";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 
+
 class ModalEditJumbo extends Component {
   state = {
     name: "",
@@ -81,7 +82,7 @@ class ModalEditJumbo extends Component {
               </div>
               <div className="modal-body">
                 <div className="form-group">
-                      <label htmlFor="name"><strong>Name:{this.state.name}</strong></label>
+                      <label htmlFor="name"><strong>Name:</strong></label>
                       <input className="col-sm-12 mb-2" type="text" id="edit_name" name="name"
                       maxLength={30} onChange={this.handleChange} defaultValue={this.props.currentName}/>
                       <br />

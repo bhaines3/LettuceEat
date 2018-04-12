@@ -34,9 +34,9 @@ class ModalLogin extends Component {
         password:this.state.passwordLogin
     }
     //making sure info is goin gto request
-    console.log("im making the post request for login");
-    console.log("im sending email "+ userInfo.email);
-    console.log("im sending password " + userInfo.password);
+    // console.log("im making the post request for login");
+    // console.log("im sending email "+ userInfo.email);
+    // console.log("im sending password " + userInfo.password);
     axios.post('/api/auth/login', userInfo)
     .then((res) => {
       //setting the jwt token when loginin result comes in"
@@ -72,15 +72,21 @@ class ModalLogin extends Component {
         loggedIn:token
       })
   }
+  clearSignin(){
+    this.setState({
+      email:"",
+      password:""
+    })
+  }
   
   render() {
     if(this.state.loggedIn){
       if (this.state.isDonor){
-        console.log("there is donor and token")
+        //console.log("there is donor and token")
         return <Redirect to={"/DonorProfile/"+localStorage.getItem("donorId")}/>
       }
       else{
-        console.log("token but no donor")
+        //console.log("token but no donor")
         return <Redirect to={"/NonProfitProfile/"+localStorage.getItem("nonProfitId")}/>
       }
     }
@@ -100,7 +106,7 @@ class ModalLogin extends Component {
                     <input className="col-sm-12 mb-2" type="email" id="name-login" name="emailLogin" value={this.state.email} onChange={this.updateUserlogin} placeholder="janedoe@email.com" maxLength={30} />
                     <br />
                     <label htmlFor="email-login">Password:</label>
-                    <input className="col-sm-12 mb-2" type="password" id="password-login" name="passwordLogin" value={this.state.password} onChange={this.updateUserlogin} maxLength={10} />
+                    <input className="col-sm-12 mb-2" type="password" id="password-login" name="passwordLogin" value={this.state.password} onChange={this.updateUserlogin} placeholder="******" maxLength={10} />
                     <br />
                     <div id="alert-message" />
                      <button onClick={this.Login} className="btn btn-primary" type="submit" id="login-user" data-dismiss="modal">Login <i className="fa fa-check-circle" /></button> 
