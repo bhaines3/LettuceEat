@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import API from "../../components/utils/API";
 import Card from '../../components/Card';
 import Nav from '../../components/Nav';
-import EditJumbo from '../../components/EditJumbo';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 import ModalAddPost from '../../components/ModalAddPost';
 import {Redirect} from "react-router-dom";
@@ -84,7 +83,7 @@ class DonorProfile extends Component {
                 {JSON.stringify(this.state.donor)} */}
                 <ProfileJumbotron
                 name={this.state.donor.name}
-                address={this.state.donor.location || "No set location"}
+                address={this.state.donor.location}
                 phonenumber={this.state.donor.phonenumber}
                 email={this.state.donor.email}
                 summary={this.state.donor.summary || null}
@@ -98,8 +97,7 @@ class DonorProfile extends Component {
                  {this.state.foodposts && this.state.foodposts.length  ? (
                     this.state.foodposts.map(FoodPost => (
                         <div>
-                            <br />
-                            <Card
+                        <Card
                         key={FoodPost.id}
                         foodId={FoodPost.id}
                         title={FoodPost.title}
@@ -118,15 +116,6 @@ class DonorProfile extends Component {
                  <br />
                  <br />
                 <ModalAddPost donorId={this.state.donor.id} />
-                {/* <EditJumbo 
-                currentName={this.state.donor.name}
-                currentAddress={this.state.donor.location || "No set location"}
-                currentPhonenumber={this.state.donor.phonenumber}
-                currentEmail={this.state.donor.email}
-                currentSummary={this.state.donor.summary || null}
-                isDonor={true}
-                paramsId={this.props.match.params.id}
-                /> */}
             </div>
         )
     }

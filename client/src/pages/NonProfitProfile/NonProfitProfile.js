@@ -51,7 +51,7 @@ class NonProfitProfile extends Component {
         //  }
         return(
             <div>
-            <div className ="container text-center">
+            <div className ="container">
                 {/* Id: {this.state.nonprofit.id}
                 <br />
                 Name: {this.state.nonprofit.name}
@@ -73,7 +73,7 @@ class NonProfitProfile extends Component {
                 {/* {JSON.stringify(this.state.nonprofit)} */}
                 <ProfileJumbotron
                 name={this.state.nonprofit.name}
-                address={this.state.nonprofit.location || "No set location"}
+                address={this.state.nonprofit.location}
                 phonenumber={this.state.nonprofit.phonenumber}
                 email={this.state.nonprofit.email}
                 summary={this.state.nonprofit.summary}

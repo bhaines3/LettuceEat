@@ -1,5 +1,5 @@
 import React from "react";
-import EditJumbo from '../EditJumbo';
+import ModalEditJumbo from '../ModalEditJumbo';
 
 const ProfileJumbotron = (props) => {
   const renderEditButton = () => {
@@ -32,11 +32,12 @@ const ProfileJumbotron = (props) => {
       {props.phonenumber}
       <br />
       {/* Make email a link to send an email */}
-      {props.email}
+      <strong>Email: </strong><a href={"mailto:"+props.email}>{props.email}</a>
       <br />
       {(props.summary) ? (
         <div>
-          <strong>Summary:</strong> {props.summary}
+          <br />
+          {props.summary}
         </div>
       ): ("")}
       <br />
@@ -50,7 +51,7 @@ const ProfileJumbotron = (props) => {
       <br />
       {renderEditButton()}
     </div>  
-    <EditJumbo 
+    <ModalEditJumbo 
       isDonor={props.isDonor}
       paramsId={props.paramsId}
       currentName={props.name}
@@ -58,7 +59,7 @@ const ProfileJumbotron = (props) => {
       currentPhonenumber={props.phonenumber}
       currentEmail={props.email}
       currentSummary={props.summary}
-      currentPickUpHours={props.hoursforpickup || null}
+      currentPickUpHours={props.hoursForPickUp || null}
       />
     </div>
   );

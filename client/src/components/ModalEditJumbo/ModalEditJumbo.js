@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import API from "./../utils/API";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 
-class EditJumbo extends Component {
+class ModalEditJumbo extends Component {
   state = {
     name: "",
     email: "",
@@ -57,7 +58,13 @@ class EditJumbo extends Component {
       [name]: value
     });
   };
+
+  onChange = (location) => this.setState({ location })
   render() {
+    const inputProps = {
+      value: this.state.location,
+      onChange: this.onChange,
+    }
     if(this.props.currentName === undefined){
       return ("");
     }
@@ -87,10 +94,11 @@ class EditJumbo extends Component {
                       name="phonenumber" defaultValue={this.props.currentPhonenumber} onChange={this.handleChange} />
                       <br />
                       <label htmlFor="location"><strong>Location:</strong></label>
-                      <input className="col-sm-12 mb-2" type="text" id="edit_location" name="location"
-                      maxLength={150} onChange={this.handleChange} defaultValue={this.props.currentAddress}/>
+                      <PlacesAutocomplete inputProps={inputProps}/>
+                      {/* <input className="col-sm-12 mb-2" type="text" id="edit_location" name="location"
+                      maxLength={150} onChange={this.handleChange} defaultValue={this.props.currentAddress}/> */}
                       <br />
-                      {(localStorage.getItem("isDonor") === "true") ? ("") : (
+                      {(localStorage.getItem("isDonor") === true) ? ("") : (
                         <div>
                         <label htmlFor="hoursforpickup"><strong>Hours For Pick Up:</strong></label>
                         <input className="col-sm-12 mb-2" type="text" id="edit_hours" name="hoursforpickup"
@@ -103,9 +111,9 @@ class EditJumbo extends Component {
                       maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentSummary}/>
                       <br />
                       {(localStorage.getItem("isDonor") === "true") ? (
-                        <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Donor Save Changes<i className="far fa-check-circle" /></button>
+                        <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>
                       ) : (
-                        <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editNonProfit}>Non Profit Save Changes<i className="far fa-check-circle" /></button>
+                        <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editNonProfit}>Save Changes<i className="far fa-check-circle" /></button>
                       )}
                       <br />
                   </div>
@@ -121,4 +129,4 @@ class EditJumbo extends Component {
   }
 };
 
-export default EditJumbo;
+export default ModalEditJumbo;
