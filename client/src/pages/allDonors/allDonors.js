@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../components/utils/API";
-import DonorsCard from '../../components/DonorsCard/DonorsCard';
+//import DonorsCard from '../../components/DonorsCard/DonorsCard';
 //maps
 //import SimpleMap from "../../components/Map/map";
 import MyMapComponent from "../../components/Map/map";
@@ -8,6 +8,7 @@ import MyMapComponent from "../../components/Map/map";
 //import Map from  "../../components/Map/map";
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 // import GoogleApiWrapper from "../../components/"
+import AllCards from '../../components/allCards/allCards';
 
 class AllDonors extends Component {
     state = {
@@ -40,30 +41,29 @@ class AllDonors extends Component {
     render() {
         return (
             <div className="container text-black">
-                <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded">
+                <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded text-primary">
                     <h1 className="display-3">LettuceEAT</h1>
                     <h3 className="lead">Reducing food waste one bite at a time!</h3>
                 </div>
                 <div className="row">
                     <div className="col-lg-8">
                         {this.state.donors && this.state.donors.length  ? (this.state.donors.map(donor => (
-                        <DonorsCard
+                        <AllCards
                         key={donor.id}
-                        donorId={donor.id}
-                        donorName={donor.name}
-                        donorAddress={donor.location}
-                        donorPhone={donor.phonenumber}
-                        donorEmail={donor.email}
+                        id={donor.id}
+                        link={"/DonorProfile/"+donor.id}
+                        name={donor.name}
+                        address={donor.location}
+                        phone={donor.phonenumber}
+                        email={donor.email}
                         cardClicked={this.cardClicked}/>
                         ))
                         ) : (
                             <h3>No Donors to Show</h3>
                         )}
-                        <div className="container" id="logoutbtn">
-                            <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
-                        </div>
+                        
                     </div>
-                    <div id="map" className="col-lg-4">
+                    <div id="map" className="col-lg-4 mt-3">
                         <MyMapComponent
                         isMarkerShown
                         googleMapURL="https://maps.googleapis.com/maps/api/jskey=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4?v=3.exp&libraries=geometry,drawing,places"
