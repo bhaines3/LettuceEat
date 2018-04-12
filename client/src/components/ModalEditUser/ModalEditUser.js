@@ -1,5 +1,5 @@
 import React from "react";
-const ModalEdit = (props)=> {
+const ModalEditUser = (props)=> {
     return (
       
       <div className="modal fade" id="modal-edit" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel333" aria-hidden="true">
@@ -42,4 +42,4 @@ const ModalEdit = (props)=> {
     );
 };
 
-export default ModalEdit;
+export default ModalEditUser;

@@ -18,10 +18,6 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATEONLY,
 			allowNull: false
 		},
-		enddate: {
-			type: DataTypes.DATEONLY,
-			allowNull: false
-		},
 		pickupwindow: {
 			type: DataTypes.STRING,
 			allowNull: false
