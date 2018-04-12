@@ -82,10 +82,7 @@ render() {
                         <h3>No food posts! Check back later. </h3>
                 )}
                 <ModalAddPost donorId={localStorage.getItem("donorId")} />
-                {/*<div className="container" id="logoutbtn">
-                    <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
-                </div>*/}
-        
+                
             </div>
         );
     }

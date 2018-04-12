@@ -33,7 +33,7 @@ class AllNonProfits extends Component {
     render() {
         return (
             <div className="container text-black">
-                <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded">
+                <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded text-primary">
                     <h1 className="display-3">LettuceEAT</h1>
                     <h3 className="lead">Reducing food waste one bite at a time!</h3>
                 </div>
@@ -53,7 +53,7 @@ class AllNonProfits extends Component {
                             <h3>No NonProfits to show</h3>
                         )}
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 mt-3">
                         <MyMapComponent
                             isMarkerShown
                             googleMapURL="https://maps.googleapis.com/maps/api/jskey=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4?v=3.exp&libraries=geometry,drawing,places"
@@ -62,9 +62,6 @@ class AllNonProfits extends Component {
                             mapElement={<div style={{ height: `100%` }} />}
                             latLng={this.state.address}/>
                     </div>
-                </div>
-                <div className="container" id="logoutbtn">
-                    <button onClick={this.Logout} type="submit" className="btn btn-default"><i className="fa fa-search"></i> Logout</button>
                 </div>
             </div>
         );
