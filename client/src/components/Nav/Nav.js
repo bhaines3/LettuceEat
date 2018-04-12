@@ -12,7 +12,6 @@ const Logout=event=>{
         localStorage.removeItem("nonProfitId");
         // window.location.reload();
     }
-
 // const Nav = () => {
 //   return (
 //     <nav className="navbar navbar-inverse">
@@ -52,7 +51,6 @@ const Logout=event=>{
 //     </nav>
 //   );
 // };
-
 const Nav = () => {
     return (   
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -79,14 +77,27 @@ const Nav = () => {
                 </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
-                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
-
+                {/* rendering signup and sign in when not logged in and profile */}
+                {(localStorage.getItem("jwtToken")!=null)?(<div>
+                    {(localStorage.getItem("donorId")!==null)?(<div>
+                        <a className="btn btn-primary text-white" href={"/DonorProfile/"+localStorage.getItem("donorId")}>Profile</a>
+                        <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
+                       </div>):(<div>
+                        <a className="btn btn-primary text-white" href={"/NonProfitProfile/"+localStorage.getItem("nonProfitId")}>Profile</a>
+                        <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
+                         </div>)}
+                </div>):(
+                <div>
+                    <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
+                    <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a></div>
+                )}
+                {/* <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
                 <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
-    
+     */}
                 </form>
                 <ModalLogin/>
-                    <ModalSignUp/>
+                <ModalSignUp/>
             </div>
         </nav>
     );

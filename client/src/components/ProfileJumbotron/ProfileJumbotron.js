@@ -1,5 +1,6 @@
 import React from "react";
 import ModalEditJumbo from '../ModalEditJumbo';
+import "./editBtn.css";
 
 const ProfileJumbotron = (props) => {
   const renderEditButton = () => {
@@ -8,7 +9,8 @@ const ProfileJumbotron = (props) => {
         if(localStorage.getItem("donorId") === props.paramsId)
         {
           return (
-            <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</a>
+            <button id="donorInfoBtnedit" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</button>
+            // <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</a>
           )
         }
       }
@@ -17,7 +19,8 @@ const ProfileJumbotron = (props) => {
         if(localStorage.getItem("nonProfitId") === props.paramsId)
         {
           return (
-            <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</a>
+            <button id = "nonProfitInfoBtnedit" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</button>
+            //<a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</a>
           )
         }
       }
