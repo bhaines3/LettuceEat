@@ -99,7 +99,7 @@ class ModalEditJumbo extends Component {
                       {/* <input className="col-sm-12 mb-2" type="text" id="edit_location" name="location"
                       maxLength={150} onChange={this.handleChange} defaultValue={this.props.currentAddress}/> */}
                       <br />
-                      {(localStorage.getItem("isDonor") === true) ? ("") : (
+                      {(localStorage.getItem("isDonor") === "true") ? ("") : (
                         <div>
                         <label htmlFor="hoursforpickup"><strong>Hours For Pick Up:</strong></label>
                         <input className="col-sm-12 mb-2" type="text" id="edit_hours" name="hoursforpickup"
