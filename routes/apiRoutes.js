@@ -4,6 +4,8 @@ const donorController=require("../controller/donorController.js");
 const nonProfitController=require("../controller/nonProfitController.js");
 const foodPostController=require("../controller/foodPostController.js");
 const db = require("../models");
+
+module.exports = router;
 //=========USERS==============
 router
 .route("/users/")
