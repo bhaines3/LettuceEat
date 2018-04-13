@@ -26,7 +26,7 @@ import ModalViewInterested from '../../components/ModalViewInterested';
             <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editpost">Edit</a>
             ) : ("")}
           <br />
-          <strong>Description:</strong>{this.props.desc}
+            <strong>Description:</strong><p className="foodDescription">{this.props.desc}</p>
           <br />
           <br />
           <div className ="row">
@@ -34,7 +34,7 @@ import ModalViewInterested from '../../components/ModalViewInterested';
                   <strong>Pick-Up Date:</strong> {this.props.pickupdate}
               </div>
               <div className ="col-md-8">
-              <strong>Pick-Up Window:</strong> {this.props.pickupwindow}
+                <strong>Pick-Up Window:</strong> {this.props.pickupwindow}
               </div>
           </div>
           {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (

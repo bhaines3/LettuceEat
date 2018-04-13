@@ -16,6 +16,10 @@ class ModalSignUp extends Component {
     password:"",
     loggedIn:""
   }
+  componentWillMount(){
+     //clearing the form when it is close
+     //this.clearForm();
+  }
   updateUserSignup = event => {
     // Destructure the name and value properties off of event.target
     // Update the appropriate state
@@ -35,12 +39,13 @@ class ModalSignUp extends Component {
       console.log('Success', latLng);
       const newUser={
         name:this.state.name,
-          email:this.state.email,
-          location:this.state.location,
-          isDonor:this.state.isDonor,
-          phonenumber:this.state.phonenumber,
-          password:this.state.password
+        email:this.state.email,
+        location:this.state.location,
+        isDonor:this.state.isDonor,
+        phonenumber:this.state.phonenumber,
+        password:this.state.password
       }
+     
       //console.log("creating" +newUser.name);
       axios.post("/api/auth/signup", newUser).then(result=>{
         //reroutes to login page
@@ -84,6 +89,16 @@ class ModalSignUp extends Component {
       loggedIn:token
     })
   } 
+  clearForm(){
+    this.setState({
+      name:"",
+      email:"",
+      location:"",
+      isDonor:false,
+      phonenumber:"",
+      password:""
+    })
+  }
   render() {
     const inputProps = {
       value: this.state.location,
@@ -118,7 +133,7 @@ class ModalSignUp extends Component {
                 </div>
                 <div className="form-group">
                   <label>Phone:</label>
-                  <input type="text" className="form-control col-sm-12 mb-2"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+                  <input type="tel" className="form-control col-sm-12 mb-2"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
                 </div>
                 <div className="form-group">
                   <label>Email:</label>

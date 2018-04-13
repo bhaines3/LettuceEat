@@ -42,7 +42,7 @@ module.exports = {
           console.log("User has been created.");
           db.User.create(newUserInfo)
           .then((dbUser)=> {
-            if (newUserInfo.isDonor===false)
+            if (newUserInfo.isDonor!="true")
             {
               console.log("im a nonprofit");
               console.log(newUserInfo.isDonor);
