@@ -1,7 +1,7 @@
 # LettuceEat
 LettuceEAT connects local restaurants and/or businesses with a surplus of unsold food to non-profit organizations in the greater Tucson area.This application allows all public to see donation posts, donors' profiles and nonprofits' profiles. Donors need to sign up in order to make donation posts and non profits need to sign up in order to contact donors about their interest. LettuceEAT aims to reduce food waste one bite at a time.
 
-![Demo gif](./client/public/LettuceEact.gif)
+![Demo gif](./client/public/LettuceEat.gif)
 * [Live Demo](https://lettuceeat.herokuapp.com/)
 * [Video Demo]()
 
