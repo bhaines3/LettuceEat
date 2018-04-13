@@ -124,4 +124,4 @@ class ModalLogin extends Component {
     )
   }
 };
-export default ModalLogin;https://github.com/michellele994/LettuceEat/pull/84/conflicts
+export default ModalLogin;
