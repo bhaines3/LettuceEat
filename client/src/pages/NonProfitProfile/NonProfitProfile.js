@@ -86,6 +86,7 @@ class NonProfitProfile extends Component {
                 <h3 className="text-primary">Food Posts Interested In</h3>
                  {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length  ? (
                     this.state.nonprofit.FoodPosts.map(FoodPost => (
+                        <div>
                         <Card
                         key={FoodPost.id}
                         foodId={FoodPost.id}
@@ -95,6 +96,8 @@ class NonProfitProfile extends Component {
                         pickupwindow={FoodPost.pickupwindow}
                         donorId={FoodPost.DonorId}
                         />
+                        <br />
+                        </div>
                     ))
                  ) : (
                      <h3 className="text-warning">No Food Posts</h3>
