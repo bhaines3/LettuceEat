@@ -28,7 +28,7 @@ import ModalEditPost from '../../components/ModalEditPost';
             />
             ) : ("")}
           <br />
-          <strong>Description:</strong>{this.props.desc}
+            <strong>Description:</strong><p className="foodDescription">{this.props.desc}</p>
           <br />
           <br />
           <div className ="row">
@@ -36,7 +36,7 @@ import ModalEditPost from '../../components/ModalEditPost';
                   <strong>Pick-Up Date:</strong> {this.props.pickupdate}
               </div>
               <div className ="col-md-8">
-              <strong>Pick-Up Window:</strong> {this.props.pickupwindow}
+                <strong>Pick-Up Window:</strong> {this.props.pickupwindow}
               </div>
           </div>
           {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
