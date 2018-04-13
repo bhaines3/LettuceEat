@@ -103,10 +103,10 @@ class ModalLogin extends Component {
             <div className="modal-body">
               <div className="form-group">
                     <label htmlFor="name-login">Email:</label>
-                    <input className="col-sm-12 mb-2" type="email" id="name-login" name="emailLogin" value={this.state.email} onChange={this.updateUserlogin} placeholder="janedoe@email.com" maxLength={30} />
+                    <input className="form-control col-sm-12 mb-2" type="email" id="name-login" name="emailLogin" value={this.state.email} onChange={this.updateUserlogin} placeholder="janedoe@email.com" maxLength={30} />
                     <br />
                     <label htmlFor="email-login">Password:</label>
-                    <input className="col-sm-12 mb-2" type="password" id="password-login" name="passwordLogin" value={this.state.password} onChange={this.updateUserlogin} placeholder="******" maxLength={10} />
+                    <input className="form-control col-sm-12 mb-2" type="password" id="password-login" name="passwordLogin" value={this.state.password} onChange={this.updateUserlogin} placeholder="******" maxLength={10} />
                     <br />
                     <div id="alert-message" />
                      <button onClick={this.Login} className="btn btn-primary" type="submit" id="login-user" data-dismiss="modal">Login <i className="fa fa-check-circle" /></button> 
