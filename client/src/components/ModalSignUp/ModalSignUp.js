@@ -149,6 +149,7 @@ class ModalSignUp extends Component {
                 </div>
                 <div className="form-group">
                   <div className= "row">
+                  {this.state.isDonor}
                     <div className= "col-sm-6">
                       <input type="radio" className="form-control"name="isDonor" value="true" onChange={this.updateUserSignup} />
                       <label>Donor</label>

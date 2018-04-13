@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import "./Card.css";
-import EditBtn from "../EditBtn";
 import DeleteBtn from "../DeleteBtn";
 import InterestBtn from "../InterestBtn";
 import API from "./../utils/API";
 import ModalEditPost from '../../components/ModalEditPost';
+import ModalViewInterested from '../../components/ModalViewInterested';
 
 
   class Card extends Component {
@@ -23,9 +23,7 @@ import ModalEditPost from '../../components/ModalEditPost';
         <div className="card-body">
           <h5 className="card-title">{this.props.title}</h5>
           {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
-            <EditBtn 
-            foodId= {this.props.foodId}
-            />
+            <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editpost">Edit</a>
             ) : ("")}
           <br />
             <strong>Description:</strong><p className="foodDescription">{this.props.desc}</p>
@@ -50,7 +48,7 @@ import ModalEditPost from '../../components/ModalEditPost';
           nonProfitId = {localStorage.getItem("nonProfitId")}
           />
           ) : ("")}
-          <a href="" className="btn btn-primary">View Organizations Interested</a>
+          <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-allinterested">View Organizations Interested</a>
         </div>
         <ModalEditPost
         donorId={this.props.donorId}
@@ -59,6 +57,9 @@ import ModalEditPost from '../../components/ModalEditPost';
         foodDesc={this.props.desc}
         foodPickUpDay={this.props.pickupdate}
         foodPickUpWindow={this.props.pickupwindow}
+        />
+        <ModalViewInterested
+        foodId={this.props.foodId}
         />
     </div>
 
