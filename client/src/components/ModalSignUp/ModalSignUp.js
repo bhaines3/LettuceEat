@@ -28,6 +28,8 @@ class ModalSignUp extends Component {
       [name]: value
     });
   };
+
+  
   //location
   onChange = (location) => this.setState({ location })
   
@@ -135,7 +137,17 @@ class ModalSignUp extends Component {
                 <div className="form-group">
                   <label>Phone:</label>
                   <input type="tel" className="form-control col-sm-12 mb-2"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+
+                  {/*<input type='tel' className="form-control col-sm-12" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}'  title='Phone Number (Format: (999)999-9999)' />*/}
+
+                  {/*<input type="tel" className="form-control col-sm-12"  name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern="^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$" />*/}
+
                 </div>
+                  
+
+
+
+
                 <div className="form-group">
                   <label>Email:</label>
                   <input type="text" className="form-control col-sm-12 mb-2"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>

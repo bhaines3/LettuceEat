@@ -48,7 +48,7 @@ import ModalViewInterested from '../../components/ModalViewInterested';
           nonProfitId = {localStorage.getItem("nonProfitId")}
           />
           ) : ("")}
-          <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-allinterested">View Organizations Interested</a>
+          <a href="" className="btn btn-primary text-white float-left" data-toggle="modal" data-target="#modal-allinterested">View Organizations Interested</a>
         </div>
         <ModalEditPost
         donorId={this.props.donorId}
