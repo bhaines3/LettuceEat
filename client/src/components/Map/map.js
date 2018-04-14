@@ -1,74 +1,74 @@
-import React,{Component} from 'react';
-import {Gmaps, Marker, InfoWindow} from 'react-gmaps';
+import React, { Component } from 'react';
+import { Gmaps, Marker, InfoWindow } from 'react-gmaps';
 
-const params = {v: '3.exp', key: 'AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4'};
- 
+const params = { v: '3.exp', key: 'AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4' };
+
 class Map extends Component {
-  
+
     state = {
-      lat: "",
-      lng: "",
-      msg:""
+        lat: "",
+        lng: "",
+        msg: ""
     }
-    componentWillMount(){
-      console.log("im creating map1st");
-      this.setState({
-        lat:this.props.lat,
-        lng:this.props.lng,
-        msg:this.props.msg
-      })
+    componentWillMount() {
+        console.log("im creating map1st");
+        this.setState({
+            lat: this.props.lat,
+            lng: this.props.lng,
+            msg: this.props.msg
+        })
     }
     //updates state every time state is updatedin the parent in each click
     componentWillReceiveProps(nextProps) {
-      this.setState({
-        lat:nextProps.lat,
-        lng:nextProps.lng,
-        msg:nextProps.msg
-      })
+        this.setState({
+            lat: nextProps.lat,
+            lng: nextProps.lng,
+            msg: nextProps.msg
+        })
     }
-  
-  onMapCreated(map) {
-    map.setOptions({
-      disableDefaultUI: true
-    });
-  }
- 
-  onDragEnd(e) {
-    console.log('onDragEnd', e);
-  }
- 
-  onCloseClick() {
-    console.log('onCloseClick');
-  }
- 
-  onClick(e) {
-    console.log('onClick', e);
-  }
-  
-  render() {
-    return (
-      <Gmaps
-        width={'100%'}
-        height={'120%'}
-        lat={this.state.lat}
-        lng={this.state.lng}
-        zoom={12}
-        loadingMessage={'Be happy'}
-        params={params}
-        onMapCreated={this.onMapCreated}>
-        <Marker
-          lat={this.state.lat}
-          lng={this.state.lng}
-          draggable={true}
-          onDragEnd={this.onDragEnd} />
-        <InfoWindow
-          lat={this.state.lat}
-          lng={this.state.lng}
-          content={this.state.msg}
-          onCloseClick={this.onCloseClick} />
-      </Gmaps>
-    );
-  }
+
+    onMapCreated(map) {
+        map.setOptions({
+            disableDefaultUI: true
+        });
+    }
+
+    onDragEnd(e) {
+        console.log('onDragEnd', e);
+    }
+
+    onCloseClick() {
+        console.log('onCloseClick');
+    }
+
+    onClick(e) {
+        console.log('onClick', e);
+    }
+
+    render() {
+        return (
+            <Gmaps
+                width={'100%'}
+                height={'500px'}
+                lat={this.state.lat}
+                lng={this.state.lng}
+                zoom={12}
+                loadingMessage={'Be happy'}
+                params={params}
+                onMapCreated={this.onMapCreated}>
+                <Marker
+                    lat={this.state.lat}
+                    lng={this.state.lng}
+                    draggable={true}
+                    onDragEnd={this.onDragEnd} />
+                <InfoWindow
+                    lat={this.state.lat}
+                    lng={this.state.lng}
+                    content={this.state.msg}
+                    onCloseClick={this.onCloseClick} />
+            </Gmaps>
+        );
+    }
 };
 
 export default Map;

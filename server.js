@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+    app.use(express.static("client/build"));
 }
 
 // We need to use sessions to keep track of our user's login status
@@ -28,18 +28,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Routes
-app.use("/api/",apiRoutes);
+app.use("/api/", apiRoutes);
 // app.use("/api/auth",authRoutes);
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-      console.log(`🌎 ==> Server now on port ${PORT}!`);
+db.sequelize.sync().then(function () {
+    app.listen(PORT, function () {
+        console.log(`🌎 ==> Server now on port ${PORT}!`);
     });
 });

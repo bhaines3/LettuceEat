@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 //import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
-import Card from '../../components/Card';
+import FoodCard from '../../components/FoodCard';
 import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
 import ModalAddPost from '../../components/ModalAddPost';
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class DonorProfile extends Component {
     state = {
         donor: [],
         foodposts: [],
-        redirect:false
+        redirect: false
     };
-    componentWillMount(){
+    componentWillMount() {
         //ANYBODY CAN SEE DONOR PROFILE NO NEED FOR BELOW
         // const donor=localStorage.getItem("isDonor");
         // console.log("donor b4 donrspg " +donor);
@@ -26,43 +26,43 @@ class DonorProfile extends Component {
     }
     componentDidMount() {
         //What is the purpose of this? -Michelle
-        const donorId=localStorage.getItem("donorId");
-        const idAllDonorsPg=this.props.match.params.id;
-        if(donorId!=idAllDonorsPg){
-            
+        const donorId = localStorage.getItem("donorId");
+        const idAllDonorsPg = this.props.match.params.id;
+        if (donorId != idAllDonorsPg) {
+
             this.getDonorInfo(idAllDonorsPg);
         }
-        else{
+        else {
             this.getDonorInfo(donorId);
         }
-        
+
     }
-    Logout=event=>{
+    Logout = event => {
         localStorage.removeItem('jwtToken');
         localStorage.removeItem("isDonor");
         localStorage.removeItem("userId");
         localStorage.removeItem("donorId");
         localStorage.removeItem("nonProfitId");
-        
-       
+
+
     }
-    getDonorInfo=(donorId)=>{
+    getDonorInfo = (donorId) => {
         API.findOneDonor(donorId)
-        .then(res => {this.setState({ donor: res.data })})
-        .catch(err => console.log(err));
-       
+            .then(res => { this.setState({ donor: res.data }) })
+            .catch(err => console.log(err));
+
         API.filterFoodPostsByDonor(donorId)
-        .then(res=> {console.log(res.data);this.setState({ foodposts: res.data })})
-        .catch(err => console.log(err));
+            .then(res => { console.log(res.data); this.setState({ foodposts: res.data }) })
+            .catch(err => console.log(err));
     }
     render() {
         // console.log("redirect "+this.state.redirect)
         // if(this.state.redirect){ 
         //    return (<Redirect to={"/"}/>)
         // }
-        return(
-            <div className = "container">
-                 {/* Id: {this.state.donor.id}
+        return (
+            <div className="container">
+                {/* Id: {this.state.donor.id}
                 <br />
                Name: {this.state.donor.name}
                 <br />
@@ -82,39 +82,39 @@ class DonorProfile extends Component {
                 <br />
                 {JSON.stringify(this.state.donor)} */}
                 <ProfileJumbotron
-                name={this.state.donor.name}
-                address={this.state.donor.location}
-                phonenumber={this.state.donor.phonenumber}
-                email={this.state.donor.email}
-                summary={this.state.donor.summary || null}
-                isDonor={true}
-                paramsId={this.props.match.params.id}
-                 />
-                 
+                    name={this.state.donor.name}
+                    address={this.state.donor.location}
+                    phonenumber={this.state.donor.phonenumber}
+                    email={this.state.donor.email}
+                    summary={this.state.donor.summary || null}
+                    isDonor={true}
+                    paramsId={this.props.match.params.id}
+                />
+
                 {(localStorage.getItem("donorId") === this.props.match.params.id) ? (
-                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
-            ) : ("")}
-                 {this.state.foodposts && this.state.foodposts.length  ? (
+                    <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
+                ) : ("")}
+                {this.state.foodposts && this.state.foodposts.length ? (
                     this.state.foodposts.map(FoodPost => (
                         <div>
-                        <Card
-                        key={FoodPost.id}
-                        foodId={FoodPost.id}
-                        title={FoodPost.title}
-                        desc={FoodPost.desc}
-                        pickupdate={FoodPost.pickupdate}
-                        pickupwindow={FoodPost.pickupwindow}
-                        donorId={FoodPost.DonorId}
-                        >
-                        </Card>
+                            <FoodCard
+                                key={FoodPost.id}
+                                foodId={FoodPost.id}
+                                title={FoodPost.title}
+                                desc={FoodPost.desc}
+                                pickupdate={FoodPost.pickupdate}
+                                pickupwindow={FoodPost.pickupwindow}
+                                donorId={FoodPost.DonorId}
+                            >
+                            </FoodCard>
                             <br />
                         </div>
                     ))
-                 ) : (
-                     <h3>No Food Posts</h3>
-                 )}
-                 <br />
-                 <br />
+                ) : (
+                        <h3>No Food Posts</h3>
+                    )}
+                <br />
+                <br />
                 <ModalAddPost donorId={this.state.donor.id} />
             </div>
         )
