@@ -53,12 +53,12 @@ App listening on PORT 3001
 11. Your app should automatically open on http://localhost:3000/
 
 
-<!-- ## Running the tests
+## Running the tests
 
 1. Go to ClassroomApp directory run in command line
 ```
-npm test
-``` -->
+yarn test
+```
 
 ## Deployment
 Follow Heroku's deployment instructions
