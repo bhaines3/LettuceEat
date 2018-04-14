@@ -47,3 +47,20 @@ button {
   .card {
       margin-bottom: 15px;
   }
+
+  #AddressLink {
+      color: rgb(235,104,100);
+      
+  }
+
+  #AddressLink:hover {
+     color: gray;
+     text-decoration: underline;
+     
+ }
+
+ #AddressLink:active {
+    color: lightgray;
+    text-decoration: underline;
+    
+}
