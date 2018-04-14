@@ -13,16 +13,6 @@ class NonProfitProfile extends Component {
         donors: [],
         redirect: false,
     };
-    componentWillMount() {
-        // const donor=localStorage.getItem("isDonor");
-        // console.log("donor non profit "+donor)
-        // if(donor==="true" || donor===null ){
-        //     console.log("donor after check " + donor);
-        //    return this.setState({
-        //         redirect:true
-        //     })
-        // }
-    }
     componentDidMount() {
         //Why does it matter which nonProfit is viewing the nonProfit page? -Michelle
         const nonProfitId = localStorage.getItem("nonProfitId");
@@ -35,12 +25,12 @@ class NonProfitProfile extends Component {
         //What is the purpose of this? -Michelle
         if (nonProfitId != idAllNonProfitsPg) {
             API.findOneNonProfit(idAllNonProfitsPg)
-                .then(res => { this.setState({ nonprofit: res.data }) })
+                .then(res => { this.setState({ nonprofit: res.data, foodpost: res.data.FoodPosts }) })
                 .catch(err => console.log(err));
         }
         else {
             API.findOneNonProfit(nonProfitId)
-                .then(res => { this.setState({ nonprofit: res.data }) })
+                .then(res => { this.setState({ nonprofit: res.data, foodpost: res.data.FoodPosts }) })
                 .catch(err => console.log(err));
         }
     }

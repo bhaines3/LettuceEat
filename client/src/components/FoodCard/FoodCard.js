@@ -15,7 +15,7 @@ class FoodCard extends Component {
         title: "",
     };
 
-    componentWillReceiveProps() {
+    componentDidMount() {
         API.findOneDonor(this.props.donorId)
             .then(res => { this.setState({ donorName: res.data.name, donorId: res.data.id, foodId: this.props.foodId }) })
             .catch(err => console.log(err));
