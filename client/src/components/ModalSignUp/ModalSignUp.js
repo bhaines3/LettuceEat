@@ -163,7 +163,6 @@ class ModalSignUp extends Component {
                       <input type="radio" className="form-control" name="isDonor" value="false" onChange={this.updateUserSignup}/>
                       <label>NonProfit</label>
                     </div>
-                    </form>
                   </div>
                 </div>
                 <div className="form-group"> 
