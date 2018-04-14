@@ -9,13 +9,17 @@ import ModalViewInterested from '../../components/ModalViewInterested';
 
 class FoodCard extends Component {
     state = {
-        donorName: ""
+        donorName: "",
+        donorId: "",
+        foodId: "",
+        title: "",
     };
 
-    componentDidMount() {
+    componentWillReceiveProps() {
         API.findOneDonor(this.props.donorId)
-            .then(res => { this.setState({ donorName: res.data.name }) })
+            .then(res => { this.setState({ donorName: res.data.name, donorId: res.data.id, foodId: this.props.foodId }) })
             .catch(err => console.log(err));
+        this.setState({ title: this.props.title })
     }
     render() {
         return (
@@ -24,7 +28,7 @@ class FoodCard extends Component {
                 <div className="card-body">
                     <h5 className="card-title">{this.props.title}</h5>
                     {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
-                        <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editpost">Edit</a>
+                        <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target={"#modal-editpost" + this.props.foodId}>Edit</a>
                     ) : ("")}
                     <br />
                     <br />
@@ -38,7 +42,7 @@ class FoodCard extends Component {
                             <strong>Pick-Up Window:</strong> {this.props.pickupwindow}
                         </div>
                     </div>
-                    <a href="" className="btn btn-primary text-white float-left" data-toggle="modal" data-target="#modal-allinterested">View Organizations Interested</a>
+                    <a href="" className="btn btn-primary text-white float-left" data-toggle="modal" data-target={"#modal-allinterested" + this.props.foodId}>View Organizations Interested</a>
                     {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
                         <DeleteBtn
                             foodId={this.props.foodId}
