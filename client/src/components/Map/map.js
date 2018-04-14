@@ -49,11 +49,11 @@ class Map extends Component {
         return (
             <Gmaps
                 width={'100%'}
-                height={'500px'}
+                height={'500%'}
                 lat={this.state.lat}
                 lng={this.state.lng}
                 zoom={12}
-                loadingMessage={'Be happy'}
+                loadingMessage={'loading...'}
                 params={params}
                 onMapCreated={this.onMapCreated}>
                 <Marker
