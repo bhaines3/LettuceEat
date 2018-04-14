@@ -1,7 +1,9 @@
 import React from 'react';
 //import {Link} from 'react-router-dom';
+import API from "../utils/API";
 import ModalSignUp from '../ModalSignUp';
 import ModalLogin from '../ModalLogin';
+import {Redirect} from "react-router-dom";
 import './Nav.css';
 
 const Logout=event=>{
@@ -10,7 +12,9 @@ const Logout=event=>{
         localStorage.removeItem("userId");
         localStorage.removeItem("donorId");
         localStorage.removeItem("nonProfitId");
-        // window.location.reload();
+        API.logout()
+        .then(res => {return <Redirect to={"/"}/>})
+        .catch(err => console.log(err))
     }
 // const Nav = () => {
 //   return (

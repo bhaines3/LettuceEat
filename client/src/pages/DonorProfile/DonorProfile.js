@@ -91,7 +91,7 @@ class DonorProfile extends Component {
                 paramsId={this.props.match.params.id}
                  />
                  
-                {(localStorage.getItem("isDonor") === "true") ? (
+                {(localStorage.getItem("donorId") === this.props.match.params.id) ? (
                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
             ) : ("")}
                  {this.state.foodposts && this.state.foodposts.length  ? (

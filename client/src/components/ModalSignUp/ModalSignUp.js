@@ -1,6 +1,6 @@
 import React,{ Component }  from "react";
 import axios from 'axios';
-//import API from "../utils/API";
+// import API from "../utils/API";
 //import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import {Redirect} from "react-router-dom";
@@ -49,7 +49,7 @@ class ModalSignUp extends Component {
       }
      
       //console.log("creating" +newUser.name);
-      axios.post("/api/auth/signup", newUser).then(result=>{
+      axios.post("/api/signup", newUser).then(result=>{
         //reroutes to login page
         const loginUserInfo={
           email:newUser.email,
@@ -57,7 +57,7 @@ class ModalSignUp extends Component {
           password:newUser.password
           //this.state.password
         }
-        axios.post('/api/auth/login', loginUserInfo)
+        axios.post('/api/login', loginUserInfo)
         .then((res) => {
           //setting the jwt token when loginin result comes in"
           const token=res.data.token;
@@ -109,14 +109,7 @@ class ModalSignUp extends Component {
     }
     //redirecting
     if(this.state.loggedIn){
-      if (this.state.donorLocal){
-        //console.log("there is donor and token")
-        return <Redirect to={"/DonorProfile/"+localStorage.getItem("donorId")}/>
-      }
-      else{
-        //console.log("token but no donor")
-        return <Redirect to={"/NonProfitProfile/"+localStorage.getItem("nonProfitId")}/>
-      }
+      window.location.reload()
     }
     return (
       <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel111" aria-hidden="true">
@@ -163,13 +156,14 @@ class ModalSignUp extends Component {
                 <div className="form-group">
                   <div className= "row">
                     <div className= "col-sm-6">
-                      <input type="radio" className="form-control"name="isDonor" value="true" onChange={this.updateUserSignup} />
+                      <input type="radio" className="form-control" name="isDonor" value="true" onChange={this.updateUserSignup} />
                       <label>Donor</label>
                     </div>
                     <div className= "col-sm-6">
-                      <input type="radio" className="form-control"name="isDonor" value="false" onChange={this.updateUserSignup}/>
+                      <input type="radio" className="form-control" name="isDonor" value="false" onChange={this.updateUserSignup}/>
                       <label>NonProfit</label>
                     </div>
+                    </form>
                   </div>
                 </div>
                 <div className="form-group"> 

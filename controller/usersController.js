@@ -15,7 +15,7 @@ module.exports = {
       console.log("Error from findAllUsers: "+err);
     })
   },
-  createNewuser: (req, res) =>{
+  createNewUser: (req, res) =>{
     if (!req.body.email || !req.body.password) {
       res.json({success: false, msg: 'Please pass email and password.'});
     } 
@@ -82,32 +82,5 @@ module.exports = {
           console.log("Error from findOne: "+err);
       });
     }
-  },
-  findOneuser: (req, res) =>{
-    //find user if already exists  in order to be able to login
-    db.User.findOne({
-      where:{
-          email:req.body.email
-      },
-      include: [db.Donor, db.NonProfit]
-    }).then((dbUser)=>{
-      if(!dbUser){
-        res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
-      }
-      else{
-        // check if password matches
-        const validpass=dbUser.validPassword(req.body.password);
-        if (validpass) {
-          var token = jwt.sign(dbUser.toJSON(), settings.secret);
-          // return the information including token as JSON
-          
-          res.json({success: true, token: 'JWT ' + token});
-        } else {
-          res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
-        }
-      }
-    }).catch(function(err) {
-      console.log("Error from findOne existing user: "+ err);
-    });
   }
 }

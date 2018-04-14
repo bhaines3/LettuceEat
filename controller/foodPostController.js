@@ -1,72 +1,108 @@
 const db = require("../models");
 module.exports = {
-    findAllPosts:(req,res)=>{
-      db.FoodPost.findAll({
-        include: [db.Donor, db.NonProfit]
-      }).then((dbFoodPost)=>{
-        res.json(dbFoodPost);
-      })
+    findAllPosts: (req, res) => {
+        db.FoodPost.findAll({
+            include: [db.Donor, db.NonProfit]
+        }).then((dbFoodPost) => {
+            res.json(dbFoodPost);
+        })
     },
-    findOneFoodPost: (req, res) =>{
-      db.FoodPost.findOne({
-        where:{
-            id: req.params.id
-        },
-        include: [db.Donor, db.NonProfit]
-      }).then((foodPost)=>{
-        res.json(foodPost);
-      })
+    findOneFoodPost: (req, res) => {
+        db.FoodPost.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Donor, db.NonProfit]
+        }).then((foodPost) => {
+            res.json(foodPost);
+        })
     },
-    filterFoodPostsByDonor: (req,res) => {
-      db.FoodPost.findAll({
-        where: {
-          DonorId: req.params.id
-        },
-        include: [db.Donor, db.NonProfit]
-      }).then((foodPost) => {
-        res.json(foodPost)
-      })
+    filterFoodPostsByDonor: (req, res) => {
+        db.FoodPost.findAll({
+            where: {
+                DonorId: req.params.id
+            },
+            include: [db.Donor, db.NonProfit]
+        }).then((foodPost) => {
+            res.json(foodPost)
+        })
     },
-    createFoodPost: (req, res)=> {
-      var newFoodPostInfo={
-          DonorId: req.body.DonorId,
-          title:req.body.title,
-          desc:req.body.desc,
-          pickupdate:req.body.pickupdate,
-          enddate: req.body.enddate,
-          pickupwindow: req.body.pickupwindow
-      }
-      db.FoodPost.create(newFoodPostInfo)
-      .then((dbFoodPost)=> {
-          console.log("FoodPost created");
-          res.json(dbFoodPost);
-      }).catch(function(err) {
-        console.log("Erro: "+err);
-      });
+    createFoodPost: (req, res) => {
+        if (!req.user) {
+            res.status(403).send("You aren't signed in!");
+            return;
+        }
+        if(req.user.Donor.id == req.body.DonorId)
+        {
+            var newFoodPostInfo = {
+                DonorId: req.body.DonorId,
+                title: req.body.title,
+                desc: req.body.desc,
+                pickupdate: req.body.pickupdate,
+                enddate: req.body.enddate,
+                pickupwindow: req.body.pickupwindow
+            }
+            db.FoodPost.create(newFoodPostInfo)
+                .then((dbFoodPost) => {
+                    console.log("FoodPost created");
+                    res.json(dbFoodPost);
+                }).catch(function (err) {
+                    console.log("Erro: " + err);
+                });
+        }
+        else
+        {
+            res.status(403).send("You are not allowed to edit another user's post!");
+            return;
+        }
     },
     updateFoodPost: (req, res) => {
-      db.FoodPost.update(req.body, {
-        where: {
-          id: req.params.id
+        if (!req.user) {
+            res.status(403).send("You aren't signed in!");
+            return;
         }
-      })
-      .then(function(dbFoodPost) {
-        res.json(dbFoodPost);
-      }).catch(function(e) {
-        console.warn(e);
-      })
+        if(req.user.Donor.id == req.body.DonorId)
+        {
+            db.FoodPost.update(req.body, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbFoodPost) {
+                res.json(dbFoodPost);
+            }).catch(function (e) {
+                console.warn(e);
+            })
+        }
+        else
+        {
+            res.status(403).send("You are not allowed to edit another user's post!");
+            return;
+        }
     },
     deleteFoodPost: (req, res) => {
-      db.FoodPost.destroy({
-        where: {
-          id: req.params.id
+        if (!req.user) {
+            res.status(403).send("You aren't signed in!");
+            return;
         }
-      })
-      .then(function(dbFoodPost) {
-        res.json(dbFoodPost);
-      }).catch(function(e) {
-        console.warn(e);
-      });
+        if(req.user.Donor.id == req.params.donorId)
+        {
+            db.FoodPost.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbFoodPost) {
+                res.json(dbFoodPost);
+            }).catch(function (e) {
+                console.warn(e);
+            });
+        }
+        else
+        {
+            res.status(403).send("You are not allowed to edit another user's post!");
+            return;
+        }
     }
     //IMPLEMENT THIS LATER
     // updateFoodPost: (req, res) => {

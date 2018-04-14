@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export default {
+  logout:() => {
+    return axios.get("/api/logout/")
+  },
   //=========USERS==============
   findAllusers:() => {
     return axios.get("/api/users/");
@@ -8,7 +11,7 @@ export default {
   createUser: (userInfo) => {
     return axios.post("/api/users/",userInfo);
   },
-  findOneuser:(userInfo) => {
+  findOneUser:(userInfo) => {
     return axios.get("/api/user/",{params:userInfo});
   },
   //=========DONORS==============
@@ -48,8 +51,8 @@ export default {
   editPost: (id, foodInfo) => {
     return axios.put("/api/foodpost/"+id, foodInfo);
   },
-  deletePost: function(id) {
-    return axios.delete("/api/foodpost/" + id);
+  deletePost: function(id, donorId) {
+    return axios.delete("/api/foodpost/" + id + "/" + donorId);
   },
   //=========ADD/DELETE INTEREST==============
   addPostInterest: (info) => {
