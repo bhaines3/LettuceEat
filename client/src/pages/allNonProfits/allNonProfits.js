@@ -47,6 +47,7 @@ class AllNonProfits extends Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-7">
+                        <h1 className="text-center">All Non-Profits</h1>
                         {this.state.nonProfits && this.state.nonProfits.length ? (this.state.nonProfits.map(nonProfit => (
                             <UserCard
                                 key={nonProfit.id}
