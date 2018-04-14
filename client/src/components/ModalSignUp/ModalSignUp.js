@@ -124,6 +124,18 @@ class ModalSignUp extends Component {
                         </div>
                         <div className="modal-body">
                             <div className="form-group">
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <label>Donor</label>
+                                        <input type="radio" className="form-control" name="isDonor" value="true" onChange={this.updateUserSignup} />
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <label>NonProfit</label>
+                                        <input type="radio" className="form-control" name="isDonor" value="false" onChange={this.updateUserSignup} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="form-group">
                                 <label>Organization name:</label>
                                 <input name="name" onChange={this.updateUserSignup} value={this.state.name} type="text" className="form-control col-sm-12 mb-2" placeholder="Jane Doe" />
                             </div>
@@ -136,11 +148,6 @@ class ModalSignUp extends Component {
                                 {/*<input type="tel" className="form-control col-sm-12"  name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern="^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$" />*/}
 
                             </div>
-
-
-
-
-
                             <div className="form-group">
                                 <label>Email:</label>
                                 <input type="text" className="form-control col-sm-12 mb-2" name="email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com" />
@@ -152,18 +159,6 @@ class ModalSignUp extends Component {
                             <div className="form-group">
                                 <label>Address:</label><br />
                                 <PlacesAutocomplete inputProps={inputProps} />
-                            </div>
-                            <div className="form-group">
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <input type="radio" className="form-control" name="isDonor" value="true" onChange={this.updateUserSignup} />
-                                        <label>Donor</label>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <input type="radio" className="form-control" name="isDonor" value="false" onChange={this.updateUserSignup} />
-                                        <label>NonProfit</label>
-                                    </div>
-                                </div>
                             </div>
                             <div className="form-group">
                                 <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
