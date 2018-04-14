@@ -20,15 +20,15 @@ class FoodCard extends Component {
     render() {
         return (
             <div className="card text-black border-primary my-3">
-                <h5 className="card-header bg-primary">Food Post by <a className="text-white text-capitalize" href={"/donorprofile/" + this.props.donorId}>{this.state.donorName}</a></h5>
+                <h4 className="card-header bg-primary">Food Post by <a className="text-white text-capitalize" href={"/donorprofile/" + this.props.donorId}>{this.state.donorName}</a></h4>
                 <div className="card-body">
                     <h5 className="card-title">{this.props.title}</h5>
                     {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
                         <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editpost">Edit</a>
                     ) : ("")}
                     <br />
-                    <strong>Description:</strong><p className="foodDescription">{this.props.desc}</p>
                     <br />
+                    <strong>Description:</strong><p className="foodDescription">{this.props.desc}</p>
                     <br />
                     <div className="row">
                         <div className="col-md-4">

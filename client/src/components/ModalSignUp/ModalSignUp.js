@@ -125,11 +125,11 @@ class ModalSignUp extends Component {
                         <div className="modal-body">
                             <div className="form-group">
                                 <div className="row">
-                                    <div className="col-sm-6">
-                                        <label>Donor</label>
+                                    <div className="col-6">
+                                        <label>Donor </label>
                                         <input type="radio" className="form-control" name="isDonor" value="true" onChange={this.updateUserSignup} />
                                     </div>
-                                    <div className="col-sm-6">
+                                    <div className="col-6">
                                         <label>NonProfit</label>
                                         <input type="radio" className="form-control" name="isDonor" value="false" onChange={this.updateUserSignup} />
                                     </div>
@@ -169,7 +169,7 @@ class ModalSignUp extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     };
 };
