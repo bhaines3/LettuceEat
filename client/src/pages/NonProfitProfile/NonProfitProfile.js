@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 //import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
-import Card from '../../components/Card';
+import FoodCard from '../../components/FoodCard';
 import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class NonProfitProfile extends Component {
     state = {
         nonprofit: {},
         foodpost: [],
         donors: [],
-        redirect:false,
+        redirect: false,
     };
-    componentWillMount(){
+    componentWillMount() {
         // const donor=localStorage.getItem("isDonor");
         // console.log("donor non profit "+donor)
         // if(donor==="true" || donor===null ){
@@ -25,23 +25,23 @@ class NonProfitProfile extends Component {
     }
     componentDidMount() {
         //Why does it matter which nonProfit is viewing the nonProfit page? -Michelle
-        const nonProfitId=localStorage.getItem("nonProfitId");
-        const idAllNonProfitsPg=this.props.match.params.id;
+        const nonProfitId = localStorage.getItem("nonProfitId");
+        const idAllNonProfitsPg = this.props.match.params.id;
         console.log(nonProfitId);
         API.findAllDonors()
-            .then(res => {this.setState({ donors: res.data })})
+            .then(res => { this.setState({ donors: res.data }) })
             .catch(err => console.log(err));
 
         //What is the purpose of this? -Michelle
-        if(nonProfitId!=idAllNonProfitsPg){
+        if (nonProfitId != idAllNonProfitsPg) {
             API.findOneNonProfit(idAllNonProfitsPg)
-            .then(res => {this.setState({ nonprofit: res.data })})
-            .catch(err => console.log(err));
+                .then(res => { this.setState({ nonprofit: res.data }) })
+                .catch(err => console.log(err));
         }
-        else{
+        else {
             API.findOneNonProfit(nonProfitId)
-            .then(res => {this.setState({ nonprofit: res.data })})
-            .catch(err => console.log(err));
+                .then(res => { this.setState({ nonprofit: res.data }) })
+                .catch(err => console.log(err));
         }
     }
     render() {
@@ -49,10 +49,10 @@ class NonProfitProfile extends Component {
         // if(this.state.redirect){ 
         //     return (<Redirect to={"/"}/>)
         //  }
-        return(
+        return (
             <div>
-            <div className ="container">
-                {/* Id: {this.state.nonprofit.id}
+                <div className="container">
+                    {/* Id: {this.state.nonprofit.id}
                 <br />
                 Name: {this.state.nonprofit.name}
                 <br />
@@ -70,40 +70,40 @@ class NonProfitProfile extends Component {
                 https://hashnode.com/post/reactjs-how-to-render-components-only-after-successful-asynchronous-call-ciwvnkjr400sq7t533lvrpdtw 
                  { this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length }
                 <br />*/}
-                {/* {JSON.stringify(this.state.nonprofit)} */}
-                <ProfileJumbotron
-                name={this.state.nonprofit.name}
-                address={this.state.nonprofit.location}
-                phonenumber={this.state.nonprofit.phonenumber}
-                email={this.state.nonprofit.email}
-                summary={this.state.nonprofit.summary}
-                isDonor={false}
-                hoursForPickUp={this.state.nonprofit.hoursforpickup}
-                paramsId={this.props.match.params.id}
-                >
-                <br />
-                </ProfileJumbotron>
-                <h3 className="text-primary">Food Posts Interested In</h3>
-                 {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length  ? (
-                    this.state.nonprofit.FoodPosts.map(FoodPost => (
-                        <div>
-                        <Card
-                        key={FoodPost.id}
-                        foodId={FoodPost.id}
-                        title={FoodPost.title}
-                        desc={FoodPost.desc}
-                        pickupdate={FoodPost.pickupdate}
-                        pickupwindow={FoodPost.pickupwindow}
-                        donorId={FoodPost.DonorId}
-                        />
+                    {/* {JSON.stringify(this.state.nonprofit)} */}
+                    <ProfileJumbotron
+                        name={this.state.nonprofit.name}
+                        address={this.state.nonprofit.location}
+                        phonenumber={this.state.nonprofit.phonenumber}
+                        email={this.state.nonprofit.email}
+                        summary={this.state.nonprofit.summary}
+                        isDonor={false}
+                        hoursForPickUp={this.state.nonprofit.hoursforpickup}
+                        paramsId={this.props.match.params.id}
+                    >
                         <br />
-                        </div>
-                    ))
-                 ) : (
-                     <h3 className="text-warning">No Food Posts</h3>
-                 )} 
-            </div>
-            
+                    </ProfileJumbotron>
+                    <h3 className="text-primary">Food Posts Interested In</h3>
+                    {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length ? (
+                        this.state.nonprofit.FoodPosts.map(FoodPost => (
+                            <div>
+                                <FoodCard
+                                    key={FoodPost.id}
+                                    foodId={FoodPost.id}
+                                    title={FoodPost.title}
+                                    desc={FoodPost.desc}
+                                    pickupdate={FoodPost.pickupdate}
+                                    pickupwindow={FoodPost.pickupwindow}
+                                    donorId={FoodPost.DonorId}
+                                />
+                                <br />
+                            </div>
+                        ))
+                    ) : (
+                            <h3 className="text-warning">No Food Posts</h3>
+                        )}
+                </div>
+
             </div>
         )
     }
