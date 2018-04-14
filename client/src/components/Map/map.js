@@ -47,7 +47,7 @@ class Map extends Component {
 
     render() {
         return (
-            <Gmaps
+            <Gmaps className="mb-4"
                 width={'100%'}
                 height={'500%'}
                 lat={this.state.lat}
