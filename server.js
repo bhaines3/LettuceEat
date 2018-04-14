@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const apiRoutes = require("./routes/apiRoutes");
-const authRoutes=require("./routes/authRoutes/authRoutes");
+const session = require("express-session");
+const passport = require('./config/passport');
 
 // const routes = require("./routes/articles");
 const PORT = process.env.PORT || 3001;
@@ -21,9 +22,14 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "polkadotted elephant", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 //Routes
 app.use("/api/",apiRoutes);
-app.use("/api/auth",authRoutes);
+// app.use("/api/auth",authRoutes);
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {

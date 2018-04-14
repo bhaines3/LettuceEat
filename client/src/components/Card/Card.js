@@ -40,6 +40,7 @@ import ModalViewInterested from '../../components/ModalViewInterested';
           {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
             <DeleteBtn 
             foodId= {this.props.foodId}
+            donorId = {this.props.donorId}
             />
             ) : ("")}
           {(localStorage.getItem("isDonor") === "false") ? (

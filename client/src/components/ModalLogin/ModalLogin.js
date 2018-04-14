@@ -37,7 +37,7 @@ class ModalLogin extends Component {
     // console.log("im making the post request for login");
     // console.log("im sending email "+ userInfo.email);
     // console.log("im sending password " + userInfo.password);
-    axios.post('/api/auth/login', userInfo)
+    axios.post('/api/login', userInfo)
     .then((res) => {
       //setting the jwt token when loginin result comes in"
       const token=res.data.token;
@@ -46,6 +46,7 @@ class ModalLogin extends Component {
       this.donorNonDonorSave(token)
       
     }).catch(error=>{
+      console.log("bitches: " + JSON.stringify(error));
       this.setState({ message: 'Login failed. Username or password not match' });
     })
   }
@@ -81,14 +82,7 @@ class ModalLogin extends Component {
   
   render() {
     if(this.state.loggedIn){
-      if (this.state.isDonor){
-        //console.log("there is donor and token")
-        return <Redirect to={"/DonorProfile/"+localStorage.getItem("donorId")}/>
-      }
-      else{
-        //console.log("token but no donor")
-        return <Redirect to={"/NonProfitProfile/"+localStorage.getItem("nonProfitId")}/>
-      }
+      window.location.reload();
     }
     return (
        <div className="modal fade" id="modal-login" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel222" aria-hidden="true">

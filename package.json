@@ -6,7 +6,7 @@
   "scripts": {
     "server": "node server.js",
     "client": "cd client && npm run start",
-    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "start": "concurrently \"nodemon --inspect server.js\" \"npm run client\"",
     "build": "cd client && npm run build",
     "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,6 +27,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
+    "express-session": "^1.15.6",
     "google-maps-react": "^2.0.0",
     "jsonwebtoken": "^8.2.1",
     "mysql": "^2.15.0",
@@ -34,6 +35,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^4.37.5"
+    "sequelize": "^4.37.5",
+    "uuid": "^3.2.1"
   }
 }
