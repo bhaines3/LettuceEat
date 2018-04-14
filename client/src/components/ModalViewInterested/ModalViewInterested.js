@@ -14,7 +14,7 @@ class ModalViewInterested extends Component {
     }
     render() {
         return (
-            <div className="modal fade" id="modal-allinterested" tabIndex={-1} role="dialog" aria-labelledby="viewAllInterested" aria-hidden="true">
+            <div className="modal fade" id={"modal-allinterested" + this.props.foodId} tabIndex={-1} role="dialog" aria-labelledby="viewAllInterested" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
