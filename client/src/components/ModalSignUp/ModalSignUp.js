@@ -28,6 +28,8 @@ class ModalSignUp extends Component {
       [name]: value
     });
   };
+
+  
   //location
   onChange = (location) => this.setState({ location })
   
@@ -59,6 +61,7 @@ class ModalSignUp extends Component {
         .then((res) => {
           //setting the jwt token when loginin result comes in"
           const token=res.data.token;
+          
           //saving data to local storage
           this.donorNonDonorSave(token)
         }).catch(error => console.error('Error', error))
@@ -127,7 +130,17 @@ class ModalSignUp extends Component {
                 <div className="form-group">
                   <label>Phone:</label>
                   <input type="tel" className="form-control col-sm-12 mb-2"  name= "phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555"/>
+
+                  {/*<input type='tel' className="form-control col-sm-12" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}'  title='Phone Number (Format: (999)999-9999)' />*/}
+
+                  {/*<input type="tel" className="form-control col-sm-12"  name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern="^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$" />*/}
+
                 </div>
+                  
+
+
+
+
                 <div className="form-group">
                   <label>Email:</label>
                   <input type="text" className="form-control col-sm-12 mb-2"  name= "email" value={this.state.email} onChange={this.updateUserSignup} placeholder="janedoe@email.com"/>
@@ -142,8 +155,6 @@ class ModalSignUp extends Component {
                 </div>
                 <div className="form-group">
                   <div className= "row">
-                  {this.state.isDonor}
-                  <form>
                     <div className= "col-sm-6">
                       <input type="radio" className="form-control" name="isDonor" value="true" onChange={this.updateUserSignup} />
                       <label>Donor</label>
