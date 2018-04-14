@@ -48,6 +48,7 @@ class AllDonors extends Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-7">
+                        <h1 className="text-center">All Donors</h1>
                         {this.state.donors && this.state.donors.length ? (this.state.donors.map(donor => (
                             <UserCard
                                 key={donor.id}
