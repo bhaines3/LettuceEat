@@ -42,7 +42,7 @@ class FoodCard extends Component {
                             <strong>Pick-Up Window:</strong> {this.props.pickupwindow}
                         </div>
                     </div>
-                    <a href="" className="btn btn-primary text-white float-left" data-toggle="modal" data-target={"#modal-allinterested" + this.props.foodId}>View Organizations Interested</a>
+                    <a href="" className="btn btn-primary text-white float-left interestedBtn" data-toggle="modal" data-target={"#modal-allinterested" + this.props.foodId}>Interested Organizations</a>
                     {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
                         <DeleteBtn
                             foodId={this.props.foodId}
