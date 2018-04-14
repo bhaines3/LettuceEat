@@ -41,7 +41,7 @@ module.exports = {
             name: req.name,
             phonenumber: req.phonenumber
         }
-        db.Donor.create(newDonorInfo)
+        return db.Donor.create(newDonorInfo)
             .then((dbDonor) => {
                 console.log("Donor created");
                 res.json(dbDonor);
@@ -54,21 +54,19 @@ module.exports = {
             res.status(403).send("You aren't signed in!");
             return;
         }
-        if(req.user.Donor.id == req.params.id)
-        {
+        if (req.user.Donor.id == req.params.id) {
             db.Donor.update(req.body, {
                 where: {
                     id: req.params.id
                 }
             })
-            .then(function (dbDonor) {
-                res.json(dbDonor);
-            }).catch(function (e) {
-                console.warn(e);
-            })
+                .then(function (dbDonor) {
+                    res.json(dbDonor);
+                }).catch(function (e) {
+                    console.warn(e);
+                })
         }
-        else
-        {
+        else {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }

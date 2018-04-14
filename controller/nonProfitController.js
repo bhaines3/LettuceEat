@@ -25,7 +25,7 @@ module.exports = {
             name: req.name,
             phonenumber: req.phonenumber
         }
-        db.NonProfit.create(newNonProfitInfo)
+        return db.NonProfit.create(newNonProfitInfo)
             .then((dbNonProfit) => {
                 console.log("NonProfit created");
                 res.json(dbNonProfit);
@@ -38,21 +38,19 @@ module.exports = {
             res.status(403).send("You aren't signed in!");
             return;
         }
-        if(req.user.NonProfit.id == req.params.id)
-        {
+        if (req.user.NonProfit.id == req.params.id) {
             db.NonProfit.update(req.body, {
                 where: {
                     id: req.params.id
                 }
             })
-            .then(function (dbNonProfit) {
-                res.json(dbNonProfit);
-            }).catch(function (e) {
-                console.warn(e);
-            })
+                .then(function (dbNonProfit) {
+                    res.json(dbNonProfit);
+                }).catch(function (e) {
+                    console.warn(e);
+                })
         }
-        else
-        {
+        else {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }
@@ -62,8 +60,7 @@ module.exports = {
             res.status(403).send("You aren't signed in!");
             return;
         }
-        if(req.user.NonProfit.id == req.body.nonProfitId)
-        {
+        if (req.user.NonProfit.id == req.body.nonProfitId) {
             db.NonProfit.findOne({
                 where: {
                     id: req.body.nonProfitId
@@ -79,8 +76,7 @@ module.exports = {
                 })
             })
         }
-        else
-        {
+        else {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }
@@ -90,8 +86,7 @@ module.exports = {
             res.status(403).send("You aren't signed in!");
             return;
         }
-        if(req.user.NonProfit.id == req.body.nonProfitId)
-        {
+        if (req.user.NonProfit.id == req.body.nonProfitId) {
             db.NonProfit.findOne({
                 where: {
                     id: req.body.nonProfitId
@@ -107,8 +102,7 @@ module.exports = {
                 })
             })
         }
-        else
-        {
+        else {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }
