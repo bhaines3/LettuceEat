@@ -60,7 +60,7 @@ class AllNonProfits extends Component {
                                 cardClicked={this.cardClicked} />
                         ))
                         ) : (
-                                <h3>No NonProfits to show</h3>
+                                <h3 className="text-center">No NonProfits to show</h3>
                             )}
                     </div>
                     <div className="col-lg-5 mt-3">
