@@ -50,12 +50,12 @@ class InterestBtn extends Component {
         return (
             <div>
                 {(this.state.alreadyInterested) ? (
-                    <button className="delete-btn btn btn-danger float-right" onClick={this.removeInterest}>
-                        Remove from Interest
+                    <button className="delete-btn btn btn-danger float-right interestedBtn" onClick={this.removeInterest}>
+                        Remove Interest
         </button>
                 ) : (
-                        <button className="delete-btn btn btn-danger float-right" onClick={this.addInterest}>
-                            Add to Interest
+                        <button className="delete-btn btn btn-danger float-right interestedBtn" onClick={this.addInterest}>
+                            Interested
         </button>
                     )}
             </div>
