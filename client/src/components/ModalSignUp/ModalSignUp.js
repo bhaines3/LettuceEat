@@ -61,6 +61,7 @@ class ModalSignUp extends Component {
         .then((res) => {
           //setting the jwt token when loginin result comes in"
           const token=res.data.token;
+          
           //saving data to local storage
           this.donorNonDonorSave(token)
         }).catch(error => console.error('Error', error))
@@ -161,13 +162,12 @@ class ModalSignUp extends Component {
                 </div>
                 <div className="form-group">
                   <div className= "row">
-                  {this.state.isDonor}
                     <div className= "col-sm-6">
                       <input type="radio" className="form-control"name="isDonor" value="true" onChange={this.updateUserSignup} />
                       <label>Donor</label>
                     </div>
                     <div className= "col-sm-6">
-                      <input type="radio" className="form-control"name="isDonor" value="false" onChange={this.updateUserSignup} checked/>
+                      <input type="radio" className="form-control"name="isDonor" value="false" onChange={this.updateUserSignup}/>
                       <label>NonProfit</label>
                     </div>
                   </div>

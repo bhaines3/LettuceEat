@@ -100,6 +100,7 @@ module.exports = {
         if (validpass) {
           var token = jwt.sign(dbUser.toJSON(), settings.secret);
           // return the information including token as JSON
+          
           res.json({success: true, token: 'JWT ' + token});
         } else {
           res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
