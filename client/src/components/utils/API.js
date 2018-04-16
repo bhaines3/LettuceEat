@@ -7,6 +7,9 @@ export default {
   login: (userInfo) => {
     return axios.post("/api/login/", userInfo)
   },
+  signUp: (userInfo) => {
+    return axios.post("/api/signup/", userInfo)
+  },
   //=========USERS==============
   findAllusers: () => {
     return axios.get("/api/users/");

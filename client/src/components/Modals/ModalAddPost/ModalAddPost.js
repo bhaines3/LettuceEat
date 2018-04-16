@@ -10,18 +10,6 @@ class ModalAddPost extends Component {
         postEndDate: "",
         postPickUpWindow: "",
     };
-
-    // componentDidMount() {
-    //     API.findAllFoodPosts()
-    //         .then(res => { this.setState({ foodposts: res.data }) })
-    //         .catch(err => console.log(err));
-    //     API.findAllDonors()
-    //         .then(res => { this.setState({ donors: res.data }) })
-    //         .catch(err => console.log(err));
-    //     API.findAllNonProfits()
-    //         .then(res => { this.setState({ nonprofits: res.data }) })
-    //         .catch(err => console.log(err));
-    // }
     addNewPost = (event) => {
         event.preventDefault();
         const newPost = {

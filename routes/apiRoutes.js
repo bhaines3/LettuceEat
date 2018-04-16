@@ -20,7 +20,6 @@ router
 router
     .route("/signup/")
     .post(usersController.createNewUser)
-
 router
     .route("/logout/")
     .get((req, res) => {

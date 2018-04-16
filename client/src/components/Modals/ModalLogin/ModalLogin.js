@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import axios from 'axios';
 import API from "./../../utils/API";
 import jwt_decode from "jwt-decode";
 
@@ -31,28 +30,12 @@ class ModalLogin extends Component {
                 window.location.reload();
             })
             .catch(err => {
-                console.log("bitches: " + JSON.stringify(err));
                 this.setState({ message: 'Login failed. Username or password not match' });
             })
-        // //making sure info is goin gto request
-        // axios.post('/api/login', userInfo)
-        //     .then((res) => {
-        //         //setting the jwt token when loginin result comes in"
-        //         const token = res.data.token;
-        //         console.log(token)
-        //         //saving data to local storage
-        //         this.donorNonDonorSave(token)
-
-        //     }).catch(error => {
-        //         console.log("bitches: " + JSON.stringify(error));
-        //         this.setState({ message: 'Login failed. Username or password not match' });
-        //     })
     }
     donorNonDonorSave(token) {
         localStorage.setItem('jwtToken', token);
-        console.log(token);
         const decoded = jwt_decode(token);
-        console.log(JSON.stringify(decoded))
         const donor = decoded.isDonor;
         const id = decoded.id;
         localStorage.setItem("userId", id);
@@ -69,12 +52,6 @@ class ModalLogin extends Component {
         this.setState({
             isDonor: donor,
             loggedIn: token
-        })
-    }
-    clearSignin() {
-        this.setState({
-            email: "",
-            password: ""
         })
     }
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import API from "./../../utils/API";
 import jwt_decode from "jwt-decode";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
@@ -13,10 +13,6 @@ class ModalSignUp extends Component {
         password: "",
         loggedIn: ""
     }
-    componentWillMount() {
-        //clearing the form when it is close
-        //this.clearForm();
-    }
     updateUserSignup = event => {
         // Destructure the name and value properties off of event.target
         // Update the appropriate state
@@ -25,7 +21,6 @@ class ModalSignUp extends Component {
             [name]: value
         });
     };
-
 
     //location
     onChange = (location) => this.setState({ location })
@@ -44,26 +39,23 @@ class ModalSignUp extends Component {
                     phonenumber: this.state.phonenumber,
                     password: this.state.password
                 }
-
-                //console.log("creating" +newUser.name);
-                axios.post("/api/signup", newUser).then(result => {
-                    //reroutes to login page
-                    const loginUserInfo = {
-                        email: newUser.email,
-                        //this.state.email,
-                        password: newUser.password
-                        //this.state.password
-                    }
-                    axios.post('/api/login', loginUserInfo)
-                        .then((res) => {
-                            //setting the jwt token when loginin result comes in"
-                            const token = res.data.token;
-
-                            //saving data to local storage
-                            this.donorNonDonorSave(token)
-                        }).catch(error => console.error('Error', error));
-
-                });
+                API.signUp(newUser)
+                    .then(result => {
+                        const loginUserInfo = {
+                            email: newUser.email,
+                            password: newUser.password
+                        }
+                        API.login(loginUserInfo)
+                            .then((res) => {
+                                //setting the jwt token when loginin result comes in"
+                                const token = res.data.token;
+                                //saving data to local storage
+                                this.donorNonDonorSave(token)
+                            }).catch(error => console.error('Error', error));
+                    })
+                    .catch(err => {
+                        console.error("Error", err)
+                    });
             })
     }
     donorNonDonorSave(token) {

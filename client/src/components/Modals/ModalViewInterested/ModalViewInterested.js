@@ -34,7 +34,7 @@ class ModalViewInterested extends Component {
                                     </div>
                                 ))
                             ) : (
-                                    <h3>No organizations have marked that they are interested</h3>
+                                    <h4>No organizations have marked that they are interested</h4>
                                 )}
                         </div>
                         <div className="modal-footer">

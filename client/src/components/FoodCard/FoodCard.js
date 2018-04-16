@@ -8,17 +8,13 @@ import ModalViewInterested from '../../components/Modals/ModalViewInterested';
 
 class FoodCard extends Component {
     state = {
-        donorName: "",
-        donorId: "",
-        foodId: "",
-        title: "",
+        donorName: ""
     };
 
     componentDidMount() {
         API.findOneDonor(this.props.donorId)
-            .then(res => { this.setState({ donorName: res.data.name, donorId: res.data.id, foodId: this.props.foodId }) })
+            .then(res => { this.setState({ donorName: res.data.name }) })
             .catch(err => console.log(err));
-        this.setState({ title: this.props.title })
     }
     render() {
         return (
