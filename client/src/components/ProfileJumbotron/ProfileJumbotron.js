@@ -1,5 +1,5 @@
 import React from "react";
-import ModalEditJumbo from '../ModalEditJumbo';
+import ModalEditJumbo from '../Modals/ModalEditJumbo';
 
 const ProfileJumbotron = (props) => {
     const renderEditButton = () => {

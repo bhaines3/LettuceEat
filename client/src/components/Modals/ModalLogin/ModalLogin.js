@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios';
+// import axios from 'axios';
+import API from "./../../utils/API";
 import jwt_decode from "jwt-decode";
-import { Redirect } from "react-router-dom";
+
 class ModalLogin extends Component {
     state = {
         nameLogin: "",
@@ -10,8 +11,6 @@ class ModalLogin extends Component {
         isLoggedIn: false
     }
     updateUserlogin = event => {
-        // Destructure the name and value properties off of event.target
-        // Update the appropriate state
         const { name, value } = event.target;
         this.setState({
             [name]: value
@@ -23,19 +22,31 @@ class ModalLogin extends Component {
             email: this.state.emailLogin,
             password: this.state.passwordLogin
         }
-        //making sure info is goin gto request
-        axios.post('/api/login', userInfo)
-            .then((res) => {
+        API.login(userInfo)
+            .then(res => {
                 //setting the jwt token when loginin result comes in"
                 const token = res.data.token;
-                console.log(token)
                 //saving data to local storage
-                this.donorNonDonorSave(token)
-
-            }).catch(error => {
-                console.log("bitches: " + JSON.stringify(error));
+                this.donorNonDonorSave(token);
+                window.location.reload();
+            })
+            .catch(err => {
+                console.log("bitches: " + JSON.stringify(err));
                 this.setState({ message: 'Login failed. Username or password not match' });
             })
+        // //making sure info is goin gto request
+        // axios.post('/api/login', userInfo)
+        //     .then((res) => {
+        //         //setting the jwt token when loginin result comes in"
+        //         const token = res.data.token;
+        //         console.log(token)
+        //         //saving data to local storage
+        //         this.donorNonDonorSave(token)
+
+        //     }).catch(error => {
+        //         console.log("bitches: " + JSON.stringify(error));
+        //         this.setState({ message: 'Login failed. Username or password not match' });
+        //     })
     }
     donorNonDonorSave(token) {
         localStorage.setItem('jwtToken', token);

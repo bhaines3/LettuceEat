@@ -4,6 +4,9 @@ export default {
   logout: () => {
     return axios.get("/api/logout/")
   },
+  login: (userInfo) => {
+    return axios.post("/api/login/", userInfo)
+  },
   //=========USERS==============
   findAllusers: () => {
     return axios.get("/api/users/");

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import API from "./../utils/API";
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-
-
+import API from "./../../utils/API";
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 class ModalEditJumbo extends Component {
     state = {
@@ -13,7 +11,6 @@ class ModalEditJumbo extends Component {
         hoursforpickup: "",
         summary: ""
     };
-
     componentDidMount() {
         this.setState({
             name: this.props.currentName,
@@ -34,10 +31,9 @@ class ModalEditJumbo extends Component {
             summary: this.state.summary
         }
         API.editDonor(this.props.paramsId, updatedInfo)
-            .then(res => { console.log("post editted"); window.location.reload(); })
+            .then(res => { window.location.reload(); })
             .catch(err => console.log(err))
     }
-
     editNonProfit = (event) => {
         event.preventDefault();
         const updatedInfo = {
@@ -49,7 +45,7 @@ class ModalEditJumbo extends Component {
             summary: this.state.summary
         }
         API.editNonProfit(this.props.paramsId, updatedInfo)
-            .then(res => { console.log("post editted"); window.location.reload(); })
+            .then(res => { window.location.reload(); })
             .catch(err => console.log(err))
     }
 
@@ -74,12 +70,14 @@ class ModalEditJumbo extends Component {
                 <div className="modal fade" id="modal-editjumbo" tabIndex={-1} role="dialog" aria-labelledby="editJumbo" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
+
                             <div className="modal-header">
                                 <h5 className="modal-title" id="editJumbo">Edit Your Information</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
+
                             <div className="modal-body">
                                 <div className="form-group">
                                     <label htmlFor="name"><strong>Name:</strong></label>
@@ -96,8 +94,6 @@ class ModalEditJumbo extends Component {
                                     <br />
                                     <label htmlFor="location"><strong>Location:</strong></label>
                                     <PlacesAutocomplete inputProps={inputProps} />
-                                    {/* <input className="col-sm-12 mb-2" type="text" id="edit_location" name="location"
-                      maxLength={150} onChange={this.handleChange} defaultValue={this.props.currentAddress}/> */}
                                     <br />
                                     {(localStorage.getItem("isDonor") === "true") ? ("") : (
                                         <div>
@@ -119,9 +115,11 @@ class ModalEditJumbo extends Component {
                                     <br />
                                 </div>
                             </div>
+
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
+
                         </div>
                     </div>
                 </div>

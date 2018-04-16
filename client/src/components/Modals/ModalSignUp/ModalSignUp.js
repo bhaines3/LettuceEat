@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-// import API from "../utils/API";
-//import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
-import { Redirect } from "react-router-dom";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 class ModalSignUp extends Component {

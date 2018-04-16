@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import FoodCard from '../../components/FoodCard';
-import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
-import { Redirect } from "react-router-dom";
 
 class NonProfitProfile extends Component {
     state = {
@@ -23,7 +20,7 @@ class NonProfitProfile extends Component {
             .catch(err => console.log(err));
 
         //What is the purpose of this? -Michelle
-        if (nonProfitId != idAllNonProfitsPg) {
+        if (nonProfitId !== idAllNonProfitsPg) {
             API.findOneNonProfit(idAllNonProfitsPg)
                 .then(res => { this.setState({ nonprofit: res.data, foodpost: res.data.FoodPosts }) })
                 .catch(err => console.log(err));

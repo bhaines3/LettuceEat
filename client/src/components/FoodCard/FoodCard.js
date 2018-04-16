@@ -3,9 +3,8 @@ import "./FoodCard.css";
 import DeleteBtn from "../DeleteBtn";
 import InterestBtn from "../InterestBtn";
 import API from "./../utils/API";
-import ModalEditPost from '../../components/ModalEditPost';
-import ModalViewInterested from '../../components/ModalViewInterested';
-
+import ModalEditPost from '../../components/Modals/ModalEditPost';
+import ModalViewInterested from '../../components/Modals/ModalViewInterested';
 
 class FoodCard extends Component {
     state = {
@@ -27,7 +26,7 @@ class FoodCard extends Component {
                 <h4 className="card-header bg-primary">Food Post by <a className="text-white text-capitalize" href={"/donorprofile/" + this.props.donorId}>{this.state.donorName}</a></h4>
                 <div className="card-body">
                     <h5 className="card-title">{this.props.title}</h5>
-                    {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
+                    {(parseInt(localStorage.getItem("donorId"), 10) === this.props.donorId) ? (
                         <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target={"#modal-editpost" + this.props.foodId}>Edit</a>
                     ) : ("")}
                     <br />
@@ -43,7 +42,7 @@ class FoodCard extends Component {
                         </div>
                     </div>
                     <a href="" className="btn btn-primary text-white float-left interestedBtn" data-toggle="modal" data-target={"#modal-allinterested" + this.props.foodId}>Interested Organizations</a>
-                    {(parseInt(localStorage.getItem("donorId")) === this.props.donorId) ? (
+                    {(parseInt(localStorage.getItem("donorId"), 10) === this.props.donorId) ? (
                         <DeleteBtn
                             foodId={this.props.foodId}
                             donorId={this.props.donorId}

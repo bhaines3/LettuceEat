@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
 import API from "../../components/utils/API";
 import FoodCard from '../../components/FoodCard';
-import Nav from '../../components/Nav';
 import ProfileJumbotron from '../../components/ProfileJumbotron';
-import ModalAddPost from '../../components/ModalAddPost';
-import { Redirect } from "react-router-dom";
+import ModalAddPost from '../../components/Modals/ModalAddPost';
 
 class DonorProfile extends Component {
     state = {
@@ -28,7 +25,7 @@ class DonorProfile extends Component {
         //What is the purpose of this? -Michelle
         const donorId = localStorage.getItem("donorId");
         const idAllDonorsPg = this.props.match.params.id;
-        if (donorId != idAllDonorsPg) {
+        if (donorId !== idAllDonorsPg) {
 
             this.getDonorInfo(idAllDonorsPg);
         }
