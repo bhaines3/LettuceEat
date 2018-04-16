@@ -7,20 +7,8 @@ import ModalAddPost from '../../components/Modals/ModalAddPost';
 class DonorProfile extends Component {
     state = {
         donor: [],
-        foodposts: [],
-        redirect: false
+        foodposts: []
     };
-    componentWillMount() {
-        //ANYBODY CAN SEE DONOR PROFILE NO NEED FOR BELOW
-        // const donor=localStorage.getItem("isDonor");
-        // console.log("donor b4 donrspg " +donor);
-        // if(donor==="false" || donor==null ){
-        //     console.log("donor in check donrspg " +donor)
-        //    return this.setState({
-        //         redirect:true
-        //     })
-        // }
-    }
     componentDidMount() {
         //What is the purpose of this? -Michelle
         const donorId = localStorage.getItem("donorId");
