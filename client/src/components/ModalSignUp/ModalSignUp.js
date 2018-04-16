@@ -4,7 +4,8 @@ import axios from 'axios';
 //import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { Redirect } from "react-router-dom";
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import MaskedInput from 'react-text-mask';
 
 class ModalSignUp extends Component {
     state = {
@@ -141,11 +142,17 @@ class ModalSignUp extends Component {
                             </div>
                             <div className="form-group">
                                 <label>Phone:</label>
-                                <input type="tel" className="form-control col-sm-12 mb-2" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555" />
+                                {/*<input type="tel" className="form-control col-sm-12 mb-2" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555" />*/}
 
-                                {/*<input type='tel' className="form-control col-sm-12" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}'  title='Phone Number (Format: (999)999-9999)' />*/}
-
-                                {/*<input type="tel" className="form-control col-sm-12"  name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern="^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$" />*/}
+                                <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} 
+                                type="tel:"
+                                value={this.state.phonenumber}
+                                name="phonenumber"
+                                showMask={false}
+                                placeholder="enter phone number"
+                                className="form-control col-sm-12"
+                                onChange={this.updateUserSignup}
+                                />
 
                             </div>
                             <div className="form-group">

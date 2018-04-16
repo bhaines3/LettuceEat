@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from "./../utils/API";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-
+import MaskedInput from 'react-text-mask';
 
 
 class ModalEditJumbo extends Component {
@@ -83,16 +83,27 @@ class ModalEditJumbo extends Component {
                             <div className="modal-body">
                                 <div className="form-group">
                                     <label htmlFor="name"><strong>Name:</strong></label>
-                                    <input className="col-sm-12 mb-2" type="text" id="edit_name" name="name"
+                                    <input className="form-control col-sm-12 mb-2" type="text" id="edit_name" name="name"
                                         maxLength={30} onChange={this.handleChange} defaultValue={this.props.currentName} />
                                     <br />
                                     <label htmlFor="email"><strong>Email:</strong></label>
-                                    <input className="col-sm-12 mb-2" type="text" id="edit_email" name="email"
+                                    <input className="form-control col-sm-12 mb-2" type="text" id="edit_email" name="email"
                                         maxLength={50} onChange={this.handleChange} defaultValue={this.props.currentEmail} />
                                     <br />
                                     <label htmlFor="phonenumber"><strong>Phone Number:</strong></label>
-                                    <input className="form-control col-sm-12 mb-2" type="text" id="edit_phone"
-                                        name="phonenumber" defaultValue={this.props.currentPhonenumber} onChange={this.handleChange} />
+                                    {/*<input className="form-control col-sm-12 mb-2" type="text" id="edit_phone"
+                                        name="phonenumber" defaultValue={this.props.currentPhonenumber} onChange={this.handleChange} />*/}
+
+                                        <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} 
+                                        type="tel:"
+                                        id="edit_phone"
+                                        defaultValue={this.props.currentPhonenumber}
+                                        name="phonenumber"
+                                        showMask={false}
+                                        placeholder="enter phone number"
+                                        className="form-control col-sm-12"
+                                        onChange={this.handleChange}
+                                        />
                                     <br />
                                     <label htmlFor="location"><strong>Location:</strong></label>
                                     <PlacesAutocomplete inputProps={inputProps} />
@@ -108,7 +119,7 @@ class ModalEditJumbo extends Component {
                                         </div>
                                     )}
                                     <label htmlFor="summary"><strong>Summary:</strong></label>
-                                    <input className="col-sm-12 mb-2" type="text" id="edit_location" name="summary"
+                                    <input className="form-control col-sm-12 mb-2" type="text" id="edit_location" name="summary"
                                         maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentSummary} />
                                     <br />
                                     {(localStorage.getItem("isDonor") === "true") ? (
