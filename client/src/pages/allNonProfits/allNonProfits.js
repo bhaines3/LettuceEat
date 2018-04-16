@@ -57,6 +57,7 @@ class AllNonProfits extends Component {
                                 address={nonProfit.location}
                                 phone={nonProfit.phonenumber}
                                 email={nonProfit.email}
+                                website={nonProfit.website}
                                 cardClicked={this.cardClicked} />
                         ))
                         ) : (

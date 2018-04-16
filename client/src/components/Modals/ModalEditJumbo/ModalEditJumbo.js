@@ -9,7 +9,8 @@ class ModalEditJumbo extends Component {
         phonenumber: "",
         location: "",
         hoursforpickup: "",
-        summary: ""
+        summary: "",
+        website: ""
     };
     componentDidMount() {
         this.setState({
@@ -18,7 +19,8 @@ class ModalEditJumbo extends Component {
             phonenumber: this.props.currentPhonenumber,
             location: this.props.currentAddress,
             hoursforpickup: this.props.currentPickUpHours,
-            summary: this.props.currentSummary
+            summary: this.props.currentSummary,
+            website: this.props.currentWebsite
         })
     }
     editDonor = (event) => {
@@ -28,7 +30,8 @@ class ModalEditJumbo extends Component {
             email: this.state.email,
             phonenumber: this.state.phonenumber,
             location: this.state.location,
-            summary: this.state.summary
+            summary: this.state.summary,
+            website: this.state.website
         }
         API.editDonor(this.props.paramsId, updatedInfo)
             .then(res => { window.location.reload(); })
@@ -42,7 +45,8 @@ class ModalEditJumbo extends Component {
             phonenumber: this.state.phonenumber,
             location: this.state.location,
             hoursforpickup: this.state.hoursforpickup,
-            summary: this.state.summary
+            summary: this.state.summary,
+            website: this.state.website
         }
         API.editNonProfit(this.props.paramsId, updatedInfo)
             .then(res => { window.location.reload(); })
@@ -92,9 +96,6 @@ class ModalEditJumbo extends Component {
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_phone"
                                         name="phonenumber" defaultValue={this.props.currentPhonenumber} onChange={this.handleChange} />
                                     <br />
-                                    <label htmlFor="location"><strong>Location:</strong></label>
-                                    <PlacesAutocomplete inputProps={inputProps} />
-                                    <br />
                                     {(localStorage.getItem("isDonor") === "true") ? ("") : (
                                         <div>
                                             <label htmlFor="hoursforpickup"><strong>Hours For Pick Up:</strong></label>
@@ -106,6 +107,13 @@ class ModalEditJumbo extends Component {
                                     <label htmlFor="summary"><strong>Summary:</strong></label>
                                     <input className="col-sm-12 mb-2" type="text" id="edit_location" name="summary"
                                         maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentSummary} />
+                                    <br />
+                                    <label htmlFor="website"><strong>Website:</strong></label>
+                                    <input className="col-sm-12 mb-2" type="text" id="edit_website" name="website"
+                                        maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentWebsite} />
+                                    <br />
+                                    <label htmlFor="location"><strong>Location:</strong></label>
+                                    <PlacesAutocomplete inputProps={inputProps} />
                                     <br />
                                     {(localStorage.getItem("isDonor") === "true") ? (
                                         <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>

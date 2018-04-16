@@ -41,6 +41,7 @@ class DonorProfile extends Component {
                     phonenumber={this.state.donor.phonenumber}
                     email={this.state.donor.email}
                     summary={this.state.donor.summary || null}
+                    website={this.state.donor.website || null}
                     isDonor={true}
                     paramsId={this.props.match.params.id}
                 />

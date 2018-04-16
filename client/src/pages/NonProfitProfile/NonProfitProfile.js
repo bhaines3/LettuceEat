@@ -42,6 +42,7 @@ class NonProfitProfile extends Component {
                         summary={this.state.nonprofit.summary}
                         isDonor={false}
                         hoursForPickUp={this.state.nonprofit.hoursforpickup}
+                        website={this.state.nonprofit.website}
                         paramsId={this.props.match.params.id}
                     >
                         <br />

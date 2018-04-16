@@ -27,6 +27,13 @@ const ProfileJumbotron = (props) => {
                 <br />
                 {props.phonenumber}
                 <br />
+                {(props.website) ? (
+                    <div>
+                        <br />
+                        <a href={props.website}>View Website</a>
+                    </div>
+                ) : ("")}
+                <br />
                 {/* Make email a link to send an email */}
                 <strong>Email: </strong><a href={"mailto:" + props.email}>{props.email}</a>
                 <br />
@@ -55,6 +62,7 @@ const ProfileJumbotron = (props) => {
                 currentPhonenumber={props.phonenumber}
                 currentEmail={props.email}
                 currentSummary={props.summary}
+                currentWebsite={props.website}
                 currentPickUpHours={props.hoursForPickUp || null}
             />
         </div>

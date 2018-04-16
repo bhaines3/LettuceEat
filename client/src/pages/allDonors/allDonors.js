@@ -58,6 +58,7 @@ class AllDonors extends Component {
                                 address={donor.location}
                                 phone={donor.phonenumber}
                                 email={donor.email}
+                                website={donor.website}
                                 cardClicked={this.cardClicked} />
                         ))
                         ) : (
