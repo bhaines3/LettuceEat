@@ -12,6 +12,7 @@ button {
   body {
     margin-bottom: 60px; /* Margin bottom by footer height */
     font-family: 'Jua', sans-serif;
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/funky-lines.png")
   }
 
   .footer {
