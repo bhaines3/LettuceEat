@@ -117,12 +117,20 @@ class ModalEditJumbo extends Component {
                                             <br />
                                         </div>
                                     )}
-                                    <label htmlFor="summary"><strong>Summary:</strong></label>
+                                    {/*<label htmlFor="summary"><strong>Summary:</strong></label>
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_location" name="summary"
                                         maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentSummary} />
-                                    <br />
+                                    <br />*/}
+
+                                    <div className="form-group">
+                                    <label htmlFor="summary">Description:</label>
+                                    <textarea className="form-control" id="edit_location" name="summary" rows="3" onChange={this.handleChange}
+                                    defaultValue={this.props.currentSummary}></textarea>
+                                </div>
+
+
                                     <label htmlFor="website"><strong>Website:</strong></label>
-                                    <input className="col-sm-12 mb-2" type="text" id="edit_website" name="website"
+                                    <input className="form-control col-sm-12 mb-2" type="text" placeholder="http://yourwebsite.com" id="edit_website" name="website"
                                         maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentWebsite} />
                                     <br />
                                     <label htmlFor="location"><strong>Location:</strong></label>
