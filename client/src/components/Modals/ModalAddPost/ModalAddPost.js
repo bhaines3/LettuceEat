@@ -49,17 +49,22 @@ class ModalAddPost extends Component {
                             <div className="form-group">
                                 <label htmlFor="postTitle"><strong>Title:</strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="text" id="new_title" name="postTitle" maxLength={30} onChange={this.handleChange} />
-                                <br />
-                                <label htmlFor="postDesc"><strong>Description:</strong></label>
-                                <input className="form-control col-sm-12 mb-2" type="text" id="new_desc" name="postDesc" maxLength={500} onChange={this.handleChange} />
-                                <br />
+                                
+
+                                <div className="form-group">
+                                    <label htmlFor="postDesc">Description:</label>
+                                    <textarea className="form-control" id="new_desc" name="postDesc" rows="3" onChange={this.handleChange}></textarea>
+                                </div>
+
                                 <label htmlFor="postPickUpDate"><strong>Pick-Up Date:</strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="date" id="new_pickupdate" name="postPickUpDate" defaultValue="" onChange={this.handleChange} />
-                                <br />
+                                
                                 <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window:</strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="text" id="new_pickupwindow" name="postPickUpWindow" maxLength={15} onChange={this.handleChange} />
+
                                 <br />
-                                <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.addNewPost}>Create <i className="far fa-check-circle" /></button>
+                                <button className="btn btn-outline-primary mt-3" type="submit" id="create-new-user" onClick={this.addNewPost}>Create <i className="far fa-check-circle" /></button>
+
                             </div>
                         </div>
 
