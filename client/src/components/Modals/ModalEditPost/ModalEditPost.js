@@ -23,7 +23,7 @@ class ModalEditPost extends Component {
         const updatedPost = {
             DonorId: this.props.donorId,
             title: this.state.postTitle,
-            desc: this.state.postTitle,
+            desc: this.state.postDesc,
             pickupdate: this.state.postPickUpDate,
             pickupwindow: this.state.postPickUpWindow
         }
@@ -54,19 +54,27 @@ class ModalEditPost extends Component {
                         <div className="modal-body">
                             <div className="form-group">
                                 <label htmlFor="postTitle"><strong>Title:</strong></label>
-                                <input className="col-sm-12 mb-2" type="text" id={"edit_title" + this.props.foodId} name="postTitle"
+                                <input className="form-control col-sm-12 mb-2" type="text" id={"edit_title" + this.props.foodId} name="postTitle"
                                     maxLength={30} onChange={this.handleChange} defaultValue={this.props.foodTitle} />
                                 <br />
-                                <label htmlFor="postDesc"><strong>Description:</strong></label>
+                                {/*<label htmlFor="postDesc"><strong>Description:</strong></label>
                                 <input className="col-sm-12 mb-2" type="text" id={"edit_desc" + this.props.foodId} name="postDesc"
                                     maxLength={500} onChange={this.handleChange} defaultValue={this.props.foodDesc} />
-                                <br />
+                                <br />*/}
+                                <div className="form-group">
+                                    <label htmlFor="postDesc">Description:</label>
+                                    <textarea className="form-control" id={"edit_desc" + this.props.foodId} name="postDesc" rows="3" onChange={this.handleChange}
+                                    defaultValue={this.props.foodDesc}></textarea>
+                                </div>
+
+
+
                                 <label htmlFor="postPickUpDate"><strong>Pick-Up Date:</strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="date" id={"edit_pickupdate" + this.props.foodId}
                                     name="postPickUpDate" defaultValue={this.props.foodPickUpDay} onChange={this.handleChange} />
                                 <br />
                                 <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window:</strong></label>
-                                <input className="col-sm-12 mb-2" type="text" id={"edit_pickupwindow" + this.props.foodId} name="postPickUpWindow"
+                                <input className="form-control col-sm-12 mb-2" type="text" id={"edit_pickupwindow" + this.props.foodId} name="postPickUpWindow"
                                     maxLength={15} onChange={this.handleChange} defaultValue={this.props.foodPickUpWindow} />
                                 <br />
                                 <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editPost}>Save Changes<i className="far fa-check-circle" /></button>
