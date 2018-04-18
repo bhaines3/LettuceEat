@@ -1,8 +1,7 @@
 import React from 'react';
-//import {Link} from 'react-router-dom';
 import API from "../utils/API";
-import ModalSignUp from '../ModalSignUp';
-import ModalLogin from '../ModalLogin';
+import ModalSignUp from '../Modals/ModalSignUp';
+import ModalLogin from '../Modals/ModalLogin';
 import { Redirect } from "react-router-dom";
 import Logo from "./logo.png";
 import './Nav.css';
@@ -20,7 +19,7 @@ const Logout = event => {
 const Nav = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a href={"/"} className="navbar-left"><img id="logo" src={Logo} alt="logo"/></a>
+            <a href={"/"} className="navbar-left"><img id="logo" src={Logo} alt="logo" /></a>
             <div className="navbar-item">
                 <a className="nav-link text-light" href={"/"}><h3>LettuceEAT</h3></a>
             </div>

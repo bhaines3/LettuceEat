@@ -2,7 +2,6 @@ const db = require("../models");
 const nonProfitController = require("../controller/nonProfitController.js");
 const donorController = require("../controller/donorController.js");
 var jwt = require('jsonwebtoken');
-var settings = require('../routes/authRoutes/config/settings');
 
 module.exports = {
   //displaying all users in api/users
@@ -79,5 +78,14 @@ module.exports = {
         console.log("Error from findOne: " + err);
       });
     }
+  },
+  clearAllUsers: (req, res) => {
+    db.User.destroy({
+      where: {}
+    }).then((dbUser) => {
+      res.json(dbUser);
+    }).catch((err) => {
+      console.log("Error from clearAllUsers: " + err);
+    })
   }
 }

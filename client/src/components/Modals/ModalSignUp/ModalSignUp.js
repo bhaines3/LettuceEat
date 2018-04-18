@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import axios from 'axios';
-// import API from "../utils/API";
-//import { Link } from 'react-router-dom';
+import API from "./../../utils/API";
 import jwt_decode from "jwt-decode";
-import { Redirect } from "react-router-dom";
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import MaskedInput from 'react-text-mask';
 
 class ModalSignUp extends Component {
     state = {
@@ -16,10 +14,6 @@ class ModalSignUp extends Component {
         password: "",
         loggedIn: ""
     }
-    componentWillMount() {
-        //clearing the form when it is close
-        //this.clearForm();
-    }
     updateUserSignup = event => {
         // Destructure the name and value properties off of event.target
         // Update the appropriate state
@@ -28,7 +22,6 @@ class ModalSignUp extends Component {
             [name]: value
         });
     };
-
 
     //location
     onChange = (location) => this.setState({ location })
@@ -47,26 +40,23 @@ class ModalSignUp extends Component {
                     phonenumber: this.state.phonenumber,
                     password: this.state.password
                 }
-
-                //console.log("creating" +newUser.name);
-                axios.post("/api/signup", newUser).then(result => {
-                    //reroutes to login page
-                    const loginUserInfo = {
-                        email: newUser.email,
-                        //this.state.email,
-                        password: newUser.password
-                        //this.state.password
-                    }
-                    axios.post('/api/login', loginUserInfo)
-                        .then((res) => {
-                            //setting the jwt token when loginin result comes in"
-                            const token = res.data.token;
-
-                            //saving data to local storage
-                            this.donorNonDonorSave(token)
-                        }).catch(error => console.error('Error', error));
-
-                });
+                API.signUp(newUser)
+                    .then(result => {
+                        const loginUserInfo = {
+                            email: newUser.email,
+                            password: newUser.password
+                        }
+                        API.login(loginUserInfo)
+                            .then((res) => {
+                                //setting the jwt token when loginin result comes in"
+                                const token = res.data.token;
+                                //saving data to local storage
+                                this.donorNonDonorSave(token)
+                            }).catch(error => console.error('Error', error));
+                    })
+                    .catch(err => {
+                        console.error("Error", err)
+                    });
             })
     }
     donorNonDonorSave(token) {
@@ -141,11 +131,17 @@ class ModalSignUp extends Component {
                             </div>
                             <div className="form-group">
                                 <label>Phone:</label>
-                                <input type="tel" className="form-control col-sm-12 mb-2" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555" />
+                                {/*<input type="tel" className="form-control col-sm-12 mb-2" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555" />*/}
 
-                                {/*<input type='tel' className="form-control col-sm-12" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}'  title='Phone Number (Format: (999)999-9999)' />*/}
-
-                                {/*<input type="tel" className="form-control col-sm-12"  name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} pattern="^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$" />*/}
+                                <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                                    type="tel:"
+                                    value={this.state.phonenumber}
+                                    name="phonenumber"
+                                    showMask={false}
+                                    placeholder="enter phone number"
+                                    className="form-control col-sm-12"
+                                    onChange={this.updateUserSignup}
+                                />
 
                             </div>
                             <div className="form-group">

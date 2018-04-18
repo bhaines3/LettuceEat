@@ -32,26 +32,22 @@ module.exports = {
             res.status(403).send("You aren't signed in!");
             return;
         }
-        if(req.user.Donor.id == req.body.DonorId)
-        {
+        if (req.user.Donor.id == req.body.DonorId) {
             var newFoodPostInfo = {
                 DonorId: req.body.DonorId,
                 title: req.body.title,
                 desc: req.body.desc,
                 pickupdate: req.body.pickupdate,
-                enddate: req.body.enddate,
                 pickupwindow: req.body.pickupwindow
             }
             db.FoodPost.create(newFoodPostInfo)
                 .then((dbFoodPost) => {
-                    console.log("FoodPost created");
-                    res.json(dbFoodPost);
+                    res.json({ success: true, msg: 'Successful created new foodpost.' });
                 }).catch(function (err) {
                     console.log("Erro: " + err);
                 });
         }
-        else
-        {
+        else {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }
@@ -61,21 +57,19 @@ module.exports = {
             res.status(403).send("You aren't signed in!");
             return;
         }
-        if(req.user.Donor.id == req.body.DonorId)
-        {
+        if (req.user.Donor.id == req.body.DonorId) {
             db.FoodPost.update(req.body, {
                 where: {
                     id: req.params.id
                 }
             })
-            .then(function (dbFoodPost) {
-                res.json(dbFoodPost);
-            }).catch(function (e) {
-                console.warn(e);
-            })
+                .then(function (dbFoodPost) {
+                    res.json(dbFoodPost);
+                }).catch(function (e) {
+                    console.warn(e);
+                })
         }
-        else
-        {
+        else {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }
@@ -85,33 +79,30 @@ module.exports = {
             res.status(403).send("You aren't signed in!");
             return;
         }
-        if(req.user.Donor.id == req.params.donorId)
-        {
+        if (req.user.Donor.id == req.params.donorId) {
             db.FoodPost.destroy({
                 where: {
                     id: req.params.id
                 }
             })
-            .then(function (dbFoodPost) {
-                res.json(dbFoodPost);
-            }).catch(function (e) {
-                console.warn(e);
-            });
+                .then(function (dbFoodPost) {
+                    res.json(dbFoodPost);
+                }).catch(function (e) {
+                    console.warn(e);
+                });
         }
-        else
-        {
+        else {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }
+    },
+    clearAllFoodPosts: (req, res) => {
+        db.FoodPost.destroy({
+            where: {}
+        }).then((dbFoodPost) => {
+            res.json(dbFoodPost);
+        }).catch((err) => {
+            console.log("Error from clearAllFoodPosts: " + err);
+        })
     }
-    //IMPLEMENT THIS LATER
-    // updateFoodPost: (req, res) => {
-    //   db.FoodPost.findOne({
-    //     where: {
-    //       id: req.foodPostId
-    //     }
-    //   }).then((updatedFoodPost) => {
-    //     res.json(updatedFoodPost)
-    //   })
-    // }
 }

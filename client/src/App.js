@@ -8,6 +8,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import AllDonors from "./pages/allDonors/allDonors";
 import AllNonProfits from "./pages/allNonProfits/allNonProfits";
+import NoMatch from "./pages/NoMatch";
 
 const App = () => (
     <Router>
@@ -20,6 +21,7 @@ const App = () => (
                 <Route exact path="/allNonProfits" component={AllNonProfits} />
                 <Route exact path="/DonorProfile/:id" component={DonorProfile} />
                 <Route exact path="/NonProfitProfile/:id" component={NonProfitProfile} />
+                <Route component={NoMatch} />
             </Switch>
             <Footer />
         </div>

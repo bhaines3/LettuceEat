@@ -57,10 +57,11 @@ class AllNonProfits extends Component {
                                 address={nonProfit.location}
                                 phone={nonProfit.phonenumber}
                                 email={nonProfit.email}
+                                website={nonProfit.website}
                                 cardClicked={this.cardClicked} />
                         ))
                         ) : (
-                                <h3>No NonProfits to show</h3>
+                                <h3 className="text-center">No NonProfits to show</h3>
                             )}
                     </div>
                     <div className="col-lg-5 mt-3">
