@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from "./../utils/API";
+import API from "./../../utils/API";
 
 
 class ModalViewInterested extends Component {
@@ -26,14 +26,15 @@ class ModalViewInterested extends Component {
                         <div className="modal-body">
                             {this.state.nonProfitsInterested && this.state.nonProfitsInterested.length ? (
                                 this.state.nonProfitsInterested.map(nonProfit => (
-                                    <div>
+                                    <div
+                                        key={nonProfit.id}>
                                         <a href={"/nonprofitprofile/" + nonProfit.id}>{nonProfit.name}</a>
                                         <a href={"mailto:" + nonProfit.email} className="btn btn-primary text-white float-right">Email</a>
                                         <hr />
                                     </div>
                                 ))
                             ) : (
-                                    <h3>No organizations have marked that they are interested</h3>
+                                    <h4>No organizations have marked that they are interested</h4>
                                 )}
                         </div>
                         <div className="modal-footer">

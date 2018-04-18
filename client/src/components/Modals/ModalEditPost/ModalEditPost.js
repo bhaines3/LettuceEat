@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import API from "./../utils/API";
+import API from "./../../utils/API";
 
 
 class ModalEditPost extends Component {
     state = {
-        donorId: "",
-        postId: "",
         postTitle: "",
         postDesc: "",
         postPickUpDate: "",
@@ -13,10 +11,7 @@ class ModalEditPost extends Component {
     };
 
     componentDidMount() {
-        console.log(this.props.foodTitle);
         this.setState({
-            postId: this.props.foodId,
-            donorId: this.props.donorId,
             postTitle: this.props.foodTitle,
             postDesc: this.props.foodDesc,
             postPickUpDate: this.props.foodPickUpDay,
@@ -26,14 +21,14 @@ class ModalEditPost extends Component {
     editPost = (event) => {
         event.preventDefault();
         const updatedPost = {
-            DonorId: this.state.donorId,
+            DonorId: this.props.donorId,
             title: this.state.postTitle,
             desc: this.state.postTitle,
             pickupdate: this.state.postPickUpDate,
             pickupwindow: this.state.postPickUpWindow
         }
-        API.editPost(this.state.postId, updatedPost)
-            .then(res => { console.log("post editted"); window.location.reload(); })
+        API.editPost(this.props.foodId, updatedPost)
+            .then(res => { window.location.reload(); })
             .catch(err => console.log(err))
     }
 
@@ -45,15 +40,17 @@ class ModalEditPost extends Component {
     };
     render() {
         return (
-            <div className="modal fade" id={"modal-editpost" + this.props.foodId} tabIndex={-1} role="dialog" aria-labelledby="editFoodPost" aria-hidden="true">
+            <div className="modal fade" id={"modal-editpost" + this.props.foodId} tabIndex={-1} role="dialog" aria-labelledby={"editFoodPost" + this.props.foodId} aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
+
                         <div className="modal-header">
-                            <h5 className="modal-title" id="editFoodPost">Edit Food Post{this.props.foodId}</h5>
+                            <h5 className="modal-title" id={"editFoodPost" + this.props.foodId}>Edit Food Post{this.props.foodId}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
+
                         <div className="modal-body">
                             <div className="form-group">
                                 <label htmlFor="postTitle"><strong>Title:</strong></label>
@@ -77,9 +74,11 @@ class ModalEditPost extends Component {
                                 <span id="cannot-create-error" />
                             </div>
                         </div>
+
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
+
                     </div>
                 </div>
             </div>

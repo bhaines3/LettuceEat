@@ -3,20 +3,14 @@ import API from "./../utils/API";
 class InterestBtn extends Component {
     state =
         {
-            foodId: "",
-            nonProfitId: "",
             alreadyInterested: false
         };
 
     componentDidMount() {
-        this.setState({ nonProfitId: this.props.nonProfitId })
-        API.findOneFoodPost(this.props.foodId)
-            .then(res => { this.setState({ foodId: res.data.id }) })
-            .catch(err => console.log(err));
         API.findOneNonProfit(this.props.nonProfitId)
             .then(res => {
                 let foodIdArray = res.data.FoodPosts.map(foodPost => foodPost.id)
-                if (foodIdArray.includes(parseInt(this.props.foodId))) {
+                if (foodIdArray.includes(parseInt(this.props.foodId, 10))) {
                     this.setState({ alreadyInterested: true })
                 }
                 else {
@@ -28,8 +22,8 @@ class InterestBtn extends Component {
 
     addInterest = () => {
         let addTogether = {
-            foodId: this.state.foodId,
-            nonProfitId: this.state.nonProfitId
+            foodId: this.props.foodId,
+            nonProfitId: this.props.nonProfitId
         }
         API.addPostInterest(addTogether)
             .then(res => { window.location.reload(); })
@@ -38,8 +32,8 @@ class InterestBtn extends Component {
 
     removeInterest = () => {
         let removeThese = {
-            foodId: this.state.foodId,
-            nonProfitId: this.state.nonProfitId
+            foodId: this.props.foodId,
+            nonProfitId: this.props.nonProfitId
         }
         API.removePostInterest(removeThese)
             .then(res => { window.location.reload(); })

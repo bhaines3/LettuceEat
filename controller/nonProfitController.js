@@ -27,8 +27,7 @@ module.exports = {
         }
         return db.NonProfit.create(newNonProfitInfo)
             .then((dbNonProfit) => {
-                console.log("NonProfit created");
-                res.json(dbNonProfit);
+                res.json({ success: true, msg: 'Successful created new nonprofit.' });
             }).catch((err) => {
                 console.log("Erro: " + err);
             });
@@ -106,5 +105,14 @@ module.exports = {
             res.status(403).send("You are not allowed to edit another user's post!");
             return;
         }
+    },
+    clearAllNonProfits: (req, res) => {
+        db.NonProfit.destroy({
+            where: {}
+        }).then((dbNonProfit) => {
+            res.json(dbNonProfit);
+        }).catch((err) => {
+            console.log("Error from clearAllNonProfits: " + err);
+        })
     }
 }
