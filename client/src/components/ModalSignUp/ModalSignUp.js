@@ -125,14 +125,14 @@ class ModalSignUp extends Component {
                         <div className="modal-body">
                             <div className="form-group">
                                 <div className="row">
-                                    <div className="col-6">
-                                        <label>Donor </label>
-                                        <input type="radio" className="form-control" name="isDonor" value="true" onChange={this.updateUserSignup} />
+                                    <label className="col-3 text-center">Donor</label>
+                                    <div className="col-3">
+                                        <input type="radio" className="form-control radioBtn mt-2" name="isDonor" value="true" onChange={this.updateUserSignup} />
                                     </div>
-                                    <div className="col-6">
-                                        <label>NonProfit</label>
-                                        <input type="radio" className="form-control" name="isDonor" value="false" onChange={this.updateUserSignup} />
-                                    </div>
+                                    <label className="col-3 text-center">NonProfit</label>
+                                    <div className="col-3">
+                                        <input type="radio" className="col-3 form-control radioBtn mt-2" name="isDonor" value="false" onChange={this.updateUserSignup} />
+                                    </div>  
                                 </div>
                             </div>
                             <div className="form-group">
