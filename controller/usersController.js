@@ -23,8 +23,6 @@ module.exports = {
         email: req.body.email,
         name: req.body.name,
         location: req.body.location,
-        // lat:req.body.lat,
-        // lng:req.body.lng,
         isDonor: req.body.isDonor,
         phonenumber: req.body.phonenumber,
         password: req.body.password
@@ -82,5 +80,14 @@ module.exports = {
         console.log("Error from findOne: " + err);
       });
     }
+  },
+  clearAllUsers: (req, res) => {
+    db.User.destroy({
+      where: {}
+    }).then((dbUser) => {
+      res.json(dbUser);
+    }).catch((err) => {
+      console.log("Error from clearAllUsers: " + err);
+    })
   }
 }

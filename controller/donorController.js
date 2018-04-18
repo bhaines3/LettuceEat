@@ -43,8 +43,7 @@ module.exports = {
         }
         return db.Donor.create(newDonorInfo)
             .then((dbDonor) => {
-                console.log("Donor created");
-                res.json(dbDonor);
+                res.json({ success: true, msg: 'Successful created new donor.' });
             }).catch(function (err) {
                 console.log("Erro: " + err);
             });
@@ -71,4 +70,13 @@ module.exports = {
             return;
         }
     },
+    clearAllDonors: (req, res) => {
+        db.Donor.destroy({
+            where: {}
+        }).then((dbDonor) => {
+            res.json(dbDonor);
+        }).catch((err) => {
+            console.log("Error from clearAllDonors: " + err);
+        })
+    }
 }
