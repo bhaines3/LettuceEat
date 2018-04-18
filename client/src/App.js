@@ -12,7 +12,7 @@ import AllNonProfits from "./pages/allNonProfits/allNonProfits";
 const App = () => (
     <Router>
         <div>
-            <Nav />
+            <Nav/>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/aboutus" component={AboutUs} />

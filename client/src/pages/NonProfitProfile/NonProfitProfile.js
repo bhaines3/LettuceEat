@@ -25,14 +25,16 @@ class NonProfitProfile extends Component {
     }
     componentDidMount() {
         //Why does it matter which nonProfit is viewing the nonProfit page? -Michelle
+        //Checks to see if user vieweing the page is the user that is logged in
         const nonProfitId = localStorage.getItem("nonProfitId");
         const idAllNonProfitsPg = this.props.match.params.id;
         console.log(nonProfitId);
+        
         API.findAllDonors()
             .then(res => { this.setState({ donors: res.data }) })
             .catch(err => console.log(err));
 
-        //What is the purpose of this? -Michelle
+        //if user that is not looged in then find the information for the user using 
         if (nonProfitId != idAllNonProfitsPg) {
             API.findOneNonProfit(idAllNonProfitsPg)
                 .then(res => { this.setState({ nonprofit: res.data }) })
@@ -45,10 +47,6 @@ class NonProfitProfile extends Component {
         }
     }
     render() {
-        // console.log("redirect " +this.state.redirect)
-        // if(this.state.redirect){ 
-        //     return (<Redirect to={"/"}/>)
-        //  }
         return (
             <div>
                 <div className="container">

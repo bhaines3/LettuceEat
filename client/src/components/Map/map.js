@@ -18,7 +18,8 @@ class Map extends Component {
             msg: this.props.msg
         })
     }
-    //updates state every time state is updatedin the parent in each click
+    
+    //Updates state every time state is updatedin the parent in each click
     componentWillReceiveProps(nextProps) {
         this.setState({
             lat: nextProps.lat,

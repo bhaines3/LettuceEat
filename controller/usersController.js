@@ -24,8 +24,6 @@ module.exports = {
         email: req.body.email,
         name: req.body.name,
         location: req.body.location,
-        // lat:req.body.lat,
-        // lng:req.body.lng,
         isDonor: req.body.isDonor,
         phonenumber: req.body.phonenumber,
         password: req.body.password
@@ -37,15 +35,15 @@ module.exports = {
         },
         include: [db.Donor, db.NonProfit]
       }).then((dbUserexists) => {
-        //check to see if user exists already
+        //if user email doesnt exist go ahead and create a user.
         if (!dbUserexists) {
           console.log("User has been created.");
           db.User.create(newUserInfo)
             .then((dbUser) => {
-
               const returnUser = () =>
                 res.json({ success: true, msg: 'Successful created new user.' });
-
+              //Create a nonProfit or a donor depends on user's
+              //if user is not donor
               if (newUserInfo.isDonor != "true") {
                 console.log("im a nonprofit");
                 console.log(newUserInfo.isDonor);
@@ -65,8 +63,6 @@ module.exports = {
                   UserId: dbUser.id,
                   email: newUserInfo.email,
                   location: newUserInfo.location,
-                  // lat:req.body.lat,
-                  // lng:req.body.lng,
                   name: newUserInfo.name,
                   phonenumber: newUserInfo.phonenumber,
                 }
