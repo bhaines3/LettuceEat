@@ -11,9 +11,9 @@ class ModalEditJumbo extends Component {
         phonenumber: "",
         location: "",
         hoursforpickup: "",
-        summary: ""
+        summary: "",
+        website: ""
     };
-
     componentDidMount() {
         this.setState({
             name: this.props.currentName,
@@ -21,7 +21,8 @@ class ModalEditJumbo extends Component {
             phonenumber: this.props.currentPhonenumber,
             location: this.props.currentAddress,
             hoursforpickup: this.props.currentPickUpHours,
-            summary: this.props.currentSummary
+            summary: this.props.currentSummary,
+            website: this.props.currentWebsite
         })
     }
     editDonor = (event) => {
@@ -31,13 +32,13 @@ class ModalEditJumbo extends Component {
             email: this.state.email,
             phonenumber: this.state.phonenumber,
             location: this.state.location,
-            summary: this.state.summary
+            summary: this.state.summary,
+            website: this.state.website
         }
         API.editDonor(this.props.paramsId, updatedInfo)
-            .then(res => { console.log("post editted"); window.location.reload(); })
+            .then(res => { window.location.reload(); })
             .catch(err => console.log(err))
     }
-
     editNonProfit = (event) => {
         event.preventDefault();
         const updatedInfo = {
@@ -46,10 +47,11 @@ class ModalEditJumbo extends Component {
             phonenumber: this.state.phonenumber,
             location: this.state.location,
             hoursforpickup: this.state.hoursforpickup,
-            summary: this.state.summary
+            summary: this.state.summary,
+            website: this.state.website
         }
         API.editNonProfit(this.props.paramsId, updatedInfo)
-            .then(res => { console.log("post editted"); window.location.reload(); })
+            .then(res => { window.location.reload(); })
             .catch(err => console.log(err))
     }
 
@@ -74,12 +76,14 @@ class ModalEditJumbo extends Component {
                 <div className="modal fade" id="modal-editjumbo" tabIndex={-1} role="dialog" aria-labelledby="editJumbo" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
+
                             <div className="modal-header">
                                 <h5 className="modal-title" id="editJumbo">Edit Your Information</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
+
                             <div className="modal-body">
                                 <div className="form-group">
                                     <label htmlFor="name"><strong>Name:</strong></label>
@@ -94,7 +98,7 @@ class ModalEditJumbo extends Component {
                                     {/*<input className="form-control col-sm-12 mb-2" type="text" id="edit_phone"
                                         name="phonenumber" defaultValue={this.props.currentPhonenumber} onChange={this.handleChange} />*/}
 
-                                        <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} 
+                                    <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                                         type="tel:"
                                         id="edit_phone"
                                         defaultValue={this.props.currentPhonenumber}
@@ -103,12 +107,7 @@ class ModalEditJumbo extends Component {
                                         placeholder="enter phone number"
                                         className="form-control col-sm-12"
                                         onChange={this.handleChange}
-                                        />
-                                    <br />
-                                    <label htmlFor="location"><strong>Location:</strong></label>
-                                    <PlacesAutocomplete inputProps={inputProps} />
-                                    {/* <input className="col-sm-12 mb-2" type="text" id="edit_location" name="location"
-                      maxLength={150} onChange={this.handleChange} defaultValue={this.props.currentAddress}/> */}
+                                    />
                                     <br />
                                     {(localStorage.getItem("isDonor") === "true") ? ("") : (
                                         <div>
@@ -122,6 +121,13 @@ class ModalEditJumbo extends Component {
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_location" name="summary"
                                         maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentSummary} />
                                     <br />
+                                    <label htmlFor="website"><strong>Website:</strong></label>
+                                    <input className="col-sm-12 mb-2" type="text" id="edit_website" name="website"
+                                        maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentWebsite} />
+                                    <br />
+                                    <label htmlFor="location"><strong>Location:</strong></label>
+                                    <PlacesAutocomplete inputProps={inputProps} />
+                                    <br />
                                     {(localStorage.getItem("isDonor") === "true") ? (
                                         <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>
                                     ) : (
@@ -130,9 +136,11 @@ class ModalEditJumbo extends Component {
                                     <br />
                                 </div>
                             </div>
+
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
+
                         </div>
                     </div>
                 </div>

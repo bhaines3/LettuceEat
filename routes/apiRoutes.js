@@ -4,23 +4,22 @@ const donorController = require("../controller/donorController.js");
 const nonProfitController = require("../controller/nonProfitController.js");
 const foodPostController = require("../controller/foodPostController.js");
 const db = require("../models");
-var jwt = require('jsonwebtoken');
-var passport = require("../config/passport");
-var settings = require('../routes/authRoutes/config/settings');
+const jwt = require('jsonwebtoken');
+const passport = require("../config/passport");
+const settings = require('./config/settings');
 
 
 router
     .route("/login/")
     .post((req, res) => {
         passport.authenticate('local')(req, res, function () {
-            var token = jwt.sign(req.user.toJSON(), settings.secret);
+            const token = jwt.sign(req.user.toJSON(), settings.secret);
             res.json({ success: true, token: 'JWT ' + token });
         });
     })
 router
     .route("/signup/")
     .post(usersController.createNewUser)
-
 router
     .route("/logout/")
     .get((req, res) => {

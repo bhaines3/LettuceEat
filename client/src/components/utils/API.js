@@ -1,8 +1,16 @@
 import axios from "axios";
 
 export default {
+
+  //=========SIGNINGIN/UP==============
   logout: () => {
     return axios.get("/api/logout/")
+  },
+  login: (userInfo) => {
+    return axios.post("/api/login/", userInfo)
+  },
+  signUp: (userInfo) => {
+    return axios.post("/api/signup/", userInfo)
   },
   //=========USERS==============
   findAllusers: () => {
@@ -61,23 +69,4 @@ export default {
   removePostInterest: (info) => {
     return axios.post("/api/interests/remove", info)
   }
-
-
-  // // Gets all articles
-  // getSavedarticles: function() {
-  //   return axios.get("/api/savedarticles");
-  // },
-  // // Gets the book with the given id
-  // getSavedarticle: function(id) {
-  //   return axios.get("/api/savedarticles/" + id);
-  // },
-  // // Deletes the book with the given id
-  // deleteSavedarticle: function(id) {
-  //   return axios.delete("/api/savedarticles/" + id);
-  // },
-  // // Saves a book to the database
-  // saveArticle: function(articleData) {
-  //   return axios.post("/api/savedarticles", articleData);
-  // }
-
 };

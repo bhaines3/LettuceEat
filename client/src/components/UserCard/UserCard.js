@@ -16,6 +16,12 @@ const UserCard = (props) => {
                         <strong>Email: </strong><a href={"mailto:" + props.email}>{props.email}</a>
                     </div>
                 </div>
+                {(props.website) ? (
+                    <div>
+                        <br />
+                        <a href={props.website}>View Website</a>
+                    </div>
+                ) : ("")}
             </div>
         </div>
     );
