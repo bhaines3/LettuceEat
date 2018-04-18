@@ -58,10 +58,11 @@ class AllDonors extends Component {
                                 address={donor.location}
                                 phone={donor.phonenumber}
                                 email={donor.email}
+                                website={donor.website}
                                 cardClicked={this.cardClicked} />
                         ))
                         ) : (
-                                <h3>No Donors to Show</h3>
+                                <h3 className="text-center">No Donors to Show</h3>
                             )}
                     </div>
                     <div className="col-lg-5 mt-3">

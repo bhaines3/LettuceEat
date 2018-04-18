@@ -4,7 +4,10 @@ class DeleteBtn extends Component {
 
     deleteThePost = (id, donorId) => {
         API.deletePost(id, donorId)
-            .then(res => { console.log("post deleted"); window.location.reload(); })
+            .then(res => {
+                console.log("Deleting Food Post with ID: " + id)
+                window.location.reload();
+            })
             .catch(err => console.log(err))
     }
 

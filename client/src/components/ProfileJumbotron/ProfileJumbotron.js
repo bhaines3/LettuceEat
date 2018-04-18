@@ -1,5 +1,5 @@
 import React from "react";
-import ModalEditJumbo from '../ModalEditJumbo';
+import ModalEditJumbo from '../Modals/ModalEditJumbo';
 
 const ProfileJumbotron = (props) => {
     const renderEditButton = () => {
@@ -7,7 +7,6 @@ const ProfileJumbotron = (props) => {
             if (localStorage.getItem("donorId") === props.paramsId) {
                 return (
                     <button id="donorInfoBtnedit" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</button>
-                    // <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</a>
                 )
             }
         }
@@ -15,7 +14,6 @@ const ProfileJumbotron = (props) => {
             if (localStorage.getItem("nonProfitId") === props.paramsId) {
                 return (
                     <button id="nonProfitInfoBtnedit" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</button>
-                    //<a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</a>
                 )
             }
         }
@@ -28,6 +26,13 @@ const ProfileJumbotron = (props) => {
                 {props.address}
                 <br />
                 {props.phonenumber}
+                <br />
+                {(props.website) ? (
+                    <div>
+                        <br />
+                        <a href={props.website}>View Website</a>
+                    </div>
+                ) : ("")}
                 <br />
                 {/* Make email a link to send an email */}
                 <strong>Email: </strong><a href={"mailto:" + props.email}>{props.email}</a>
@@ -57,6 +62,7 @@ const ProfileJumbotron = (props) => {
                 currentPhonenumber={props.phonenumber}
                 currentEmail={props.email}
                 currentSummary={props.summary}
+                currentWebsite={props.website}
                 currentPickUpHours={props.hoursForPickUp || null}
             />
         </div>

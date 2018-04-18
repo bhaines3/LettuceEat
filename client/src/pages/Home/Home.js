@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import "./Home.css";
 import API from "../../components/utils/API";
-//import Nav from '../../components/Nav';
 import FoodCard from '../../components/FoodCard';
-import ModalAddPost from '../../components/ModalAddPost';
-//import {Redirect} from "react-router-dom";
+import ModalAddPost from '../../components/Modals/ModalAddPost';
 
 class Home extends Component {
     state = {
@@ -37,22 +35,6 @@ class Home extends Component {
         localStorage.removeItem("nonProfitId");
         window.location.reload();
     }
-
-    // getArticles = () => {
-    //   API.getSavedArticles()
-    //     .then(res => this.setState({ saved: res.data }))
-    //     .catch(err => console.log(err));
-    // }
-
-    // deleteArticle = id => {
-    //   API.deleteArticle(id)
-    //     .then(res => {
-    //       this.setState({
-    //         saved: res.data
-    //       });
-    //     })
-    //     .catch(err => console.log(err));
-    // };
     render() {
         return (
             <div className="container">
@@ -65,9 +47,9 @@ class Home extends Component {
                 ) : ("")}
                 {this.state.foodposts && this.state.foodposts.length ? (
                     this.state.foodposts.map(FoodPost => (
-                        <div>
+                        <div
+                            key={FoodPost.id}>
                             <FoodCard
-                                key={FoodPost.id}
                                 foodId={FoodPost.id}
                                 title={FoodPost.title}
                                 desc={FoodPost.desc}
