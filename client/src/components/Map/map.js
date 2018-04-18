@@ -49,7 +49,7 @@ class Map extends Component {
         return (
             <Gmaps className="mb-4"
                 width={'100%'}
-                height={'100%'}
+                height={'500%'}
                 lat={this.state.lat}
                 lng={this.state.lng}
                 zoom={12}

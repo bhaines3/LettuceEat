@@ -95,8 +95,6 @@ class ModalEditJumbo extends Component {
                                         maxLength={50} onChange={this.handleChange} defaultValue={this.props.currentEmail} />
                                     <br />
                                     <label htmlFor="phonenumber"><strong>Phone Number:</strong></label>
-                                    {/*<input className="form-control col-sm-12 mb-2" type="text" id="edit_phone"
-                                        name="phonenumber" defaultValue={this.props.currentPhonenumber} onChange={this.handleChange} />*/}
 
                                     <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                                         type="tel:"
