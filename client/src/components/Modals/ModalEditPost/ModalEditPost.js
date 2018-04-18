@@ -70,8 +70,6 @@ class ModalEditPost extends Component {
                                     maxLength={15} onChange={this.handleChange} defaultValue={this.props.foodPickUpWindow} />
                                 <br />
                                 <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editPost}>Save Changes<i className="far fa-check-circle" /></button>
-                                <br />
-                                <span id="cannot-create-error" />
                             </div>
                         </div>
 
