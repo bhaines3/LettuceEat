@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import API from "./../utils/API";
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import API from "../../utils/API";
+import PlacesAutocomplete from 'react-places-autocomplete'
 import MaskedInput from 'react-text-mask';
 
 

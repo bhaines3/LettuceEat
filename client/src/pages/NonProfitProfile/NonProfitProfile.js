@@ -21,7 +21,7 @@ class NonProfitProfile extends Component {
             .catch(err => console.log(err));
 
         //if user that is not looged in then find the information for the user using 
-        if (nonProfitId != idAllNonProfitsPg) {
+        if (nonProfitId !== idAllNonProfitsPg) {
             API.findOneNonProfit(idAllNonProfitsPg)
                 .then(res => { this.setState({ nonprofit: res.data, foodpost: res.data.FoodPosts }) })
                 .catch(err => console.log(err));

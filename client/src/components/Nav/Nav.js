@@ -45,10 +45,10 @@ const Nav = () => {
                     {/* rendering signup and sign in when not logged in and profile */}
                     {(localStorage.getItem("jwtToken") != null) ? (<div>
                         {(localStorage.getItem("donorId") !== null) ? (<div>
-                            <a className="btn btn-primary text-white" href={"/DonorProfile/" + localStorage.getItem("donorId")}>Profile</a>
+                            <a className="btn btn-primary text-white" href={"/DonorProfile/" + localStorage.getItem("donorId")}>Your Profile</a>
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>) : (<div>
-                            <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + localStorage.getItem("nonProfitId")}>Profile</a>
+                            <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + localStorage.getItem("nonProfitId")}>Your Profile</a>
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>)}
                     </div>) : (
@@ -56,10 +56,6 @@ const Nav = () => {
                                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
                                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a></div>
                         )}
-                    {/* <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
-                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
-                <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
-     */}
                 </form>
                 <ModalLogin />
                 <ModalSignUp />
