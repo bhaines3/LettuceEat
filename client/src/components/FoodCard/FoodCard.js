@@ -21,7 +21,7 @@ class FoodCard extends Component {
             <div className="card text-black border-primary my-3">
                 <h4 className="card-header bg-primary">Food Post by <a className="text-white text-capitalize" href={"/donorprofile/" + this.props.donorId}>{this.state.donorName}</a></h4>
                 <div className="card-body">
-                    <h5 className="card-title">{this.props.title}</h5>
+                    <u><h5 className="card-title">{this.props.title}</h5></u>
                     {(parseInt(localStorage.getItem("donorId"), 10) === this.props.donorId) ? (
                         <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target={"#modal-editpost" + this.props.foodId}>Edit</a>
                     ) : ("")}

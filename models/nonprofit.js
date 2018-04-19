@@ -3,11 +3,17 @@ module.exports = function (sequelize, DataTypes) {
         {
             email: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    len: [1]
+                }
             },
             name: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    len: [1]
+                }
             },
             phonenumber: {
                 type: DataTypes.STRING,
@@ -18,7 +24,10 @@ module.exports = function (sequelize, DataTypes) {
             },
             location: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                validate: {
+                    len: [1]
+                }
             },
             summary: {
                 type: DataTypes.STRING,

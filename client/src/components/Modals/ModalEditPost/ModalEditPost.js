@@ -8,6 +8,7 @@ class ModalEditPost extends Component {
         postDesc: "",
         postPickUpDate: "",
         postPickUpWindow: "",
+        message: ""
     };
 
     componentDidMount() {
@@ -29,7 +30,7 @@ class ModalEditPost extends Component {
         }
         API.editPost(this.props.foodId, updatedPost)
             .then(res => { window.location.reload(); })
-            .catch(err => console.log(err))
+            .catch(err => this.setState({ message: "Please make sure these fields are filled out" }))
     }
 
     handleChange = event => {
@@ -45,7 +46,7 @@ class ModalEditPost extends Component {
                     <div className="modal-content">
 
                         <div className="modal-header">
-                            <h5 className="modal-title" id={"editFoodPost" + this.props.foodId}>Edit Food Post{this.props.foodId}</h5>
+                            <h5 className="modal-title" id={"editFoodPost" + this.props.foodId}>Edit Food Post</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -53,34 +54,33 @@ class ModalEditPost extends Component {
 
                         <div className="modal-body">
                             <div className="form-group">
-                                <label htmlFor="postTitle"><strong>Title:</strong></label>
+                                <label htmlFor="postTitle"><strong>Title: <span className="text-primary">*</span></strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="text" id={"edit_title" + this.props.foodId} name="postTitle"
                                     maxLength={30} onChange={this.handleChange} defaultValue={this.props.foodTitle} />
                                 <br />
-                                {/*<label htmlFor="postDesc"><strong>Description:</strong></label>
-                                <input className="col-sm-12 mb-2" type="text" id={"edit_desc" + this.props.foodId} name="postDesc"
-                                    maxLength={500} onChange={this.handleChange} defaultValue={this.props.foodDesc} />
-                                <br />*/}
                                 <div className="form-group">
-                                    <label htmlFor="postDesc">Description:</label>
+                                    <label htmlFor="postDesc"><strong>Description: <span className="text-primary">*</span></strong></label>
                                     <textarea className="form-control" id={"edit_desc" + this.props.foodId} name="postDesc" rows="3" onChange={this.handleChange}
-                                    defaultValue={this.props.foodDesc}></textarea>
+                                        defaultValue={this.props.foodDesc}></textarea>
                                 </div>
 
 
 
-                                <label htmlFor="postPickUpDate"><strong>Pick-Up Date:</strong></label>
+                                <label htmlFor="postPickUpDate"><strong>Pick-Up Date: <span className="text-primary">*</span></strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="date" id={"edit_pickupdate" + this.props.foodId}
                                     name="postPickUpDate" defaultValue={this.props.foodPickUpDay} onChange={this.handleChange} />
                                 <br />
-                                <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window:</strong></label>
+                                <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window: </strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="text" id={"edit_pickupwindow" + this.props.foodId} name="postPickUpWindow"
                                     maxLength={15} onChange={this.handleChange} defaultValue={this.props.foodPickUpWindow} />
                                 <br />
-                                <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editPost}>Save Changes<i className="far fa-check-circle" /></button>
+                                {(this.state.message) ? (
+                                    <span className="alert-message"><strong><span className="text-primary">*</span></strong> - {this.state.message}</span>
+                                ) : ("")}
+                                <br />
+                                <button onClick={this.editPost} type="submit" className="btn btn-primary"><i className="fa fa-plus-circle"></i>Save Changes</button>
                             </div>
                         </div>
-
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>

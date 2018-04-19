@@ -155,10 +155,10 @@ class ModalSignUp extends Component {
                                 <label>Address:</label><br />
                                 <PlacesAutocomplete inputProps={inputProps} />
                             </div>
+                            <span className="alert-message">{this.state.message}</span>
                             <div className="form-group">
                                 <button onClick={this.createUser} type="submit" className="btn btn-primary"><i className="fa fa-plus-circle"></i> Create Account</button>
                             </div>
-                            <span className="alert-message">{this.state.message}</span>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

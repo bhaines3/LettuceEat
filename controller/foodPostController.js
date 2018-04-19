@@ -44,7 +44,7 @@ module.exports = {
                 .then((dbFoodPost) => {
                     res.json({ success: true, msg: 'Successful created new foodpost.' });
                 }).catch(function (err) {
-                    console.log("Erro: " + err);
+                    res.status(403).send("Something went wrong!");
                 });
         }
         else {
@@ -66,7 +66,7 @@ module.exports = {
                 .then(function (dbFoodPost) {
                     res.json(dbFoodPost);
                 }).catch(function (e) {
-                    console.warn(e);
+                    res.status(403).send("Something went wrong!");
                 })
         }
         else {

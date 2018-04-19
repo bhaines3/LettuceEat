@@ -62,7 +62,6 @@ class Home extends Component {
                         <h3>No food posts! Check back later. </h3>
                     )}
                 <ModalAddPost donorId={localStorage.getItem("donorId")} />
-
             </div>
         );
     }

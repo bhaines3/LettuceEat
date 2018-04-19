@@ -9,6 +9,7 @@ class ModalAddPost extends Component {
         postPickUpDate: "",
         postEndDate: "",
         postPickUpWindow: "",
+        message: ""
     };
     addNewPost = (event) => {
         event.preventDefault();
@@ -22,7 +23,7 @@ class ModalAddPost extends Component {
         }
         API.createNewPost(newPost)
             .then(res => { window.location.reload(); })
-            .catch(err => console.log(err))
+            .catch(err => this.setState({ message: "Please fill everything before continuing" }))
     }
 
     handleChange = event => {
@@ -47,24 +48,27 @@ class ModalAddPost extends Component {
 
                         <div className="modal-body">
                             <div className="form-group">
-                                <label htmlFor="postTitle"><strong>Title:</strong></label>
+                                <label htmlFor="postTitle"><strong>Title: <strong><span className="text-primary">*</span></strong></strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="text" id="new_title" name="postTitle" maxLength={30} onChange={this.handleChange} />
-                                
+
 
                                 <div className="form-group">
-                                    <label htmlFor="postDesc">Description:</label>
+                                    <label htmlFor="postDesc">Description: <strong><span className="text-primary">*</span></strong></label>
                                     <textarea className="form-control" id="new_desc" name="postDesc" rows="3" onChange={this.handleChange}></textarea>
                                 </div>
 
-                                <label htmlFor="postPickUpDate"><strong>Pick-Up Date:</strong></label>
+                                <label htmlFor="postPickUpDate"><strong>Pick-Up Date: <strong><span className="text-primary">*</span></strong></strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="date" id="new_pickupdate" name="postPickUpDate" defaultValue="" onChange={this.handleChange} />
-                                
+
                                 <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window:</strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="text" id="new_pickupwindow" name="postPickUpWindow" maxLength={15} onChange={this.handleChange} />
-
                                 <br />
-                                <button className="btn btn-outline-primary mt-3" type="submit" id="create-new-user" onClick={this.addNewPost}>Create <i className="far fa-check-circle" /></button>
-
+                                {(this.state.message) ? (
+                                    <span className="alert-message"><strong><span className="text-primary">*</span></strong> - {this.state.message}</span>
+                                ) : ("")}
+                                <br />
+                                <button className="btn btn-outline-primary mt-3" type="submit" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button>
+                                <br />
                             </div>
                         </div>
 
