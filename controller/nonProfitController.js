@@ -46,7 +46,7 @@ module.exports = {
                 .then(function (dbNonProfit) {
                     res.json(dbNonProfit);
                 }).catch(function (e) {
-                    console.warn(e);
+                    res.status(403).send("Something went wrong!");
                 })
         }
         else {

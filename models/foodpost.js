@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
 	var FoodPost = sequelize.define("FoodPost", {
 		title: {
 			type: DataTypes.STRING,
@@ -16,20 +16,26 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		pickupdate: {
 			type: DataTypes.DATEONLY,
-			allowNull: false
+			allowNull: false,
+			validate: {
+				len: [1]
+			}
 		},
 		pickupwindow: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: false,
+			validate: {
+				len: [1]
+			}
 		}
 	});
-	FoodPost.associate = function(models) {
+	FoodPost.associate = function (models) {
 		FoodPost.belongsTo(models.Donor, {
 			foreignKey: {
 				allowNull: false
 			}
 		});
-		FoodPost.belongsToMany(models.NonProfit, {through: "InterestedRoster"});
-  	};
+		FoodPost.belongsToMany(models.NonProfit, { through: "InterestedRoster" });
+	};
 	return FoodPost;
 }

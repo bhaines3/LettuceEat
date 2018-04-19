@@ -20,39 +20,39 @@ const ProfileJumbotron = (props) => {
     }
     return (
         <div>
-            <div className="jumbotron jumbotron-fluid text-center mt-4 px-4 text-primary">
+            <div className="jumbotron jumbotron-fluid text-center mt-4 px-4 text-primary border border-dark">
                 <h1 className="display-4 text-capitalize">{props.name}</h1>
-                {/* Make address a link to view location */}
-                {props.address}
-                <br />
-                {props.phonenumber}
-                <br />
-                {(props.website) ? (
-                    <div>
-                        <br />
-                        <a href={props.website}>View Website</a>
-                    </div>
-                ) : ("")}
-                <br />
-                {/* Make email a link to send an email */}
-                <strong>Email: </strong><a href={"mailto:" + props.email}>{props.email}</a>
-                <br />
-                {(props.summary) ? (
-                    <div>
-                        <br />
-                        {props.summary}
-                    </div>
-                ) : ("")}
-                <br />
-                {(props.isDonor === false) ? (
-                    <div>
-                        <u><strong>Hours for Public Pick Up:</strong></u>
-                        <br />
-                        {props.hoursForPickUp || "No set time"}
-                    </div>
-                ) : ("")}
-                <br />
-                {renderEditButton()}
+                <div className="leading-text">
+                    {props.address}
+                    <br />
+                    {props.phonenumber}
+                    <br />
+                    {(props.website) ? (
+                        <div>
+                            <br />
+                            <a href={props.website}>View Website</a>
+                        </div>
+                    ) : ("")}
+                    <br />
+                    <strong>Email: </strong><a href={"mailto:" + props.email}>{props.email}</a>
+                    <br />
+                    {(props.summary) ? (
+                        <div>
+                            <br />
+                            {props.summary}
+                        </div>
+                    ) : ("")}
+                    <br />
+                    {(props.isDonor === false) ? (
+                        <div>
+                            <u><strong>Hours for Public Pick Up:</strong></u>
+                            <br />
+                            {props.hoursForPickUp || "No set time"}
+                        </div>
+                    ) : ("")}
+                    <br />
+                    {renderEditButton()}
+                </div>
             </div>
             <ModalEditJumbo
                 isDonor={props.isDonor}

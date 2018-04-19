@@ -3,6 +3,7 @@ import API from "../../components/utils/API";
 import Map from "../../components/Map/map";
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import UserCard from '../../components/UserCard/UserCard';
+import MainJumbotron from '../../components/MainJumbotron/MainJumbotron';
 
 class AllDonors extends Component {
     constructor(props) {
@@ -42,10 +43,7 @@ class AllDonors extends Component {
     render() {
         return (
             <div className="container text-black">
-                <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded text-primary">
-                    <h1 className="display-3">LettuceEAT</h1>
-                    <h3 className="lead">Reducing food waste one bite at a time!</h3>
-                </div>
+                <MainJumbotron />
                 <div className="row">
                     <div className="col-lg-7">
                         <h1 className="text-center">All Donors</h1>

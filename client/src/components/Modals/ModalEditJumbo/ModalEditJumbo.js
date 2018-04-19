@@ -12,7 +12,8 @@ class ModalEditJumbo extends Component {
         location: "",
         hoursforpickup: "",
         summary: "",
-        website: ""
+        website: "",
+        message: ""
     };
     componentDidMount() {
         this.setState({
@@ -37,7 +38,7 @@ class ModalEditJumbo extends Component {
         }
         API.editDonor(this.props.paramsId, updatedInfo)
             .then(res => { window.location.reload(); })
-            .catch(err => console.log(err))
+            .catch(err => this.setState({ message: "Please make sure these fields are filled out" }))
     }
     editNonProfit = (event) => {
         event.preventDefault();
@@ -52,7 +53,7 @@ class ModalEditJumbo extends Component {
         }
         API.editNonProfit(this.props.paramsId, updatedInfo)
             .then(res => { window.location.reload(); })
-            .catch(err => console.log(err))
+            .catch(err => this.setState({ message: "Please make sure these fields are filled out" }))
     }
 
     handleChange = event => {
@@ -86,17 +87,15 @@ class ModalEditJumbo extends Component {
 
                             <div className="modal-body">
                                 <div className="form-group">
-                                    <label htmlFor="name"><strong>Name:</strong></label>
+                                    <label htmlFor="name"><strong>Name: <strong><span className="text-primary">*</span></strong></strong></label>
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_name" name="name"
                                         maxLength={30} onChange={this.handleChange} defaultValue={this.props.currentName} />
                                     <br />
-                                    <label htmlFor="email"><strong>Email:</strong></label>
+                                    <label htmlFor="email"><strong>Email: <strong><span className="text-primary">*</span></strong></strong></label>
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_email" name="email"
                                         maxLength={50} onChange={this.handleChange} defaultValue={this.props.currentEmail} />
                                     <br />
-                                    <label htmlFor="phonenumber"><strong>Phone Number:</strong></label>
-                                    {/*<input className="form-control col-sm-12 mb-2" type="text" id="edit_phone"
-                                        name="phonenumber" defaultValue={this.props.currentPhonenumber} onChange={this.handleChange} />*/}
+                                    <label htmlFor="phonenumber"><strong>Phone Number: <strong><span className="text-primary">*</span></strong></strong></label>
 
                                     <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                                         type="tel:"
@@ -117,24 +116,24 @@ class ModalEditJumbo extends Component {
                                             <br />
                                         </div>
                                     )}
-                                    {/*<label htmlFor="summary"><strong>Summary:</strong></label>
-                                    <input className="form-control col-sm-12 mb-2" type="text" id="edit_location" name="summary"
-                                        maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentSummary} />
-                                    <br />*/}
 
                                     <div className="form-group">
-                                    <label htmlFor="summary">Description:</label>
-                                    <textarea className="form-control" id="edit_location" name="summary" rows="3" onChange={this.handleChange}
-                                    defaultValue={this.props.currentSummary}></textarea>
-                                </div>
+                                        <label htmlFor="summary">Description: </label>
+                                        <textarea className="form-control" id="edit_location" name="summary" rows="3" onChange={this.handleChange}
+                                            defaultValue={this.props.currentSummary}></textarea>
+                                    </div>
 
 
                                     <label htmlFor="website"><strong>Website:</strong></label>
                                     <input className="form-control col-sm-12 mb-2" type="text" placeholder="http://yourwebsite.com" id="edit_website" name="website"
                                         maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentWebsite} />
                                     <br />
-                                    <label htmlFor="location"><strong>Location:</strong></label>
+                                    <label htmlFor="location"><strong>Location: <strong><span className="text-primary">*</span></strong></strong></label>
                                     <PlacesAutocomplete inputProps={inputProps} />
+                                    <br />
+                                    {(this.state.message) ? (
+                                        <span className="alert-message"><strong><span className="text-primary">*</span></strong> - {this.state.message}</span>
+                                    ) : ("")}
                                     <br />
                                     {(localStorage.getItem("isDonor") === "true") ? (
                                         <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>

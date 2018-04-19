@@ -3,6 +3,7 @@ import "./Home.css";
 import API from "../../components/utils/API";
 import FoodCard from '../../components/FoodCard';
 import ModalAddPost from '../../components/Modals/ModalAddPost';
+import MainJumbotron from '../../components/MainJumbotron/MainJumbotron';
 
 class Home extends Component {
     state = {
@@ -38,10 +39,7 @@ class Home extends Component {
     render() {
         return (
             <div className="container">
-                <div className="jumbotron text-primary jumbotron-fluid mt-4 my-3 text-center rounded">
-                    <h1 className="display-3">LettuceEAT</h1>
-                    <h3 className="lead">Reducing food waste one bite at a time!</h3>
-                </div>
+                <MainJumbotron />
                 {(localStorage.getItem("isDonor") === "true") ? (
                     <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                 ) : ("")}
@@ -64,7 +62,6 @@ class Home extends Component {
                         <h3>No food posts! Check back later. </h3>
                     )}
                 <ModalAddPost donorId={localStorage.getItem("donorId")} />
-
             </div>
         );
     }

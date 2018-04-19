@@ -62,7 +62,7 @@ module.exports = {
                 .then(function (dbDonor) {
                     res.json(dbDonor);
                 }).catch(function (e) {
-                    console.warn(e);
+                    res.status(403).send("Something went wrong!");
                 })
         }
         else {
