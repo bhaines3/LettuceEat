@@ -54,20 +54,20 @@ class ModalAddPost extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="postDesc">Description: <strong><span className="text-primary">*</span></strong></label>
-                                    <textarea className="form-control" id="new_desc" name="postDesc" rows="3" onChange={this.handleChange}></textarea>
+                                    <textarea className="form-control" id="new_desc" name="postDesc" rows="3" onChange={this.handleChange} maxlength={500} placeholder="max 500 characters"></textarea>
                                 </div>
 
                                 <label htmlFor="postPickUpDate"><strong>Pick-Up Date: <strong><span className="text-primary">*</span></strong></strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="date" id="new_pickupdate" name="postPickUpDate" defaultValue="" onChange={this.handleChange} />
 
-                                <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window:</strong></label>
+                                <label htmlFor="postPickUpWindow"><strong>Pick-Up Time Window: <strong><span className="text-primary">*</span></strong></strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="text" id="new_pickupwindow" name="postPickUpWindow" maxLength={15} onChange={this.handleChange} />
                                 <br />
                                 {(this.state.message) ? (
                                     <span className="alert-message"><strong><span className="text-primary">*</span></strong> - {this.state.message}</span>
                                 ) : ("")}
                                 <br />
-                                <button className="btn btn-outline-primary mt-3" type="submit" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button>
+                                <button className="btn btn-primary" type="submit" onClick={this.addNewPost}>Create<i className="far fa-check-circle" /></button>
                                 <br />
                             </div>
                         </div>

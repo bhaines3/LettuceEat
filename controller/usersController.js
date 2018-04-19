@@ -70,7 +70,7 @@ module.exports = {
                 donorController.createDonor(donorInfo).then(returnUser);
               }
             }).catch(function (err) {
-              console.log("Error from createUser: " + err);
+              res.json({ success: false, msg: "There was not enough information to create an account." });
             });
         }
         else {

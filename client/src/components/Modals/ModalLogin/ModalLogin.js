@@ -31,7 +31,7 @@ class ModalLogin extends Component {
                 window.location.reload();
             })
             .catch(err => {
-                this.setState({ message: 'Login failed. Username or password not match' });
+                this.setState({ message: 'Login failed. Username or password did not match' });
             })
     }
     donorNonDonorSave(token) {
@@ -61,11 +61,11 @@ class ModalLogin extends Component {
             window.location.reload();
         }
         return (
-            <div className="modal fade" id="modal-login" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel222" aria-hidden="true">
+            <div className="modal fade" id="modal-login" tabIndex={-1} role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel222">Log in to account</h5>
+                            <h5 className="modal-title" id="LoginModal">Log in to account</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -79,6 +79,7 @@ class ModalLogin extends Component {
                                 <input className="form-control col-sm-12 mb-2" type="password" id="password-login" name="passwordLogin" value={this.state.password} onChange={this.updateUserlogin} placeholder="******" maxLength={10} />
                                 <br />
                                 <span className="alert-message">{this.state.message}</span>
+                                <br />
                                 <br />
                                 <button onClick={this.Login} className="btn btn-primary" type="submit" id="login-user">Login <i className="fa fa-check-circle" /></button>
                             </div>

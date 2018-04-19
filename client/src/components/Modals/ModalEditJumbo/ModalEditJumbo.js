@@ -119,8 +119,8 @@ class ModalEditJumbo extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="summary">Description: </label>
-                                        <textarea className="form-control" id="edit_location" name="summary" rows="3" onChange={this.handleChange}
-                                            defaultValue={this.props.currentSummary}></textarea>
+                                        <textarea className="form-control" id="edit_description" name="summary" rows="3" onChange={this.handleChange}
+                                            defaultValue={this.props.currentSummary} maxlength={500} placeholder="max 500 characters"></textarea>
                                     </div>
 
 
@@ -136,9 +136,9 @@ class ModalEditJumbo extends Component {
                                     ) : ("")}
                                     <br />
                                     {(localStorage.getItem("isDonor") === "true") ? (
-                                        <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>
+                                        <button className="btn btn-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>
                                     ) : (
-                                            <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editNonProfit}>Save Changes<i className="far fa-check-circle" /></button>
+                                            <button className="btn btn-primary" type="submit" id="create-new-user" onClick={this.editNonProfit}>Save Changes<i className="far fa-check-circle" /></button>
                                         )}
                                     <br />
                                 </div>

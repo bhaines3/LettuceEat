@@ -43,6 +43,7 @@ class Home extends Component {
                 {(localStorage.getItem("isDonor") === "true") ? (
                     <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                 ) : ("")}
+                <br />
                 {this.state.foodposts && this.state.foodposts.length ? (
                     this.state.foodposts.map(FoodPost => (
                         <div
@@ -59,7 +60,7 @@ class Home extends Component {
                         </div>
                     ))
                 ) : (
-                        <h3>No food posts! Check back later. </h3>
+                        <h3>No one has added food posts! Check back later. </h3>
                     )}
                 <ModalAddPost donorId={localStorage.getItem("donorId")} />
             </div>
