@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import MainJumbotron from '../../components/MainJumbotron/MainJumbotron';
 
 class AboutUs extends Component {
-
-
     render() {
         return (
 
