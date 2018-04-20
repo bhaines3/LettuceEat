@@ -57,18 +57,11 @@ class ModalEditPost extends Component {
                                 <input className="form-control col-sm-12 mb-2" type="text" id={"edit_title" + this.props.foodId} name="postTitle"
                                     maxLength={30} onChange={this.handleChange} defaultValue={this.props.foodTitle} />
                                 <br />
-                                {/*<label htmlFor="postDesc"><strong>Description:</strong></label>
-                                <input className="col-sm-12 mb-2" type="text" id={"edit_desc" + this.props.foodId} name="postDesc"
-                                    maxLength={500} onChange={this.handleChange} defaultValue={this.props.foodDesc} />
-                                <br />*/}
                                 <div className="form-group">
                                     <label htmlFor="postDesc">Description:</label>
                                     <textarea className="form-control" id={"edit_desc" + this.props.foodId} name="postDesc" rows="3" onChange={this.handleChange}
                                     defaultValue={this.props.foodDesc}></textarea>
                                 </div>
-
-
-
                                 <label htmlFor="postPickUpDate"><strong>Pick-Up Date:</strong></label>
                                 <input className="form-control col-sm-12 mb-2" type="date" id={"edit_pickupdate" + this.props.foodId}
                                     name="postPickUpDate" defaultValue={this.props.foodPickUpDay} onChange={this.handleChange} />

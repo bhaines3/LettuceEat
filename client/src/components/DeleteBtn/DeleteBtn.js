@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from "./../utils/API";
 
+//deleting the food post
 class DeleteBtn extends Component {
     deleteThePost = (id, donorId) => {
         API.deletePost(id, donorId)

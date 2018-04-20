@@ -61,9 +61,7 @@ class ModalSignUp extends Component {
     }
     donorNonDonorSave(token) {
         localStorage.setItem('jwtToken', token);
-        //console.log(token);
         const decoded = jwt_decode(token);
-        //console.log(JSON.stringify(decoded))
         const donor = decoded.isDonor;
         const id = decoded.id;
         localStorage.setItem("userId", id);
@@ -131,8 +129,6 @@ class ModalSignUp extends Component {
                             </div>
                             <div className="form-group">
                                 <label>Phone:</label>
-                                {/*<input type="tel" className="form-control col-sm-12 mb-2" name="phonenumber" value={this.state.phonenumber} onChange={this.updateUserSignup} placeholder="(555)555-5555" />*/}
-
                                 <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                                     type="tel:"
                                     value={this.state.phonenumber}
