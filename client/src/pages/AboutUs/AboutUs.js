@@ -23,7 +23,7 @@ class AboutUs extends Component {
                                     <li>More than 20 lbs. of food is wasted per person every month in the United States.</li>
                                     <li>20% of food that the average American buys is never eaten.</li>
                                     <li>90% of food is thrown away too soon.</li>
-                                    <li>Food waste in American has grown by 204% since 1960 and 50% since 1990.</li>
+                                    <li>Food waste in America has grown by 204% since 1960 and 50% since 1990.</li>
                                     <li>Reducing food waste by just 15% would be enough to feed more than 25 million Americans every year.</li>
                                 </ol>
                                 <br />
