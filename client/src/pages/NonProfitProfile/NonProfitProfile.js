@@ -11,8 +11,12 @@ class NonProfitProfile extends Component {
     };
     componentDidMount() {
         //Why does it matter which nonProfit is viewing the nonProfit page? -Michelle
+<<<<<<< HEAD
         //Checks to see if user vieweing the page is the user that is logged in
         const nonProfitId = localStorage.getItem("nonProfitId");
+=======
+        const nonProfitId = sessionStorage.getItem("nonProfitId");
+>>>>>>> 81dcac8bca5acaeabea6a4786ea9d40cce4ce307
         const idAllNonProfitsPg = this.props.match.params.id;
         console.log(nonProfitId);
         
@@ -49,7 +53,7 @@ class NonProfitProfile extends Component {
                     >
                         <br />
                     </ProfileJumbotron>
-                    <h3 className="text-primary">Food Posts Interested In</h3>
+                    <h3><u>Food Posts Interested In</u></h3>
                     {this.state.nonprofit.FoodPosts && this.state.nonprofit.FoodPosts.length ? (
                         this.state.nonprofit.FoodPosts.map(FoodPost => (
                             <div>
@@ -66,7 +70,11 @@ class NonProfitProfile extends Component {
                             </div>
                         ))
                     ) : (
-                            <h3 className="text-warning">No Food Posts</h3>
+                            <div>
+                                <br />
+                                <h4>This organization has not marked interest in any food posts. Check back later!</h4>
+                                <br />
+                            </div>
                         )}
                 </div>
 

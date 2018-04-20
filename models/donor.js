@@ -2,22 +2,31 @@ module.exports = function (sequelize, DataTypes) {
     var Donor = sequelize.define("Donor", {
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         },
         phonenumber: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
             validate: {
                 len: [1]
             }
         },
         location: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         },
         summary: {
             type: DataTypes.STRING,
@@ -37,4 +46,4 @@ module.exports = function (sequelize, DataTypes) {
         Donor.hasMany(models.FoodPost);
     };
     return Donor;
-}
+};

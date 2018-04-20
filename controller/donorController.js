@@ -1,12 +1,12 @@
 const db = require("../models");
-const foodPostController = require("../controller/foodPostController.js");
+
 module.exports = {
     findAllDonors: (req, res) => {
         db.Donor.findAll({
             include: [db.FoodPost]
         }).then((dbDonor) => {
             res.json(dbDonor);
-        })
+        });
     },
     findDonor: (req, res) => {
         db.Donor.findOne({
@@ -16,7 +16,7 @@ module.exports = {
             include: [db.FoodPost]
         }).then((donor) => {
             res.json(donor);
-        })
+        });
     },
     findDonorByFoodPostId: (req, res) => {
         db.FoodPost.findOne({
@@ -30,8 +30,8 @@ module.exports = {
                 }
             }).then((donorFoodPost) => {
                 res.json(donorFoodPost);
-            })
-        })
+            });
+        });
     },
     createDonor: (req, res) => {
         var newDonorInfo = {
@@ -40,10 +40,10 @@ module.exports = {
             email: req.email,
             name: req.name,
             phonenumber: req.phonenumber
-        }
+        };
         return db.Donor.create(newDonorInfo)
             .then((dbDonor) => {
-                res.json({ success: true, msg: 'Successful created new donor.' });
+                res.json({ success: true, msg: "Successful created new donor." });
             }).catch(function (err) {
                 console.log("Erro: " + err);
             });
@@ -60,10 +60,29 @@ module.exports = {
                 }
             })
                 .then(function (dbDonor) {
-                    res.json(dbDonor);
-                }).catch(function (e) {
-                    console.warn(e);
-                })
+                    var updatedUser = {}
+                    if (req.body.name) {
+                        updatedUser["name"] = req.body.name;
+                    }
+                    if (req.body.email) {
+                        updatedUser["email"] = req.body.email;
+                    }
+                    if (req.body.location) {
+                        updatedUser["location"] = req.body.location;
+                    }
+                    if (req.body.phonenumber) {
+                        updatedUser["phonenumber"] = req.body.phonenumber;
+                    }
+                    db.User.update(updatedUser, {
+                        where: {
+                            id: req.body.UserId
+                        }
+                    }).then(function (dbUser) {
+                        res.json(dbUser);
+                    })
+                }).catch(function (error) {
+                    res.status(403).send("Something went wrong!");
+                });
         }
         else {
             res.status(403).send("You are not allowed to edit another user's post!");
@@ -77,6 +96,6 @@ module.exports = {
             res.json(dbDonor);
         }).catch((err) => {
             console.log("Error from clearAllDonors: " + err);
-        })
+        });
     }
-}
+};

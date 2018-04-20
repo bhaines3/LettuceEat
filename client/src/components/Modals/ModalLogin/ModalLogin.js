@@ -7,7 +7,8 @@ class ModalLogin extends Component {
         nameLogin: "",
         passwordLogin: "",
         isDonor: false,
-        isLoggedIn: false
+        isLoggedIn: false,
+        message: ""
     }
     updateUserlogin = event => {
         const { name, value } = event.target;
@@ -30,23 +31,23 @@ class ModalLogin extends Component {
                 window.location.reload();
             })
             .catch(err => {
-                this.setState({ message: 'Login failed. Username or password not match' });
+                this.setState({ message: 'Login failed. Username or password did not match' });
             })
     }
     donorNonDonorSave(token) {
-        localStorage.setItem('jwtToken', token);
+        sessionStorage.setItem('jwtToken', token);
         const decoded = jwt_decode(token);
         const donor = decoded.isDonor;
         const id = decoded.id;
-        localStorage.setItem("userId", id);
-        localStorage.setItem("isDonor", donor);
+        sessionStorage.setItem("userId", id);
+        sessionStorage.setItem("isDonor", donor);
         if (donor === null || donor === false) {
             const nonProfitId = decoded.NonProfit.id;
-            localStorage.setItem("nonProfitId", nonProfitId);
+            sessionStorage.setItem("nonProfitId", nonProfitId);
         }
         else {
             const donorId = decoded.Donor.id;
-            localStorage.setItem("donorId", donorId);
+            sessionStorage.setItem("donorId", donorId);
         }
         //setting state to redirect user
         this.setState({
@@ -60,11 +61,11 @@ class ModalLogin extends Component {
             window.location.reload();
         }
         return (
-            <div className="modal fade" id="modal-login" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel222" aria-hidden="true">
+            <div className="modal fade" id="modal-login" tabIndex={-1} role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel222">Log in to account</h5>
+                            <h5 className="modal-title" id="LoginModal">Log in to account</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -77,10 +78,10 @@ class ModalLogin extends Component {
                                 <label htmlFor="email-login">Password:</label>
                                 <input className="form-control col-sm-12 mb-2" type="password" id="password-login" name="passwordLogin" value={this.state.password} onChange={this.updateUserlogin} placeholder="******" maxLength={10} />
                                 <br />
-                                <div id="alert-message" />
-                                <button onClick={this.Login} className="btn btn-primary" type="submit" id="login-user" data-dismiss="modal">Login <i className="fa fa-check-circle" /></button>
+                                <span className="alert-message">{this.state.message}</span>
                                 <br />
-                                <span id="cannot-create-error" />
+                                <br />
+                                <button onClick={this.Login} className="btn btn-primary" type="submit" id="login-user">Login <i className="fa fa-check-circle" /></button>
                             </div>
                         </div>
                         <div className="modal-footer">

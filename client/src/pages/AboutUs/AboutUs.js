@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
+import MainJumbotron from '../../components/MainJumbotron/MainJumbotron';
 
 class AboutUs extends Component {
-
-
     render() {
         return (
 
             <div className="container">
-                <div className="jumbotron mt-4 my-3 text-primary text-center rounded">
-                    <h1 className="display-3">LettuceEAT</h1>
-                    <h3 className="lead">Reducing food waste one bite at a time!</h3>
-                </div>
+                <MainJumbotron />
                 <div className=" row statImg mx-auto">
                     <div className="col-6">
                         <div className="card border-primary mb-3">
@@ -27,7 +23,7 @@ class AboutUs extends Component {
                                     <li>More than 20 lbs. of food is wasted per person every month in the United States.</li>
                                     <li>20% of food that the average American buys is never eaten.</li>
                                     <li>90% of food is thrown away too soon.</li>
-                                    <li>Food waste in American has grown by 204% since 1960 and 50% since 1990.</li>
+                                    <li>Food waste in America has grown by 204% since 1960 and 50% since 1990.</li>
                                     <li>Reducing food waste by just 15% would be enough to feed more than 25 million Americans every year.</li>
                                 </ol>
                                 <br />

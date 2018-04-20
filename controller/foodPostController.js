@@ -5,7 +5,7 @@ module.exports = {
             include: [db.Donor, db.NonProfit]
         }).then((dbFoodPost) => {
             res.json(dbFoodPost);
-        })
+        });
     },
     findOneFoodPost: (req, res) => {
         db.FoodPost.findOne({
@@ -15,7 +15,7 @@ module.exports = {
             include: [db.Donor, db.NonProfit]
         }).then((foodPost) => {
             res.json(foodPost);
-        })
+        });
     },
     filterFoodPostsByDonor: (req, res) => {
         db.FoodPost.findAll({
@@ -24,8 +24,8 @@ module.exports = {
             },
             include: [db.Donor, db.NonProfit]
         }).then((foodPost) => {
-            res.json(foodPost)
-        })
+            res.json(foodPost);
+        });
     },
     createFoodPost: (req, res) => {
         if (!req.user) {
@@ -39,12 +39,12 @@ module.exports = {
                 desc: req.body.desc,
                 pickupdate: req.body.pickupdate,
                 pickupwindow: req.body.pickupwindow
-            }
+            };
             db.FoodPost.create(newFoodPostInfo)
                 .then((dbFoodPost) => {
-                    res.json({ success: true, msg: 'Successful created new foodpost.' });
+                    res.json({ success: true, msg: "Successful created new foodpost." });
                 }).catch(function (err) {
-                    console.log("Erro: " + err);
+                    res.status(403).send("Something went wrong!");
                 });
         }
         else {
@@ -66,8 +66,8 @@ module.exports = {
                 .then(function (dbFoodPost) {
                     res.json(dbFoodPost);
                 }).catch(function (e) {
-                    console.warn(e);
-                })
+                    res.status(403).send("Something went wrong!");
+                });
         }
         else {
             res.status(403).send("You are not allowed to edit another user's post!");
@@ -103,6 +103,6 @@ module.exports = {
             res.json(dbFoodPost);
         }).catch((err) => {
             console.log("Error from clearAllFoodPosts: " + err);
-        })
+        });
     }
-}
+};

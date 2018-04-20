@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import API from "../../utils/API";
+=======
+import API from "./../../utils/API";
+>>>>>>> 81dcac8bca5acaeabea6a4786ea9d40cce4ce307
 import PlacesAutocomplete from 'react-places-autocomplete'
 import MaskedInput from 'react-text-mask';
 
@@ -12,7 +16,8 @@ class ModalEditJumbo extends Component {
         location: "",
         hoursforpickup: "",
         summary: "",
-        website: ""
+        website: "",
+        message: ""
     };
     componentDidMount() {
         this.setState({
@@ -28,6 +33,7 @@ class ModalEditJumbo extends Component {
     editDonor = (event) => {
         event.preventDefault();
         const updatedInfo = {
+            UserId: sessionStorage.getItem("userId"),
             name: this.state.name,
             email: this.state.email,
             phonenumber: this.state.phonenumber,
@@ -37,11 +43,12 @@ class ModalEditJumbo extends Component {
         }
         API.editDonor(this.props.paramsId, updatedInfo)
             .then(res => { window.location.reload(); })
-            .catch(err => console.log(err))
+            .catch(err => this.setState({ message: "Please make sure these fields are filled out" }))
     }
     editNonProfit = (event) => {
         event.preventDefault();
         const updatedInfo = {
+            UserId: sessionStorage.getItem("userId"),
             name: this.state.name,
             email: this.state.email,
             phonenumber: this.state.phonenumber,
@@ -52,7 +59,7 @@ class ModalEditJumbo extends Component {
         }
         API.editNonProfit(this.props.paramsId, updatedInfo)
             .then(res => { window.location.reload(); })
-            .catch(err => console.log(err))
+            .catch(err => this.setState({ message: "Please make sure these fields are filled out" }))
     }
 
     handleChange = event => {
@@ -86,15 +93,19 @@ class ModalEditJumbo extends Component {
 
                             <div className="modal-body">
                                 <div className="form-group">
-                                    <label htmlFor="name"><strong>Name:</strong></label>
+                                    <label htmlFor="name"><strong>Name: <strong><span className="text-primary">*</span></strong></strong></label>
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_name" name="name"
                                         maxLength={30} onChange={this.handleChange} defaultValue={this.props.currentName} />
                                     <br />
-                                    <label htmlFor="email"><strong>Email:</strong></label>
+                                    <label htmlFor="email"><strong>Email: <strong><span className="text-primary">*</span></strong></strong></label>
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_email" name="email"
                                         maxLength={50} onChange={this.handleChange} defaultValue={this.props.currentEmail} />
                                     <br />
+<<<<<<< HEAD
                                     <label htmlFor="phonenumber"><strong>Phone Number:</strong></label>
+=======
+                                    <label htmlFor="phonenumber"><strong>Phone Number: <strong><span className="text-primary">*</span></strong></strong></label>
+>>>>>>> 81dcac8bca5acaeabea6a4786ea9d40cce4ce307
 
                                     <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                                         type="tel:"
@@ -107,7 +118,7 @@ class ModalEditJumbo extends Component {
                                         onChange={this.handleChange}
                                     />
                                     <br />
-                                    {(localStorage.getItem("isDonor") === "true") ? ("") : (
+                                    {(sessionStorage.getItem("isDonor") === "true") ? ("") : (
                                         <div>
                                             <label htmlFor="hoursforpickup"><strong>Hours For Pick Up:</strong></label>
                                             <input className="col-sm-12 mb-2" type="text" id="edit_hours" name="hoursforpickup"
@@ -115,21 +126,29 @@ class ModalEditJumbo extends Component {
                                             <br />
                                         </div>
                                     )}
-                                    <label htmlFor="summary"><strong>Summary:</strong></label>
-                                    <input className="form-control col-sm-12 mb-2" type="text" id="edit_location" name="summary"
-                                        maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentSummary} />
-                                    <br />
+
+                                    <div className="form-group">
+                                        <label htmlFor="summary">Description: </label>
+                                        <textarea className="form-control" id="edit_description" name="summary" rows="3" onChange={this.handleChange}
+                                            defaultValue={this.props.currentSummary} maxLength={500} placeholder="max 500 characters"></textarea>
+                                    </div>
+
+
                                     <label htmlFor="website"><strong>Website:</strong></label>
-                                    <input className="col-sm-12 mb-2" type="text" id="edit_website" name="website"
+                                    <input className="form-control col-sm-12 mb-2" type="text" placeholder="http://yourwebsite.com" id="edit_website" name="website"
                                         maxLength={500} onChange={this.handleChange} defaultValue={this.props.currentWebsite} />
                                     <br />
-                                    <label htmlFor="location"><strong>Location:</strong></label>
+                                    <label htmlFor="location"><strong>Location: <strong><span className="text-primary">*</span></strong></strong></label>
                                     <PlacesAutocomplete inputProps={inputProps} />
                                     <br />
-                                    {(localStorage.getItem("isDonor") === "true") ? (
-                                        <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>
+                                    {(this.state.message) ? (
+                                        <span className="alert-message"><strong><span className="text-primary">*</span></strong> - {this.state.message}</span>
+                                    ) : ("")}
+                                    <br />
+                                    {(sessionStorage.getItem("isDonor") === "true") ? (
+                                        <button className="btn btn-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>
                                     ) : (
-                                            <button className="btn btn-outline-primary" type="submit" id="create-new-user" onClick={this.editNonProfit}>Save Changes<i className="far fa-check-circle" /></button>
+                                            <button className="btn btn-primary" type="submit" id="create-new-user" onClick={this.editNonProfit}>Save Changes<i className="far fa-check-circle" /></button>
                                         )}
                                     <br />
                                 </div>

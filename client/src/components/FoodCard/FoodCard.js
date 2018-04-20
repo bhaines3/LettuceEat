@@ -21,8 +21,8 @@ class FoodCard extends Component {
             <div className="card text-black border-primary my-3">
                 <h4 className="card-header bg-primary">Food Post by <a className="text-white text-capitalize" href={"/donorprofile/" + this.props.donorId}>{this.state.donorName}</a></h4>
                 <div className="card-body">
-                    <h5 className="card-title">{this.props.title}</h5>
-                    {(parseInt(localStorage.getItem("donorId"), 10) === this.props.donorId) ? (
+                    <u><h5 className="card-title">{this.props.title}</h5></u>
+                    {(parseInt(sessionStorage.getItem("donorId"), 10) === this.props.donorId) ? (
                         <a href="" className="btn btn-primary text-white float-right" data-toggle="modal" data-target={"#modal-editpost" + this.props.foodId}>Edit</a>
                     ) : ("")}
                     <br />
@@ -38,16 +38,16 @@ class FoodCard extends Component {
                         </div>
                     </div>
                     <a href="" className="btn btn-primary text-white float-left interestedBtn" data-toggle="modal" data-target={"#modal-allinterested" + this.props.foodId}>Interested Organizations</a>
-                    {(parseInt(localStorage.getItem("donorId"), 10) === this.props.donorId) ? (
+                    {(parseInt(sessionStorage.getItem("donorId"), 10) === this.props.donorId) ? (
                         <DeleteBtn
                             foodId={this.props.foodId}
                             donorId={this.props.donorId}
                         />
                     ) : ("")}
-                    {(localStorage.getItem("isDonor") === "false") ? (
+                    {(sessionStorage.getItem("isDonor") === "false") ? (
                         <InterestBtn
                             foodId={this.props.foodId}
-                            nonProfitId={localStorage.getItem("nonProfitId")}
+                            nonProfitId={sessionStorage.getItem("nonProfitId")}
                         />
                     ) : ("")}
                 </div>

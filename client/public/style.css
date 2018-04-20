@@ -8,6 +8,9 @@ html {
 button {
   letter-spacing: 2px;
 }
+footer {
+    z-index: 500;
+}
 
   body {
     margin-bottom: 60px; /* Margin bottom by footer height */
@@ -43,6 +46,11 @@ button {
   .jumbotron {
       color: whitesmoke;
       text-shadow: -1.25px 0 whitesmoke, 0 1.25px whitesmoke, 1.25px 0 whitesmoke, 0 -1.25px whitesmoke;
+  }
+  .leading-text {
+        color: black;
+        text-shadow: -0.5px 0 whitesmoke, 0 0.5px whitesmoke, 0.5px 0 whitesmoke, 0 -0.5px whitesmoke;
+        font-size: 18px; 
   }
 
   .card {
