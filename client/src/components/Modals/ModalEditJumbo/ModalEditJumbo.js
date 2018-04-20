@@ -29,6 +29,7 @@ class ModalEditJumbo extends Component {
     editDonor = (event) => {
         event.preventDefault();
         const updatedInfo = {
+            UserId: sessionStorage.getItem("userId"),
             name: this.state.name,
             email: this.state.email,
             phonenumber: this.state.phonenumber,
@@ -43,6 +44,7 @@ class ModalEditJumbo extends Component {
     editNonProfit = (event) => {
         event.preventDefault();
         const updatedInfo = {
+            UserId: sessionStorage.getItem("userId"),
             name: this.state.name,
             email: this.state.email,
             phonenumber: this.state.phonenumber,
@@ -120,7 +122,7 @@ class ModalEditJumbo extends Component {
                                     <div className="form-group">
                                         <label htmlFor="summary">Description: </label>
                                         <textarea className="form-control" id="edit_description" name="summary" rows="3" onChange={this.handleChange}
-                                            defaultValue={this.props.currentSummary} maxlength={500} placeholder="max 500 characters"></textarea>
+                                            defaultValue={this.props.currentSummary} maxLength={500} placeholder="max 500 characters"></textarea>
                                     </div>
 
 

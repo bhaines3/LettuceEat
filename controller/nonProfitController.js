@@ -44,7 +44,26 @@ module.exports = {
                 }
             })
                 .then(function (dbNonProfit) {
-                    res.json(dbNonProfit);
+                    var updatedUser = {}
+                    if (req.body.name) {
+                        updatedUser["name"] = req.body.name;
+                    }
+                    if (req.body.email) {
+                        updatedUser["email"] = req.body.email;
+                    }
+                    if (req.body.location) {
+                        updatedUser["location"] = req.body.location;
+                    }
+                    if (req.body.phonenumber) {
+                        updatedUser["phonenumber"] = req.body.phonenumber;
+                    }
+                    db.User.update(updatedUser, {
+                        where: {
+                            id: req.body.UserId
+                        }
+                    }).then(function (dbUser) {
+                        res.json(dbUser);
+                    })
                 }).catch(function (e) {
                     res.status(403).send("Something went wrong!");
                 });
