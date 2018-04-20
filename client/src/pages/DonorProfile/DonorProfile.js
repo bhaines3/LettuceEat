@@ -10,7 +10,6 @@ class DonorProfile extends Component {
         foodposts: []
     };
     componentDidMount() {
-        //What is the purpose of this? -Michelle
         const donorId = sessionStorage.getItem("donorId");
         const idAllDonorsPg = this.props.match.params.id;
         if (donorId !== idAllDonorsPg) {

@@ -34,7 +34,7 @@ module.exports = {
         });
     },
     createDonor: (req, res) => {
-        var newDonorInfo = {
+        let newDonorInfo = {
             UserId: req.UserId,
             location: req.location,
             email: req.email,
@@ -60,7 +60,8 @@ module.exports = {
                 }
             })
                 .then(function (dbDonor) {
-                    var updatedUser = {}
+                    //Proceed to update associated user
+                    let updatedUser = {}
                     if (req.body.name) {
                         updatedUser["name"] = req.body.name;
                     }
