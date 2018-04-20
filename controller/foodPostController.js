@@ -33,7 +33,7 @@ module.exports = {
             return;
         }
         if (req.user.Donor.id == req.body.DonorId) {
-            var newFoodPostInfo = {
+            let newFoodPostInfo = {
                 DonorId: req.body.DonorId,
                 title: req.body.title,
                 desc: req.body.desc,

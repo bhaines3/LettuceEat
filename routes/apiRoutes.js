@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const passport = require("../config/passport");
 const settings = require("./config/settings");
 
-
+//=========LOGIN/SIGNUP==============
 router
     .route("/login/")
     .post((req, res) => {

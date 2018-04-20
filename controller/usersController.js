@@ -45,7 +45,7 @@ module.exports = {
                             if (newUserInfo.isDonor != "true") {
                                 console.log("im a nonprofit");
                                 console.log(newUserInfo.isDonor);
-                                var nonProfitInfo = {
+                                let nonProfitInfo = {
                                     UserId: dbUser.id,
                                     email: newUserInfo.email,
                                     location: newUserInfo.location,
@@ -57,12 +57,10 @@ module.exports = {
                             else if (newUserInfo.isDonor) {
                                 console.log("im a donor");
                                 console.log(newUserInfo.isDonor);
-                                var donorInfo = {
+                                let donorInfo = {
                                     UserId: dbUser.id,
                                     email: newUserInfo.email,
                                     location: newUserInfo.location,
-                                    // lat:req.body.lat,
-                                    // lng:req.body.lng,
                                     name: newUserInfo.name,
                                     phonenumber: newUserInfo.phonenumber,
                                 };
