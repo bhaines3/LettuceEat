@@ -43,21 +43,12 @@ const Nav = () => {
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     {/* rendering signup and sign in when not logged in and profile */}
-<<<<<<< HEAD
-                    {(localStorage.getItem("jwtToken") != null) ? (<div>
-                        {(localStorage.getItem("donorId") !== null) ? (<div>
-                            <a className="btn btn-primary text-white" href={"/DonorProfile/" + localStorage.getItem("donorId")}>Your Profile</a>
-                            <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
-                        </div>) : (<div>
-                            <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + localStorage.getItem("nonProfitId")}>Your Profile</a>
-=======
                     {(sessionStorage.getItem("jwtToken") != null) ? (<div>
                         {(sessionStorage.getItem("donorId") !== null) ? (<div>
                             <a className="btn btn-primary text-white" href={"/DonorProfile/" + sessionStorage.getItem("donorId")}>Profile</a>
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>) : (<div>
                             <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + sessionStorage.getItem("nonProfitId")}>Profile</a>
->>>>>>> 81dcac8bca5acaeabea6a4786ea9d40cce4ce307
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>)}
                     </div>) : (

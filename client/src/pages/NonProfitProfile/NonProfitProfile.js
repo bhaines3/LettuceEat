@@ -11,12 +11,7 @@ class NonProfitProfile extends Component {
     };
     componentDidMount() {
         //Why does it matter which nonProfit is viewing the nonProfit page? -Michelle
-<<<<<<< HEAD
-        //Checks to see if user vieweing the page is the user that is logged in
-        const nonProfitId = localStorage.getItem("nonProfitId");
-=======
         const nonProfitId = sessionStorage.getItem("nonProfitId");
->>>>>>> 81dcac8bca5acaeabea6a4786ea9d40cce4ce307
         const idAllNonProfitsPg = this.props.match.params.id;
         console.log(nonProfitId);
         

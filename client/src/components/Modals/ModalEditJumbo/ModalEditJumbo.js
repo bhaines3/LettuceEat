@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import API from "../../utils/API";
-=======
 import API from "./../../utils/API";
->>>>>>> 81dcac8bca5acaeabea6a4786ea9d40cce4ce307
 import PlacesAutocomplete from 'react-places-autocomplete'
 import MaskedInput from 'react-text-mask';
 
@@ -101,11 +97,7 @@ class ModalEditJumbo extends Component {
                                     <input className="form-control col-sm-12 mb-2" type="text" id="edit_email" name="email"
                                         maxLength={50} onChange={this.handleChange} defaultValue={this.props.currentEmail} />
                                     <br />
-<<<<<<< HEAD
-                                    <label htmlFor="phonenumber"><strong>Phone Number:</strong></label>
-=======
                                     <label htmlFor="phonenumber"><strong>Phone Number: <strong><span className="text-primary">*</span></strong></strong></label>
->>>>>>> 81dcac8bca5acaeabea6a4786ea9d40cce4ce307
 
                                     <MaskedInput mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                                         type="tel:"
