@@ -18,7 +18,7 @@ module.exports = {
         });
     },
     createNonProfit: (req, res) => {
-        var newNonProfitInfo = {
+        let newNonProfitInfo = {
             UserId: req.UserId,
             location: req.location,
             email: req.email,
@@ -44,7 +44,8 @@ module.exports = {
                 }
             })
                 .then(function (dbNonProfit) {
-                    var updatedUser = {}
+                    //Proceed to update associated user
+                    let updatedUser = {}
                     if (req.body.name) {
                         updatedUser["name"] = req.body.name;
                     }

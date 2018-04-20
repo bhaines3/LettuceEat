@@ -7,7 +7,11 @@ const jwt = require("jsonwebtoken");
 const passport = require("../config/passport");
 const settings = require("./config/settings");
 
+<<<<<<< HEAD
 //using passport for authentication
+=======
+//=========LOGIN/SIGNUP==============
+>>>>>>> 02e5db12b4071b85613fff5b87b4d93fd06e2593
 router
     .route("/login/")
     .post((req, res) => {

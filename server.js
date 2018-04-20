@@ -5,7 +5,6 @@ const apiRoutes = require("./routes/apiRoutes");
 const session = require("express-session");
 const passport = require("./config/passport");
 
-// const routes = require("./routes/articles");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -17,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
-// Serve up static assets (usually on heroku)
+// Serve up static assets
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
@@ -29,8 +28,6 @@ app.use(passport.session());
 
 //Routes
 app.use("/api/", apiRoutes);
-// Send every request to the React app
-// Define any API routes before this runs
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
@@ -39,6 +36,6 @@ app.get("*", function (req, res) {
 // =============================================================
 module.exports = db.sequelize.sync().then(function () {
     return app.listen(PORT, function () {
-        console.log("🌎 ==> Server now on port ${PORT}!");
+        console.log(`🌎 ==> Server now on port ${PORT}!`);
     });
 });
