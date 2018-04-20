@@ -10,7 +10,6 @@ class NonProfitProfile extends Component {
         donors: []
     };
     componentDidMount() {
-        //Why does it matter which nonProfit is viewing the nonProfit page? -Michelle
         const nonProfitId = sessionStorage.getItem("nonProfitId");
         const idAllNonProfitsPg = this.props.match.params.id;
         console.log(nonProfitId);
@@ -19,7 +18,7 @@ class NonProfitProfile extends Component {
             .then(res => { this.setState({ donors: res.data }) })
             .catch(err => console.log(err));
 
-        //if user that is not looged in then find the information for the user using 
+        //if user that is not logged in then find the information for the user logged in 
         if (nonProfitId !== idAllNonProfitsPg) {
             API.findOneNonProfit(idAllNonProfitsPg)
                 .then(res => { this.setState({ nonprofit: res.data, foodpost: res.data.FoodPosts }) })

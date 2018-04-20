@@ -70,6 +70,8 @@ Follow Heroku's deployment instructions
 * [Sequelize](http://docs.sequelizejs.com/) - Promised-based ORM used
 * [Express](http://expressjs.com/) - Web framework used
 * [Yarn](http://expressjs.com/) - Package manager employed
+* [Mocha](https://mochajs.org/) - Used as testing framework
+* [chai](http://www.chaijs.com/) - Assertion library paired with Mocha for testing
 
 ## Authors
 * **Michelle Le** - *Team Lead* - [GitHub](https://github.com/michellele994)
@@ -78,7 +80,7 @@ Follow Heroku's deployment instructions
 * **Perla Ballesteros** - *Team:Front-end/Back-end* - [GitHub](https://github.com/perlaballesteros)
 
 ## Acknowledgments
-* Bootcamp TAs: Joel Borjorquez,Peter Fesz-Nuyen,and Nicholas Green.
+* Bootcamp TAs: Joel Borjorquez,Peter Fesz-Nguyen,and Nicholas Green.
 * Bootcamp Instructor: Jan Jorgensen.
 * Produce on Wheels With-Out Waste
 
