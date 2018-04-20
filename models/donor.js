@@ -46,4 +46,4 @@ module.exports = function (sequelize, DataTypes) {
         Donor.hasMany(models.FoodPost);
     };
     return Donor;
-}
+};

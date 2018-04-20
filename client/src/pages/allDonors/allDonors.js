@@ -40,6 +40,7 @@ class AllDonors extends Component {
                 this.setState({ coordinates: latLng, msg: address })
             })
     }
+
     render() {
         return (
             <div className="container text-black">

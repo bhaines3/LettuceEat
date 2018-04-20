@@ -8,6 +8,9 @@ html {
 button {
   letter-spacing: 2px;
 }
+footer {
+    z-index: 500;
+}
 
   body {
     margin-bottom: 60px; /* Margin bottom by footer height */

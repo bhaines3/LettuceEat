@@ -29,16 +29,16 @@ const Nav = () => {
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href={"/"}>Home</a>
+                        <a className="btn btn-primary text-white" href={"/"}>Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href={"/aboutus"}>About Us</a>
+                        <a className="btn btn-primary text-white" href={"/aboutus"}>About Us</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href={"/allDonors"}>Donors</a>
+                        <a className="btn btn-primary text-white" href={"/allDonors"}>Donors</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href={"/allNonProfits"}>Non-Profits</a>
+                        <a className="btn btn-primary text-white" href={"/allNonProfits"}>Non-Profits</a>
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
@@ -56,10 +56,6 @@ const Nav = () => {
                                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
                                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a></div>
                         )}
-                    {/* <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
-                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
-                <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
-     */}
                 </form>
                 <ModalLogin />
                 <ModalSignUp />

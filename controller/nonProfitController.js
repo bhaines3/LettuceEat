@@ -5,7 +5,7 @@ module.exports = {
             include: [db.FoodPost]
         }).then((dbNonProfit) => {
             res.json(dbNonProfit);
-        })
+        });
     },
     findNonProfit: (req, res) => {
         db.NonProfit.findOne({
@@ -15,7 +15,7 @@ module.exports = {
             include: [db.FoodPost]
         }).then((nonprofit) => {
             res.json(nonprofit);
-        })
+        });
     },
     createNonProfit: (req, res) => {
         var newNonProfitInfo = {
@@ -24,10 +24,10 @@ module.exports = {
             email: req.email,
             name: req.name,
             phonenumber: req.phonenumber
-        }
+        };
         return db.NonProfit.create(newNonProfitInfo)
             .then((dbNonProfit) => {
-                res.json({ success: true, msg: 'Successful created new nonprofit.' });
+                res.json({ success: true, msg: "Successful created new nonprofit." });
             }).catch((err) => {
                 console.log("Erro: " + err);
             });
@@ -47,7 +47,7 @@ module.exports = {
                     res.json(dbNonProfit);
                 }).catch(function (e) {
                     res.status(403).send("Something went wrong!");
-                })
+                });
         }
         else {
             res.status(403).send("You are not allowed to edit another user's post!");
@@ -72,8 +72,8 @@ module.exports = {
                 }).then((thisFoodPost) => {
                     thisNonProfit.addFoodPost(thisFoodPost);
                     res.end();
-                })
-            })
+                });
+            });
         }
         else {
             res.status(403).send("You are not allowed to edit another user's post!");
@@ -98,8 +98,8 @@ module.exports = {
                 }).then((thisFoodPost) => {
                     thisNonProfit.removeFoodPost(thisFoodPost);
                     res.end();
-                })
-            })
+                });
+            });
         }
         else {
             res.status(403).send("You are not allowed to edit another user's post!");
@@ -113,6 +113,6 @@ module.exports = {
             res.json(dbNonProfit);
         }).catch((err) => {
             console.log("Error from clearAllNonProfits: " + err);
-        })
+        });
     }
-}
+};

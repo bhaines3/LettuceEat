@@ -101,12 +101,12 @@ class ModalSignUp extends Component {
         //     window.location.reload()
         // }
         return (
-            <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel111" aria-hidden="true">
+            <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="SignupModal" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
 
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel111">Create an Account</h5>
+                            <h5 className="modal-title" id="SignupModal">Create an Account</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>

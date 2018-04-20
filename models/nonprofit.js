@@ -52,4 +52,4 @@ module.exports = function (sequelize, DataTypes) {
         NonProfit.belongsToMany(models.FoodPost, { through: "InterestedRoster" });
     };
     return NonProfit;
-}
+};

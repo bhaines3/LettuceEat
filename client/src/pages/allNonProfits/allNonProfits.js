@@ -45,7 +45,7 @@ class AllNonProfits extends Component {
                 <MainJumbotron />
                 <div className="row">
                     <div className="col-lg-7">
-                        <h1 className="text-center">All Non-Profits</h1>
+                        <h1 className="text-center">All Nonprofits</h1>
                         {this.state.nonProfits && this.state.nonProfits.length ? (this.state.nonProfits.map(nonProfit => (
                             <UserCard
                                 key={nonProfit.id}
@@ -59,7 +59,7 @@ class AllNonProfits extends Component {
                                 cardClicked={this.cardClicked} />
                         ))
                         ) : (
-                                <h3 className="text-center">No NonProfits to show</h3>
+                                <h3 className="text-center">No Nonprofits to show</h3>
                             )}
                     </div>
                     <div className="col-lg-5 mt-3">

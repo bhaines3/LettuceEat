@@ -61,7 +61,7 @@ class ModalEditPost extends Component {
                                 <div className="form-group">
                                     <label htmlFor="postDesc"><strong>Description: <span className="text-primary">*</span></strong></label>
                                     <textarea className="form-control" id={"edit_desc" + this.props.foodId} name="postDesc" rows="3" onChange={this.handleChange}
-                                        defaultValue={this.props.foodDesc}></textarea>
+                                        defaultValue={this.props.foodDesc} maxlength={500} placeholder="max 500 characters"></textarea>
                                 </div>
 
 
