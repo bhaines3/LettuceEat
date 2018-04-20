@@ -3,7 +3,7 @@ LettuceEAT connects local restaurants and/or businesses with a surplus of unsold
 
 ![Demo gif](./client/public/LettuceEat.gif)
 * [Live Demo](https://lettuceeat.herokuapp.com/)
-* [Video Demo]()
+* [Video Demo](https://youtu.be/nHRchQu5q1Q)
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -70,9 +70,8 @@ Follow Heroku's deployment instructions
 * [Sequelize](http://docs.sequelizejs.com/) - Promised-based ORM used
 * [Express](http://expressjs.com/) - Web framework used
 * [Yarn](http://expressjs.com/) - Package manager employed
-<!-- * [Mocha](https://mochajs.org/) - Used as testing framework
-* [chai](http://www.chaijs.com/) - Assertion library paired with Mocha for testing -->
-
+* [Mocha](https://mochajs.org/) - Used as testing framework
+* [chai](http://www.chaijs.com/) - Assertion library paired with Mocha for testing
 
 ## Authors
 * **Michelle Le** - *Team Lead* - [GitHub](https://github.com/michellele994)
@@ -81,5 +80,7 @@ Follow Heroku's deployment instructions
 * **Perla Ballesteros** - *Team:Front-end/Back-end* - [GitHub](https://github.com/perlaballesteros)
 
 ## Acknowledgments
-* 
-* 
+* Bootcamp TAs: Joel Borjorquez,Peter Fesz-Nguyen,and Nicholas Green.
+* Bootcamp Instructor: Jan Jorgensen.
+* Produce on Wheels With-Out Waste
+

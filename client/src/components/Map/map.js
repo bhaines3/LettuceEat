@@ -11,14 +11,14 @@ class Map extends Component {
         msg: ""
     }
     componentWillMount() {
-        console.log("im creating map1st");
         this.setState({
             lat: this.props.lat,
             lng: this.props.lng,
             msg: this.props.msg
         })
     }
-    //updates state every time state is updatedin the parent in each click
+    
+    //Updates state every time state is updatedin the parent in each click
     componentWillReceiveProps(nextProps) {
         this.setState({
             lat: nextProps.lat,
@@ -49,11 +49,11 @@ class Map extends Component {
         return (
             <Gmaps className="mb-4"
                 width={'100%'}
-                height={'500px'}
+                height={'500%'}
                 lat={this.state.lat}
                 lng={this.state.lng}
                 zoom={12}
-                loadingMessage={'Be happy'}
+                loadingMessage={'loading...'}
                 params={params}
                 onMapCreated={this.onMapCreated}>
                 <Marker
@@ -72,15 +72,3 @@ class Map extends Component {
 };
 
 export default Map;
-
-//BACKUP FOR COORDINATES
-//import axios from 'axios';
-// axios.get("https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyABpdOVb3I9kBHUBo-8YP3VpPmBH8DSPz4")
-//     //     .then(res => {console.log(res.data.results[0].geometry.location)
-//     //         const latLng=res.data.results[0].geometry.location;
-//     //         this.setState({coordinates:latLng,msg:address})
-//     //         console.log(this.state.coordinates.lat)
-//     //         console.log(this.state.coordinates.lng)
-//     //         console.log(this.state.msg)
-//     //     })
-

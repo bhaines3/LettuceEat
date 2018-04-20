@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import API from "./../utils/API";
+
+//non profits interested in donation post
 class InterestBtn extends Component {
     state =
         {
