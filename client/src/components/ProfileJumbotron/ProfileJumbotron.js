@@ -4,14 +4,14 @@ import ModalEditJumbo from '../Modals/ModalEditJumbo';
 const ProfileJumbotron = (props) => {
     const renderEditButton = () => {
         if (props.isDonor) {
-            if (localStorage.getItem("donorId") === props.paramsId) {
+            if (sessionStorage.getItem("donorId") === props.paramsId) {
                 return (
                     <button id="donorInfoBtnedit" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</button>
                 )
             }
         }
         else {
-            if (localStorage.getItem("nonProfitId") === props.paramsId) {
+            if (sessionStorage.getItem("nonProfitId") === props.paramsId) {
                 return (
                     <button id="nonProfitInfoBtnedit" className="btn btn-primary text-white float-right" data-toggle="modal" data-target="#modal-editjumbo">Edit</button>
                 )

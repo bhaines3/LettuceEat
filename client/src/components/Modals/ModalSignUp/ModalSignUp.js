@@ -59,21 +59,21 @@ class ModalSignUp extends Component {
             }).catch(err => this.setState({ message: "Please fill everything out before continuing" }));
     }
     donorNonDonorSave(token) {
-        localStorage.setItem('jwtToken', token);
+        sessionStorage.setItem('jwtToken', token);
         //console.log(token);
         const decoded = jwt_decode(token);
         //console.log(JSON.stringify(decoded))
         const donor = decoded.isDonor;
         const id = decoded.id;
-        localStorage.setItem("userId", id);
-        localStorage.setItem("isDonor", donor);
+        sessionStorage.setItem("userId", id);
+        sessionStorage.setItem("isDonor", donor);
         if (donor === null || donor === false) {
             let nonProfitId = decoded.NonProfit.id;
-            localStorage.setItem("nonProfitId", nonProfitId);
+            sessionStorage.setItem("nonProfitId", nonProfitId);
         }
         else {
             let donorId = decoded.Donor.id;
-            localStorage.setItem("donorId", donorId);
+            sessionStorage.setItem("donorId", donorId);
         }
         //setting state to redirect user
         this.setState({

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from "./../../utils/API";
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import PlacesAutocomplete from 'react-places-autocomplete'
 import MaskedInput from 'react-text-mask';
 
 
@@ -108,7 +108,7 @@ class ModalEditJumbo extends Component {
                                         onChange={this.handleChange}
                                     />
                                     <br />
-                                    {(localStorage.getItem("isDonor") === "true") ? ("") : (
+                                    {(sessionStorage.getItem("isDonor") === "true") ? ("") : (
                                         <div>
                                             <label htmlFor="hoursforpickup"><strong>Hours For Pick Up:</strong></label>
                                             <input className="col-sm-12 mb-2" type="text" id="edit_hours" name="hoursforpickup"
@@ -135,7 +135,7 @@ class ModalEditJumbo extends Component {
                                         <span className="alert-message"><strong><span className="text-primary">*</span></strong> - {this.state.message}</span>
                                     ) : ("")}
                                     <br />
-                                    {(localStorage.getItem("isDonor") === "true") ? (
+                                    {(sessionStorage.getItem("isDonor") === "true") ? (
                                         <button className="btn btn-primary" type="submit" id="create-new-user" onClick={this.editDonor}>Save Changes<i className="far fa-check-circle" /></button>
                                     ) : (
                                             <button className="btn btn-primary" type="submit" id="create-new-user" onClick={this.editNonProfit}>Save Changes<i className="far fa-check-circle" /></button>

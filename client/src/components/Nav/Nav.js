@@ -7,11 +7,11 @@ import Logo from "./logo.png";
 import './Nav.css';
 
 const Logout = event => {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem("isDonor");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("donorId");
-    localStorage.removeItem("nonProfitId");
+    sessionStorage.removeItem('jwtToken');
+    sessionStorage.removeItem("isDonor");
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("donorId");
+    sessionStorage.removeItem("nonProfitId");
     API.logout()
         .then(res => { return <Redirect to={"/"} /> })
         .catch(err => console.log(err))
@@ -43,12 +43,12 @@ const Nav = () => {
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     {/* rendering signup and sign in when not logged in and profile */}
-                    {(localStorage.getItem("jwtToken") != null) ? (<div>
-                        {(localStorage.getItem("donorId") !== null) ? (<div>
-                            <a className="btn btn-primary text-white" href={"/DonorProfile/" + localStorage.getItem("donorId")}>Profile</a>
+                    {(sessionStorage.getItem("jwtToken") != null) ? (<div>
+                        {(sessionStorage.getItem("donorId") !== null) ? (<div>
+                            <a className="btn btn-primary text-white" href={"/DonorProfile/" + sessionStorage.getItem("donorId")}>Profile</a>
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>) : (<div>
-                            <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + localStorage.getItem("nonProfitId")}>Profile</a>
+                            <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + sessionStorage.getItem("nonProfitId")}>Profile</a>
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>)}
                     </div>) : (

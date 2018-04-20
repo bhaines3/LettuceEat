@@ -23,11 +23,11 @@ class AllNonProfits extends Component {
             .catch(err => console.log(err));
     }
     Logout = event => {
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem("isDonor");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("donorId");
-        localStorage.removeItem("nonProfitId");
+        sessionStorage.removeItem('jwtToken');
+        sessionStorage.removeItem("isDonor");
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("donorId");
+        sessionStorage.removeItem("nonProfitId");
         window.location.reload();
     }
     cardClicked(address) {
