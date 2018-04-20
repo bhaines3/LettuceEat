@@ -59,7 +59,7 @@ class DonorProfile extends Component {
                                 desc={FoodPost.desc}
                                 pickupdate={FoodPost.pickupdate}
                                 pickupwindow={FoodPost.pickupwindow}
-                                donorId={this.props.match.params.id}
+                                donorId={FoodPost.DonorId}
                             >
                             </FoodCard>
                             <br />
