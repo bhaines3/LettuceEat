@@ -3,6 +3,7 @@ import API from "../../components/utils/API";
 import Map from "../../components/Map/map";
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import UserCard from '../../components/UserCard/UserCard';
+import MainJumbotron from '../../components/MainJumbotron/MainJumbotron';
 
 class AllDonors extends Component {
     constructor(props) {
@@ -23,11 +24,11 @@ class AllDonors extends Component {
             .catch(err => console.log(err));
     }
     Logout = event => {
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem("isDonor");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("donorId");
-        localStorage.removeItem("nonProfitId");
+        sessionStorage.removeItem('jwtToken');
+        sessionStorage.removeItem("isDonor");
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("donorId");
+        sessionStorage.removeItem("nonProfitId");
         window.location.reload();
     }
     cardClicked(address) {
@@ -39,13 +40,11 @@ class AllDonors extends Component {
                 this.setState({ coordinates: latLng, msg: address })
             })
     }
+
     render() {
         return (
             <div className="container text-black">
-                <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded text-primary">
-                    <h1 className="display-3">LettuceEAT</h1>
-                    <h3 className="lead">Reducing food waste one bite at a time!</h3>
-                </div>
+                <MainJumbotron />
                 <div className="row">
                     <div className="col-lg-7">
                         <h1 className="text-center">All Donors</h1>

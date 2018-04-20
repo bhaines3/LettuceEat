@@ -7,11 +7,11 @@ import Logo from "./logo.png";
 import './Nav.css';
 
 const Logout = event => {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem("isDonor");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("donorId");
-    localStorage.removeItem("nonProfitId");
+    sessionStorage.removeItem('jwtToken');
+    sessionStorage.removeItem("isDonor");
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("donorId");
+    sessionStorage.removeItem("nonProfitId");
     API.logout()
         .then(res => { return <Redirect to={"/"} /> })
         .catch(err => console.log(err))
@@ -29,26 +29,26 @@ const Nav = () => {
             <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href={"/"}>Home</a>
+                        <a className="btn btn-primary text-white" href={"/"}>Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href={"/aboutus"}>About Us</a>
+                        <a className="btn btn-primary text-white" href={"/aboutus"}>About Us</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href={"/allDonors"}>Donors</a>
+                        <a className="btn btn-primary text-white" href={"/allDonors"}>Donors</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href={"/allNonProfits"}>Non-Profits</a>
+                        <a className="btn btn-primary text-white" href={"/allNonProfits"}>Non-Profits</a>
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     {/* rendering signup and sign in when not logged in and profile */}
-                    {(localStorage.getItem("jwtToken") != null) ? (<div>
-                        {(localStorage.getItem("donorId") !== null) ? (<div>
-                            <a className="btn btn-primary text-white" href={"/DonorProfile/" + localStorage.getItem("donorId")}>Profile</a>
+                    {(sessionStorage.getItem("jwtToken") != null) ? (<div>
+                        {(sessionStorage.getItem("donorId") !== null) ? (<div>
+                            <a className="btn btn-primary text-white" href={"/DonorProfile/" + sessionStorage.getItem("donorId")}>Profile</a>
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>) : (<div>
-                            <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + localStorage.getItem("nonProfitId")}>Profile</a>
+                            <a className="btn btn-primary text-white" href={"/NonProfitProfile/" + sessionStorage.getItem("nonProfitId")}>Profile</a>
                             <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
                         </div>)}
                     </div>) : (
@@ -56,10 +56,6 @@ const Nav = () => {
                                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
                                 <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a></div>
                         )}
-                    {/* <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-signup">Sign-Up</a>
-                <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-login">Sign-In</a>
-                <a href={"/"} className="btn btn-primary text-white" onClick={Logout} id="logoutbtn">Logout</a>
-     */}
                 </form>
                 <ModalLogin />
                 <ModalSignUp />

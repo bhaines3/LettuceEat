@@ -3,6 +3,7 @@ import "./Home.css";
 import API from "../../components/utils/API";
 import FoodCard from '../../components/FoodCard';
 import ModalAddPost from '../../components/Modals/ModalAddPost';
+import MainJumbotron from '../../components/MainJumbotron/MainJumbotron';
 
 class Home extends Component {
     state = {
@@ -28,23 +29,21 @@ class Home extends Component {
             .catch(err => console.log(err));
     }
     Logout = event => {
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem("isDonor");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("donorId");
-        localStorage.removeItem("nonProfitId");
+        sessionStorage.removeItem('jwtToken');
+        sessionStorage.removeItem("isDonor");
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("donorId");
+        sessionStorage.removeItem("nonProfitId");
         window.location.reload();
     }
     render() {
         return (
             <div className="container">
-                <div className="jumbotron text-primary jumbotron-fluid mt-4 my-3 text-center rounded">
-                    <h1 className="display-3">LettuceEAT</h1>
-                    <h3 className="lead">Reducing food waste one bite at a time!</h3>
-                </div>
-                {(localStorage.getItem("isDonor") === "true") ? (
+                <MainJumbotron />
+                {(sessionStorage.getItem("isDonor") === "true") ? (
                     <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                 ) : ("")}
+                <br />
                 {this.state.foodposts && this.state.foodposts.length ? (
                     this.state.foodposts.map(FoodPost => (
                         <div
@@ -61,10 +60,9 @@ class Home extends Component {
                         </div>
                     ))
                 ) : (
-                        <h3>No food posts! Check back later. </h3>
+                        <h3>No one has added food posts! Check back later. </h3>
                     )}
-                <ModalAddPost donorId={localStorage.getItem("donorId")} />
-
+                <ModalAddPost donorId={sessionStorage.getItem("donorId")} />
             </div>
         );
     }

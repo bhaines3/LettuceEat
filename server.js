@@ -3,7 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const apiRoutes = require("./routes/apiRoutes");
 const session = require("express-session");
-const passport = require('./config/passport');
+const passport = require("./config/passport");
 
 // const routes = require("./routes/articles");
 const PORT = process.env.PORT || 3001;
@@ -39,6 +39,6 @@ app.get("*", function (req, res) {
 // =============================================================
 module.exports = db.sequelize.sync().then(function () {
     return app.listen(PORT, function () {
-        console.log(`🌎 ==> Server now on port ${PORT}!`);
+        console.log("🌎 ==> Server now on port ${PORT}!");
     });
 });

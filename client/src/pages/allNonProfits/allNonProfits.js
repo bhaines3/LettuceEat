@@ -3,6 +3,7 @@ import API from "../../components/utils/API";
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import Map from "../../components/Map/map";
 import UserCard from '../../components/UserCard/UserCard';
+import MainJumbotron from '../../components/MainJumbotron/MainJumbotron';
 
 class AllNonProfits extends Component {
     constructor(props) {
@@ -22,11 +23,11 @@ class AllNonProfits extends Component {
             .catch(err => console.log(err));
     }
     Logout = event => {
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem("isDonor");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("donorId");
-        localStorage.removeItem("nonProfitId");
+        sessionStorage.removeItem('jwtToken');
+        sessionStorage.removeItem("isDonor");
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("donorId");
+        sessionStorage.removeItem("nonProfitId");
         window.location.reload();
     }
     cardClicked(address) {
@@ -41,13 +42,10 @@ class AllNonProfits extends Component {
     render() {
         return (
             <div className="container text-black">
-                <div className="jumbotron jumbotron-fluid mt-4 my-3 text-center rounded text-primary">
-                    <h1 className="display-3">LettuceEAT</h1>
-                    <h3 className="lead">Reducing food waste one bite at a time!</h3>
-                </div>
+                <MainJumbotron />
                 <div className="row">
                     <div className="col-lg-7">
-                        <h1 className="text-center">All Non-Profits</h1>
+                        <h1 className="text-center">All Nonprofits</h1>
                         {this.state.nonProfits && this.state.nonProfits.length ? (this.state.nonProfits.map(nonProfit => (
                             <UserCard
                                 key={nonProfit.id}
@@ -61,7 +59,7 @@ class AllNonProfits extends Component {
                                 cardClicked={this.cardClicked} />
                         ))
                         ) : (
-                                <h3 className="text-center">No NonProfits to show</h3>
+                                <h3 className="text-center">No Nonprofits to show</h3>
                             )}
                     </div>
                     <div className="col-lg-5 mt-3">

@@ -12,7 +12,8 @@ class ModalSignUp extends Component {
         isDonor: false,
         phonenumber: "",
         password: "",
-        loggedIn: ""
+        loggedIn: "",
+        message: ""
     }
     updateUserSignup = event => {
         // Destructure the name and value properties off of event.target
@@ -31,7 +32,6 @@ class ModalSignUp extends Component {
         geocodeByAddress(this.state.location)
             .then(results => getLatLng(results[0]))
             .then(latLng => {
-                console.log('Success', latLng);
                 const newUser = {
                     name: this.state.name,
                     email: this.state.email,
@@ -52,29 +52,28 @@ class ModalSignUp extends Component {
                                 const token = res.data.token;
                                 //saving data to local storage
                                 this.donorNonDonorSave(token)
-                            }).catch(error => console.error('Error', error));
+                                window.location.reload()
+                            }).catch(error => this.setState({ message: "Please fill everything out before continuing" }));
                     })
-                    .catch(err => {
-                        console.error("Error", err)
-                    });
-            })
+                    .catch(err => this.setState({ message: "Please fill everything out before continuing" }));
+            }).catch(err => this.setState({ message: "Please fill everything out before continuing" }));
     }
     donorNonDonorSave(token) {
-        localStorage.setItem('jwtToken', token);
+        sessionStorage.setItem('jwtToken', token);
         //console.log(token);
         const decoded = jwt_decode(token);
         //console.log(JSON.stringify(decoded))
         const donor = decoded.isDonor;
         const id = decoded.id;
-        localStorage.setItem("userId", id);
-        localStorage.setItem("isDonor", donor);
+        sessionStorage.setItem("userId", id);
+        sessionStorage.setItem("isDonor", donor);
         if (donor === null || donor === false) {
             let nonProfitId = decoded.NonProfit.id;
-            localStorage.setItem("nonProfitId", nonProfitId);
+            sessionStorage.setItem("nonProfitId", nonProfitId);
         }
         else {
             let donorId = decoded.Donor.id;
-            localStorage.setItem("donorId", donorId);
+            sessionStorage.setItem("donorId", donorId);
         }
         //setting state to redirect user
         this.setState({
@@ -98,16 +97,16 @@ class ModalSignUp extends Component {
             onChange: this.onChange,
         }
         //redirecting
-        if (this.state.loggedIn) {
-            window.location.reload()
-        }
+        // if (this.state.loggedIn) {
+        //     window.location.reload()
+        // }
         return (
-            <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel111" aria-hidden="true">
+            <div className="modal fade" id="modal-signup" tabIndex={-1} role="dialog" aria-labelledby="SignupModal" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
 
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel111">Create an Account</h5>
+                            <h5 className="modal-title" id="SignupModal">Create an Account</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -122,7 +121,7 @@ class ModalSignUp extends Component {
                                     <label className="col-3 text-center">NonProfit</label>
                                     <div className="col-3">
                                         <input type="radio" className="col-3 form-control radioBtn mt-2" name="isDonor" value="false" onChange={this.updateUserSignup} />
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -156,8 +155,9 @@ class ModalSignUp extends Component {
                                 <label>Address:</label><br />
                                 <PlacesAutocomplete inputProps={inputProps} />
                             </div>
+                            <span className="alert-message">{this.state.message}</span>
                             <div className="form-group">
-                                <button onClick={this.createUser} type="submit" className="btn btn-primary" data-dismiss="modal"><i className="fa fa-plus-circle"></i> Create Account</button>
+                                <button onClick={this.createUser} type="submit" className="btn btn-primary"><i className="fa fa-plus-circle"></i> Create Account</button>
                             </div>
                         </div>
                         <div className="modal-footer">
