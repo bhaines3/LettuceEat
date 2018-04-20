@@ -54,7 +54,7 @@ class ModalAddPost extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="postDesc">Description: <strong><span className="text-primary">*</span></strong></label>
-                                    <textarea className="form-control" id="new_desc" name="postDesc" rows="3" onChange={this.handleChange} maxlength={500} placeholder="max 500 characters"></textarea>
+                                    <textarea className="form-control" id="new_desc" name="postDesc" rows="3" onChange={this.handleChange} maxLength={500} placeholder="max 500 characters"></textarea>
                                 </div>
 
                                 <label htmlFor="postPickUpDate"><strong>Pick-Up Date: <strong><span className="text-primary">*</span></strong></strong></label>

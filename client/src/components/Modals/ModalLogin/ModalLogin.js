@@ -35,19 +35,19 @@ class ModalLogin extends Component {
             })
     }
     donorNonDonorSave(token) {
-        localStorage.setItem('jwtToken', token);
+        sessionStorage.setItem('jwtToken', token);
         const decoded = jwt_decode(token);
         const donor = decoded.isDonor;
         const id = decoded.id;
-        localStorage.setItem("userId", id);
-        localStorage.setItem("isDonor", donor);
+        sessionStorage.setItem("userId", id);
+        sessionStorage.setItem("isDonor", donor);
         if (donor === null || donor === false) {
             const nonProfitId = decoded.NonProfit.id;
-            localStorage.setItem("nonProfitId", nonProfitId);
+            sessionStorage.setItem("nonProfitId", nonProfitId);
         }
         else {
             const donorId = decoded.Donor.id;
-            localStorage.setItem("donorId", donorId);
+            sessionStorage.setItem("donorId", donorId);
         }
         //setting state to redirect user
         this.setState({

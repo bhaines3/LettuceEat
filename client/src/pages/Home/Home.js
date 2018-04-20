@@ -29,18 +29,18 @@ class Home extends Component {
             .catch(err => console.log(err));
     }
     Logout = event => {
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem("isDonor");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("donorId");
-        localStorage.removeItem("nonProfitId");
+        sessionStorage.removeItem('jwtToken');
+        sessionStorage.removeItem("isDonor");
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("donorId");
+        sessionStorage.removeItem("nonProfitId");
         window.location.reload();
     }
     render() {
         return (
             <div className="container">
                 <MainJumbotron />
-                {(localStorage.getItem("isDonor") === "true") ? (
+                {(sessionStorage.getItem("isDonor") === "true") ? (
                     <a href="" className="btn btn-primary text-white" data-toggle="modal" data-target="#modal-addpost">Add New Post</a>
                 ) : ("")}
                 <br />
@@ -62,7 +62,7 @@ class Home extends Component {
                 ) : (
                         <h3>No one has added food posts! Check back later. </h3>
                     )}
-                <ModalAddPost donorId={localStorage.getItem("donorId")} />
+                <ModalAddPost donorId={sessionStorage.getItem("donorId")} />
             </div>
         );
     }
